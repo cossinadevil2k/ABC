@@ -1,0 +1,39 @@
+
+
+<polymer-element name="add-transaction-service">
+    <template>
+        <style>
+            :host {
+                display: none;
+            }
+        </style>
+
+        <core-ajax id="addTrans"
+                url="../api/add-transaction"
+                handleAs="json"
+                params={{param}}"
+                on-core-response="{{addTransResult}}">
+        </core-ajax>
+    </template>
+
+    <script>
+        Polymer('add-transaction-service', {
+            addTransResult: function(event, response){
+                var status  = response.xhr.status;
+                if(status && status===401){
+                    this.fire('sessionExpired');
+                } else {
+                    var data = response.response;
+                    this.callback(data);
+                }
+            },
+            createTransaction: function(transInfo, callback){
+                this.callback = callback;
+                if(transInfo) {
+                    this.param = {transInfo: transInfo};
+                    this.$['addTrans'].go();
+                } else this.callback({error: 10, msg:"transaction_info_empty"});
+            }
+        })
+    </script>
+</polymer-element>

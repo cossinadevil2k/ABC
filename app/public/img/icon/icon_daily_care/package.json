@@ -1,0 +1,289 @@
+{
+  "name": "Daily Care",
+  "product_id": "icon_daily_care",
+  "icons": {
+    "ec_water_bill": [
+      "bill",
+      "tagihan",
+      "บิล",
+      "fattura",
+      "hóa đơn",
+      "water bill",
+      "hóa đơn nước",
+      "hóa đơn tiền nước",
+      "tiền nước"
+    ],
+    "ec_towel": [
+      "towel",
+      "khăn tắm",
+      "khăn mặt",
+      "khăn",
+      "tắm",
+      "shower"
+    ],
+    "ec_toothbrush": [
+      "toothbrush",
+      "bàn chải đánh răng",
+      "bàn chải",
+      "bàn chải răng",
+      "kem đánh răng",
+      "nhà tắm",
+      "shower",
+      "toothpaste",
+      "tooth"
+    ],
+    "ec_tools": [
+      "tools",
+      "chổi",
+      "cọ sơn",
+      "sơn",
+      "sửa nhà",
+      "decor",
+      "decoration",
+      "house repair"
+    ],
+    "ec_toilet_paper": [
+      "tolet paper",
+      "giấy vệ sinh",
+      "vệ sinh",
+      "giấy toilet",
+      "vệ sinh",
+      "toilet",
+      "nhà xí"
+    ],
+    "ec_stationery": [
+      "stationery",
+      "đồ dùng học tập",
+      "văn phòng phẩm",
+      "dụng cụ học tập",
+      "dụng cụ",
+      "học tập",
+      "study",
+      "school",
+      "school supplies"
+    ],
+    "ec_stamp": [
+      "stamp",
+      "tem",
+      "gửi thư",
+      "thư",
+      "bưu điện",
+      "letter",
+      "post office",
+      "post"
+    ],
+    "ec_soap": [
+      "soap",
+      "xà phòng",
+      "xà bông",
+      "bông tắm",
+      "shower",
+      "tắm"
+    ],
+    "ec_shaving_razor": [
+      "shaving razor",
+      "dao cạo râu",
+      "razor",
+      "beard"
+    ],
+    "ec_shampoo": [
+      "shampoo",
+      "sampo",
+      "แชมพูสระผม",
+      "dầu gội đầu",
+      "dầu xả",
+      "sữa tắm",
+      "sữa rửa mặt",
+      "nước rửa tay",
+      "rửa tay",
+      "vệ sinh",
+      "liquid",
+      "wash hand",
+      "wash",
+      "hair shampoo",
+      "shower gel",
+      "gel"
+    ],
+    "ec_scissor": [
+      "scissor",
+      "kéo",
+      "handmade",
+      "DIY"
+    ],
+    "ec_phone_bill": [
+      "phone bill",
+      "tiền điện thoại",
+      "thẻ điện thoại",
+      "điện thoại",
+      "thẻ",
+      "mobile",
+      "phone",
+      "bill",
+      "tagihan",
+      "บิล",
+      "fattura",
+      "hóa đơn"
+    ],
+    "ec_multitools": [
+      "multitools",
+      "dao đa năng",
+      "đa năng"
+    ],
+    "ec_mug": [
+      "mug",
+      "cốc",
+      "cup",
+      "tea",
+      "trà",
+      "cốc trà",
+      "ca",
+      "drink",
+      "drinking"
+    ],
+    "ec_mouthwash": [
+      "mouthwash",
+      "listerine",
+      "hygienic",
+      "súc miệng",
+      "sanitary"
+    ],
+    "ec_medic_kit": [
+      "medic kit",
+      "y tế",
+      "hộp thuốc",
+      "hộp y tế",
+      "sức khỏe",
+      "bảo vệ",
+      "medicine",
+      "cure",
+      "protect",
+      "health",
+      "cấp cứu",
+      "amburlance",
+      "sos"
+    ],
+    "ec_makeup_set": [
+      "makeup set",
+      "makeup",
+      "trang điểm",
+      "mỹ phẩm",
+      "phấn mắt",
+      "phấn"
+    ],
+    "ec_internet_subscription": [
+      "internet subscription",
+      "internet",
+      "hóa đơn mạng",
+      "mạng",
+      "tiền mạng",
+      "mạng internet"
+    ],
+    "ec_hairband": [
+      "hairband",
+      "bờm",
+      "nơ",
+      "phụ kiện",
+      "accessorie"
+    ],
+    "ec_gshock": [
+      "gshock",
+      "clock",
+      "đồng hồ",
+      "báo thức",
+      "gym",
+      "giờ",
+      "reminder",
+      "nhắc nhở",
+      "date",
+      "alarm",
+      "chuông báo thức",
+      "remember",
+      "time"
+    ],
+    "ec_grocery_store": [
+      "grocery store",
+      "cửa hàng",
+      "đại lý",
+      "tạp hóa",
+      "siêu thị",
+      "chợ",
+      "market",
+      "supermarket",
+      "store",
+      "bodega",
+      "house"
+    ],
+    "ec_eye_drop": [
+      "eye drop",
+      "thuốc nhỏ mắt",
+      "thuốc nhỏ",
+      "medicine",
+      "optical"
+    ],
+    "ec_electricity_bill": [
+      "bill",
+      "tagihan",
+      "บิล",
+      "fattura",
+      "hóa đơn",
+      "electric bill",
+      "electric",
+      "electricity bill",
+      "electricity",
+      "hóa đơn điện",
+      "hóa đơn tiền điện",
+      "tiền điện"
+    ],
+    "ec_ducktape": [
+      "ducktape",
+      "băng dính",
+      "băng keo",
+      "sửa chữa",
+      "repair"
+    ],
+    "ec_diaper": [
+      "diaper",
+      "tã",
+      "bỉm",
+      "bỉm sữa"
+    ],
+    "ec_detergent": [
+      "detegent",
+      "tẩy rửa",
+      "vệ sinh",
+      "toilet",
+      ""
+    ],
+    "ec_deodorant": [
+      "deodorant",
+      "khử mùi",
+      "lăn khử mùi"
+    ],
+    "ec_cigarette": [
+      "cigarette",
+      "thuốc lá",
+      "xì gà",
+      "điếu thuốc",
+      "bao thuốc",
+      "tobacco"
+    ],
+    "ec_cd": [
+      "cd",
+      "đĩa",
+      "nhạc",
+      "music"
+    ],
+    "ec_baby_bottle": [
+      "baby bottle",
+      "bình sữa",
+      "milk",
+      "milk bottle"
+    ]
+  },
+  "tags": [
+    "dailycare",
+    "đồ dùng",
+    "hàng ngày",
+    "đồ dùng hàng ngày"
+  ]
+}

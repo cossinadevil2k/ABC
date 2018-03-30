@@ -1,0 +1,53 @@
+<polymer-element name="category-list-service" attributes="categoryList">
+    <template>
+        <style>
+            :host {
+                display: none;
+            }
+        </style>
+        <core-ajax id="ajax"
+                   url="/api/category/get"
+                   method="POST"
+                   on-core-response="{{postsLoaded}}"
+                   params='{"walletId": "{{walletId}}" }'
+                   handleAs="json">
+        </core-ajax>
+
+        <!-- <core-localstorage name="category-{{walletId}}" value="{{categoryList}}"></core-localstorage> -->
+    </template>
+    <script>
+        Polymer('category-list-service', {
+            created: function() {
+            },
+
+            // domReady: function(){
+            //   if(!this.categoryList){
+            //     this.$.ajax.go();
+            //   } else {
+            //     // categoryList = this.categoryList;
+            //   }
+            // },
+
+            run: function(walletId, callback){
+                this.callback = callback;
+                if(walletId){
+                    console.log(walletId);
+                    this.walletId = walletId;
+                    this.$.ajax.go();
+                } else this.callback({error: 10, msg:"wallet_info_empty"});
+            },
+
+            postsLoaded: function(event, response) {
+                var status = response.xhr.status;
+                if(status===200){
+                    var data = response.response;
+                    if(data.error===0) {
+                        this.categoryList = data.data;
+                        this.callback({error: 0, msg:data.msg});
+                    } else if (data.error===401) this.fire('sessionExpired');
+                    else this.callback({error: data.error, msg:data.msg});
+                }
+            }
+        });
+    </script>
+</polymer-element>

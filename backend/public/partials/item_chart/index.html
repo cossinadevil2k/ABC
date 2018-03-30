@@ -1,0 +1,86 @@
+<div class="module">
+    <div class="module-header">
+        <h4>
+            Turnover by US Dollar
+            <div class="btn-group">
+                <button class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">
+                    {{mode}} <i class="caret"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#" ng-click="selectViewMode('Daily')">Daily</a></li>
+                    <li><a href="#" ng-click="selectViewMode('Weekly')">Weekly</a></li>
+                    <li><a href="#" ng-click="selectViewMode('Monthly')">Monthly</a></li>
+                </ul>
+            </div>
+        </h4>
+    </div>
+    <div class="module-content">
+        <h4 class="module-subtitle">All products from {{totalStartTime | date: 'DD/MM/YYYY'}} to {{totalEndTime | date: 'DD/MM/YYYY'}}</h4>
+        <div id="turnover_total" class="chart"></div>
+
+        <h4 class="module-subtitle">By platform from {{totalStartTime | date: 'DD/MM/YYYY'}} to {{totalEndTime | date: 'DD/MM/YYYY'}}</h4>
+        <div id="turnover_platform" class="chart"></div>
+
+        <h4 class="module-subtitle">Product {{selectedProduct}} from {{totalStartTime | date: 'DD/MM/YYYY'}} to {{totalEndTime | date: 'DD/MM/YYYY'}}</h4>
+        <div id="turnover_product" class="chart"></div>
+
+        <h4 class="module-subtitle">Top 10 product from {{topTenStartTime}} to {{topTenEndTime}}</h4>
+        <div class="row">
+            <button class="btn btn-primary" ng-click="selectDateRange()">Select date</button>
+        </div>
+        <div class="row">
+            <loading ng-if="loadingTopTenProduct"></loading>
+            <table class="table table-responsive" style="width: 50%;">
+                <thead>
+                <tr>
+                    <th class="text-center">No</th>
+                    <th>Product</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="(key, data) in topTenData" ng-if="key < 10">
+                    <td class="text-center">{{key + 1}}</td>
+                    <td>{{data._id}}</td>
+                    <td>$ {{data.amount | number}}</td>
+                </tr>
+                <tr ng-if="topTenData.length === 0">
+                    <td>No result</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="module-subtitle">Top 10 country from {{topTenStartTime}} to {{topTenEndTime}}</h4>
+        <div class="row">
+            <loading ng-if="loadingTopCountry"></loading>
+            <table class="table table-responsive" style="width: 50%;">
+                <thead>
+                <tr>
+                    <th class="text-center">No</th>
+                    <th></th>
+                    <th>Product</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="(key, data) in topCountry" ng-if="key < 10">
+                    <td class="text-center">{{key + 1}}</td>
+                    <td>
+                        <span class="flag-icon flag-icon-{{data.country.toLowerCase()}}"></span>
+                    </td>
+                    <td>{{data.country | countryCode}}</td>
+                    <td>$ {{data.amount | number}}</td>
+                </tr>
+                <tr ng-if="topTenData.length === 0">
+                    <td>No result</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

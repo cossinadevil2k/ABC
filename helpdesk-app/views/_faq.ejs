@@ -1,0 +1,114 @@
+<div class="faq-page row" style="padding-bottom: 70px; margin-top: 105px;">
+
+    <div class="filter col-md-10 col-md-offset-1">
+        <div class="faq-header">
+            Frequently Asked Questions
+            <div style="float: right">
+
+                <!-- <select class="selectPlatform">
+                    <option value="ios">iOS</option>
+                    <option value="mac">Mac</option>
+                    <option value="android">Android</option>
+                    <option value="win">Windows</option>
+                    <option value="wp">Window phone</option>
+                    <option value="web">Web</option>
+                </select> -->
+                <select class="selectLanguage">
+                    <option value="en">English</option>
+                    <option value="vi">Tiếng Việt</option>
+                </select>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-xs-4 platform">
+                <div class="grayScale ios">
+                    <figure class="filterGray"><input type="radio" value="ios" name='platforms'></figure>
+                </div>
+                <!-- <span><i class="fa fa-check-circle notSurprise"></i> iOS</span> -->
+                <span>
+                    <i class="fa fa-check-circle notSurprise" style="margin-right: 3px;"></i>
+                    <label class="section-pick-label" style="font-weight: lighter"><input type="radio" value="ios" name='platforms' style="opacity: 0; position: absolute;"> iOS</label>
+                </span>
+            </div>
+            <div class="col-md-2 col-xs-4 platform">
+                <div class="grayScale mac">
+                    <figure class="filterGray"><input type="radio" value="mac" name='platforms'></figure>
+                </div>
+                <!-- <span><i class="fa fa-check-circle notSurprise"></i> Mac</span> -->
+                <span>
+                    <i class="fa fa-check-circle notSurprise" style="margin-right: 3px;"></i>
+                    <label class="section-pick-label" style="font-weight: lighter"><input type="radio" value="mac" name='platforms' style="opacity: 0; position: absolute;"> Mac</label>
+                </span>
+            </div>
+            <div class="col-md-2 col-xs-4 platform">
+                <div class="grayScale android">
+                    <figure class="filterGray"><input type="radio" value="android" name='platforms'></figure>
+                </div>
+                <!-- <span><i class="fa fa-check-circle notSurprise"></i> Android</span> -->
+                <span>
+                    <i class="fa fa-check-circle notSurprise" style="margin-right: 3px;"></i>
+                    <label class="section-pick-label" style="font-weight: lighter"><input type="radio" value="android" name='platforms' style="opacity: 0; position: absolute;"> Android</label>
+                </span>
+            </div>
+            <div class="col-md-2 col-xs-4 platform">
+                <div class="grayScale windows">
+                    <figure class="filterGray"><input type="radio" value="win" name='platforms'></figure>
+                </div>
+                <!-- <span><i class="fa fa-check-circle notSurprise"></i> Windows</span> -->
+                <span>
+                    <i class="fa fa-check-circle notSurprise" style="margin-right: 3px;"></i>
+                    <label class="section-pick-label" style="font-weight: lighter"><input type="radio" value="win" name='platforms' style="opacity: 0; position: absolute;"> Windows</label>
+                </span>
+            </div>
+            <div class="col-md-2 col-xs-4 platform">
+                <div class="grayScale windowphone">
+                    <figure class="filterGray"><input type="radio" value="wp" name='platforms'></figure>
+                </div>
+                <!-- <span><i class="fa fa-check-circle notSurprise"></i> Window phone</span> -->
+                <span>
+                    <i class="fa fa-check-circle notSurprise" style="margin-right: 3px;"></i>
+                    <label class="section-pick-label" style="font-weight: lighter"><input type="radio" value="wp" name='platforms' style="opacity: 0; position: absolute;"> Window phone</label>
+                </span>
+            </div>
+            <div class="col-md-2 col-xs-4 platform">
+                <div class="grayScale web">
+                    <figure class="filterGray"><input type="radio" value="web" name='platforms'></figure>
+                </div>
+                <span>
+                    <i class="fa fa-check-circle notSurprise" style="margin-right: 3px;"></i>
+                    <label class="section-pick-label" style="font-weight: lighter"><input type="radio" value="web" name='platforms' style="opacity: 0; position: absolute;"> Web</label>
+                </span>
+            </div>
+        </div>
+
+        <!-- <div class="row" style="margin-top: 33px">
+            <div class="col-md-2 platform">
+                <div class="grayScale">
+                    <figure><input type="radio" value="en" name='language'></figure>
+                </div>
+                <span>English</span>
+            </div>
+            <div class="col-md-2 platform">
+                <div class="grayScale">
+                    <figure><input type="radio" value="vi" name='language'></figure>
+                </div>
+                <span>Tiếng Việt</span>
+            </div>
+        </div> -->
+
+    </div>
+
+    <div class="col-md-10 col-md-offset-1 loadingFAQ hidden">
+        <img style="width: 90px" src="/images/Preloader.gif" alt="loading" />
+    </div>
+
+    <div class="allFAQ col-md-10 col-md-offset-1 effect1" style="border-radius: 4px; margin-top: 45px; position: relative; z-index: 2; min-height: 0">
+        <div class="section" style="padding: 0px 20px; position: relative; z-index: 5"></div>
+        <!-- <div class="emptyfaq hidden">(EMPTY)</div> -->
+        <div class="notice hidden" style="padding: 10px">
+            <span id='nameofError'></span>. Can not load FAQ. Please <a type="button" href="/">click here</a> to reload.
+        </div>
+    </div><!-- /allFAQ -->
+
+</div>

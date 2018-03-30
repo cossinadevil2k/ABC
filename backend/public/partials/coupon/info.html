@@ -1,0 +1,89 @@
+<div>
+    <div class="modal-header">
+        <h4>New coupon</h4>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <div class="form-group" ng-class="{'has-error': requireName}">
+                <label class="col-lg-2 control-label">Name</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" ng-model="info.name" />
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': requireProvider}">
+                <label class="col-lg-2 control-label">Provider</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" ng-model="info.provider" />
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': requireDescription}">
+                <label class="col-lg-2 control-label">Description</label>
+                <div class="col-lg-10">
+                    <textarea class="form-control" rows="3" ng-model="info.description" ></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Condition</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" ng-model="info.condition"/>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': requireLocation}">
+                <label class="col-lg-2 control-label">Location</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" ng-model="info.location" />
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': requireAmount}">
+                <label class="col-lg-2 control-label">Amount</label>
+                <div class="col-lg-10">
+                    <input type="number" class="form-control" ng-model="info.amount" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Start</label>
+                <div class="col-lg-10">
+                    <div class="col-lg-10" ng-controller="datePicker1">
+                        <p class="input-group">
+                            <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="info.startDate" min="minDate" placeholder="yyyy-MM-dd" />
+                    <span class="input-group-btn">
+                        <label class="btn btn-default">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </label>
+                    </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">End</label>
+                <div class="col-lg-10">
+                    <div class="col-lg-10" ng-controller="datePicker2">
+                        <p class="input-group">
+                            <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="info.endDate" min="info.startDate" placeholder="yyyy-MM-dd" />
+                    <span class="input-group-btn">
+                        <label class="btn btn-default">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </label>
+                    </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Enable</label>
+                <div class="col-lg-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="info.enabled"/>Yes
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="submit(info)">Submit</button>
+        <button class="btn btn-default" ng-click="cancel()">Close</button>
+    </div>
+</div>

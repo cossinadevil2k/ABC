@@ -1,0 +1,154 @@
+{
+  "name": "Halloween",
+  "product_id": "icon_halloween",
+  "icons": {
+    "halloween_01": [
+      "skull",
+      "human",
+      "the eye",
+      "đầu lâu",
+      "xương chéo",
+      "sos",
+      "cấp cứu",
+      "nguy hiểm",
+      "danger",
+      "dangerous",
+      "risk"
+    ],
+    "halloween_02": [
+      "pumpkin",
+      "bí ngô",
+      "fruit",
+      "hoa quả",
+      "trái cây",
+      "rau củ",
+      "bí",
+      "decor",
+      "decoration",
+      "halloween decoration"
+    ],
+    "halloween_03": [
+      "wizard hat",
+      "wizard",
+      "vampire",
+      "ma cà rồng",
+      "mũ phù thủy",
+      "phù thủy",
+      "mũ yêu tinh"
+    ],
+    "halloween_04": [
+      "bat",
+      "scared bat",
+      "dơi",
+      "vampire",
+      "ma cà rồng"
+    ],
+    "halloween_05": [
+      "headstone",
+      "bia mộ",
+      "mộ",
+      "tomb",
+      "tomb rider",
+      "nấm mộ",
+      "die"
+    ],
+    "halloween_06": [
+      "cat",
+      "mèo",
+      "mèo hoang",
+      "mèo ma",
+      "mèo đen",
+      "black cat",
+      "wizard cat",
+      "mèo mun"
+    ],
+    "halloween_07": [
+      "boil",
+      "pot",
+      "meal",
+      "poison",
+      "poison pot",
+      "poison meal",
+      "thuốc độc",
+      "nồi thuốc độc",
+      "bữa ăn chết chóc",
+      "die"
+    ],
+    "halloween_08": [
+      "candle",
+      "halloween candle",
+      "scared",
+      "decor",
+      "decoration",
+      "halloween decoration"
+    ],
+    "halloween_09": [
+      "ghost",
+      "happy ghost",
+      "fun ghost",
+      "ma",
+      "chú ma đáng yêu",
+      "đáng yêu"
+    ],
+    "halloween_10": [
+      "ghost",
+      "happy ghost",
+      "fun ghost",
+      "ma",
+      "chú ma đáng yêu",
+      "zombie",
+      "xác ướp ai cập",
+      "mummies",
+      "egypt mummies"
+    ],
+    "halloween_11": [
+      "candy",
+      "sweet",
+      "sweetie",
+      "traditional halloween",
+      "tradition",
+      "traditonal candy",
+      "colourful",
+      "colorful",
+      "kẹo",
+      "ngọt",
+      "đồ ngọt",
+      "kẹo giáng sinh",
+      "sugar",
+      "lollipop",
+      "kẹo mút"
+    ],
+    "halloween_12": [
+      "witch",
+      "besom",
+      "chổi",
+      "wizard witch",
+      "chổi phù thủy"
+    ],
+    "halloween_13": [
+      "the eye",
+      "con mắt",
+      "đáng sợ"
+    ],
+    "halloween_14": [
+      "poison",
+      "thuốc độc",
+      "độc hại",
+      "danger",
+      "dangerous",
+      "risk"
+    ]
+  },
+  "tags": [
+    "halloween",
+    "lễ hội ma",
+    "thần chết",
+    "fear",
+    "fearness",
+    "lễ hội hóa trang",
+    "scared",
+    "halloween symbol",
+    "halloween",
+    "costume"
+  ]
+}

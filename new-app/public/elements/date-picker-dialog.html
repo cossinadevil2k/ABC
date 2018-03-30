@@ -1,0 +1,265 @@
+
+<polymer-element name="date-picker-dialog" attributes="showFragment currentDate">
+
+<template>
+ <style type="text/css">
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  :host .dialog-header {
+   width: 400px !important;
+  }
+
+  :host core-header-panel{
+    height: 100%;
+  }
+
+  :host .content{
+    height:auto;
+  }
+
+  :host .date-content {
+   width: auto !important;
+   height: auto !important;
+   text-align: center;
+   padding: 0 74px;
+  }
+
+  :host .top-header .calendar {
+    float: right;
+    margin: 10px 14px;
+    z-index: 99;
+  }
+
+  :host span.date-picker {
+   float: right;
+   position: relative;
+   top: 16px;
+   left: 42px;
+   cursor: pointer;
+   font-weight: bold;
+   font-size: 11px;
+  }
+
+  :host #calendarHeader span {
+    width: 181px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  :host paper-button{
+   background: transparent !important;
+  }
+
+  :host .weekLabel {
+   text-transform: uppercase;
+   margin-top: 4px;
+  }
+
+  :host .calendarBody {
+   border-top: 1px solid rgba(0,0,0,0.12);
+   padding-top: 4px;
+  }
+
+  :host .dayClass {
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+   border: 1px solid transparent;
+   line-height: 30px !important;
+   margin: 2px;
+  }
+
+  :host .dayClass:hover {
+   border-radius: 50%;
+   border: 1px dashed #2baf2b;
+  }
+
+  :host .dayClass.selectedDate {
+   border-radius: 50%;
+   border: 1px solid #2baf2b;
+  }
+
+  :host .dayClass.today {
+    background: rgba(45,175,43,0.24) !important;
+    border-radius: 50%;
+  }
+
+  :host span.text-title {
+    margin-top:8px; 
+  }
+
+  .loader {
+    margin-top: 80px;
+    text-align: center;
+  }
+
+</style>
+<core-header-panel mode="seamed">
+<div class="dialog-header core-header"> 
+  <div class="top-header">
+   <paper-button icon="arrow-back" class="arrow-back" on-click="{{goBack}}"></paper-button>
+   <div class="detail text-title">Select a day</div>
+
+   <paper-button iconSrc="../images/ic_ab_calendar_empty.png" class="calendar" on-click="{{jumpToToday}}"></paper-button><span class="date-picker">{{today | formatDate('DD')}}</span>
+
+ </div>			
+</div>
+<div class="date-content content">
+ <div fullbleed vertical layout>
+  <div horizontal layout id="calendarHeader">
+   <paper-button icon="chevron-left" class="icon-button" on-click="{{previousMonth}}"></paper-button>
+   <span class="text-title">{{monthLabel}}</span>
+   <paper-button icon="chevron-right" class="icon-button" on-click="{{nextMonth}}"></paper-button>
+ </div>
+ <div horizontal layout class="weekLabel  text-caption">
+  <template repeat="{{label in dayLabels}}">
+    <div flex>{{label}}</div>
+  </template>
+</div>
+<div vertical layout class="calendarBody">
+ <template repeat="{{week in monthDataSheet}}">
+   <div class="weekClass" horizontal layout>
+    <template repeat="{{day in week}}">
+     <paper-button class="dayClass text-body {{{selectedDate: compareSelectedDate(day), today: compareToday(day) } | tokenList}}" label="{{day | format('D')}}" on-click="{{dateClicked}}"></paper-button>
+   </template>
+ </div>
+</template> 
+ 
+</div>
+
+</div>
+</div>
+</core-header-panel>
+</template>
+<script>
+ Polymer('date-picker-dialog', {
+  monthLabel: '',
+  date: null,
+  created: function(){
+   this.dayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+   this.monthsLabels = ['January', 'February', 'March', 'April',
+   'May', 'June', 'July', 'August', 'September',
+   'October', 'November', 'December'];
+   this.cal_days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+   this.today = moment(new Date());
+   this.today.millisecond(0);
+   this.today.second(0);
+   this.today.minute(0);
+   this.today.hour(0);
+ },
+
+ dateClicked: function(event, detail, sender){
+   var day = sender.templateInstance.model.day;
+   this.currentDate = day;
+   this.goBack();
+ },
+
+ formatDate: function (date, format) {
+  return moment(date).format(format);
+},
+
+jumpToToday: function(){
+  this.date = moment(new Date());
+  this.makeCalendar(this.date);
+},
+
+compareSelectedDate: function(day){
+ if(!day || !this.date) return false;
+ var status = day.isSame(this.currentDate);
+
+ return status;
+},
+
+compareToday: function(day){
+ if(!day) return false;
+
+ return day.isSame(this.today);
+},
+
+format: function(date, formatter){
+ if(!date) return '';
+ return date.format(formatter);
+},
+
+currentDateChanged: function(){
+ this.date = moment(this.currentDate);
+ this.date.millisecond(0);
+ this.date.second(0);
+ this.date.minute(0);
+ this.date.hour(0);
+
+ this.makeCalendar();
+},
+
+goBack: function(){
+ this.showFragment = 'transactionDialog';
+},
+
+makeCalendar: function(){
+ var year = this.date.year();
+ var month = this.date.month();
+                // get first day of month
+                var firstDay = new Date(year, month, 1);
+                var startingDay = firstDay.getDay();
+                var monthLength = this.cal_days_in_month[month];
+		    	// compensate for leap year
+			  	if (month == 1) { // February only!
+            if((year % 4 == 0 && year % 100 != 0) || year % 400 == 0){
+              monthLength = 29;
+            }
+          }
+
+				  // fill in the days
+				  var day = 1;
+				  var list = [];
+				  var baseDate = moment();
+				  baseDate.millisecond(0);
+				  baseDate.second(0);
+				  baseDate.minute(0);
+				  baseDate.hour(0);
+				  baseDate.month(month);
+				  baseDate.year(year);
+
+				  // this loop is for is weeks (rows)
+				  for (var i = 0; i < 9; i++) {
+				    // this loop is for weekdays (cells)
+				    var week = [];
+				    for (var j = 0; j <= 6; j++) { 
+              if (day <= monthLength) {
+                if((i > 0 || j >= startingDay)){
+                 var dateStore = baseDate.clone();
+                 dateStore.date(day);
+                 week.push(dateStore);
+                 day++;
+               } else{
+                week.push(null);
+              }
+            } 
+          }
+
+          list.push(week);
+				    // stop making rows if we've run out of days
+				    if (day > monthLength) {
+             break;
+           }
+         }
+         this.monthDataSheet = list;
+         this.monthLabel = this.date.format('MMMM YYYY');
+       },
+
+       previousMonth: function(){
+         this.date = this.date.add(-1, 'M');
+         this.makeCalendar(this.date);
+       },
+
+       nextMonth: function(){
+         this.date = this.date.add(1, 'M');
+         this.makeCalendar(this.date);
+       },
+
+     });
+</script>
+</polymer-element>

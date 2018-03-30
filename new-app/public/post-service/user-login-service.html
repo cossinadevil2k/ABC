@@ -1,0 +1,52 @@
+
+<polymer-element name="user-login-service">
+    <template>
+        <style>
+            :host {
+                display: none;
+            }
+        </style>
+
+        <core-ajax id="userLogin"
+                   url="/login"
+                   method="POST"
+                   params='{ "email": "{{email}}", "password": "{{password}}" }'
+                   on-core-response="{{infoLoaded}}"
+                   handleAs="json">
+        </core-ajax>
+        <core-localstorage name="user-data" value="{{user}}"></core-localstorage>
+    </template>
+    <script>
+        Polymer('user-login-service', {
+            infoLoaded: function() {
+                var data = this.$.userLogin.response;
+                var error = data.error;
+                if(error === 0){
+                    console.log("logined");
+                    this.user = data.data;
+                    history.pushState(null, "title", '/wallet/all');
+                    history.go(0);
+                } else if (error === 1) {
+                    if(data.msg === 'user_e_logged'){
+                        console.log('user_e_logged');
+                        history.pushState(null, "title", '/wallet/all');
+                        history.go(0);
+                    } else {
+                        this.callback(data);
+                    }
+                }
+                else {
+                    this.callback(data);
+                }
+            },
+            login: function(loginInfo, callback){
+                this.callback = callback;
+                if(loginInfo){
+                    this.email = loginInfo.email.toLowerCase();
+                    this.password = loginInfo.password;
+                    this.$['userLogin'].go();
+                } else this.callback({error: 10, msg:"user_info_empty"});
+            }
+        });
+    </script>
+</polymer-element>

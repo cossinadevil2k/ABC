@@ -1,0 +1,212 @@
+{
+  "name": "Education",
+  "product_id": "icon_education",
+  "icons": {
+    "education_01": [
+      "boards",
+      "bảng",
+      "học tập",
+      "học",
+      "khóa học",
+      "giáo dục",
+      "educate",
+      "education",
+      "study",
+      "lesson"
+    ],
+    "education_02": [
+      "book",
+      "sách",
+      "sách vở",
+      "kỹ năng",
+      "khóa học",
+      "đầu tư",
+      "nâng cao",
+      "note book"
+    ],
+    "education_03": [
+      "calculator",
+      "máy tính",
+      "tính",
+      "đầu tư chứng khoán",
+      "lãi suất",
+      "lãi",
+      "rate"
+    ],
+    "education_04": [
+      "chemistry",
+      "hóa học",
+      "thử nghiệm",
+      "dung dịch",
+      "liquid",
+      "discover",
+      "science",
+      "khoa học"
+    ],
+    "education_05": [
+      "clock",
+      "đồng hồ",
+      "báo thức",
+      "gym",
+      "giờ",
+      "reminder",
+      "nhắc nhở",
+      "date",
+      "alarm",
+      "chuông báo thức",
+      "remember",
+      "time"
+    ],
+    "education_06": [
+      "eraser",
+      "tẩy",
+      "xóa"
+    ],
+    "education_07": [
+      "globe",
+      "trái đất",
+      "du lịch",
+      "xuyên",
+      "xuyên Việt",
+      "chơi",
+      "đi chơi",
+      "tham quan",
+      "thăm quan",
+      "travel",
+      "global"
+    ],
+    "education_08": [
+      "grad hat",
+      "graduation",
+      "tốt nghiệp",
+      "đại học",
+      "thành công",
+      "giáo dục",
+      "đầu tư",
+      "invest",
+      "study",
+      "graduate",
+      "school",
+      "university",
+      "uni"
+    ],
+    "education_09": [
+      "ink pen",
+      "bút",
+      "mực",
+      "học",
+      "giáo dục",
+      "educate",
+      "education",
+      ""
+    ],
+    "education_10": [
+      "magnifier",
+      "kính lúp",
+      "du lịch",
+      "khám phá",
+      "tìm kiếm",
+      "find",
+      "travel",
+      "discover"
+    ],
+    "education_11": [
+      "microscope",
+      "kính hiển vi",
+      "science",
+      "khoa học",
+      "find"
+    ],
+    "education_12": [
+      "bag",
+      "cặp",
+      "túi",
+      "balo",
+      "phụ kiện",
+      "accessorie"
+    ],
+    "education_13": [
+      "notebook",
+      "ghi chú",
+      "note",
+      "sách",
+      "book",
+      "reminder",
+      "nhắc nhở"
+    ],
+    "education_14": [
+      "paintboard",
+      "paint",
+      "bảng vẽ",
+      "vẽ",
+      "màu",
+      "bảng màu",
+      "màu sắc",
+      "colour",
+      "color",
+      "art",
+      "creative",
+      "sáng tọa"
+    ],
+    "education_15": [
+      "pencil",
+      "bút chì",
+      "bút",
+      "vẽ",
+      "paint",
+      "study",
+      "bút"
+    ],
+    "education_16": [
+      "ruler",
+      "thước",
+      "thước kẻ",
+      "hình học",
+      "toán",
+      ""
+    ],
+    "education_17": [
+      "scholarship",
+      "học bổng",
+      "bằng khen",
+      "giải thưởng",
+      "giấy khen",
+      "diploma",
+      "tốt nghiệp",
+      "cerificate",
+      "certification",
+      "chứng nhận"
+    ],
+    "education_18": [
+      "scissors",
+      "kéo",
+      "cắt",
+      "thủ công"
+    ],
+    "education_19": [
+      "telescope",
+      "kính viễn vọng",
+      "kính thiên văn",
+      "khám phá",
+      "sao"
+    ],
+    "education_20": [
+      "tuitition fee",
+      "học phí",
+      "tiền học",
+      "school fee",
+      "loan"
+    ]
+  },
+  "tags": [
+    "student",
+    "đồ dùng học tập",
+    "dụng cụ học tập",
+    "học tập",
+    "văn phòng phẩm",
+    "học",
+    "study",
+    "school",
+    "school supplies"
+  ]
+}

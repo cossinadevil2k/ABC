@@ -1,0 +1,102 @@
+    <div class="modal-body" style="padding: 0">
+
+        <button class="closeModalReview" type="button" ng-click="cancel()" ng-show='openInModal'>
+            <img src="/close.png" alt="close" />
+            <!--<div style="font-weight: lighter; font-size:45px">&#9932;</div>-->
+            <div class='closeText'>Close</div>
+            <div>(ESC)</div>
+        </button>
+
+        <div class="mobileMockup">
+            <div class="marvel-device iphone5s silver">
+                <div class="top-bar"></div>
+                <div class="sleep"></div>
+                <div class="volume"></div>
+                <div class="camera"></div>
+                <div class="sensor"></div>
+                <div class="speaker"></div>
+                <div class="screen" style="max-height: 100%; overflow-y: auto;">
+                    <!-- Content goes here -->
+                    <div class="wrapper" ng-show='!detailPage'>
+                        <div class="header-image primaryColor-bg-color">
+                            <div class="name">
+                                <div class="bank">
+                                    {{partnerName}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="edge--top color-pick"></div>
+
+                        <div class="content--review">
+
+                            <div class="listContent">
+                                <div class="everyP row" ng-click='detailPage = true'>
+                                    <div class="col-xs-1" style="margin-left: 9px;">
+                                        <div>
+                                            <div class="serial primaryColor-text-color">1</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-10 categories primaryColor-text-color">{{promote.category.name}}</div>
+
+                                    <div class="col-xs-offset-1 col-xs-11 firstlinePrommot">{{promote.title}}</div>
+
+                                    <div class="col-xs-offset-1 col-xs-11 secondlinePromot">{{promote.shortDescription}}</div>
+
+                                    <div class="col-xs-offset-1 col-xs-11 dateCreate">
+                                        <i class="icon-calendar-empty"></i>
+                                        <span>{{ (promote.createdAt | date:'dd/MM/yyyy') || 'a minute ago' }}</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="loadmore"></div>
+
+                        </div><!-- /content -->
+                    </div><!-- /wrapper-->
+
+                    <div class="wrapper" ng-show='detailPage'>
+                        <div class="header-image-child primaryColor-bg-color">
+                            <div class="iconBack" ng-click='detailPage = false'>
+                                <i class="icon-level-up icon-border"></i>
+                            </div>
+                        </div><!-- /header-image-child-->
+
+                        <div class="edge--top color-pick"></div>
+
+                        <div class="content--review">
+
+                            <div class="everyP everyP-child row">
+                                <div class="col-xs-1" style="margin-left: 9px;">
+                                    <div>
+                                        <div class="serial-child primaryColor-text-color primaryColor-bg-color">1</div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-10 categories primaryColor-text-color">{{promote.category.name}}</div>
+
+                                <div class="col-xs-offset-1 col-xs-10 dateCreate">
+                                    <i class="icon-calendar-empty"></i>
+                                    <span>{{ (promote.createdAt | date:'dd/MM/yyyy')  || 'a minute ago' }}</span>
+                                </div>
+
+                                <div class="col-xs-12 firstlinePrommot-child">{{promote.title}}</div>
+
+                                <div class="col-xs-12 secondlinePromot-child customTagHTML" ng-bind-html='promote.content'></div><!-- /secondlinePromot-child-->
+
+                            </div><!-- /everyP-child-->
+
+                            <div class="loadmore-child"></div>
+
+                        </div><!-- /content-->
+                    </div><!-- /wrapper child-->
+
+                </div>
+                <div class="home"></div>
+                <div class="bottom-bar"></div>
+
+            </div><!-- /iPhone5s-->
+
+        </div><!-- /mobile mockup-->
+
+    </div><!-- /modal-body-->

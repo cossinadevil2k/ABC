@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bank</title>
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="/css/style.css" media="screen" charset="utf-8">
+        <link href='https://fonts.googleapis.com/css?family=Roboto:500,300,900&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+        <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+        <script type="text/javascript" src='/js/bootstrap.min.js'></script>
+        <script type="text/javascript" src='/js/action.js'></script>
+
+    </head>
+    <body>
+        <script type="text/javascript">
+            var style = {
+               primary_color: '#0b5912',
+               header_image_post: '',
+               header_image_partner: ''
+            };
+        </script>
+
+        <div class="wrapper">
+
+            <div class="header-image primaryColor-bg-color">
+                <div class="name">
+                    <div class="bank">
+                        <%= (result[0])? result[0].owner.name: 'Unknown User' %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="edge--top color-pick hidden-md hidden-lg"></div>
+
+            <div class="content">
+                <% var count = 0 %>
+                <% if(result) { %>
+                    <div class="listContent">
+
+                        <% result.forEach(function(promote){ %>
+
+                            <div class="everyP row">
+                                <a href="<%= providerCode %>/<%= promote._id %>" class="linkPost">
+                                    <div class="col-xs-1">
+                                        <div>
+                                            <div class="serial primaryColor-text-color"><%= ++count %></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-10 categories primaryColor-text-color">
+                                        <%= promote.category.name %>
+                                        <% if(promote.expiredDate && promote.expiredDate < Date.now()) { %>
+                                            <span class="expiredDate">Tin hết hạn</span>
+                                        <% } %>
+                                    </div>
+                                    <div class="col-xs-offset-1 col-xs-10 firstlinePrommot"> <%= promote.title %></div>
+                                    <div class="col-xs-offset-1 col-xs-10 secondlinePromot"> <%= promote.shortDescription %></div>
+                                    <div class="col-xs-offset-1 col-xs-10 dateCreate">
+                                          <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                          <span> <%=  moment(promote.createdAt).format('DD-MM-YYYY') %></span>
+                                    </div>
+                                </a>
+                            </div>
+                        <% }) %>
+                    </div>
+
+                <% } else { %>
+                    <div class="no-content">
+                        <div class="emot-nopromot">: (</div>
+                        <div class="text-nopromot">
+                            NO PROMOTION
+                        </div>
+                    </div>
+                <% } %>
+
+
+                <div class="endload">
+                    <div>
+                        <div>Hết.</div>
+                        <div class="iconLoad"><i class="fa fa-cube" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+
+                <!-- <div class="loadmore">
+                    <div>
+                        <div><b>Load more</b></div>
+                        <div class="iconLoad"><i class="fa fa-chevron-circle-down"></i></div>
+                    </div>
+                </div> -->
+
+            </div><!-- /content -->
+        </div><!-- /wrapper -->
+
+    </body>
+</html>

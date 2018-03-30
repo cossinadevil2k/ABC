@@ -1,0 +1,11 @@
+{
+    "status": “1”,
+    "version": "12”,
+    "versionShow": “3.0.9”,
+    "url": "itms-apps://itunes.apple.com/us/app/money-lover-expense-manager/id486312413?ls=1&mt=8",
+    "changelog": [
+        {
+            
+        }
+    ]
+}

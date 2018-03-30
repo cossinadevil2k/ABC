@@ -1,0 +1,80 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title title">Send a gift to {{userInfo.email}}</h4>
+</div>
+
+<form class="form-horizontal" ng-submit="send()">
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Reason</label>
+            <div class="col-lg-10">
+                <textarea rows="3" class="form-control" ng-model="gift.reason" required="true"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Product type</label>
+            <div class="col-lg-10">
+                <select class="form-control" ng-model="productType" ng-change="productTypeSelected()">
+                    <option value="1">Icon</option>
+                    <option value="5">Premium</option>
+                    <option value="6">Semi Premium</option>
+                    <option value="2">Premium Subscription</option>
+                    <option value="4">Linked Wallet Subscription</option>
+                    <option value="3">Credit</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" ng-show="productType == 1">
+            <label class="col-lg-2 control-label">Select icon</label>
+            <div class="col-lg-10">
+                <select class="form-control" ng-model="gift.icon" required="true">
+                    <option ng-repeat="(key,icon) in iconList" ng-if="!icon.isFree" ng-value="key" >{{icon.name}} {{checkPurchased(icon)? '' : '(Owned)'}} {{(icon.isFree)? '(Free)' : ''}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" ng-show="productType == 2">
+            <label class="col-lg-2 control-label">Select package</label>
+            <div class="col-lg-10">
+                <select class="form-control" ng-model="gift.subscription" required="true">
+                    <option ng-repeat="(key, product) in subscriptionList" ng-if="product.metadata.type === 'premium'" ng-value="key" >{{product.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" ng-show="productType == 4">
+            <label class="col-lg-2 control-label">Select package</label>
+            <div class="col-lg-10">
+                <select class="form-control" ng-model="gift.subscription" required="true">
+                    <option ng-repeat="(key, product) in subscriptionList" ng-if="product.metadata.type === 'linked_wallet'" ng-value="key" >{{product.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" ng-show="productType == 3">
+            <label class="col-lg-2 control-label">Select credit</label>
+            <div class="col-lg-10">
+                <select class="form-control" ng-model="gift.credit" required="true">
+                    <option ng-repeat="(key,credit) in creditList" value="{{credit}}" >{{credit.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" ng-show="productType == 5">
+            <label class="col-lg-2 control-label">Select premium</label>
+            <div class="col-lg-10">
+                <select class="form-control" ng-model="gift.premium" required="true">
+                    <option ng-repeat="(key,premium) in premiumList" ng-if="premium.type === 5" value="{{premium}}" >{{premium.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" ng-show="productType == 6">
+            <label class="col-lg-2 control-label">Select semi premium</label>
+            <div class="col-lg-10">
+                <select class="form-control" ng-model="gift.semi_premium" required="true">
+                    <option ng-repeat="(key,semi_premium) in semiPremiumList" ng-if="semi_premium.type === 6" value="{{semi_premium}}" >{{semi_premium.name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+        <input type="submit" class="btn btn-primary" value="Send" />
+    </div>
+</form>

@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>Demo SDK</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<a href="#" onclick="loginNow()">Login</a>
+
+<div id="result"></div>
+
+<script type="text/javascript">
+    var resultId = document.getElementById('result');
+
+    window.ML_AsyncInit = function () {
+        ML.init({
+            app_id: 'NJxHe5yhg',
+            end_point: 'http://abc.com',
+            app_name: 'Demo shop'
+        });
+
+        // Login popup close
+        ML.loginResult = function (result) {
+            console.log(result);
+        };
+    };
+
+    (function (d, s, id) {
+        if (d.getElementById(id)) {
+            return;
+        }
+        var mljs = d.createElement(s);
+        mljs.id = id;
+        mljs.async = true;
+        mljs.defer = true;
+        var useSSL = 'https:' == d.location.protocol;
+        mljs.src = (useSSL ? 'https:' : 'http:') + '//connect.moneylover.me/js/sdk.js';
+        //mljs.src = './sdk.js';
+        var node = d.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(mljs, node);
+    })(document, 'script', 'moneylover-sdk');
+
+    function loginNow() {
+        ML.login();
+    }
+
+</script>
+</body>
+</html>

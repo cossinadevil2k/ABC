@@ -1,0 +1,26 @@
+<h4 class="module-subtitle">Active Sync</h4>
+<div id="chart001" class="chart" ng-init="getStat('chart001', 1100)"></div>
+
+<h4 class="module-subtitle">Device</h4>
+<div id="chart008" class="chart" ng-init="getStat('chart008', 1000)"></div>
+
+<h4 class="module-subtitle">Transaction</h4>
+<div id="chart002" class="chart" ng-init="getStat('chart002', 600)"></div>
+
+<h4 class="module-subtitle">Account</h4>
+<div id="chart003" class="chart" ng-init="getStat('chart003', 100)"></div>
+
+<h4 class="module-subtitle">Budget</h4>
+<div id="chart005" class="chart" ng-init="getStat('chart005', 400)"></div>
+
+<h4 class="module-subtitle">Campaign</h4>
+<div id="chart006" class="chart" ng-init="getStat('chart006', 500)"></div>
+
+<h4 class="module-subtitle">Category</h4>
+<div id="chart007" class="chart" ng-init="getStat('chart007', 200)"></div>
+
+<h4 class="module-subtitle" ng-if="page!=='hourly'">Push Notification Session</h4>
+<div id="chartNotificationSession" ng-if="page!=='hourly'" class="chart" ng-init="getStat('chartNotificationSession', 1610)"></div>
+
+<h4 class="module-subtitle" ng-if="page!=='hourly'">Push Notification Device</h4>
+<div id="chartNotificationDevice" ng-if="page!=='hourly'" class="chart" ng-init="getStat('chartNotificationDevice', 1600)"></div>

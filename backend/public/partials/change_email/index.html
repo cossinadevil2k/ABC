@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="formChangeEmail col-sm-offset-3 col-md-offset-3 col-lg-offset-3 col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <form name="changeEmailForm">
+            <p class="text-fail" ng-if="errorMessage">{{errorMessage}}</p>
+            <p class="text-success" ng-if="successMessage">{{successMessage}}</p>
+            <h4><small>Old Email:</small></h4>
+            <div class="row">
+                <div class="form-group col-md-9">
+                    <input name="inputOldEmail" type="email" class="form-control" ng-model="email.old" id="oldE" required ng-disabled="changeLoad">
+                </div>
+                <div role="alert" class="alertInputEmail col-md-3">
+                    <span class="error requiredAlert" ng-show="changeEmailForm.inputOldEmail.$error.required">
+                        (Required)
+                    </span>
+                    <span class="error validAlert" ng-show="changeEmailForm.inputOldEmail.$error.email" >
+                        <i class="icon-exclamation-sign"></i> Not valid email
+                    </span>
+                    <span class="error rightAlert" ng-show="!changeEmailForm.inputOldEmail.$error.email && !changeEmailForm.inputOldEmail.$error.required" >
+                        <i class="icon-ok"></i>  Right
+                    </span>
+                </div>
+            </div>
+            <h4><small>New Email:</small></h4>
+            <div class="row">
+                <div class="form-group col-md-9">
+                    <input name="inputNewEmail" type="email" class="form-control" ng-model="email.new" id="newE" required ng-disabled="changeLoad">
+                </div>
+                <div role="alert" class="alertInputEmail col-md-3">
+                    <span class="error requiredAlert" ng-show="changeEmailForm.inputNewEmail.$error.required">
+                        (Required)
+                    </span>
+                    <span class="error validAlert" ng-show="changeEmailForm.inputNewEmail.$error.email">
+                        <i class="icon-exclamation-sign"></i> Not valid email
+                    </span>
+                    <span class="error validAlert" ng-show="email.old && email.new && email.new == email.old">
+                        <i class="icon-exclamation-sign"></i> New email and old email must not match
+                    </span>
+                    <span class="error rightAlert" ng-show="!changeEmailForm.inputNewEmail.$error.email && !changeEmailForm.inputNewEmail.$error.required && email.old && email.new && email.new != email.old">
+                        <i class="icon-ok"></i>  Right
+                    </span>
+                </div>
+            </div>
+        </form>
+
+        <button type="button" name="button" class="btn btn-primary btn-change-email" ng-click="acceptChange()" ng-disabled="changeEmailForm.inputOldEmail.$error.email || changeEmailForm.inputNewEmail.$error.email || changeEmailForm.inputOldEmail.$error.required || changeEmailForm.inputNewEmail.$error.required || (email.old && email.new && email.new == email.old) ||changeLoad" >
+            <!-- <i class="icon-fire" ng-hide="changeLoad"></i> -->
+            <i style="float:left" class="icon-spinner load-before-change spaceSpin" ng-show="changeLoad"></i>
+            <span>Change</span>
+        </button>
+    </div>
+</div>

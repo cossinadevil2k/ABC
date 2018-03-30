@@ -1,0 +1,52 @@
+
+
+<polymer-element name="event-service" attributes="eventList">
+    <template>
+        <style>
+            :host {
+                display: none;
+            }
+        </style>
+
+        <core-ajax
+                id="getEvent"
+                url="/api/campaign/get"
+                method="POST"
+                handleAs="json"
+                params='{"accId": "{{accId}}"}'
+                on-core-response="{{getEventResult}}">
+        </core-ajax>
+    </template>
+    <script>
+        Polymer('event-service', {
+            getEventResult: function(event, response){
+                var status = response.xhr.status;
+                var data = response.response;
+                if(status){
+                    if(status===200){
+                        if(data.error == 0) {
+                            this.eventList = data.data;
+                            //callback request result, include error = 0 or 1,2,3...
+                            this.callback(data.data);
+                        } else if (data.error===401) this.fire('sessionExpired');
+                        else this.callback({"error":data.error, "msg":data.msg});
+                    }
+                }
+            },
+
+            eventListChanged: function(){
+
+            },
+
+            getByWallet: function(wallet, callback){
+                this.callback = callback;
+                if(wallet){
+                    this.accId = wallet._id;
+                    this.$['getEvent'].go();
+                } else {
+                    this.callback({error: 10, msg:"wallet_info_empty"});
+                }
+            }
+        });
+    </script>
+</polymer-element>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Money Lover</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link href="<%= urlStatic %>lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="<%= urlStatic %>lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+		<link href="<%= urlStatic %>css/app.css" rel="stylesheet">
+	</head>
+<body class="full-page">
+	<form id="ml-unsubscribe" class="login-box" method="POST">
+		<h1>Money Lover</h1>
+		<% if(indexs === 1){ %>
+		<p>You are requesting to unsubscribe your email <i><%= email %></i> from receiving future emails from Money Lover. We are very sad to see you go.<br />Are you sure you want to leave us?</p>
+		<input type='hidden' name='_csrf' value="<%= _csrf %>" />
+		<button class="btn btn-success" type="submit">Yes, I'm sure</button>
+		<% } else if(indexs === 2){ %>
+		<p>Bon Voyage - We are sad to see you go.<br />
+			However, if you only click by accident and wish to hear more from us again, you can always re-subscribe anytime here: <a href="http://app.moneylover.me/subscribe/<%= userId %>?hash=<%= password %>">RESUBSCRIBE</a>.<br /><br />
+			We wish you all the best. Happy saving!<br />
+			Money Lover Team</p>
+		<% } else { %>
+		<p>Sorry, we've had a problem with the link you selected. Please double check your current subscription status, username and/or the unsubscrbe link.</p>
+		<% }%>
+	</form>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="<%= urlStatic %>lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

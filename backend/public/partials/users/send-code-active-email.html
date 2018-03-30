@@ -1,0 +1,71 @@
+<div class="module">
+    <div class="module-header no-padding">
+        <ul class="nav nav-tabs">
+            <li ng-class="{active: (mode === 'single')}">
+                <a href="" ng-click="mode = 'single'">Single</a>
+            </li>
+            <li ng-class="{active: (mode === 'multi')}">
+                <a href="" ng-click="mode = 'multi'">Multi</a>
+            </li>
+        </ul>
+    </div>
+    <div class="module-content">
+        <div class="tab-content">
+            <div ng-if="mode === 'single'">
+                <div class="form form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-5 control-label">Language:</label>
+                        <div class="col-lg-5">
+                            <select class="form-control" ng-model="userInfo.lang">
+                                <option value="vi">Vietnamese</option>
+                                <option value="en">English</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-5 control-label">Name:</label>
+                        <div class="col-lg-5">
+                            <input class="form-control" type="text" ng-model="userInfo.name" placeholder="(Optional)" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-5 control-label">Email:</label>
+                        <div class="col-lg-5">
+                            <input class="form-control" type="text" ng-model="userInfo.email" placeholder="Email here" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-5 col-lg-offset-5">
+                            <button class="btn btn-success" ng-click="send(userInfo)">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="mode === 'multi'">
+                <div class="form form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-5 control-label">Language:</label>
+                        <div class="col-lg-5">
+                            <select class="form-control" ng-model="userInfo.lang">
+                                <option value="vi">Vietnamese</option>
+                                <option value="en">English</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-5 control-label">Email:</label>
+                        <div class="col-lg-5">
+                            <textarea placeholder="Each email separated by commas" ng-model="userInfo.list_email" class="form-control" name="name" rows="4" cols="30"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-5 col-lg-offset-5">
+                            <button class="btn btn-success" ng-click="send(userInfo)">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

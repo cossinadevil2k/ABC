@@ -1,0 +1,52 @@
+<div class="modal-header modal-header-info-mobile">
+  <button type="button" class="close" ng-click="cancel()" style="color: white">&times;</button>
+  <h4 class="modal-title title">Info</h4>
+</div>
+<div class="modal-body wide-modal-mobile">
+  <div>
+      Email: <strong><a href="/users/info?email={{user.email}}" target="_blank" class="helpdesk-link">{{user.email}}</a></strong><br />
+      <a class="btn" href="#" ng-click="moreIssues(user)">See other issue</a>
+      <div class="btn-group">
+          <button class="btn btn-twitter" ng-if="user.acceptSync" tooltip="Sync Enabled" style="margin-right: 3px;"><i class="icon-cloud-upload"></i></button>
+          <button class="btn btn-success" ng-if="user.purchased" tooltip="Purchased"><i class="icon-money"></i></button>
+      </div>
+      <br />
+      <div class=" infoMachine">
+        <div class="row">
+          <div class="col-xs-5 col-sm-4">IP:</div>
+          <div class="col-md-8 col-xs-7 col-sm-8 col-lg-8"><strong>{{issue.ip || "---------"}}</strong><span ng-if="user.flag" class="flag-icon flag-icon-{{user.flag}}" tooltip="{{user.flag.toUpperCase()}}"></span></div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-5 col-sm-4">App Version:</div>
+          <div class="col-xs-7 col-sm-8"><strong>{{issue.metadata.av}}</strong></div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-5 col-sm-4">Language:</div>
+          <div class="col-xs-7 col-sm-8"><strong>{{issue.metadata.l}}</strong></div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-5 col-sm-4">OS Version:</div>
+          <div class="col-xs-7 col-sm-8">
+            <img src="/images/android_96.png" class="icon-user-platform" alt="android_logo" ng-if="issue.metadata.os === 'Android'"/>
+            <img src="/images/ios_96.png" class="icon-user-platform" alt="apple_logo" ng-if="issue.metadata.os === 'iOS'"/>
+            <img src="/images/winphone_96.png" class="icon-user-platform" alt="windows_phone_logo" ng-if="issue.metadata.os ==='Windows Phone'"/>
+            <img src="/images/osx_96.png" class="icon-user-platform" alt="osx_logo" ng-if="issue.metadata.os === 'Mac'"/>
+            <img src="/images/windows_96.png" class="icon-user-platform" alt="windows_logo" ng-if="issue.metadata.os === 'Windows'"/>
+            <img src="/images/web_96.png" class="icon-user-platform" alt="web_logo" ng-if="issue.metadata.os === 'Web'"/>
+            <strong>{{issue.metadata.osv}}</strong>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-5 col-sm-4">Device Name:</div>
+          <div class="col-xs-7 col-sm-8"><strong>{{issue.metadata.dn}}</strong></div>
+        </div>
+
+        <!--Sync: <strong>{{issue.metadata.s || false}}</strong><br />-->
+        <!--Purchased: <strong>{{issue.metadata.p || false}}</strong><br />-->
+      </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="module no-padding">
+    <div class="module-header">
+        <h4>
+            Admin List  
+            <!-- <i class="icon-refresh" style="cursor: pointer" ng-click="getListAdmin()" tooltip="Get list"></i> -->
+            <button class="btn btn-info" type="button" ng-click="add()"><i class="icon-plus" tooltip="Add new admin"></i></button>
+        </h4>
+        <h4 class="hidden-xs">
+           <div class="input-group quick-search-box">
+               <input type="text" class="form-control" ng-model="keyword" placeholder="Enter admin name..." ng-keydown="searchKey($event, keyword)">
+      			<span class="input-group-btn">
+      				<button type="button" class="btn btn-grape" ng-click="search()"><i class="icon-search"></i> SEARCH</button>
+      			</span>
+           </div>
+        </h4>
+
+        <button ng-click="showSearchAdminMobile()" class="searchMobile btn hidden-sm hidden-md hidden-lg" type="button" style="float:right">
+            <i class="icon-search"></i>
+        </button>
+    </div>
+    <div class="module-content table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th class="hidden-xs">create at</th>
+                <th class="hidden-xs">last login</th>
+                <th class="text-center">system admin</th>
+                <th class="text-center">role</th>
+                <th class="text-right">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key, admin) in listAdmin | filter:keyword track by $index">
+                <td>{{admin.username}}</td>
+                <td  class="hidden-xs">{{admin.createdAt | checkDateTime}}</td>
+                <td  class="hidden-xs">{{admin.lastLogin | checkDateTime}}</td>
+                <td class="text-center">
+                    <a class="btn btn-xs" href="#" ng-click="changePermission(admin)" ng-class="{'btn-danger': !admin.isAdminSystem, 'btn-success': admin.isAdminSystem}">
+                        <i ng-class="{'icon-check':admin.isAdminSystem, 'icon-unchecked': !admin.isAdminSystem}"></i>
+                    </a>
+                </td>
+                <td class="text-center">{{admin.permission}}</td>
+                <td class="text-right">
+                    <button class="btn btn-xs btn-deepsea" tooltip="Edit Role" ng-click="edit(admin)"><i class="icon-edit"></i></button>
+                    <button class="btn btn-xs btn-danger" tooltip="Delete Admin" ng-click="delete(admin)"><i class="icon-trash"></i></button>
+                </td>
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage"><i class="icon-fast-backward"></i></a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage"><i class="icon-fast-forward"></i></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

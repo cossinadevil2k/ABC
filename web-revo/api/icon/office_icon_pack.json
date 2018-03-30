@@ -1,0 +1,187 @@
+{
+    "name": "Office",
+    "product_id": "office_icon_pack",
+    "icons": {
+        "add": [
+            "tag",
+            "note",
+            "mark",
+            "bookmark",
+            "đánh dấu",
+            "ghi chú",
+            "nhắc nhớ",
+            "thẻ",
+            "card"
+        ],
+        "cal": [
+            "calendar",
+            "cal",
+            "lịch",
+            "date",
+            "time",
+            "reminder",
+            "remember",
+            "nhắc nhớ",
+            "thời gian",
+            "deadline"
+        ],
+        "courses": [
+            "course",
+            "khóa học",
+            "kỹ năng",
+            "study",
+            "learning",
+            "học tập"
+        ],
+        "dec": [
+            "improve",
+            "chart",
+            "compare",
+            "report",
+            "diagram",
+            "decrease",
+            "change",
+            "biểu đồ",
+            "giảm"
+        ],
+        "documentation": [
+            "doc",
+            "documentary",
+            "hồ sơ",
+            "file",
+            "cv",
+            "cover letter",
+            "letter"
+        ],
+        "hl": [
+            "pen",
+            "marker",
+            "whiteboard marker",
+            "whiteboard",
+            "board marker",
+            "board pen",
+            "bút",
+            "bút viết bảng",
+            "bút đánh dấu"
+        ],
+        "inc": [
+            "improve",
+            "chart",
+            "compare",
+            "report",
+            "diagram",
+            "increase",
+            "change",
+            "biểu đồ",
+            "tăng"
+        ],
+        "iphone": [
+            "mobile phone",
+            "phone",
+            "smartphone",
+            "điện thoại",
+            "connect",
+            "liên lạc",
+            "nghe",
+            "gọi"
+        ],
+        "male": [
+            "male",
+            "boy",
+            "giới tính",
+            "human symbol",
+            "male symbol",
+            "symbol",
+            "biểu tượng"
+        ],
+        "marker": [
+            "pen",
+            "marker",
+            "whiteboard marker",
+            "whiteboard",
+            "board marker",
+            "board pen",
+            "bút",
+            "bút viết bảng",
+            "bút đánh dấu"
+        ],
+        "mod": [
+            "mobile phone",
+            "phone",
+            "điện thoại",
+            "nghe",
+            "gọi",
+            "liên lạc",
+            "connect"
+        ],
+        "obj": [
+            "object",
+            "ic",
+            "computer",
+            "component",
+            "vi mạch",
+            "linh kiện máy tính",
+            "mạch điện tử",
+            "electronic"
+        ],
+        "podium": [
+            "level",
+            "improve",
+            "podium",
+            "graduate",
+            "exam",
+            "graduation",
+            "classify",
+            "tốt nghiệp",
+            "học tập"
+        ],
+        "pool": [
+            "relax",
+            "pool",
+            "bia",
+            "nghỉ giải lao",
+            "nghỉ ngơi",
+            "play",
+            "game"
+        ],
+        "que": [
+            "pen",
+            "study",
+            "học tập",
+            "kids study",
+            "đồ dùng học tập",
+            "dụng cụ học tập",
+            "school",
+            "school supplies"
+        ],
+        "save": [
+            "save",
+            "lưu trữ",
+            "file",
+            "save file",
+            "reminder",
+            "remember",
+            "nhắc nhở",
+            "ghi nhớ",
+            "ghi chú",
+            "note"
+        ],
+        "table": [
+            "file",
+            "browser",
+            "thư mục",
+            "words",
+            "note",
+            "ghi chú"
+        ]
+    },
+    "tags": [
+        "office",
+        "văn phòng",
+        "work",
+        "work space",
+        "work hard",
+        "play hard",
+        "fun"
+    ]
+}

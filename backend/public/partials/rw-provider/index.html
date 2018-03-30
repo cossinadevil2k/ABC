@@ -1,0 +1,142 @@
+<div class="row">
+    <div class="col-lg-4">
+        <div class="box-module">
+            <small>TOTAL</small>
+            <h4 class="bold" ng-bind="statistic.total | number"></h4>
+            <small>ENABLED</small>
+            <h4 class="bold" ng-bind="statistic.enabled | number"></h4>
+            <small>DISABLED</small>
+            <h4 class="bold" ng-bind="statistic.disabled | number"></h4>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="box-module module-blue">
+            <div ng-repeat="type in statistic.byType">
+                <small ng-bind="type._id.toUpperCase()"></small>
+                <h4 class="bold" ng-bind="type.count | number"></h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="box-module module-orange">
+            <div ng-repeat="country in statistic.byCountry">
+                <small ng-bind="country._id"></small>
+                <h4 class="bold" ng-bind="country.count | number"></h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="module no-padding">
+    <div class="module-header">
+        <div class="row">
+            <h4 class="function-left">
+                <button class="btn btn-orange" ng-if="isSearchPage" ng-click="backToList()">Back</button>
+                {{isSearchPage? 'Search Result' :'Provider List'}}
+                <div ng-if="!isSearchPage" class="btn-group">
+                    <button class="btn btn-facebook dropdown-toggle" data-toggle="dropdown">
+                        {{PROVIDER[filter] || 'All'}} <i class="caret"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="" ng-click="filterSelect(0)">All</a></li>
+                        <li><a href="" ng-click="filterSelect(1)">SaltEdge</a></li>
+                        <li><a href="" ng-click="filterSelect(2)">Finsify</a></li>
+                    </ul>
+                </div>
+            </h4>
+            <h4 class="function-right">
+                <div class="input-group quick-search-box" style="margin-right: 10px;">
+                    <input type="text" class="form-control" id="txtKeyword" ng-model="keyword" placeholder="Enter keyword" ng-keydown="searchKey($event, keyword)">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-grape" ng-click="search(keyword)" ng-disabled="isLoading"><i class="icon-search"></i> SEARCH</button>
+                    </div>
+                </div>
+                <div>
+                    <button data-toggle="dropdown" class="menu-three-dot-btn" style="margin-left: 10px;"><i class="icon-ellipsis-vertical" style="font-size: 1.5em !important;"></i></button>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="#" ng-click="updateProvider()">Update provider</a></li>
+                        <li><a href="#" ng-click="rebuildCache(2)">Build cache only Finsify</a></li>
+                        <li><a href="#" ng-click="rebuildCache(1)">Build cache only SaltEdge</a></li>
+                        <li><a href="#" ng-click="rebuildCache(0)">Build cache all</a></li>
+                    </ul>
+                </div>
+            </h4>
+        </div>
+    </div>
+    <div class="module-content table-responsive">
+        <div class="text-center" ng-if="isLoading">
+            <img src="/images/loading-pacman.gif" /><br />
+            Loading
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th></th>
+                <th>name</th>
+                <th>id</th>
+                <th>type</th>
+                <th class="text-center">country</th>
+                <th class="text-center">service</th>
+                <th class="text-center">free</th>
+                <th class="text-center">has balance</th>
+                <th class="text-center">enabled</th>
+                <th class="text-center">debug</th>
+                <th>action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="provider in listProvider">
+                <td class="text-left ml-thumbnail">
+                    <img class="ml-thumbnail" src="{{(provider.icon)? provider.icon :'/images/provider_default.png'}}" alt="logo"/>
+                </td>
+                <td>{{provider.name}}</td>
+                <td>{{provider.realId}}</td>
+                <td>{{provider.type}}</td>
+                <td class="text-center">{{provider.country_code}}</td>
+                <td class="text-center">{{PROVIDER[provider.service]}}</td>
+                <td class="text-center">
+                    <button class="btn btn-xs" ng-click="changeFree(provider)" ng-class="{'btn-success': provider.is_free, 'btn-danger': !provider.is_free}">
+                        <i ng-class="{'icon-check': provider.is_free, 'icon-unchecked': !provider.is_free}"></i>
+                    </button>
+                </td>
+                <td class="text-center">
+                    <a 
+                        href="#" 
+                        ng-class="{'text-success': provider.hasBalance, 'text-fail': !provider.hasBalance}"
+                        ng-click="changeHasBalance(provider)">
+                        {{(provider.hasBalance)?'Yes':'No'}}
+                    </a>
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-xs" ng-click="changeDisabled(provider)" ng-class="{'btn-success': !provider.disabled, 'btn-danger': provider.disabled}">
+                        <i ng-class="{'icon-check': !provider.disabled, 'icon-unchecked': provider.disabled}"></i>
+                    </button>
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-xs" ng-click="changeDebugStatus(provider)" ng-class="{'btn-success': provider.is_debug, 'btn-danger': !provider.is_debug}">
+                        <i ng-class="{'icon-check': provider.is_debug, 'icon-unchecked': !provider.is_debug}"></i>
+                    </button>
+                </td>
+                <td class="text-left">
+                    <button class="btn btn-xs btn-orange" tooltip="Edit actions" ng-click="editActions(provider)"><i class="icon-pencil"></i></button>
+                    <button class="btn btn-xs btn-facebook" tooltip="Edit meta search" ng-click="editMetaSearch(provider)"><i class="icon-search"></i></button>
+                </td>
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage"><i class="icon-fast-backward"></i></a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage"><i class="icon-fast-forward"></i></a>
+                    </div>
+                    <div>
+                        <label>Go to Page</label>
+                        <input type="text" ng-model="page"/>
+                        <button class="btn" ng-click="goToPage(page)">Go</button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

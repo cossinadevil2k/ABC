@@ -1,0 +1,102 @@
+<div class="module-content table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th class="hidden-xs hidden-sm ">Status</th>
+                <th class="hidden-xs hidden-sm ">Tracking</th>
+                <th class="hidden-xs hidden-sm ">Type</th>
+                <th class="hidden-xs hidden-sm ">Name</th>
+                <th class="hidden-xs hidden-sm ">Mode</th>
+                <th class="hidden-xs hidden-sm ">Queries</th>
+                <th class="hidden-xs hidden-sm ">Total</th>
+                <th class="hidden-xs hidden-sm ">Sent</th>
+                <th class="hidden-xs hidden-sm ">Open</th>
+                <th class="hidden-xs hidden-sm ">Owner</th>
+                <th class="hidden-xs hidden-sm ">Last Runned</th>
+                <!-- ago -->
+                <th class="hidden-xs hidden-sm ">Next Running</th>
+                <th class="hidden-xs hidden-sm ">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="automation in email_push_automation track by $index">
+                <td>
+                    <p>{{$index + 1}}</p>
+                </td>
+                <td>
+                    <button class="btn btn-xs" ng-click="changeDisabled(automation)" tooltip="Enable" ng-class="{'btn-success': automation.isEnabled, 'btn-danger': !automation.isEnabled}">
+                        <i ng-class="{'icon-check': automation.isEnabled, 'icon-unchecked': !automation.isEnabled}"></i>
+                    </button>
+                </td>
+                <td>
+                    <p>{{automation.tracking}}</p>
+                </td>
+                <td class="">
+                    <p ng-if="automation.type == 1">Email</p>
+                    <p ng-if="automation.type == 2">Push Notification</p>
+                </td>
+                <td class="">
+                    <p>{{automation.name}}</p>
+                </td>
+                <td class="">
+                    <p>{{automation.mode}}</p>
+                </td>
+                <td>
+                    <p>{{automation.searchQuery.query}}</p>
+                </td>
+                <td>
+                    <p>{{automation.report.total}}</p>
+                </td>
+                <td>
+                    <p>{{automation.report.sent}}</p>
+                </td>
+                <td>
+                    <p>{{automation.report.open}}</p>
+                </td>
+                <td>
+                    <p>{{automation.metadata.owner.username}}</p>
+                </td>
+
+                <td class="">
+                    <p ng-if="!automation.lastRun">------</p>
+                    <p ng-if="automation.lastRun">{{automation.lastRun | displayTrueTime}}</p>
+                </td>
+                <td class="">
+                    <p ng-if="!automation.nextRun">------</p>
+                    <p ng-if="automation.nextRun">{{automation.nextRun | checkDateTime}}</p>
+                </td>
+                <td class="">
+                    <button class="btn btn-xs btn-primary" tooltip="Duplicate" ng-click="duplicateAuto(automation)">
+                        <i class="icon-tags"></i>
+                    </button>
+                    <button class="btn btn-xs btn-facebook" tooltip="Details" ng-click="detail(automation)">
+                        <i class="icon-reorder"></i>
+                    </button>
+                    <button class="btn btn-xs btn-twitter" tooltip="Edit" ng-click="edit(automation)">
+                        <i class="icon-edit"></i>
+                    </button>
+                    <button class="btn btn-xs btn-grape" tooltip="Delete" ng-click="delete(automation)">
+                        <i class="icon-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage">
+                            <i class="icon-fast-backward"></i>
+                        </a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage">
+                            <i class="icon-fast-forward"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div ng-if="noContent == true" style="text-align: center;">
+        <h1>No Content</h1>
+    </div>
+</div>

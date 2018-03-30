@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title title">Set discount for <span style="color: #34495E">{{userInfo.email}}</span></h4>
+    <h5 class="text-fail" ng-bind="failMessage"></h5>
+</div>
+<div class="modal-body">
+    <form>
+        <loading ng-if="isLoading"></loading>
+        <div class="form-group">
+            <label class="control-label col-lg-3">Discount:</label>
+            <div class="col-lg-9">
+                <select ng-model="userDiscount">
+                    <option value="0">0%</option>
+                    <option value="10">10%</option>
+                    <option value="20">20%</option>
+                    <option value="30">30%</option>
+                    <option value="40">40%</option>
+                    <option value="50">50%</option>
+                    <option value="60">60%</option>
+                    <option value="70">70%</option>
+                    <option value="80">80%</option>
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-success" ng-click="submit(userDiscount)">Submit</button>
+</div>

@@ -1,0 +1,7 @@
+<a href="{{data.url}}">
+    <div class="row notification-card" ng-class="{'new': data.unread}">
+        <p><i ng-class="{'icon-book': (data.type=='issue')}"></i> {{data.content}}</p>
+        <span>{{data.createAt | checkDateTime}}</span>
+        <button ng-click="close()">&times;</button>
+    </div>
+</a>

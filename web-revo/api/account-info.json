@@ -1,0 +1,25 @@
+{
+	"error": 0,
+	"msg": "get_account_info_success",
+	"data": [
+		{
+			"_id": "56efe67aa70980db2fba7e0c",
+			"name": "Web Browser",
+			"deviceId": "/web-notification/540e80eff9fae2c0190000f5",
+			"appId": 7,
+			"updateAt": "2016-03-28T03:04:45.961Z",
+			"createdDate": "2016-03-21T12:18:02.452Z",
+			"platform": 7
+		},
+		{
+			"_id": "56cd24246b5d56473dc91c1e",
+			"version": 504,
+			"deviceId": "8dfd47dea3a8782ffdab62bd2ce07fc26b3909416951c0a0963195798b128e3f",
+			"name": "CBIPS",
+			"appId": 2,
+			"updateAt": "2016-03-22T17:02:34.489Z",
+			"createdDate": "2016-02-24T03:31:48.660Z",
+			"platform": 2
+		}
+	]
+}

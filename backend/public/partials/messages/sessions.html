@@ -1,0 +1,47 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title title">Push Notification</h4>
+</div>
+<div class="modal-body">
+    <loading ng-if="isLoading"></loading>
+    <pre ng-if="!sessionList || sessionList.length === 0">No result</pre>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Push date</th>
+            <th>Query</th>
+            <th>Status</th>
+            <th>Admin</th>
+            <th>Approved</th>
+            <th class="text-right">Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="(key, session) in sessionList">
+                <td>{{session.pushDate | checkDateTime}}</td>
+                <td>{{session.searchQuery.name || 'Email list'}}</td>
+                <td ng-class="{'text-warning':session.status === 'Pending' || session.status === 'Scheduled','text-success':session.status === 'Accepted','text-fail':session.status === 'Denied'}">
+                    {{session.status}}
+                </td>
+                <td>{{session.pushBy.username}}</td>
+                <td>{{session.approvedBy.username}}</td>
+                <td class="text-right">
+                    <a href="/messages/report?id={{session._id}}" ng-click="cancel()" class="btn btn-xs btn-info" tooltip="Report"><i class="icon-bar-chart"></i></a>
+                </td>
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading"><i class="icon-fast-backward"></i></a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading"><i class="icon-fast-forward"></i></a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="cancel()">Close</button>
+</div>

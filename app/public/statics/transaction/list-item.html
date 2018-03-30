@@ -1,0 +1,3 @@
+<img alt="{{  transaction.category.name }}" ng-src="{{  transaction.category.icon | generateIconLink }}">
+<a href="#" ng-click="transactionSelected(transaction)" >{{ transaction.category.name }} <small>{{ transaction.note }}</small></a>
+<span class="amount" ng-class="{'amount-expense': (transaction.category.type === 2), 'amount-income': (transaction.category.type === 1) }">{{ transaction.amount | MLCurrency }}</span>

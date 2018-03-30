@@ -1,0 +1,332 @@
+{
+  "name": "Transports",
+  "product_id": "icon_transport",
+  "icons": {
+    "transport_UFO": [
+      "UFO",
+      "alien",
+      "travel",
+      "galaxy",
+      "universe",
+      "universal",
+      "ngoài hành tinh",
+      "vũ trụ",
+      "không gian",
+      "space",
+      "du lịch"
+    ],
+    "transport_truck": [
+      "truck",
+      "xe tải",
+      "vận chuyển",
+      "chuyển",
+      "chuyển nhà",
+      "sửa nhà",
+      "chuyển đồ",
+      "car",
+      "ô tô",
+      "xe"
+    ],
+    "transport_tram": [
+      "tram",
+      "tàu điện",
+      "xe điện",
+      "tradition",
+      "leng keng",
+      "Hanoi",
+      "old Hanoi",
+      "car",
+      "ô tô",
+      "xe"
+    ],
+    "transport_tow_truck": [
+      "tow truck",
+      "xe cứu trợ",
+      "xe kéo",
+      "car",
+      "ô tô",
+      "xe"
+    ],
+    "transport_ticket": [
+      "ticket",
+      "cinema",
+      "travel",
+      "play",
+      "vé",
+      "vé trò chơi",
+      "trò chơi"
+    ],
+    "transport_taxi": [
+      "taxi",
+      "car",
+      "ô tô",
+      "vận chuyển",
+      "travel",
+      "du lịch",
+      "xe"
+    ],
+    "transport_submarine": [
+      "submarine",
+      "tàu ngầm",
+      "đáy biển",
+      "khám phá",
+      "discover",
+      "travel",
+      "du lịch",
+      "ocean",
+      "hai vạn dặm",
+      "đáy biển",
+      "marine"
+    ],
+    "transport_shinkansen": [
+      "shinkansen",
+      "subway",
+      "tàu điện ngầm",
+      "tàu điện",
+      "tàu điện trên cao",
+      "car",
+      "ô tô"
+    ],
+    "transport_scooter": [
+      "scooter",
+      "cub 81",
+      "motor",
+      "motorbike",
+      "xe máy",
+      "xe"
+    ],
+    "transport_sailing_boat": [
+      "sailing boat",
+      "boat",
+      "ship",
+      "travel",
+      "discover",
+      "ocean",
+      "free",
+      "thuyền buồm",
+      "thuyền",
+      "tàu",
+      "tàu thuyền",
+      "pioneer"
+    ],
+    "transport_police_fine": [
+      "police fine",
+      "police",
+      "cảnh sát",
+      "cảnh sát giao thông",
+      "CSGT",
+      "CS",
+      "phạt",
+      "phạt giao thông",
+      "vé phạt",
+      "tiền phạt"
+    ],
+    "transport_police_car": [
+      "police car",
+      "car",
+      "cảnh sát",
+      "xe cảnh sát",
+      "CSGT",
+      "cảnh sát giao thông",
+      "phạt"
+    ],
+    "transport_parking_meter": [
+      "parking meter",
+      "parking",
+      "đỗ xe",
+      "gửi xe",
+      "bãi gửi xe"
+    ],
+    "transport_oil": [
+      "oil",
+      "thay dầu",
+      "sửa chữa",
+      "bảo dưỡng",
+      "đổ xăng",
+      "xăng",
+      "dầu",
+      "maintenance",
+      "repair",
+      "gas station"
+    ],
+    "transport_motorbike": [
+      "motorbike",
+      "motor",
+      "xe",
+      "xe máy",
+      "xe phân khối",
+      "xe đua",
+      "travel",
+      "phượt",
+      "trốn",
+      "du lịch",
+      "khám phá",
+      "discover"
+    ],
+    "transport_maintenance": [
+      "maintenance",
+      "repair",
+      "sửa chữa",
+      "bảo dưỡng",
+      "decoration",
+      "nâng cấp",
+      "upgrade",
+      "improve"
+    ],
+    "transport_hot_air_balloon": [
+      "hot air balloon",
+      "travel",
+      "discover",
+      "free",
+      "flying",
+      "pionner",
+      "khinh khí cầu",
+      "du lịch",
+      "khám phá",
+      "thám hiểm",
+      "ước mơ",
+      "trốn đi"
+    ],
+    "transport_helmet": [
+      "helmet",
+      "protect",
+      "self-protect",
+      "mũ bảo hiểm",
+      "mũ BH",
+      "bảo hiểm",
+      "bảo vệ tính mạng",
+      "bảo vệ"
+    ],
+    "transport_helicopter": [
+      "helicopter",
+      "trực thăng",
+      "travel",
+      "discover",
+      "free",
+      "flying",
+      "pionner",
+      "du lịch",
+      "khám phá",
+      "thám hiểm"
+    ],
+    "transport_gas_station": [
+      "gas station",
+      "trạm xăng",
+      "xăng",
+      "đồ xăng",
+      "gas",
+      "oil"
+    ],
+    "transport_forklift": [
+      "forklift",
+      "car",
+      "ô tô",
+      "xe hàng",
+      "xe chở hàng",
+      "xe đẩy hàng",
+      "xe chuyển hàng",
+      "xe"
+    ],
+    "transport_cyclo": [
+      "cyclo",
+      "xích lô",
+      "traditonal transport",
+      "tradition",
+      "old Hanoi",
+      "Hanoi",
+      "travel",
+      "discover",
+      "du lịch",
+      "khám phá"
+    ],
+    "transport_carwash": [
+      "car wash",
+      "rửa xe",
+      "awesome",
+      "bubble",
+      "magical car",
+      "xe",
+      "car"
+    ],
+    "transport_cargo_ship": [
+      "cargo ship",
+      "tàu",
+      "tàu chở hàng",
+      "tàu viễn dương",
+      "viễn dương",
+      "travel",
+      "discover",
+      "pionner",
+      "khám phá",
+      "du lịch",
+      "thám hiểm",
+      "chở hàng"
+    ],
+    "transport_car": [
+      "car",
+      "taxi",
+      "ô tô",
+      "xe",
+      "bon bon"
+    ],
+    "transport_cable_car": [
+      "cable car",
+      "cáp treo",
+      "travel",
+      "du lịch"
+    ],
+    "transport_bus2": [
+      "bus",
+      "car",
+      "ô tô",
+      "xe",
+      "đi học",
+      "old movie",
+      "back to school",
+      "school"
+    ],
+    "transport_bicycle": [
+      "bicycle",
+      "bảo vệ môi trường",
+      "xe đạp",
+      "xe",
+      "bike",
+      "xe đạp điện",
+      "eco-friendly",
+      "eco",
+      "environment"
+    ],
+    "transport_auto_rigsaw": [
+      "auto rigsaw",
+      "car",
+      "xe ba bánh",
+      "xe lam",
+      "tuk tuk"
+    ],
+    "transport_airplane": [
+      "airplane",
+      "máy bay",
+      "máy bay lên thắng",
+      "travel",
+      "discover",
+      "free",
+      "flying",
+      "pionner",
+      "du lịch",
+      "khám phá",
+      "thám hiểm"
+    ]
+  },
+  "tags": [
+    "transport",
+    "transportation",
+    "vehicle",
+    "traffic",
+    "di chuyển",
+    "đi lại",
+    "xe cộ",
+    "phương tiện giao thông",
+    "giao thông",
+    ""
+  ]
+}

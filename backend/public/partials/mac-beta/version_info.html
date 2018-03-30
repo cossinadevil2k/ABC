@@ -1,0 +1,15 @@
+<div class="modal-header">Edit ML Mac Version</div>
+<div class="modal-body">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-lg-2">Current Version: </label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="version"/>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-click="save(version)">Save</button>
+    <button class="btn" ng-click="cancel()">Cancel</button>
+</div>

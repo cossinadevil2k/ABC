@@ -1,0 +1,85 @@
+<div style="margin: 0 200px">
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Select file</label>
+        <div class="col-lg-10">
+            <input type="file" class="form-control" accept="text/plain" id="txtFile">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Campaign</label>
+        <div class="col-lg-10">
+            <textarea rows="3" class="form-control" ng-model="discount.campaign"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-lg-2">Discount:</label>
+        <div class="col-lg-10">
+            <select class="form-control" ng-model="discount.userDiscount" ng-init="discount.userDiscount = '20'">
+                <option value="20">20%</option>
+                <option value="40">40%</option>
+                <option value="60">60%</option>
+                <option value="80">80%</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Product type</label>
+        <div class="col-lg-10">
+            <select class="form-control" ng-model="productType" ng-change="productTypeSelected()">
+                <option value="99">Discount For All</option>
+                <!-- <option value="1">Icon</option>
+                <option value="5">Premium</option>
+                <option value="2">Premium Subscription</option>
+                <option value="4">Linked Wallet Subscription</option>
+                <option value="3">Credit</option> -->
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-show="productType == 1">
+        <label class="col-lg-2 control-label">Select icon</label>
+        <div class="col-lg-10">
+            <select class="form-control" ng-model="discount.icon" required="true">
+                <option ng-repeat="(key,icon) in iconList" ng-if="!icon.isFree" ng-value="key" >{{icon.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" ng-show="productType == 2">
+        <label class="col-lg-2 control-label">Select package</label>
+        <div class="col-lg-10">
+            <select class="form-control" ng-model="discount.subscription" required="true">
+                <option ng-repeat="(key, product) in subscriptionList" ng-if="product.metadata.type === 'premium'" ng-value="key" >{{product.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" ng-show="productType == 4">
+        <label class="col-lg-2 control-label">Select package</label>
+        <div class="col-lg-10">
+            <select class="form-control" ng-model="discount.subscription" required="true">
+                <option ng-repeat="(key, product) in subscriptionList" ng-if="product.metadata.type === 'linked_wallet'" ng-value="key" >{{product.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" ng-show="productType == 3">
+        <label class="col-lg-2 control-label">Select credit</label>
+        <div class="col-lg-10">
+            <select class="form-control" ng-model="discount.credit" required="true">
+                <option ng-repeat="(key,credit) in creditList" value="{{credit}}" >{{credit.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" ng-show="productType == 5">
+        <label class="col-lg-2 control-label">Select premium</label>
+        <div class="col-lg-10">
+            <select class="form-control" ng-model="discount.premium" required="true">
+                <option ng-repeat="(key,premium) in premiumList" ng-if="premium.type === 5" value="{{premium}}" >{{premium.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form=group">
+        <label class="col-lg-2"></label>
+        <div class="col-lg-10">
+            <button class="btn btn-primary" ng-click="send()">Send</button>
+        </div>
+    </div>
+</div>

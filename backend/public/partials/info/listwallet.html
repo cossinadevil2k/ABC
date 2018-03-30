@@ -1,0 +1,53 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()">&times;</button>
+	<h4 class="modal-title title">Wallet list</h4>
+</div>
+<div class="modal-body no-padding">
+	<div class="module no-padding">
+		<div class="module-header no-padding">
+			<ul id="myTab" class="nav nav-tabs">
+				<li><a href="#" ng-click="selectTab('working')" ng-class="{'active': tabSelected=='working'}">Working</a></li>
+				<li><a href="#" ng-click="selectTab('deleted')" ng-class="{'active': tabSelected=='deleted'}">Deleted</a></li>
+			</ul>
+		</div>
+		<div class="module-content no-padding">
+			<input class="form-control" id="inputSuccess" type="text" ng-model="searchKeyword" placeholder="Search Wallet" />
+			<table class="table table-striped">
+				<thead>
+				<tr>
+					<th>#</th>
+					<th>Name</th>
+					<th>Currency ID</th>
+					<th>Create At</th>
+					<th class="text-right">Action</th>
+				</tr>
+				</thead>
+				<tbody ng-if="tabSelected=='working'">
+					<tr class="animate-repeat" ng-repeat="(key, wallet) in listWallet | filter:searchKeyword track by $index" ng-if="!wallet.isDelete">
+						<td>{{ key + 1 }}</td>
+						<td>{{ wallet.name }}</td>
+						<td>{{ wallet.currency_id }}</td>
+						<td>{{ wallet.createdAt | checkDateTime }}</td>
+						<td class="text-right">
+							<button class="btn btn-facebook" ng-click="viewWalletDetails(wallet)" tooltip="Show details"><i class="icon icon-book"></i></button>
+						</td>
+					</tr>
+				</tbody>
+				<tbody ng-if="tabSelected=='deleted'">
+				<tr class="animate-repeat" ng-repeat="(key, wallet) in listWallet | filter:searchKeyword track by $index" ng-if="wallet.isDelete">
+					<td>{{ key + 1 }}</td>
+					<td>{{ wallet.name }}</td>
+					<td>{{ wallet.currency_id }}</td>
+					<td>{{ wallet.createdAt | checkDateTime }}</td>
+					<td class="text-right">
+						<button class="btn btn-twitter" ng-click="restoreWallet(wallet)" tooltip="Restore this wallet"><i class="icon icon-refresh"></i></button>
+						<button class="btn btn-facebook" ng-click="viewWalletDetails(wallet)" tooltip="Show details"><i class="icon icon-book"></i></button>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+</div>

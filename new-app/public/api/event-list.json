@@ -1,0 +1,24 @@
+{
+    "error": 0,
+    "msg":"get_event_success",
+    "data":[
+        {
+            "_id":"df896936f8f240bfa16c9580df27770a",
+            "name":"event test 001",
+            "icon":"icon_115",
+            "type":6,
+            "start_amount":0,
+            "goal_amount":0,
+            "status":false
+        },
+        {
+            "_id":"3c62b86ff14a486e813d145c37a92fb7",
+            "name":"event test 002",
+            "icon":"icon_18",
+            "type":6,
+            "start_amount":0,
+            "goal_amount":0,
+            "status":false
+        }
+    ]
+}

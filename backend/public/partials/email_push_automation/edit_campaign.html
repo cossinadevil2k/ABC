@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">Update Campaign</h4>
+</div>
+<div class="modal-body form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Campaign Name</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="name" ng-model="EditCampaign.name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Type</label>
+        <div class="col-lg-10">
+            <select class="form-control" name="type" id="type" ng-model="EditCampaign.type">
+                <option value="1" ng-selected="EditCampaign.type == 1">Email</option>
+                <option value="2" ng-selected="EditCampaign.type == 2">Push Notification</option>
+            </select>
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" ng-click="updateCampaign(EditCampaign)">
+        <i class="icon-save"></i>Save
+    </button>
+</div>

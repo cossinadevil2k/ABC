@@ -1,0 +1,31 @@
+<div class="module">
+	<div class="module-header"><h4>TIMELINE</h4></div>
+	<div class="module-content">
+		<div class="activity-feed-wrapper">
+			<div class="activity-feed-items">
+				<div class="activity-feed-item" ng-repeat="(key, milestone) in listMilestone">
+					<span>.</span>
+					<h4>
+                        <m style="text-transform: uppercase; font-weight: bold; font-size: 20px; color: #84577C">{{milestone.eventDate | date : 'MMM d, y' : 7}}</m>
+                        <m style="color: #59636D; font-weight: 300">&#9900; {{milestone.title}}</m>
+						<m class='btn-group' style="float: right">
+							<button class='btn btn-show-action-for-milestone' data-toggle="dropdown"><i class="icon-ellipsis-vertical"></i></button>
+							<ul class="dropdown-menu pull-right">
+								<li><a href="#" ng-click='edit(milestone)'>Edit</a></li>
+								<li><a href="#" ng-click='del(milestone)'>Delete</a></li>
+							</ul>
+						</m>
+                    </h4>
+					<p style="padding: 10px 100px 10px 10px;">{{milestone.content}}</p>
+					<small></small>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<button class="btn add-milestone hvr-float-shadow" type="button" name="button" ng-click="addMilestone()">
+    <div class="" style="font-size: 25px">
+		&#43;
+	</div>
+</button>

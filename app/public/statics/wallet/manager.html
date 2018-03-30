@@ -1,0 +1,26 @@
+<div id="ml-wallet-manager" class="row" ng-init="walletManager()">
+	<div class="col-lg-6">
+		<div class="module">
+			<div class="module-header">
+				<h4>{{ 'account_manager_title' | translate }}</h4>
+			</div>
+			<div class="module-content">
+				<div ng-include="'/partials/wallet/list.html'"></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-6">
+		<div class="module">
+			<div class="module-header">
+				<h4>{{ 'account_detail_title' | translate }}</h4>
+				<div class="btn-action-manager">
+					<button class="btn btn-default" tooltip="Edit" ng-click="editWallet()"><i class="icon-pencil"></i></button>
+					<button class="btn btn-primary" tooltip="New account" ng-click="newWallet()"><i class="icon-plus"></i></button>
+				</div>
+			</div>
+			<div class="module-content">
+				<div class="animator-fade" scope="walletInfo" ng-include="'/partials/wallet/detail.html'"></div>
+			</div>
+		</div>
+	</div>
+</div>

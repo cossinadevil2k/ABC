@@ -1,0 +1,35 @@
+<polymer-element name="device-service">
+    <template>
+        <style>
+            :host {
+                display: none;
+            }
+        </style>
+        <core-ajax 
+                id="service"
+                url={{url}}
+                method="POST"
+                handleAs="json"
+                params="{{params}}"
+                on-core-response="{{postLoaded}}">
+        </core-ajax>
+    </template>
+    <script>
+        Polymer('device-service', {
+            postLoaded: function(){
+                var result = this.$['service'].response;
+                this.callback(result);
+            },
+            
+            checkLogin: function(userId, callback){
+                this.callback = callback;
+                this.url = '/check-device-login';
+                this.params = {
+                    "deviceId": "/web-notification/" + userId,
+                    "owner": userId
+                };
+                this.$['service'].go();
+            }
+        })
+    </script>
+</polymer-element>

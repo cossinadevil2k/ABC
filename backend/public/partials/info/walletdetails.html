@@ -1,0 +1,15 @@
+<div class='module no-padding'>
+	<h1>{{walletDetails.name}} wallet info ({{walletDetails.account_type | walletType}})</h1>
+	<div class="module-header">
+		<div>
+			<button class="btn btn-deepsea" ng-click="viewMoreWalletDetails(walletDetails._id, 'Budget')">View Budget</button>
+			<button class="btn btn-deepsea" ng-click="viewMoreWalletDetails(walletDetails._id, 'Campaign')">View Campaign</button>
+			<button class="btn btn-deepsea" ng-click="viewMoreWalletDetails(walletDetails._id, 'Category')">View Category</button>
+			<button class="btn btn-deepsea" ng-click="viewMoreWalletDetails(walletDetails._id, 'Transaction')">View Transaction</button>
+			<button class="btn btn-deepsea" ng-click="fetchTransactionManual(walletDetails)">Fetch Transaction Manual</button>
+		</div>
+	</div>
+	<div class="module-content">
+		<pre pretty-json="walletDetails"></pre>
+	</div>
+</div>

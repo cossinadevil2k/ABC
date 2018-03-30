@@ -1,0 +1,19 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="close()">&times;</button>
+	<h4 class="modal-title title">Change limit device for  <strong>{{user.email}}</strong></h4>
+</div>
+<div class="modal-body">
+		<label class="control-label" for="input1">Limit Device Number:</label>
+		<br />
+		<form name='checkNumber'>
+			<input type="number" id="input1" class='limitDevice' ng-model="user.limitDevice" name="input" min="0" max="99" required>
+			<div role="alert" class="alertLimitDevice">
+		    <span class="error" ng-show="checkNumber.input.$error.required">
+		      * Numbers only, please.</span>
+		  </div>
+		</form>
+</div>
+<div class="modal-footer">
+	<!-- <button class="btn btn-default" ng-click="close()">Close</button> -->
+	<button class="btn btn-success" ng-click="save()">Save</button>
+</div>

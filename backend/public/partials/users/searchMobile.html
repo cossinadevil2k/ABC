@@ -1,0 +1,12 @@
+<div class="modal-header">
+   <button type="button" class="close" ng-click="cancel()">&times;</button>
+   <h4 class="modal-title">Search somethings...</h4>
+</div>
+<div class="modal-body modal-body-mobile">
+   <input type="text" autofocus class="form-control inputSearchMobile" id="txtKeyword" ng-model="keyword" placeholder="Enter email or keyword" ng-keydown="searchKey($event, keyword)">
+</div>
+<div class="modal-footer footerMobile">
+   <div class="input-group-btn">
+       <button type="button" class="btn btn-grape buttonSearchMobile" ng-click="search(keyword)" ng-disabled="isLoading">SEARCH</button>
+   </div>
+</div>

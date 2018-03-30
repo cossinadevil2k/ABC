@@ -1,0 +1,261 @@
+<polymer-element name="transaction-list" attributes="wallet walletList currencyList displayMode currentTime">
+<template>
+    <style>
+        :host {
+            display: block;
+            width: 100%;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        wallet-item {
+            margin-bottom: 30px;
+        }
+
+        .item-head {
+            border-bottom: 1px solid rgba(0,0,0,0.12);
+            height: 48px;
+            margin: 0 16px;
+        }
+
+        .card-group {
+            width: 100%;
+            background: white;
+            margin-top: 16px;
+            border-radius: 2px;
+            display: block;
+            padding-bottom: 5px;
+            position: relative;
+        }
+
+        .item-head .group-balance {
+            float: right;
+            position: relative;
+            top: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .item-head .date .month-right {
+            display: inline-block;
+            position: relative;
+        }
+
+        .item-head .date .month-1 {
+            font-size: 32px;
+            font-family: 'Roboto', sans-serif;
+            margin-right: 3px;
+            color: rgba(000,000,000,0.87);
+            position: relative;
+            top: -4px;
+            font-weight: 300;
+        }
+
+        .item-head .date .month-2 {
+            position: relative;
+            font-size: 10px;
+            font-family: 'Roboto', sans-serif;
+            color: rgba(000,000,000,0.87);
+            font-weight: 400;
+            top: -3px;
+
+        }
+
+        .item-head .date .month-3 {
+            color: rgba(000,000,000,0.54);
+            font-family: 'Roboto', sans-serif;
+            font-size: 10px;
+            display: block;
+            font-weight: 500;
+            line-height: 0;
+            position: relative;
+            top: -4px;
+        }
+
+        .content-empty {
+            margin-top: 100px;
+            text-align: center;
+            color: rgba(0,0,0,0.24);
+        }
+        .content-empty .emo {
+            font-size: 100px;
+            line-height: 100px;
+            margin-bottom: 16px;
+            transition-duration: 0.3s;
+            transition-property: transform;
+        }
+
+        .content-empty .emo:hover {
+            transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+        }
+
+        .content-empty .emo-desc {
+            font-size: 32px;
+            font-weight: 32px;
+            color: rgba(0,0,0,0.24);
+            font-weight: 500;
+        }
+        .add-circle-outline {
+            background: none;
+            color: #aaa;
+        }
+        host: deep/ div#clip {
+                        height: 30px;
+                    }
+        host: deep/ core-icon#icon {
+                        margin: 0 !important;
+                    }
+
+        item-transaction {
+            height: 72px;
+        }
+
+        item-transaction:hover {
+            background: #f2f2f2;
+            cursor: pointer;
+        }
+
+        .item-head .date {
+            margin: 0;
+        }
+
+    </style>
+    <transaction-list-service id="transactionService" transactions="{{transactions}}"></transaction-list-service>
+
+    <div layout vertical center>
+        <template if="{{transactions.length > 0}}" repeat="{{group in dataList}}">
+            <div class="card-group">
+                <div class="item-head"  horizontal layout>
+                    <dd class="date" flex>
+                        <time class="month-1">{{group.displayDate | formatDate('DD')}}</time>
+                        <div class="month-right" vertical layout flex>
+                            <time class="month-2">{{group.displayDate | formatDate('dddd')}}</time>
+                            <time class="month-3">{{group.displayDate | formatDate('MMMM YYYY')}}</time>
+                        </div>
+                    </dd>
+                    <span class="group-balance {{group.amount | amountGroupDisplayClass}} {{{hide: wallet.multiCurrency} | tokenList}}">{{group.amount | amountDisplay}}</span>
+                </div>
+                <template repeat="[[transaction in group.data]]">
+                    <item-transaction on-click="{{transactionClick}}" wallet="{{wallet}}" transaction="{{transaction}}" currencyList="[[currencyList]]"/>
+                </template>
+                <paper-shadow id="myShadow" z="1"/></paper-shadow>
+            </div>
+        </template>
+        <template if="{{transactions.length == 0}}">
+            <div class="content-empty">
+                <p class="emo">{{emptyEmoText | randomEmo}}</p>
+                <p class="emo-desc text-display1"> No transactions</p>
+                <p class="press text-caption">Press the green
+                    <core-icon icon="add-circle-outline" class="add-circle-outline"></core-icon>
+                    button add new transaction
+                </p>
+
+            </div>
+        </template>
+        <div class="loader {{{hide: !showLoader} | tokenList}}">
+            <img src="../images/loading.gif"/>
+        </div>
+    </div>
+    <transaction-detail-dialog id="transactionDetailDialog" walletList="{{walletList}}" editMode="true"></transaction-detail-dialog>
+</template>
+<script>
+    Polymer('transaction-list',{
+        emos: ['^_^', ':-)', ':-('],
+        showLoader: true,
+
+        formatDate: function (date, format) {
+            return moment(date).format(format);
+        },
+
+        amountGroupDisplayClass: function(amount){
+            return amount > 0 ? 'positive' : 'negative';
+        },
+
+        walletChanged: function(oldWallet, newWallet){
+            if(!newWallet) return;
+            if(oldWallet && oldWallet._id === newWallet._id) return;
+            this.updateTransaction();
+        },
+
+        amountDisplay: function(amount){
+            if(this.currencyList){
+                if(this.wallet.multiCurrency) return '';
+                var currencyId = this.wallet.currency_id;
+                var currency = this.currencyList[currencyId -1];
+
+                var format = currency.t === 1 ? "%v %s" : "%s %v";
+                return accounting.formatMoney(amount, { symbol: currency.s,  format: format });
+            } else{
+                return '';
+            }
+        },
+
+
+        randomEmo: function(){
+            return this.emos[Math.floor(Math.random() * this.emos.length)];
+        },
+
+        currentTimeChanged: function(oldTime, newTime){
+            this.emptyEmoText = this.randomEmo();
+            this.updateTransaction();
+        },
+
+        updateTransaction: function(){
+            var that = this;
+            if(!that.wallet || !that.currentTime) {
+                return;
+            }
+
+            this.transactions = null;
+            this.showLoader = true;
+
+            // this.async(function() {
+            that.$.transactionService.getTransaction(that.wallet, that.currentTime, function(data){
+                // TODO
+                that.showLoader = false;
+            });
+            // }, null, 1000);
+        },
+
+        transactionsChanged: function(oldValue, newValue){
+            if(!newValue || newValue == oldValue) return;
+            var tempDate;
+            var list = [];
+            var indexList = -1;
+
+            newValue.forEach(function(item){
+                if(!item.category) return;
+
+                var transactionDate = moment(item.displayDate).format('YYYY-MM-DD');
+
+                if(!tempDate || transactionDate !== tempDate) {
+                    list.push({displayDate: transactionDate, data: [], amount: 0});
+                    tempDate = transactionDate;
+                    indexList += 1;
+                }
+                var amount = item.amount;
+                if(item.category.type === 2) amount *= -1;
+                list[indexList].amount += amount;
+                list[indexList].data.push(item);
+            });
+            this.dataList = list;
+            this.showLoader = false;
+        },
+
+        transactionClick: function(event, detail, sender){
+            var transaction = sender.templateInstance.model.transaction;
+            var dialog = this.$.transactionDetailDialog;
+            dialog.showTransaction(transaction);
+        }
+    });
+</script>
+
+</polymer-element>

@@ -1,0 +1,106 @@
+<div class="module">
+    <div class="module-header">
+        <h4>Range: {{startDate.toISOString() | checkDateTimeDateOnly}} - {{endDate.toISOString() | checkDateTimeDateOnly}}</h4>
+        <button class="btn btn-xs btn-info" ng-click="setDateRange()">Select date range</button>
+    </div>
+</div>
+<div class="module no-padding">
+    <div class="module-header no-padding">
+
+    </div>
+    <div class="module-content">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Admin</th>
+                    <th class="text-center">Done</th>
+                    <th class="text-center">Reject</th>
+                    <th class="text-center">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="rank_info in rankingData">
+                    <td>{{listAdmin[rank_info._id]}}</td>
+                    <td class="text-center bold"><a href="" style="color: #3F51B5" ng-click="listReceiptByAdmin(rank_info._id, 'done')">{{rank_info.done}}</a></td>
+                    <td class="text-center bold"><a href="" style="color: #9C27B0" ng-click="listReceiptByAdmin(rank_info._id, 'rejected')">{{rank_info.rejected}}</a></td>
+                    <td class="text-center bold" style="color: #009688">{{rank_info.total}}</td>
+                </tr>
+                <tr ng-if="!rankingData.length">
+                    <td>No data</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/ng-template" id="receipt_date_range.html">
+    <div class="modal-header">
+        <h4>Select receipt ranking date range</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-lg-3">Start date (mm/dd/yyyy)</label>
+                <div class="col-lg-9">
+                    <input type="date" class="form-control" ng-model="range.start">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-3">End date (mm/dd/yyyy)</label>
+                <div class="col-lg-9">
+                    <input type="date" class="form-control" ng-model="range.end">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-success" ng-click="submit()">Get stats</button>
+    </div>
+</script>
+<script type="text/ng-template" id="list_receipt_by_admin.html">
+    <div class="modal-header">
+        <h4>Receipt list handled by {{admin_name}}</h4>
+    </div>
+    <div class="modal-body">
+        <loading ng-if="isLoading"></loading>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>User</th>
+                    <th>Created At</th>
+                    <th>Resolved At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="receipt in list">
+                    <td><span ng-class="{rDraft: receipt.status === 'draft', rDone: receipt.status === 'done', rOpen: receipt.status === 'open', rReject: receipt.status === 'rejected'}">{{receipt.status}}</span></td>
+                    <td><a href="/receipt/details/{{receipt._id}}" target="_blank">{{receipt.user.email}}</a></td>
+                    <td>{{receipt.created_at | checkDateTime}}</td>
+                    <td>{{receipt.updated_at | checkDateTime}}</td>
+                </tr>
+                <tr ng-if="list.length === 0">
+                    <td>No data</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading"><i class="icon-fast-backward"></i></a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading"><i class="icon-fast-forward"></i></a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" ng-click="close()">Close</button>
+    </div>
+</script>

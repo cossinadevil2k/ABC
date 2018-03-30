@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <h4 class="modal-title">Providers without icon</h4>
+</div>
+<div class="modal-body no-padding">
+    <div class="text-center" ng-if="isLoading">
+        <img src="/images/loading-pacman.gif" /><br />
+        Loading
+    </div>
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <th>name</th>
+            <th>code</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="provider in list">
+            <td>{{provider.name}}</td>
+            <td>{{provider.code}}</td>
+            <td><a href="{{provider.home_url}}" target="_blank">Site</a></td>
+        </tr>
+        <tr class="breakPage">
+            <td colspan="12" class="text-center">
+                <div class="btn-group">
+                    <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage"><i class="icon-fast-backward"></i></a>
+                    <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                    <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage"><i class="icon-fast-forward"></i></a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="cancel()">Close</button>
+</div>

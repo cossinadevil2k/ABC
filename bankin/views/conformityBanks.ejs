@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Conformity Banks</title>
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="/css/style.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="/css/iconfont.css" media="screen" charset="utf-8">
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+
+        <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+        <script type="text/javascript" src='/js/bootstrap.min.js'></script>
+        <script type="text/javascript" src="http://rawgit.com/BobKnothe/autoNumeric/master/autoNumeric.js"></script>
+        <script type="text/javascript" src='/js/action.js'></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
+    </head>
+
+    <body>
+
+        <!-- Hôm nay trời đẹp, mây bay chim hót, anh không biết nên buồn hay vui với đống code này. -->
+
+        <script type="text/javascript">
+            var bankList = [];
+        </script>
+
+        <div class="wrapper-conformityBanks">
+            <% if((result || result.length === 0)) { %>
+
+            <div class="banks">
+                <div class="one-bank row reviewInfo">
+                    <div class="col-xs-12" style="padding-bottom: 10px;">
+                        Các ngân hàng dưới đây đã được sắp xếp theo lãi xuất tăng dần. Phù hợp khoản vay <span class="back-previous-page"><%= userWant.m %>₫</span> để
+                        <% if(userWant.p === 'personal'){ %>
+                            <span class="back-previous-page">chi tiêu cá nhân</span>
+                        <% } else if(userWant.p === 'car') { %>
+                            <span class="back-previous-page">mua xe</span>
+                        <% } else if(userWant.p === 'house') { %>
+                            <span class="back-previous-page">mua nhà</span>
+                        <% } %> với thời hạn <span class="back-previous-page"><%= userWant.t %> tháng</span> của bạn.
+                    </div>
+                </div>
+
+                <% result.forEach(function(bank, index){ %>
+                    <div class="one-bank row ">
+                        <div class="col-xs-4 col-xs-offset-4">
+                            <div class="one-bank-logo">
+                                <% if(bank.provider){ %>
+                                    <img src="images/<%= bank.provider.icon %>" alt="logo"/>
+                                <% } else { %>
+                                    <img src="images/bank_default.png" alt="logo"/>
+                                <% } %>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-8 col-xs-offset-2 bank-name">
+                            <%= bank.bankId.name %>
+                        </div>
+
+                        <div class="col-xs-6 bank-values" style="padding-right: 7px;">
+                            <div>
+                                Lãi suất
+                                <div>
+                                    <% if(userWant.p === 'personal'){ %>
+                                        <span><%= bank.personal.interestRate %>%</span>
+                                    <% } else if(userWant.p === 'car') { %>
+                                        <span><%= bank.car.interestRate %>%</span>
+                                    <% } else if(userWant.p === 'house') { %>
+                                        <span><%= bank.house.interestRate %>%</span>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div>1 năm</div>
+                        </div>
+                        <div class="col-xs-6 bank-values" style="padding-left: 7px;">
+                            <div>
+                                Trả hàng tháng
+                                <div>
+                                    <%
+                                        var moneyBorrow = Number(userWant.m.replace(/,/g, ''));
+                                        var timeBorrow = Number(userWant.t.replace(/,/g, ''));
+
+                                        if(userWant.p === 'personal'){
+                                            var interestMoney = Number( (((bank.personal.interestRate)/12)*timeBorrow*moneyBorrow)/100
+                                            );
+                                        } else if(userWant.p === 'car') {
+                                            var interestMoney = Number( (((bank.car.interestRate)/12)*timeBorrow*moneyBorrow)/100
+                                            );
+                                        } else if(userWant.p === 'house') {
+                                            var interestMoney = Number( (((bank.house.interestRate)/12)*timeBorrow*moneyBorrow)/100
+                                            );
+                                        }
+                                    %>
+
+                                    <span>
+                                        <%=
+                                            numeral(
+                                                (interestMoney + moneyBorrow)/timeBorrow
+                                            ).format('0,0')
+                                        %>
+                                    </span>
+                                    <span> ₫</span>
+                                </div>
+                            </div>
+                                <div><%= userWant.t %> tháng</div>
+                        </div>
+                        <div class="formActionBank col-xs-12">
+                            <% if(index === 0){ %>
+                                <div class="rating">
+                                    <i class="icon icon-star colorStar"></i>
+                                    <i class="icon icon-star colorStar"></i>
+                                    <i class="icon icon-star colorStar"></i>
+                                </div>
+
+                            <% } else if(index === 1) { %>
+                                <div class="rating">
+                                    <i class="icon icon-star colorStar"></i>
+                                    <i class="icon icon-star colorStar"></i>
+                                    <i class="icon icon-star"></i>
+                                </div>
+                            <% } else if(index === 2) { %>
+                                <div class="rating">
+                                    <i class="icon icon-star colorStar"></i>
+                                    <i class="icon icon-star"></i>
+                                    <i class="icon icon-star"></i>
+                                </div>
+                            <% } %>
+
+                            <button id='<%= bank._id %>' type="button" name="button" class="btn ripplelink addBankToList" data-toggle="tooltip" title="Chọn so sánh" onclick='createListBanks(<%- JSON.stringify(bank) %>);'>
+                                <!-- <i class="fa fa-clone" aria-hidden="true"></i> -->
+                                So sánh
+                            </button>
+                            <button type="button" name="button" class="btn ripplelink seeDetailBank" data-toggle="tooltip" title="Chi tiết">
+                                <!-- <i class="fa fa-info-circle" aria-hidden="true"></i> -->
+                                Chi tiết
+                            </button>
+                        </div>
+
+                        <!--MODAL-->
+                        <div class="modal" id="modalBankDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal--detail animatedModal">
+                                <div class="content-modal">
+                                    <div class="titleBank">
+                                        <div>Ngân hàng</div>
+                                        <div><%= bank.bankId.name %></div>
+                                    </div>
+                                    <div class="infoBank-modal row">
+                                        <div class="col-xs-12">
+                                            <div>
+                                                <%= numeral(userWant.m).format('0,0') %>₫ - <%= userWant.t %> tháng
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12" style="margin-bottom: 15px">
+                                            <div>
+                                                <div class="labelForVariableBank green">
+                                                    <span class="icon icon-calculator"></span> Tính lãi suất
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="variableBank interestLoan">
+                                                        <% if(userWant.p === 'personal'){ %>
+                                                            <span><%= bank.personal.interestRate %></span>
+                                                        <% } else if(userWant.p === 'car') { %>
+                                                            <span><%= bank.car.interestRate %></span>
+                                                        <% } else if(userWant.p === 'house') { %>
+                                                            <span><%= bank.house.interestRate %></span>
+                                                        <% } %>
+                                                        <small>%</small></div>
+                                                    <div>Lãi suất</div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="variableBank totalPayment"><%=
+                                                        numeral(
+                                                            (interestMoney + moneyBorrow)/timeBorrow
+                                                        ).format('0,0')
+                                                    %> ₫</div>
+                                                    <div >Trả hàng tháng</div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="moreLoanAmount col-xs-12">
+                                                <div>Tổng lãi phải trả:
+                                                    <span>
+                                                        <%=
+                                                            numeral(
+                                                                interestMoney
+                                                            ).format('0,0')
+                                                        %> ₫
+                                                    </span>
+                                                </div>
+                                                <div>Tổng số tiền phải trả:
+                                                    <span>
+                                                        <%=
+                                                            numeral(
+                                                                interestMoney + moneyBorrow
+                                                            ).format('0,0')
+                                                        %> ₫
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div><!-- /first block-->
+
+                                        <div class="col-xs-12" style="margin-bottom: 15px">
+                                            <div>
+                                                <div class="labelForVariableBank green">
+                                                    <span class="icon icon-present"></span> Ưu đãi & biên độ điều chỉnh lãi suất
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <!-- <div>Ưu đãi</div> -->
+                                                    <div class="variableBank interestLoan">
+                                                        <% if(userWant.p === 'personal'){ %>
+                                                            <span><%= bank.personal.priviledge.interestRate %></span><small>%</small></div>
+                                                            <div><%= bank.personal.priviledge.numberMonth %> tháng đầu</div>
+                                                        <% } else if(userWant.p === 'car') { %>
+                                                            <span><%= bank.car.priviledge.interestRate %></span><small>%</small></div>
+                                                            <div><%= bank.car.priviledge.numberMonth %> tháng đầu</div>
+                                                        <% } else if(userWant.p === 'house') { %>
+                                                            <span><%= bank.house.priviledge.interestRate %></span><small>%</small></div>
+                                                            <div><%= bank.house.priviledge.numberMonth %> tháng đầu</div>
+                                                        <% } %>
+                                                </div>
+                                                <div class="col-xs-6">
+
+                                                    <div class="variableBank totalPayment"><% if(userWant.p === 'personal'){ %>
+                                                        <span><%= bank.personal.adjustableRate %></span><small>%</small>
+                                                    <% } else if(userWant.p === 'car') { %>
+                                                        <span><%= bank.car.adjustableRate %></span><small>%</small>
+                                                    <% } else if(userWant.p === 'house') { %>
+                                                        <span><%= bank.house.adjustableRate %></span><small>%</small>
+                                                    <% } %></div>
+
+                                                    <div>biên độ</div>
+                                                </div>
+                                            </div>
+                                        </div><!-- /second block-->
+
+                                        <div class="col-xs-12" style="margin-bottom: 15px">
+                                            <div>
+                                                <div class="labelForVariableBank green">
+                                                    <span class="icon icon-cc"></span> Tỷ lệ cho vay tối đa & thời gian ân hạn
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="variableBank interestLoan">
+                                                        <% if(userWant.p === 'personal'){ %>
+                                                            <span><%= bank.personal.maximumLendingRate %></span><small>%</small></div>
+                                                        <% } else if(userWant.p === 'car') { %>
+                                                            <span><%= bank.car.maximumLendingRate %></span><small>%</small></div>
+                                                        <% } else if(userWant.p === 'house') { %>
+                                                            <span><%= bank.house.maximumLendingRate %></span><small>%</small></div>
+                                                        <% } %>
+                                                    <div>mỗi phương án</div>
+                                                </div>
+                                                <div class="col-xs-6">
+
+                                                    <div class="variableBank totalPayment"><% if(userWant.p === 'personal'){ %>
+                                                        <span><%= bank.personal.gracePeriod %></span>
+                                                    <% } else if(userWant.p === 'car') { %>
+                                                        <span><%= bank.car.gracePeriod %></span>
+                                                    <% } else if(userWant.p === 'house') { %>
+                                                        <span><%= bank.house.gracePeriod %></span>
+                                                    <% } %></div>
+
+                                                    <div>tháng</div>
+                                                </div>
+                                            </div>
+                                        </div><!-- /third block-->
+
+                                        <div class="col-xs-12" style="margin-bottom: 15px">
+                                            <div>
+                                                <div class="labelForVariableBank blue">
+                                                    <span class="icon icon-calendar"></span> Kì hạn vay
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="variableBank interestLoan">
+                                                        <% if(userWant.p === 'personal'){ %>
+                                                            <span><%= bank.personal.loanTenure.min %></span>
+                                                        <% } else if(userWant.p === 'car') { %>
+                                                            <span><%= bank.car.loanTenure.min %></span>
+                                                        <% } else if(userWant.p === 'house') { %>
+                                                            <span><%= bank.house.loanTenure.min %></span>
+                                                        <% } %>
+                                                    </div>
+                                                    <div>tháng</div>
+                                                    <span class="icon icon-next arrow"></span>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="variableBank interestLoan">
+                                                        <% if(userWant.p === 'personal'){ %>
+                                                            <span><%= bank.personal.loanTenure.max %></span>
+                                                        <% } else if(userWant.p === 'car') { %>
+                                                            <span><%= bank.car.loanTenure.max %></span>
+                                                        <% } else if(userWant.p === 'house') { %>
+                                                            <span><%= bank.house.loanTenure.max %></span>
+                                                        <% } %>
+                                                    </div>
+                                                    <div>tháng</div>
+                                                </div>
+
+                                            </div>
+                                        </div><!-- /fourth block-->
+
+                                        <div class="col-xs-12" >
+                                            <div>
+                                                <div class="labelForVariableBank red">
+                                                    <span class="icon icon-group"></span> Yêu cầu độ tuổi và mức lương
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="variableBank interestLoan">
+                                                        <%= bank.ageRequirement.min %>
+                                                    </div>
+                                                    <div>tuổi</div>
+                                                    <span class="icon icon-next arrow"></span>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="variableBank interestLoan">
+                                                        <%= bank.ageRequirement.max %>
+                                                    </div>
+                                                    <div>tuổi</div>
+                                                </div>
+
+                                                <div class="col-xs-12">
+                                                    <div class="variableBank interestLoan">
+                                                        <%=
+                                                            numeral(
+                                                                bank.minSalaryRequirement
+                                                            ).format('0,0')
+                                                        %> ₫
+                                                    </div>
+                                                    <div>
+                                                        Mức lương cơ bản
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div><!-- /fifth block-->
+
+                                    </div><!-- /infoBank-modal-->
+                                </div><!-- /content-modal-->
+                                <div class="col-xs-12 pulldown">
+                                    Chi tiết <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                                </div>
+                                <button type="button" class="btn btn-link closeModal">Close</button>
+                            </div>
+                        </div><!--/end modal-->
+
+                    </div><!-- /one-bank-->
+
+                <% }) %>
+
+            </div><!-- /banks-->
+
+            <% } else { %>
+                <div class="emptyBank">
+                    <div>
+                        <span class="icon icon-text"></span>
+                        <div class="omg">OMG!</div>
+                        <div>
+                            Không có ngân hàng nào phù hợp với yêu cầu của bạn.
+                        </div>
+                        <a href="/loan" class="btn ">Thử lại</a>
+                    </div>
+                </div>
+            <% } %>
+
+
+            <% if((result || result.length === 0)) { %>
+            <script type="text/javascript">
+                function createListBanks(bank){
+                    var idBank = bank._id;
+                    var checkExitsBank = false;
+
+                    for (var i = 0; i < bankList.length; i++) {
+                        if (idBank === bankList[i]._id) {
+                            bankList.splice(i, 1);
+                            checkExitsBank = true;
+                            break;
+                        }
+                    }
+
+                    if (bankList.length <= 3 && !checkExitsBank) {
+                        bankList.push(bank);
+                    }
+
+                    $('.allBanksInList').empty(); //remove all old bank in list
+                    showListBanks();
+                }
+
+                function showListBanks(){
+                    if (bankList.length === 0) {
+                        $('.listBanks > .row').removeClass('hidden');
+                    } else {
+                        $('.listBanks > .row').addClass('hidden');
+
+                        for (var i = 0; i < bankList.length; i++) {
+                            $('.allBanksInList').append('<div class="row">'
+                                + '<div class="col-xs-8" style="padding-left: 0">'
+                                +    '<div class="blockIcon">'
+                                + '<span class="icon icon-tie"></span></div>'
+                                +    bankList[i].bankId.name
+                                + '</div>'
+                                + '<div class="col-xs-4 text-center">'
+                                +    "<span class='icon icon-delete moveBankOut'"
+                                + "onclick='moveBankOut("
+                                +    JSON.stringify(bankList[i]._id)
+                                +")'></span></div></div>")
+                        }
+                    }
+                }
+
+                function moveBankOut(bankId){
+                    $('#'+bankId+'.addBankToList').click();
+                }
+
+            </script>
+
+            <div class="formActionCompare">
+                <div class="listBanks hideListBanks">
+                    <div class="row text-center hidden">
+                        Click nút <strong style="color:#0DA574; line-height: 40px">CHỌN</strong> để thêm ngân hàng.
+                    </div>
+                    <div class="allBanksInList"></div>
+                </div>
+
+                <button id='assimilation' class="btn btn-remake" disabled><span class="seeDetails">Danh sách <span class="banksSelect"></span></span>
+                    <i class="icon icon-diagram"></i>
+                </button>
+
+                <script type="text/javascript">
+                    $('#assimilation').click(function(){
+                        var numberBank = bankList.length;
+                        var loanAmount = <%= Number(userWant.m.replace(/,/g, '')) %>;
+                        var timeBorrow = <%= Number(userWant.t.replace(/,/g, '')) %>;
+                        var plan = <%- JSON.stringify(userWant.p) %>;
+
+                        //fill bank name
+                        $('.nameBankInForm-parent').empty();
+                        for (var i = 0; i < numberBank; i++) {
+                            $('.nameBankInForm-parent').append('<div class="col-xs-'+(12/numberBank)+' nameBankInForm color'+i+'">'
+                            + '<div>Ngân hàng</div>'
+                            + '<div>'+bankList[i].bankId.name+'</div></div>')
+                        }
+
+                        // reset variables
+                        $('.interestRateC-v').empty();
+                        $('.payMonthC-v').empty();
+                        $('.totalC-v').empty();
+                        $('.loanTenureC-v').empty();
+                        $('.salaryC-v').empty();
+                        $('.ageC-v').empty();
+                        $('.priviledgeC-v').empty();
+                        $('.adjustableRateC-v').empty();
+                        $('.gracePeriodC-v').empty();
+                        $('.maximumLendingRateC-v').empty();
+
+                        for (var i = 0; i < numberBank; i++) {
+                            //fill interest rate
+                            $('.interestRateC-v').append('<div class="col-xs-'+(12/numberBank)+'">'
+                                +  bankList[i].<%=userWant.p%>.interestRate+'<small>%</small>'
+                                + '</div>');
+
+                            //fill monthly repayment
+                            $('.payMonthC-v').append('<div class="col-xs-'+12/numberBank+'">'
+                            +  numeral((((bankList[i].<%=userWant.p%>.interestRate/12)*timeBorrow*loanAmount)/100 + loanAmount)/timeBorrow).format('0,0')
+                            +'</div>');
+
+                            //fill total payment
+                            $('.totalC-v').append('<div class="col-xs-'+12/numberBank+' totalC-child">'
+                            +    '<div>'
+                            +         numeral(((bankList[i].<%=userWant.p%>.interestRate/12)*timeBorrow*loanAmount)/100).format('0,0')
+                            +    '</div>'
+                            +    '<div>'
+                            +          numeral(((bankList[i].<%=userWant.p%>.interestRate/12)*timeBorrow*loanAmount)/100 + loanAmount).format('0,0')
+                            +    '</div>'
+                            +'</div>');
+
+                            //fill loan tenure
+                            $('.loanTenureC-v').append('<div class="col-xs-'+12/numberBank+' loanTenureC-child">'
+                            + '<span style="font-size: 19px; font-weight: normal">'+bankList[i].<%=userWant.p%>.loanTenure.min+'</span> tới '
+                            + '<span style="font-size: 19px; font-weight: normal">'+bankList[i].<%=userWant.p%>.loanTenure.max+'</span> tháng'
+                            + '</div>');
+
+                            //fill priviledge
+                            $('.priviledgeC-v').append('<div class="col-xs-'+(12/numberBank)+'">'
+                                +  bankList[i].<%=userWant.p%>.priviledge.interestRate +'<small>%</small><div>'
+                                +  bankList[i].<%=userWant.p%>.priviledge.numberMonth
+                                + ' tháng</div></div>');
+
+                            //fill adjustable rate
+                            $('.adjustableRateC-v').append('<div class="col-xs-'+(12/numberBank)+'">'
+                                +  bankList[i].<%=userWant.p%>.adjustableRate
+                                +'<small>%</small>'
+                                + '</div>');
+
+                            //fill grace period
+                            $('.gracePeriodC-v').append('<div class="col-xs-'+(12/numberBank)+'">'
+                                +  bankList[i].<%=userWant.p%>.gracePeriod
+                                +'<small> tháng</small>'
+                                + '</div>');
+
+                            //fill maximum lending rate
+                            $('.maximumLendingRateC-v').append('<div class="col-xs-'+(12/numberBank)+'">'
+                                +  bankList[i].<%=userWant.p%>.maximumLendingRate
+                                +'<small>%</small>'
+                                + '</div>');
+
+                            //fill salary require
+                            $('.salaryC-v').append('<div class="col-xs-'+12/numberBank+'">'
+                            +   numeral(bankList[i].minSalaryRequirement).format('0,0')
+                            + '</div>');
+
+                            //fill age require
+                            $('.ageC-v').append('<div class="col-xs-'+12/numberBank+'">'
+                            +   bankList[i].ageRequirement.min + ' - '
+                            +   bankList[i].ageRequirement.max
+                            + '</div>');
+
+                        }
+
+                    });
+                </script>
+
+            </div><!-- /formActionCompare-->
+
+            <!--MODAL-->
+            <div class="modal" id="modalBankCompare" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal--detail animatedModal">
+                    <div class="content-modal">
+
+                        <div class="titleBank">
+                            <div>Chi tiết</div>
+                            <div>So sánh</div>
+                        </div>
+                        <div class="formCompare">
+                            <div class="row nameBankInForm-parent"></div>
+
+                            <div class="variableBankC">
+                                <div class="row interestRateC">
+                                    <div class="col-xs-12">
+                                        Lãi suất (mỗi năm)
+                                    </div>
+                                    <div class="interestRateC-v"></div>
+                                </div>
+
+                                <div class="row priviledgeC">
+                                    <div class="col-xs-12">
+                                        Lãi suất ưu đãi
+                                    </div>
+                                    <div class="priviledgeC-v"></div>
+                                </div>
+
+                                <div class="row adjustableRateC">
+                                    <div class="col-xs-12">
+                                        Biên độ điều chỉnh lãi suất
+                                    </div>
+                                    <div class="adjustableRateC-v"></div>
+                                </div>
+
+                                <div class="row payMonthC">
+                                    <div class="col-xs-12">
+                                        Trả hàng tháng (₫)
+                                    </div>
+                                    <div class="payMonthC-v"></div>
+                                 </div>
+
+                                <div class="row totalC">
+                                    <div class="col-xs-12">
+                                        Tổng lãi, tổng vay phải  trả (₫)
+                                    </div>
+                                    <div class="totalC-v"></div>
+                                </div>
+
+                                <div class="row loanTenureC">
+                                    <div class="col-xs-12">
+                                        Kì hạn vay
+                                    </div>
+                                    <div class="loanTenureC-v"></div>
+                                </div>
+
+                                <div class="row gracePeriodC">
+                                    <div class="col-xs-12">
+                                        Thời gian ân hạn
+                                    </div>
+                                    <div class="gracePeriodC-v"></div>
+                                </div>
+
+                                <div class="row maximumLendingRateC">
+                                    <div class="col-xs-12">
+                                        Tỷ lệ cho vay tối đa mỗi phương án
+                                    </div>
+                                    <div class="maximumLendingRateC-v"></div>
+                                </div>
+
+                                <div class="row salaryC">
+                                    <div class="col-xs-12">
+                                        Thu nhập tối thiểu (₫)
+                                    </div>
+                                    <div class="salaryC-v"></div>
+                                </div>
+
+                                <div class="row ageC">
+                                    <div class="col-xs-12">
+                                        Độ tuổi có thể vay vốn
+                                    </div>
+                                    <div class="ageC-v"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div><!-- /content-modal-->
+                    <div class="col-xs-12 pulldown">
+                        Chi tiết <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                    </div>
+                    <button type="button" class="btn btn-link closeModal-f">Close</button>
+                </div>
+            </div><!--/end modal-->
+            <% } %>
+
+        </div><!-- /wrapper-conformityBanks-->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ​
+          ga('create', 'UA-39420218-15', 'auto');
+          ga('send', 'pageview');
+        ​
+        </script>
+    </body>
+</html>

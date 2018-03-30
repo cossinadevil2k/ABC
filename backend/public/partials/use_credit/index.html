@@ -1,0 +1,55 @@
+<div class="module no-padding">
+    <div class="module-header">
+        <div class="row">
+            <button class="btn btn-twitter" ng-click="addProduct()">
+                <i class="icon-plus"></i>
+                Add
+            </button>
+        </div>
+    </div>
+    <div class="module-content">
+        <loading ng-if="isLoading"></loading>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Id</th>
+                <th>Credit type</th>
+                <th>Credit amount</th>
+                <th>Last update</th>
+                <th class="text-right">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key, product) in product_list">
+                <td>{{product.name}}</td>
+                <td>{{product.product_id}}</td>
+                <td>{{product.metadata.credit_type}}</td>
+                <td>{{product.metadata.credit}}</td>
+                <td>{{product.updatedAt | checkDateTime}}</td>
+                <td class="text-right">
+                    <button class="btn btn-xs btn-twitter" ng-click="edit(product, key)"><i class="icon-pencil"></i> Edit</button>
+                    <button class="btn btn-xs btn-grape" ng-click="delete(product, key)"><i class="icon-trash"></i> Delete</button>
+                </td>
+            </tr>
+            <tr ng-if="product_list.length === 0">
+                <td>No product found</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading"><i class="icon-fast-backward"></i></a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading"><i class="icon-fast-forward"></i></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

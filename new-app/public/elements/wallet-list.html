@@ -1,0 +1,115 @@
+  <polymer-element name="wallet-list" attributes="current_walletId add_wallet wallet mode_display walletList">
+  <template>
+    <style>
+    :host * {
+      margin: 0;
+      padding: 0;
+    }
+
+    :host {
+      display: block;
+      position: relative;
+      max-height: 400px;
+      overflow-y: scroll !important;
+      overflow-x: hidden;
+    }
+
+    :host item-wallet {
+      width: 260px;
+      display: block;
+      border-left: 5px solid transparent;
+      height: 64px;
+    }
+
+    :host item-wallet:hover {
+      background: #f2f2f2;
+    }
+
+    :host item-wallet.selected {
+      border-left: 5px solid #2baf2b;
+      /*background: #f2f2f2;*/
+    }
+
+    :host #add-wallet {
+      background: url("../images/ic_add_wallet.png") no-repeat scroll 25px transparent;
+      width: 100%;
+      border-top: 1px solid rgba(0,0,0,0.12);
+      padding:8px;
+      display: block;
+      text-transform: uppercase; 
+      position: relative;
+      line-height: 45px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    :host #add-wallet:hover {
+      background: url("../images/ic_add_wallet.png") no-repeat scroll 25px #f2f2f2;
+    }
+
+    :host .mini {
+      width: 230px !important;
+      padding: 8px 0;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    :host .item-wallet {
+      width: 280px;
+      
+    }
+    
+    :host .mini item-wallet /deep/ .card-header .info  span {
+     top: 0; 
+     position: relative;
+   }
+
+   :host #add-wallet span{
+    margin-left: 96px;
+    cursor: pointer;
+  }
+
+  #walletList {
+
+  }
+
+  </style>
+
+
+  <div layout vertical center class="item-wallet {{mode_display}}">
+    <!-- <div id="walletList"> -->
+      <template repeat="{{wallet in walletList}}">
+        <item-wallet wallet="{{wallet}}" current_walletId="{{current_walletId}}" on-click="{{walletClick}}" class="{{ {selected: current_walletId == wallet._id} | tokenList }}" />
+      </template>
+    <!-- </div> -->
+    <template if="{{add_wallet}}">
+      <div id="add-wallet" on-click="{{addWalletAction}}">
+        <span class="text-caption">Add wallet</span>
+        <paper-ripple fit></paper-ripple>
+      </div>
+    </template>
+    <!-- <paper-shadow id="myShadow" z="5"/> -->
+  </div>
+</template>
+<script>
+Polymer('wallet-list', {
+  addWalletAction: function(){
+    this.fire('add-wallet');
+  },
+
+  getFirstWallet: function(){
+    if(this.walletList)
+    return this.walletList[0];
+    else return null;
+  },
+
+  walletClick: function(event, detail, sender){
+    var wallet = sender.templateInstance.model.wallet;
+    this.current_walletId = wallet._id;
+    this.wallet = wallet;
+  },
+
+});
+</script>
+
+</polymer-element>

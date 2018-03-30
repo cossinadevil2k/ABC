@@ -1,0 +1,64 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()">&times;</button>
+	<h4 class="modal-title title">Event: {{event.name}}</h4>
+</div>
+
+<div class="modal-body">
+	<form class="form-horizontal" action="#">
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Tiền tố (p)</label>
+			<div class="col-lg-10">
+				<input type="text" placeholder="Tiền tố của code (Tuỳ chọn)" class="form-control" ng-model="codeInfo.p">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Hậu tố (s)</label>
+			<div class="col-lg-10">
+				<input type="text" placeholder="Hậu tố của code (Tuỳ chọn)" class="form-control" ng-model="codeInfo.s">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Độ dài (l)</label>
+			<div class="col-lg-10">
+				<input type="text" placeholder="Độ dài của phần giữa code không tính tiền tố hậu tố" class="form-control" ng-model="codeInfo.l">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Số lượng (n)</label>
+			<div class="col-lg-10">
+				<input type="text" placeholder="Số lượng code phát hành" class="form-control" ng-model="codeInfo.n">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">No dash?</label>
+			<div class="col-lg-10">
+				<div class="col-lg-5">
+					<div class="radio">
+						<label>
+							<input type="radio" name="type-free" ng-model="hasNoDash" ng-value="true">
+							Yes
+						</label>
+					</div>
+				</div>
+				<div class="col-lg-5">
+					<div class="radio">
+						<label>
+							<input type="radio" name="type-free" ng-model="hasNoDash" ng-value="false">
+							No
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Result</label>
+			<div class="col-lg-10">
+				<textarea style="height: 150px" disabled class="form-control" ng-model="genCodeResult"></textarea>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div class='modal-footer'>
+	<button class="btn btn-grape" ng-click="generate()">Generate!</button>
+</div>

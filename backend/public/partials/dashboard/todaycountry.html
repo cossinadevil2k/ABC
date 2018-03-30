@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <h3>Register info</h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="form-group">
+            <label class="control-label col-lg-2">Select date</label>
+            <div class="col-lg-7">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="date" ng-disabled="isLoading" />
+            </div>
+            <div class="col-lg-3">
+                <button class="btn btn-success" ng-click="showStats()">Show stats</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <loading ng-if="isLoading"></loading>
+    </div>
+    <h4>Country:</h4>
+    <div class="row">
+        <div ng-if="noData">Data is empty</div>
+        <div ng-if="!noData" id="chart" class="chart"></div>
+    </div>
+    <h4>Utm:</h4>
+    <div class="row">
+        <div ng-if="noRefData">Utm data is empty</div>
+        <div ng-if="!noRefData" id="chartRef" class="chart">
+    </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <!--<div class="text-center">-->
+        <!--<div class="btn-group">-->
+            <!--<a class="btn btn-default" ng-click="nextDay(-1)" ng-disabled="isFirstPage || isLoading"><i class="icon-fast-backward"></i></a>-->
+            <!--<button class="btn btn-default disabled" onclick="return false">Day{{page}}</button>-->
+            <!--<a class="btn btn-default" ng-click="nextDay(+1)" ng-disabled="isLastPage || isLoading"><i class="icon-fast-forward"></i></a>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>

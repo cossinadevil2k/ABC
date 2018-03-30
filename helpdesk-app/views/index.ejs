@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Money Lover</title>
+
+    <meta name="keywords" content="money manager, money management, expense tracker, expense manager, budget, budgeting app, budget planner, save money, saving planner, personal finance, money management app, money manager app, budget app, best money management app, personal finance management, home budget, family budget, bill reminder, bills reminder, bill manager, bills manager, payment reminder"/>
+    <meta name="description" content="Money Lover helps more than 2.500.000 peole keep track of expenses and budgets to reach their saving goals. It's simplest way to manage personal finances."/>
+    <meta property="og:title" content="Money Lover: Money Manager, Budget & Saving Planner"/>
+    <meta property="og:url" content="https://helpdesk.moneylover.me/"/>
+    <meta property="og:image" content="https://moneylover.me/source/ml-cover.png"/>
+    <meta property="og:description" content="Personal finance with no stress, live the life you want"/>
+    <meta property="og:type" content="website"/>
+
+    <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+    <script type="text/javascript" src='js/bootstrap.min.js'></script>
+    <script type="text/javascript" src='js/general.js'></script>
+    <script type="text/javascript" src='js/forFAQPage.js'></script>
+
+    <link rel="stylesheet" href="css/style.css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="css/animation.css" media="screen" charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700,900&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" charset="utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,vietnamese'>
+
+</head>
+
+<body>
+<div class="wrapper">
+
+    <div class="bars">
+        <ul>
+            <li class="cor-1"></li>
+            <li class="cor-2"></li>
+            <li class="cor-3"></li>
+            <li class="cor-4"></li>
+            <li class="cor-5"></li>
+        </ul>
+    </div>
+
+    <div class="menu-top">
+        <div class="logo">
+            <a href="/">
+                <img src="/images/logo2.svg" alt="logo" style="height: 49px"/>
+            </a>
+        </div>
+        <div class="group-btn">
+            <a href="/" type="button" class='btn hvr-shutter-out-vertical' name="button">FAQ</a>
+
+            <a href="/all-issue" type="button" class='btn hvr-shutter-out-vertical' name="button">All Issues</a>
+
+            <a type='button', class='btn btn-s btn-s-home hidden', href='/send-issue'>
+                <i class="fa fa-paper-plane"></i>
+                Send Message
+            </a>
+
+
+        </div>
+        <div class="account dropdown">
+            <span style="text-transform: none; font-weight: lighter; font-size: 13px;">Hello </span>
+            <img src="/images/avatar.png" alt="avatar" class="dropdown-toggle" data-toggle="dropdown" role="button"/>
+            <ul class="dropdown-menu" role="menu" style="min-width: 120px;">
+                <li class="dropdown-header emailLogin"></li>
+                <li><a id='logout'>Logout</a></li>
+            </ul>
+        </div>
+    </div><!-- /menu-top -->
+
+            <div class="homepage" style="z-index: 555; position: relative; top: 105px">
+                <div class="top-image">
+                    <div class="crop-height flip">
+                        <img class="scale flip" src="images/top_image.jpg" alt="header image" />
+                    </div>
+                    <div class="content-on-image">
+                        <p>Our Support Center</p>
+                        <p>Get the most out of software. Contact us if you don't find what you're looking for</p>
+                        <a type='button', class='btn btn-lg btn-success', href='/send-issue'>
+                            <i class="fa fa-paper-plane"></i>
+                            Send Message
+                        </a>
+                        <!-- <div class="input-search">
+                            <input placeholder="Have a question? Ask or enter a search term here...">
+                            <img src="images/icon_search.png" alt="icon search" />
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <%- include _faq.ejs %>
+
+            <div class="footer">
+                <div class="social">
+                    <a href="https://moneylover.me" class='web hvr-underline-from-center' target="_blank">
+                        <i class="fa fa-home" style="font-size: 20px;"></i>
+                    </a>
+                    <a href="https://www.facebook.com/moneylover.me/?fref=ts" class='facebook hvr-underline-from-center' target="_blank">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="https://www.twitter.com/moneyloverapp" class='twitter hvr-underline-from-center' target="_blank">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="https://plus.google.com/+MoneyloverMe" class='google hvr-underline-from-center' target="_blank">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                </div>
+
+        <div class="bot-footer">
+            <p><a href="https://moneylover.me/" style="color: #2DB54A">Money Lover</a> © <span id='year'></span>. All Rights Reseverd</p>
+        </div>
+
+    </div> <!-- /footer -->
+</div> <!-- /wrapper -->
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-39420218-12', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

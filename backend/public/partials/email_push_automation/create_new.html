@@ -1,0 +1,124 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">New Automation</h4>
+</div>
+<div class="modal-body form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Choose Campaign</label>
+        <div class="col-lg-9">
+            <select class="form-control" name="campaign" id="campaign" ng-model="auto.campaign">
+                <option ng-repeat="item in campaigns" value="{{item._id}}" ng-selected="item._id == auto.campaign">{{item.name}}</option>
+            </select>
+        </div>
+        <button type="button" class="col-lg-1 btn btn-primary" ng-click="createCampaign()">
+            <i class="icon-expand-alt"></i> New
+        </button>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Choose Group</label>
+        <div class="col-lg-9">
+            <select class="form-control" name="group" id="group" ng-model="auto.group">
+                <option ng-repeat="item in groups" value="{{item._id}}" ng-selected="item._id == auto.group">{{item.name}}</option>
+            </select>
+        </div>
+        <button type="button" class="col-lg-1 btn btn-primary" ng-click="createGroup()">
+            <i class="icon-expand-alt"></i> New
+        </button>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Automation Type</label>
+        <div class="col-lg-10">
+            <select class="form-control" name="type" id="type" ng-model="auto.type">
+                <!-- <option value="1" ng-selected="true">Email</option>
+                <option value="2">Push Notification</option> -->
+                <option ng-repeat="type in automation_types" value="{{type.value}}" ng-selected="type.value == auto.type">{{type.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Mode</label>
+        <div class="col-lg-10">
+            <select class="form-control" name="mode" id="mode" ng-model="auto.mode" ng-init="auto.mode = 'daily'">
+                <option value="daily" ng-selected="true">Daily</option>
+                <option value="monthly">Monthly</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Set Time</label>
+        <div class="col-lg-10">
+            <!--<input type="time" class="form-control" placeholder="hh:mm" ng-model="auto.hourRun" tooltip="Thời gian chạy tự động">-->
+            <select ng-model="auto.hourRun" class="form-control">
+                <option ng-repeat="item in time" value="{{item}}" ng-selected="item == initTime">{{item}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" ng-show="auto.type == 2">
+        <label class="col-lg-2 control-label">Template</label>
+        <div class="col-lg-10">
+            <select name="push_notification" id="push_notification" ng-model="auto.push" class="form-control">
+                <!-- <option ng-selected="true">Choose Push Notification To Send</option> -->
+                <option ng-repeat="option in push_notification track by $index" value="{{option}}">{{option.title}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Search Query</label>
+        <div class="col-lg-10">
+            <select name="search_query" id="search_query" ng-model="auto.search_query" class="form-control">
+                <!-- <option ng-selected="isSearchQueryChoosen">Choose Search Query</option> -->
+                <option ng-repeat="option in search_queries track by $index" value="{{option._id}}" ng-selected="option.name == search_query.name">{{option.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" ng-show="auto.type == 1">
+        <label class="col-lg-2 control-label">Template</label>
+        <div class="col-lg-10">
+            <select name="template" id="template" ng-model="auto.template" class="form-control">
+                <!-- <option ng-selected="true">Choose Template</option> -->
+                <option ng-repeat="option in templates" value={{option}}>{{option.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Name:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="name" ng-model="auto.name" tooltip="Tên của sự kiện gửi email" placeholder="email automation 1">
+        </div>
+    </div>
+    <div class="form-group" ng-show="auto.type == 1">
+        <label class="col-lg-2 control-label">Subject:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="subject" ng-model="auto.subject" tooltip="Chủ đề của email" placeholder="Welcome to moneylover">
+        </div>
+    </div>
+    <div class="form-group" ng-show="auto.type == 1">
+        <label class="col-lg-2 control-label">From Name:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="fromName" ng-model="auto.fromName" tooltip="Người gửi email" placeholder="moneylover">
+        </div>
+    </div>
+    <div class="form-group" ng-show="auto.type == 1">
+        <label class="col-lg-2 control-label">From Email:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="fromEmail" ng-model="auto.fromEmail" tooltip="Email của người gửi" placeholder="admin@moneylover.me">
+        </div>
+    </div>
+    <div class="form-group" ng-show="auto.type == 1">
+        <label class="col-lg-2 control-label">Reply To:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="replyTo" ng-model="auto.replyTo" tooltip="Trả lời email từ ai" placeholder="admin@moneylover.me">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Tracking ID:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="tracking" ng-model="auto.tracking">
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" ng-click="save(auto)">
+        <i class="icon-save"></i> Save
+    </button>
+</div>

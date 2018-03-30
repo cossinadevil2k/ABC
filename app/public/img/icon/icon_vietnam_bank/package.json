@@ -1,0 +1,334 @@
+{
+  "name": "Banks in Vietnam",
+  "product_id": "icon_vietnam_bank",
+  "icons": {
+    "bank_01": [
+      "ACB",
+      "á châu",
+      "ngân hàng á châu",
+      "NH Á Châu",
+      "ngân hàng thương mại cổ phần á châu",
+      "ac bank",
+      "á châu bank",
+      "acb bank"
+    ],
+    "bank_02": [
+      "agribank",
+      "agri",
+      "ngân hàng nông nghiệp",
+      "ngân hàng nông nghiệp và phát triển nông thôn",
+      "NH nông nghiệp"
+    ],
+    "bank_03": [
+      "Sea bank",
+      "seabank VN",
+      "sea bank vietnam",
+      "sea bank việt nam",
+      "ngân hàng seabank",
+      "ngân hàng đông nam á",
+      "ngân hàng TMCP Đông Nam Á"
+    ],
+    "bank_04": [
+      "BIDV",
+      "NH BIDV",
+      "ngân hàng BIDV",
+      "ngân hàng TMCP đầu tư và phát triển việt nam",
+      "bidv bank"
+    ],
+    "bank_05": [
+      "Dong A",
+      "ngân hàng Đông Á",
+      "NH DA",
+      "NH Đông Á",
+      "Đông A bank",
+      "DAB",
+      "ngân hàng TMCP Đông Á"
+    ],
+    "bank_06": [
+      "Exim",
+      "exim bank",
+      "eximbank",
+      "exim bank vietnam",
+      "exim bank việt nam",
+      "ngân hàng xuất nhập khẩu việt nam"
+    ],
+    "bank_07": [
+      "HSBC",
+      "HSBC bank",
+      "ngân hàng HSBC",
+      "NH HSBC",
+      "HSBC Vietnam",
+      "HSBC Việt Nam"
+    ],
+    "bank_08": [
+      "MB",
+      "ngân hàng quân đội",
+      "NH quân đội",
+      "MB bank",
+      "ngân hàng MB",
+      "NH MB",
+      "ngân hàng TMCP quân đội",
+      "military bank"
+    ],
+    "bank_09": [
+      "maritime",
+      "maritime bank",
+      "mari",
+      "ngân hàng hàng hải",
+      "NH hàng hải",
+      "ngân hàng TMCP hàng hải Việt Nam"
+    ],
+    "bank_10": [
+      "VIB",
+      "ngân hàng VIB",
+      "NH VIB",
+      "ngân hàng quốc tế Việt Nam",
+      "ngân hàng quốc tế",
+      "NH quốc tế"
+    ],
+    "bank_11": [
+      "PV",
+      "PVB",
+      "PVbank",
+      "ngân hàng TMCP đại chúng Việt Nam",
+      "PVcombank",
+      "PV com bank VN"
+    ],
+    "bank_12": [
+      "Sacombank",
+      "Sacom",
+      "sacom bank",
+      "ngân hàng sacom",
+      "ngân hàng sacombank",
+      "NH sacombank",
+      "NH Sacom",
+      "ngân hàng sài gòn thương tín"
+    ],
+    "bank_13": [
+      "Techcombank",
+      "tech",
+      "techcom",
+      "ngân hàng kỹ thương việt nam",
+      "ngân hàng Techcombank",
+      "NH Techcombank",
+      "NH Techcom",
+      "ngân hàng Techcom",
+      "ngân hàng TMCP kỹ thương Việt Nam",
+      "TCB"
+    ],
+    "bank_14": [
+      "TP bank",
+      "TP",
+      "Tpbank",
+      "Tienphong",
+      "Tienphong bank",
+      "ngân hàng tien phong",
+      "NH Tien phong",
+      "tpb",
+      ""
+    ],
+    "bank_15": [
+      "Vietcombank",
+      "Vietcom",
+      "VCB",
+      "ngân hàng vietcom",
+      "NH Vietcom",
+      "ngân hàng TMCP ngoại thương Việt Nam",
+      "ngân hàng ngoại thương việt nam"
+    ],
+    "bank_16": [
+      "Viettinbank",
+      "Viettin",
+      "ngân hàng Viettin",
+      "NH Viettin",
+      "ngân hàng công thương",
+      "NH công thương",
+      "ngân hàng TMCP công thương việt nam"
+    ],
+    "bank_18": [
+      "HD",
+      "HD bank",
+      "ngân hàng TMCP Phát triển thành phố Hồ Chí Minh",
+      "ngân hàng HD",
+      "NH HD"
+    ],
+    "bank_19": [
+      "Citi",
+      "citibank",
+      "citibank",
+      "ngân hàng citibank",
+      "NH Citibank",
+      "Citibank Vietnam",
+      "Citibank Việt Nam",
+      "Citibank VN"
+    ],
+    "bank_20": [
+      "ANZ",
+      "ANZ bank",
+      "ngân hàng ANZ",
+      "NH ANZ",
+      "ANZ Vietnam",
+      "ANZ Việt NAM",
+      "ANZ bank Vietnam",
+      "ANZ VN",
+      "ANZ bank VN"
+    ],
+    "bank_21": [
+      "VP",
+      "VP bank",
+      "ngân hàng VP",
+      "NH VP",
+      "ngân hàng Việt nam thịnh vượng",
+      "NH Việt Nam thịnh vượng"
+    ],
+    "bank_22": [
+      "OCB",
+      "ngân hàng đông phương",
+      "ocb bank",
+      "ocb bank vietnam",
+      "ocb vn",
+      "ocb bank vn",
+      "ngân hàng phương đông",
+      "ngân hàng TMCP phương đông việt nam",
+      "ngân hàng phương đông"
+    ],
+    "bank_23": [
+      "Standard Chartered",
+      "Standard Chartered bank",
+      "ngân hàng Standard Chartered",
+      "NH Standard Chartered",
+      "SC VN",
+      "SC",
+      "SC Vietnam"
+    ],
+    "bank_24": [
+      "Hong Leong",
+      "Hong Leong bank",
+      "ngân hàng Hong Leong",
+      "NH Hong Leong",
+      "Hong Leong Vietnam",
+      "Hong Leong Việt Nam",
+      "Hong Leong bank Vietnam",
+      "hong leong VN"
+    ],
+    "bank_25": [
+      "scb",
+      "scb bank",
+      "scb vn",
+      "scb bank vn",
+      "ngân hàng sài gòn",
+      "ngân hàng TMCP sài gòn"
+    ],
+    "bank_26": [
+      "Liên Việt",
+      "Liên Việt post bank",
+      "ngân hàng liên việt",
+      "ngân hàng liên việt post bank",
+      "ngân hàng bưu điện liên việt",
+      "NH liên việt",
+      "NH liên việt post bank"
+    ],
+    "bank_27": [
+      "việt á",
+      "VAB VN",
+      "ngân hàng nam á",
+      "nam á bank",
+      "nam a bank vn",
+      "NH nam á",
+      "VAB"
+    ],
+    "bank_28": [
+      "PG bank",
+      "PG bank VN",
+      "PG bank VN",
+      "PGB",
+      "ngân hàng PG  bank",
+      "ngân hàng xăng dầu",
+      "ngân hàng TMCP xăng dầu petrolimex",
+      "ngân hàng petrolimex",
+      "petrolimex bank"
+    ],
+    "bank_29": [
+      "Indovina",
+      "indovina bank",
+      "indovina VN",
+      "ngân hàng indovina",
+      "ngân hàng",
+      "IVB",
+      "IVB bank",
+      "NH TNHH indovina"
+    ],
+    "bank_30": [
+      "NCB",
+      "national citizen bank",
+      "NCB bank",
+      "ngân hàng quốc dân",
+      "NCB VN",
+      "NCB Việt Nam",
+      "navi bank",
+      "navi"
+    ],
+    "bank_31": [
+      "VRB",
+      "ngân hàng Việt Nga",
+      "Việt Nga bank",
+      "NH Việt Nga",
+      "VRB bank"
+    ],
+    "bank_32": [
+      "Nam á",
+      "NAB VN",
+      "ngân hàng nam á",
+      "nam á bank",
+      "nam a bank vn",
+      "NH nam á",
+      "NAB"
+    ],
+    "bank_33": [
+      "VID bank",
+      "VID",
+      "ngân hàng liên doanh VID",
+      "VID VN",
+      "VID bank VN"
+    ],
+    "bank_34": [
+      "BAB",
+      "Bắc á bank",
+      "ngân hàng bắc á",
+      "bắc á VN",
+      "bắc á bank VN",
+      "NH bắc á"
+    ],
+    "bank_35": [
+      "Vietcapital bank",
+      "vietcapital",
+      "ngân hàng bản việt",
+      "NH Bản việt",
+      "NH TMCP bản việt"
+    ],
+    "bank_36": [
+      "CB bank",
+      "CB",
+      "ngân hàng xây dựng",
+      "ngân hàng xây dựng việt nam",
+      "CB bank vn",
+      "CB VN",
+      "CB bank Việt Nam"
+    ],
+    "bank_37": [
+      "SHB",
+      "SHB VN",
+      "SHB bank",
+      "SHB việt nam",
+      "ngân hàng sài gòn hà nội"
+    ]
+  },
+  "tags": [
+    "ngân hàng",
+    "ngân hàng Việt Nam",
+    "NH",
+    "banks",
+    "bank",
+    "ngân hàng tại Việt Nam"
+  ]
+}

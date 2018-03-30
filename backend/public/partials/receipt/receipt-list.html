@@ -1,0 +1,169 @@
+<div class="row">
+    <div class="col-lg-12 col-xs-12">
+        <div class="helpdesk-image-menu-action row">
+            <div class="col-lg-2 col-xs-12">
+                <div class="title">
+                    <div>Global</div>
+                </div>
+            </div>
+
+            <div class="filter col-lg-4 col-xs-12">
+                <button
+                        type="button"
+                        class="btn btn-lg"
+                        ng-click="filterSelected(1, false)"
+                        ng-class="{'btn-twitter': filter_selected === 1 && !isAdmin}" >All
+                </button>
+                <button
+                        type="button"
+                        class="btn btn-lg"
+                        ng-click="filterSelected(2, false)"
+                        ng-class="{'btn-twitter': filter_selected === 2 && !isAdmin}" >New
+                </button>
+                <button
+                        type="button"
+                        class="btn btn-lg"
+                        ng-click="filterSelected(3, false)"
+                        ng-class="{'btn-twitter': filter_selected === 3 && !isAdmin}" >Open
+                </button>
+                <button
+                        type="button"
+                        class="btn btn-lg"
+                        ng-click="filterSelected(4, false)"
+                        ng-class="{'btn-twitter': filter_selected === 4 && !isAdmin}" >Draft
+                </button>
+                <button
+                        type="button"
+                        class="btn btn-lg"
+                        ng-click="filterSelected(5, false)"
+                        ng-class="{'btn-twitter': filter_selected === 5 && !isAdmin}" >Rejected
+                </button>
+                <button
+                        type="button"
+                        class="btn btn-lg"
+                        ng-click="filterSelected(6, false)"
+                        ng-class="{'btn-twitter': filter_selected === 6 && !isAdmin}" >Done
+                </button>
+            </div>
+
+            <div class="col-lg-2 col-xs-12">
+                <div class="title">
+                    <div>Mine</div>
+                </div>
+            </div>
+
+            <div class="filter col-lg-4 col-xs-12">
+                <button
+                        type="button"
+                        class="btn btn-lg"
+                        ng-click="filterSelected(1, true)"
+                        ng-class="{'btn-twitter': filter_selected === 1 && isAdmin}" >All
+                </button>
+                <button
+                        type="button"
+                        class="btn btn-lg"
+                        ng-click="filterSelected(3, true)"
+                        ng-class="{'btn-twitter': filter_selected === 3 && isAdmin}" >Open
+                </button>
+                <button
+                        type="button"
+                        class="btn btn-lg"
+                        ng-click="filterSelected(4, true)"
+                        ng-class="{'btn-twitter': filter_selected === 4 && isAdmin}" >Draft
+                </button>
+                <button
+                        type="button"
+                        class="btn btn-lg"
+                        ng-click="filterSelected(5, true)"
+                        ng-class="{'btn-twitter': filter_selected === 5 && isAdmin}" >Rejected
+                </button>
+                <button
+                        type="button"
+                        class="btn btn-lg"
+                        ng-click="filterSelected(6, true)"
+                        ng-class="{'btn-twitter': filter_selected === 6 && isAdmin}" >Done
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="module no-padding">
+            <div class="module-header">
+                <div class="input-group">
+                    <span class="input-group-btn" ng-show="searchResult">
+                        <button class="btn btn-orange" ng-click="exitSearch();">
+                            <i class="icon-mail-reply"></i> Exit search
+                        </button>
+                    </span>
+
+                    <input
+                            type="text"
+                            class="form-control"
+                            ng-model="searchEmail"
+                            ng-keydown="checkEnterSearch($event)"
+                            placeholder="Search by user email here">
+                    <span class="input-group-btn">
+                        <button class="btn btn-grape" type="button" ng-click="search()">
+                            <i class="icon-search"></i> SEARCH
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="module-content table-responsive">
+                <loading ng-if="isLoading"></loading>
+                <div class="module-content no-padding">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>User</th>
+                                <th>Admins</th>
+                                <th>
+                                    <a href="" style="color: white" ng-click="changeSort()">Created at 
+                                        <i ng-class="{'icon-sort-up': sort === 'asc', 'icon-sort-down': 'desc'}"></i>
+                                    </a>
+                                </th>
+                                <th>Last update</th>
+                                <th class="text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                            <tr ng-if="noResult">
+                                <td></td>
+                                <td>No Result Found</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr ng-repeat="(key, receipt) in listReceipt">
+                                <td><span ng-class="{rDraft: receipt.status === 'draft', rDone: receipt.status === 'done', rOpen: receipt.status === 'open', rReject: receipt.status === 'rejected'}">{{receipt.status}}</span></td>
+                                <td><a href="/receipt/details/{{receipt._id}}" target="_blank">{{receipt.user.email}}</a></td>
+                                <td>{{receipt.admin.username}}</td>
+                                <td>{{receipt.created_at | checkDateTime}}</td>
+                                <td>{{receipt.updated_at | checkDateTime}}</td>
+                                <td class="text-right">
+                                    <a class="btn btn-info" type="button" href="/receipt/details/{{receipt._id}}" target="_blank">
+                                        <i class="icon-pencil"></i> View/Edit
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="breakPage">
+                                <td colspan="12" class="text-center">
+                                    <div class="btn-group">
+                                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage"><i class="icon-fast-backward"></i></a>
+                                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage"><i class="icon-fast-forward"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

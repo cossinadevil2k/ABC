@@ -1,0 +1,40 @@
+<loading ng-if="isLoading"></loading>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Platform</th>
+			<th>Public key</th>
+			<th>Secret</th>
+			<th class="text-right">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="animate-repeat" ng-repeat="(key, ck) in listCK">
+			<td>{{ ck.clientName }}</td>
+			<td>
+				<span ng-if="!ck.platform">--------</span>
+				<span ng-if="ck.platform">
+					<img src="/images/android_96.png" class="icon-user-platform" alt="android_logo" ng-if="ck.platform === 'Android'"/>
+					<img src="/images/ios_96.png" class="icon-user-platform" alt="apple_logo" ng-if="ck.platform === 'iOS'"/>
+					<img src="/images/winphone_96.png" class="icon-user-platform" alt="windows_logo" ng-if="ck.platform === 'Windows Phone'"/>
+					<img src="/images/windows_96.png" class="icon-user-platform" alt="windows_logo" ng-if="ck.platform === 'Windows'"/>
+					<img src="/images/osx_96.png" class="icon-user-platform" alt="windows_logo" ng-if="ck.platform === 'Mac OS X'"/>
+					<img src="/images/web_96.png" class="icon-user-platform" alt="web_logo" ng-if="ck.platform === 'Web'"/>
+				</span>
+			</td>
+			<td>{{ ck.client }}</td>
+			<td>
+				{{ (ck.showSecret)? ck.secret : '********************' }}
+			</td>
+			<td class="text-right">
+				<button class="btn btn-xs btn-info" ng-if="!ck.showSecret" ng-click="showSecret(ck)" tooltip="Show secret"><i class="icon-eye-open"></i></button>
+				<button class="btn btn-xs btn-orange" ng-if="ck.showSecret" ng-click="hideSecret(ck)" tooltip="Hide secret"><i class="icon-eye-close"></i></button>
+				<button class="btn btn-xs btn-grape" ng-if="!ck.isDisabled" ng-click="disable(ck)" tooltip="Disable"><i class="icon-lock"></i></button>
+				<button class="btn btn-xs btn-info" ng-if="ck.isDisabled" ng-click="enable(ck)" tooltip="Enable"><i class="icon-unlock"></i></button>
+				<button class="btn btn-xs btn-facebook" tooltip="Regenerate secret" ng-click="regenSecret(ck, key)"><i class="icon-refresh"></i></button>
+				<button class="btn btn-xs btn-twitter" tooltip="Edit info" ng-click="editInfo(ck)"><i class="icon-edit"></i></button>
+			</td>
+		</tr>
+	</tbody>
+</table>

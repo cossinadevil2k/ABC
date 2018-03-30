@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">New Campaign</h4>
+</div>
+<div class="modal-body form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Campaign Name:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="name" ng-model="campaign.name" placeholder="Campaign name"
+                autofocus>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Automation Type</label>
+        <div class="col-lg-10">
+            <select class="form-control" name="type" id="type" ng-model="campaign.type" ng-init="campaign.type = 1">
+                <option value="1" ng-selected="true">Email</option>
+                <option value="2">Push Notification</option>
+            </select>
+        </div>
+    </div>
+   
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" ng-click="$event.preventDefault(); campaignFeild = campaign ; create(campaign)">
+        <i class="icon-save"></i> Save
+    </button>
+</div>

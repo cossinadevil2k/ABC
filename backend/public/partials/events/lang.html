@@ -1,0 +1,63 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()">&times;</button>
+	<h4 class="modal-title title">Thêm ngôn ngữ</h4>
+</div>
+<div class="modal-body">
+	<form class="form-horizontal" action="#">
+		<div class="form-group">
+			<label class="col-lg-2 control-label" for="input1">Hỗ trợ</label>
+			<div class="col-lg-10">
+				<div class="ml-checkbox checkbox" ng-repeat="language in listLanguage">
+					<label>
+						<input type="checkbox" ng-checked="listLangActive.indexOf(language.key) > -1" ng-click="toggleSelection(language)">{{ language.name }}
+					</label>
+					<span class="view-lang" ng-click="viewLang(language)" title="Xem/Sửa ngôn ngữ" ng-if="listLangActive.indexOf(language.key) > -1"><i class="icon-eye-open"></i></span>
+				</div>
+			</div>
+		</div>
+		<div ng-show="isViewLang" class="ml-autoheight">
+			<br />
+			<div class="form-group">
+				<label class="col-lg-2 control-label" for="input1">Ngôn ngữ: </label>
+				<div class="col-lg-10">
+					<input type="text" value="{{ viewLanguage }}" class="form-control" disabled>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label" for="input1">Title</label>
+				<div class="col-lg-10">
+					<input id="input1" type="text" placeholder="Title..." class="form-control" ng-model="langContent.title">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label" for="input2">Description</label>
+				<div class="col-lg-10">
+					<textarea id="input2" rows="3" class="form-control" ng-model="langContent.description"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label" for="input7">Thumbnail</label>
+				<div class="col-lg-10">
+					<input type="text" placeholder="URL image thumbnail..." id="input7" class="form-control" ng-model="langContent.link_icon">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label" for="input3">Link</label>
+				<div class="col-lg-10">
+					<input type="text" placeholder="Enter URL..." id="input3" class="form-control" ng-model="langContent.link">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label" for="input6">Twitter</label>
+				<div class="col-lg-10">
+					<textarea id="input6" rows="3" class="form-control" ng-model="langContent.twitter"></textarea>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-primary" ng-click="generateLang()">Generate</button>
+	<button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+	<button type="button" class="btn btn-primary" ng-click="save(langContent)" ng-disabled="!langContent.title">Save</button>
+</div>

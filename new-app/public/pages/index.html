@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Money Lover</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <script src="../components/platform/platform.js"></script>
+
+  <link rel="import" href="../components/app-router/app-router.html">
+  <link href="/stylesheets/main.css" rel="stylesheet">
+</head>
+
+<body fullbleed unresolved>
+<app-router trailingSlash="ignore">
+  <app-route path="/reset-password" import="/pages/reset-password-page.html"></app-route>
+  <app-route path="/forgot-password" import="/pages/forgot-password-page.html"></app-route>
+  <app-route path="/login" import="/pages/user-login-page.html"></app-route>
+  <app-route path="/register" import="/pages/user-register-page.html"></app-route>
+  <app-route path="/wallet/" import="/pages/main-page.html"></app-route>
+  <app-route path="/wallet/:walletId" import="/pages/main-page.html"></app-route>
+  <app-route path="*" import="/pages/not-found-page.html"></app-route>
+</app-router>
+
+
+<script>
+  var urlRoot = 'https://static.moneylover.me';
+</script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()">&times;</button>
+	<h4 class="modal-title title">Email sender</h4>
+</div>
+<div class="modal-body">
+    <div class="text-center" ng-if="isLoading">
+        <img src="/images/loading-pacman.gif" /><br />
+        Loading
+    </div>
+	<form class="form-horizontal" action="#">
+        <div class="form-group row">
+            <label class="col-lg-3 col-xs-4 col-sm-3 col-md-3 control-label hidden-xs">Danh sách email nhận</label>
+            <label class="col-lg-3 col-xs-4 col-sm-3 col-md-3 control-label hidden-sm hidden-md hidden-lg">Email nhận:</label>
+            <div class="col-lg-9 col-xs-8 col-sm-9 col-md-9">
+                <input type="radio" ng-model="mode" value="manual" /> Manual <br />
+                <input type="radio" ng-model="mode" value="file" /> CSV file <br />
+                <input type="radio" ng-model="mode" value="search_query" /> Search query <br />
+            </div>
+        </div>
+		<div class="form-group row" ng-hide="mode !== 'manual'">
+			<label class="col-lg-3 col-xs-4 col-sm-3 col-md-3 control-label" for="input1">Gửi tới</label>
+			<div class="col-lg-9 col-xs-8 col-sm-9 col-md-9">
+				<input type="text" id="input1" placeholder="email1@abc.com, email2@xyz.net..." class="form-control" ng-model="toList">
+			</div>
+		</div>
+        <div class="form-group row" ng-hide="mode !== 'file'">
+            <label class="col-lg-3 col-xs-4 col-sm-3 col-md-3 control-label">Select file:</label>
+            <div class="col-lg-9 col-xs-8 col-sm-9 col-md-9">
+                <input type="file" ng-model="mailList" id="mailList" class="form-control" accept="text/csv" />
+            </div>
+        </div>
+        <!--<div class="form-group row" ng-hide="mode !== 'optional'">-->
+            <!--<label class="col-lg-3 col-xs-4 col-sm-3 col-md-3 control-label">Các đối tượng user</label>-->
+            <!--<div class="col-lg-9 col-xs-8 col-sm-9 col-md-9">-->
+                <!--<p>Nếu tick nhiều option thì danh sách user sẽ là những user thỏa mãn MỘT TRONG CÁC ĐIỀU KIỆN đã chọn, KHÔNG PHẢI những user thỏa mãn TẤT CẢ CÁC ĐIỀU KIỆN đã chọn</p>-->
+                <!--<input type="checkbox" ng-model="userOption.subscribed" /> Subscribed<br />-->
+                <!--<input type="checkbox" ng-model="userOption.free" /> Free Account <br />-->
+                <!--<input type="checkbox" ng-model="userOption.cloud" /> Cloud enabled <br />-->
+                <!--<input type="checkbox" ng-model="userOption.noIcon" /> Chưa từng mua icon <br />-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="form-group" ng-hide="mode !== 'search_query'">
+            <label class="col-lg-3 col-xs-4 col-sm-3 col-md-3 control-label">Select query:</label>
+            <div class="col-lg-9 col-xs-8 col-sm-9 col-md-9">
+                <select name="selectSearchQuery" ng-model="searchQuery" class="form-control">
+                    <option ng-repeat="query in queryList" value="{{query.query}}">{{query.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-lg-3 col-xs-4 col-sm-3 col-md-3 control-label" for="input3">Name</label>
+            <div class="col-lg-9 col-xs-8 col-sm-9 col-md-9">
+                <input type="text" id="input3" class="form-control" ng-model="mailInfo.name" readonly="">
+            </div>
+        </div>
+		<div class="form-group row">
+			<label class="col-lg-3 col-xs-4 col-sm-3 col-md-3 control-label" for="input2">Subject</label>
+			<div class="col-lg-9 col-xs-8 col-sm-9 col-md-9">
+				<input type="text" id="input2" class="form-control" ng-model="mailInfo.subject" readonly="">
+			</div>
+		</div>
+        <div class="form-group row" ng-if="mailInfo.metadata">
+            <label class="control-label col-lg-3 col-xs-4 col-sm-3 col-md-3">Last Send:</label>
+            <div class="col-lg-9 col-xs-8 col-sm-9 col-md-9">
+                <input type="text" class="form-control" ng-model="mailInfo.metadata" readonly />
+            </div>
+        </div>
+	</form>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+	<button type="button" class="btn btn-primary" ng-click="send(mailInfo, toList, mode, searchQuery)"><i class="icon-plane"></i> Send now</button>
+</div>

@@ -1,0 +1,147 @@
+[
+  {
+    "id": "en",
+    "name": "English (United States)",
+    "flag": "img_flag_us"
+  },
+  {
+    "id": "vi",
+    "name": "Tiếng Việt",
+    "flag": "img_flag_vn"
+  },
+  {
+    "id": "th",
+    "name": "ไทย",
+    "flag": "img_flag_th"
+  },
+  {
+    "id": "cs",
+    "name": "Čeština",
+    "flag": "img_flag_cs"
+  },
+  {
+    "id": "de",
+    "name": "Deutsch",
+    "flag": "img_flag_de"
+  },
+  {
+    "id": "es",
+    "name": "Español (España)",
+    "flag": "img_flag_es"
+  },
+  {
+    "id": "ca",
+    "name": "Català",
+    "flag": "img_flag_ca"
+  },
+  {
+    "id": "fr",
+    "name": "Français",
+    "flag": "img_flag_fr"
+  },
+  {
+    "id": "in",
+    "name": "Indonesia",
+    "flag": "img_flag_in"
+  },
+  {
+    "id": "it",
+    "name": "Italiano",
+    "flag": "img_flag_it"
+  },
+  {
+    "id": "ja",
+    "name": "Japanese",
+    "flag": "img_flag_ja"
+  },
+  {
+    "id": "km",
+    "name": "Khmer",
+    "flag": "img_flag_km"
+  },
+  {
+    "id": "nl",
+    "name": "Nederlands",
+    "flag": "img_flag_nl"
+  },
+  {
+    "id": "br",
+    "name": "Português (Brasil)",
+    "flag": "img_flag_br"
+  },
+  {
+    "id": "pt",
+    "name": "Português (Portugal)",
+    "flag": "img_flag_pt"
+  },
+  {
+    "id": "sr",
+    "name": "Serbian (Latin)",
+    "flag": "img_flag_sr"
+  },
+  {
+    "id": "sk",
+    "name": "Slovenčina",
+    "flag": "img_flag_sk"
+  },
+  {
+    "id": "sv",
+    "name": "Svenska",
+    "flag": "img_flag_se"
+  },
+  {
+    "id": "tr",
+    "name": "Türkçe",
+    "flag": "img_flag_tr"
+  },
+  {
+    "id": "el",
+    "name": "Ελληνικά",
+    "flag": "img_flag_el"
+  },
+  {
+    "id": "ru",
+    "name": "Русский",
+    "flag": "img_flag_ru"
+  },
+  {
+    "id": "uk",
+    "name": "Українська",
+    "flag": "img_flag_uk"
+  },
+  {
+    "id": "bg",
+    "name": "български език",
+    "flag": "ic_currency_bgn"
+  },
+  {
+    "id": "ko",
+    "name": "한국어",
+    "flag": "img_flag_ko"
+  },
+  {
+    "id": "hu",
+    "name": "Magyar",
+    "flag": "ic_currency_huf"
+  },
+  {
+    "id": "pl",
+    "name": "Polszczyzna",
+    "flag": "ic_currency_pln"
+  },
+  {
+    "id": "ro",
+    "name": "Română",
+    "flag": "ic_currency_ron"
+  },
+  {
+    "id": "zh",
+    "name": "中文(简体)",
+    "flag": "ic_currency_cny"
+  },
+  {
+    "id": "zw",
+    "name": "繁體中文",
+    "flag": "ic_currency_twd"
+  }
+]

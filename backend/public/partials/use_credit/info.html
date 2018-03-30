@@ -1,0 +1,56 @@
+<div class="modal-header">
+    <h4>Credit Product Info</h4>
+</div>
+<div class="modal-body">
+    <loading ng-if="isLoading"></loading>
+    <div class="form form-horizontal">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Name</label>
+            <div class="col-lg-10">
+                <input type="text" ng-model="item.name" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Product Id</label>
+            <div class="col-lg-10">
+                <input type="text" ng-model="item.product_id" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Alias</label>
+            <div class="col-lg-10">
+                <input type="text" ng-model="item.alias" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Type of credit</label>
+            <div class="col-lg-10">
+                <select class="form-control" ng-model="item.metadata.credit_type">
+                    <option value="receipt">Receipt</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Amount of credit</label>
+            <div class="col-lg-10">
+                <input type="number" step="1" ng-model="item.metadata.credit" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Price VND</label>
+            <div class="col-lg-10">
+                <input type="number" step="any" ng-model="item.price_vn" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Price USD</label>
+            <div class="col-lg-10">
+                <input type="number" step="any" ng-model="item.price_gl" class="form-control">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-success" ng-click="save()">Save</button>
+</div>

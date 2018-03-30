@@ -1,0 +1,40 @@
+<div class="module">
+    <div class="module-header">
+        <h4>Mac Beta Manager</h4>
+    </div>
+    <div class="module-content">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-lg-2">Status:</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" ng-model="macInfo.status" ng-disabled="!editMode"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-2">Current Version:</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" ng-model="macInfo.version" ng-disabled="!editMode"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-2">Code:</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" ng-model="macInfo.code" value="696" ng-disabled="!editMode"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-2">Link:</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" ng-model="macInfo.link" value="http://thiendia.com" ng-disabled="!editMode"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label"></label>
+                <div class="col-lg-10">
+                    <button class="btn btn-facebook" ng-click="editOn()">Edit</button>
+                    <button class="btn btn-success" ng-click="save(macInfo)">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,467 @@
+[
+  {
+    "name": "food_beverage",
+    "title": "cate_food",
+    "icon": "ic_category_foodndrink",
+    "type": "expense",
+    "metadata": "foodndrink0",
+
+    "subcategories": [
+      {
+        "name": "restaurants",
+        "title": "cate_restaurants",
+        "icon": "icon_133",
+        "type": "expense",
+        "metadata": "restaurants0"
+      },
+
+      {
+        "name": "cafe",
+        "title": "cate_cafe",
+        "icon": "icon_15",
+        "type": "expense",
+        "metadata": "cafe0"
+      }
+    ]
+  },
+
+  {
+    "name": "bills_utilities",
+    "title": "cate_utilities",
+    "icon": "icon_135",
+    "type": "expense",
+    "metadata": "utilities0",
+
+    "subcategories": [
+      {
+        "name": "phone",
+        "title": "cate_phone",
+        "icon": "icon_134",
+        "type": "expense",
+        "metadata": "phone0"
+      },
+
+      {
+        "name": "water",
+        "title": "cate_water",
+        "icon": "icon_124",
+        "type": "expense",
+        "metadata": "water0"
+      },
+
+      {
+        "name": "electricity",
+        "title": "cate_electricity",
+        "icon": "icon_125",
+        "type": "expense",
+        "metadata": "electricity0"
+      },
+
+      {
+        "name": "gas",
+        "title": "cate_gas",
+        "icon": "icon_139",
+        "type": "expense",
+        "metadata": "gas0"
+      },
+
+      {
+        "name": "television",
+        "title": "cate_television",
+        "icon": "icon_84",
+        "type": "expense",
+        "metadata": "television0"
+      },
+
+      {
+        "name": "internet",
+        "title": "cate_internet",
+        "icon": "icon_126",
+        "type": "expense",
+        "metadata": "internet0"
+      },
+
+      {
+        "name": "rentals",
+        "title": "cate_rentals",
+        "icon": "icon_136",
+        "type": "expense",
+        "metadata": "rentals0"
+      }
+    ]
+  },
+
+  {
+    "name": "transportation",
+    "title": "cate_transport",
+    "icon": "ic_category_transport",
+    "type": "expense",
+    "metadata": "transport0",
+
+    "subcategories": [
+      {
+        "name": "taxi",
+        "title": "cate_taxi",
+        "icon": "icon_127",
+        "type": "expense",
+        "metadata": "taxi0"
+      },
+
+      {
+        "name": "parking_fees",
+        "title": "cate_parking_fees",
+        "icon": "icon_128",
+        "type": "expense",
+        "metadata": "parking0"
+      },
+
+      {
+        "name": "petrol",
+        "title": "cate_petrol",
+        "icon": "icon_129",
+        "type": "expense",
+        "metadata": "petrol0"
+      },
+
+      {
+        "name": "maintenance",
+        "title": "cate_maintenance",
+        "icon": "icon_130",
+        "type": "expense",
+        "metadata": "maintenance0"
+      }
+    ]
+  },
+
+  {
+    "name": "shopping",
+    "title": "cate_shopping",
+    "icon": "ic_category_shopping",
+    "type": "expense",
+    "metadata": "shopping0",
+
+    "subcategories": [
+      {
+        "name": "clothing",
+        "title": "cate_clothing",
+        "icon": "icon_17",
+        "type": "expense",
+        "metadata": "clothing0"
+      },
+
+      {
+        "name": "footwear",
+        "title": "cate_footwear",
+        "icon": "icon_131",
+        "type": "expense",
+        "metadata": "footwear0"
+      },
+
+      {
+        "name": "accessories",
+        "title": "cate_accessories",
+        "icon": "icon_63",
+        "type": "expense",
+        "metadata": "accessories0"
+      },
+
+      {
+        "name": "electronics",
+        "title": "cate_electronics",
+        "icon": "icon_9",
+        "type": "expense",
+        "metadata": "electronics0"
+      }
+    ]
+  },
+
+  {
+    "name": "friend",
+    "title": "cate_friend",
+    "icon": "ic_category_friendnlover",
+    "type": "expense",
+    "metadata": "friendnlover0"
+  },
+
+  {
+    "name": "entertainment",
+    "title": "cate_entertainment",
+    "icon": "ic_category_entertainment",
+    "type": "expense",
+    "metadata": "entertainment0",
+
+    "subcategories": [
+      {
+        "name": "movies",
+        "title": "cate_movies",
+        "icon": "icon_6",
+        "type": "expense",
+        "metadata": "movies0"
+      },
+
+      {
+        "name": "games",
+        "title": "cate_games",
+        "icon": "icon_33",
+        "type": "expense",
+        "metadata": "games0"
+      }
+    ]
+  },
+
+  {
+    "name": "travel",
+    "title": "cate_travel",
+    "icon": "ic_category_travel",
+    "type": "expense",
+    "metadata": "travel0"
+  },
+
+  {
+    "name": "health_fitness",
+    "title": "cate_medical",
+    "icon": "ic_category_medical",
+    "type": "expense",
+    "metadata": "medical0",
+
+    "subcategories": [
+      {
+        "name": "sports",
+        "title": "cate_sports",
+        "icon": "icon_70",
+        "type": "expense",
+        "metadata": "sports0"
+      },
+
+      {
+        "name": "doctor",
+        "title": "cate_doctor",
+        "icon": "ic_category_doctor",
+        "type": "expense",
+        "metadata": "doctor0"
+      },
+
+      {
+        "name": "pharmacy",
+        "title": "cate_pharmacy",
+        "icon": "ic_category_pharmacy",
+        "type": "expense",
+        "metadata": "pharmacy0"
+      },
+
+      {
+        "name": "personal_care",
+        "title": "cate_personal_care",
+        "icon": "icon_132",
+        "type": "expense",
+        "metadata": "personal_care0"
+      }
+    ]
+  },
+
+  {
+    "name": "gifts_donations",
+    "title": "cate_donation",
+    "icon": "ic_category_donations",
+    "type": "expense",
+    "metadata": "gifts_donations0",
+
+    "subcategories": [
+      {
+        "name": "marriage",
+        "title": "cate_marriage",
+        "icon": "icon_10",
+        "type": "expense",
+        "metadata": "marriage0"
+      },
+
+      {
+        "name": "funeral",
+        "title": "cate_funeral",
+        "icon": "icon_11",
+        "type": "expense",
+        "metadata": "funeral0"
+      },
+
+      {
+        "name": "charity",
+        "title": "cate_charity",
+        "icon": "ic_category_give",
+        "type": "expense",
+        "metadata": "charity0"
+      }
+    ]
+  },
+
+  {
+    "name": "housing_family",
+    "title": "cate_family",
+    "icon": "ic_category_family",
+    "type": "expense",
+    "metadata": "family0",
+
+    "subcategories": [
+      {
+        "name": "children_babies",
+        "title": "cate_children_babies",
+        "icon": "icon_38",
+        "type": "expense",
+        "metadata": "children0"
+      },
+
+      {
+        "name": "home_improvement",
+        "title": "cate_home_improvement",
+        "icon": "icon_8",
+        "type": "expense",
+        "metadata": "home_improvement0"
+      },
+
+      {
+        "name": "home_services",
+        "title": "cate_home_services",
+        "icon": "icon_54",
+        "type": "expense",
+        "metadata": "home_services0"
+      },
+
+      {
+        "name": "pets",
+        "title": "cate_pets",
+        "icon": "icon_53",
+        "type": "expense",
+        "metadata": "pets0"
+      }
+    ]
+  },
+
+  {
+    "name": "education",
+    "title": "cate_education",
+    "icon": "ic_category_education",
+    "type": "expense",
+    "metadata": "education0",
+
+    "subcategories": [
+      {
+        "name": "books",
+        "title": "cate_books",
+        "icon": "icon_35",
+        "type": "expense",
+        "metadata": "books0"
+      }
+    ]
+  },
+
+  {
+    "name": "investment",
+    "title": "cate_invest",
+    "icon": "ic_category_invest",
+    "type": "expense",
+    "metadata": "invest0"
+  },
+
+  {
+    "name": "business",
+    "title": "cate_business",
+    "icon": "icon_59",
+    "type": "expense",
+    "metadata": "business0"
+  },
+  {
+    "name": "insurance",
+    "title": "cate_insurance",
+    "icon": "icon_137",
+    "type": "expense",
+    "metadata": "insurance0"
+  },
+
+  {
+    "name": "loan",
+    "title": "cate_loan",
+    "icon": "ic_category_loan",
+    "type": "expense",
+    "metadata": "IS_LOAN"
+  },
+
+  {
+    "name": "fees_charges",
+    "title": "cate_fees",
+    "icon": "icon_138",
+    "type": "expense",
+    "metadata": "fees_charges0"
+  },
+
+  {
+    "name": "withdrawal",
+    "title": "cate_withdrawal",
+    "icon": "icon_withdrawal",
+    "type": "expense",
+    "metadata": "IS_WITHDRAWAL"
+  },
+
+  {
+    "name": "expense_other",
+    "title": "cate_expense_other",
+    "icon": "ic_category_other_expense",
+    "type": "expense",
+    "metadata": "IS_OTHER_EXPENSE"
+  },
+
+  {
+    "name": "award",
+    "title": "cate_award",
+    "icon": "ic_category_award",
+    "type": "income",
+    "metadata": "award0"
+  },
+
+  {
+    "name": "interest",
+    "title": "cate_interest",
+    "icon": "ic_category_interestmoney",
+    "type": "income",
+    "metadata": "interestmoney0"
+  },
+
+  {
+    "name": "salary",
+    "title": "cate_salary",
+    "icon": "ic_category_salary",
+    "type": "income",
+    "metadata": "salary0"
+  },
+
+  {
+    "name": "debt",
+    "title": "cate_debt",
+    "icon": "ic_category_debt",
+    "type": "income",
+    "metadata": "IS_DEBT"
+  },
+
+  {
+    "name": "gift",
+    "title": "cate_give",
+    "icon": "ic_category_give",
+    "type": "income",
+    "metadata": "IS_GIVE"
+  },
+
+  {
+    "name": "selling",
+    "title": "cate_selling",
+    "icon": "ic_category_selling",
+    "type": "income",
+    "metadata": "selling0"
+  },
+
+  {
+    "name": "income_other",
+    "title": "cate_income_other",
+    "icon": "ic_category_other_income",
+    "type": "income",
+    "metadata": "IS_OTHER_INCOME"
+  }
+
+]

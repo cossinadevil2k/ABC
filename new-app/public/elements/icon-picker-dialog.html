@@ -1,0 +1,117 @@
+<polymer-element name="icon-picker-dialog" attributes="iconSelected showFragment">
+	<template>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			:host .icon-item {
+				width: 70px;
+				height: 72px;
+				float: left;
+				display: block;
+				text-align: center;
+				position: relative;
+				cursor: pointer;
+				border: 1px dashed transparent;
+			}
+
+			:host core-header-panel{
+				height: 100%;
+			}
+
+			:host .content{
+				height:380px;
+				width: 580px !important;
+			}
+
+			:host .icon-item:hover {
+				border: 1px dashed #2baf2b;
+			}
+
+			:host .icon-item.selected {
+				background: rgba(43,175,43,0.15);
+			}
+
+			:host .icon-item .icon-img {
+				width: 48px;
+				height: 48px;
+				padding: 11px;
+			}
+
+			:host .icon-item .icon-img img {
+				width: 100%;
+			}
+
+			:host .icon-item.selected {
+				background: rgba(43,175,43,0.15);
+			}
+
+			:host .icon-content {
+				float: left;
+				padding: 8px 24px;
+			}
+
+			:host .dialog-header {
+				width: 626px !important;
+			}
+			.loader {
+				margin-top: 130px;
+				text-align: center;
+			}
+		</style>
+		<core-header-panel mode="seamed">
+			<div class="dialog-header core-header">
+				<div class="top-header">
+					<paper-button icon="arrow-back" class="arrow-back" on-click="{{goBack}}"></paper-button>
+					<div class="detail text-title">Select Icon</div>
+				</div>
+			</div>
+			<div class="icon-content content">
+				<template if="{{iconList}}" repeat="{{icon in iconList.data}}">
+					<div on-click="{{iconClicked}}" class="icon-item {{{selected: (iconSelected && icon == iconSelected.i)} | tokenList}}">
+						<div class="icon-img">
+							<x-imager width="48" lazyload="true" src="{{icon | iconUrlFilter}}" ></x-imager>
+						</div>
+						<paper-ripple fit> </paper-ripple>
+					</div>
+				</template>
+
+				<template if="{{!iconList}}">
+					<!-- loader -->
+					<div class="loader" style="text-align:center;">
+						<img src="../images/loading.gif"/>
+					</div>
+				</template>
+			</div>
+		</core-header-panel>
+		<icon-list-service id="service"></icon-list-service>
+	</template>
+	<script>
+		Polymer('icon-picker-dialog', {
+			hideSearchInput: true,
+
+			showDialog: function(){
+				var that = this;
+				this.$.service.getData(function(status, data){
+					if(status) that.iconList = data;
+				});
+			},
+
+			iconClicked: function(event, detail, sender){
+				var icon = sender.templateInstance.model.icon;
+				this.iconSelected = icon;
+				this.goBack();
+				this.searchByNameInput = '';
+				this.hideSearchInput = true;
+			},
+			iconUrlFilter: function (imgName) {
+				return (urlRoot + '/img/icon/' + imgName + '.png').replace('icon//icon', 'icon');
+			},
+
+			goBack: function(){
+				this.showFragment = 'walletDialog';
+			}
+		});
+	</script>
+</polymer-element>

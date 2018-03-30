@@ -1,0 +1,24 @@
+<div class="modal-header">
+    <h4>Receipt</h4>
+</div>
+<div class="modal-body no-padding-no-margin">
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <th>Wallet</th>
+            <th>Status</th>
+            <th>Created</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="receipt in receipt_list">
+            <td><a href="/receipt/details/{{receipt._id}}" target="_blank">{{receipt.category.account.name || '----------'}}</a></td>
+            <td><span ng-class="{rDraft: receipt.status === 'draft', rDone: receipt.status === 'done', rOpen: receipt.status === 'open', rReject: receipt.status === 'rejected'}">{{receipt.status}}</span></td>
+            <td>{{receipt.created_at | checkDateTime}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="close()">Close</button>
+</div>

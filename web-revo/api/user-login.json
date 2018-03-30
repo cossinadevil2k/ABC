@@ -1,0 +1,52 @@
+{
+	"error": 0,
+	"msg": "web_login_success",
+	"data": {
+		"email": "tuancuong92@gmail.com",
+		"client_setting": {
+			"aid": 4,
+			"fi_id": "null",
+			"se_id": "null",
+			"sd": true,
+			"sc": true,
+			"sa": false,
+			"ds": 1,
+			"ps": 0,
+			"l": "vi",
+			"df": 0,
+			"fd": 1,
+			"dr": 0,
+			"sl": true,
+			"ol": false,
+			"fdw": 2,
+			"fmy": 0,
+			"er": true
+		},
+		"icon_package": [
+			"default",
+			"icon_ml_lunar_new_year",
+			"icon_photography",
+			"icon_gadget",
+			"icon_vietnam_bank",
+			"icon_christmas",
+			"xmas_icon_pack",
+			"icon_kitchen",
+			"icon_hand_tool",
+			"icon_full_moon",
+			"icon_ml_party",
+			"icon_ml_sports",
+			"icon_ml_baby",
+			"icon_transport",
+			"icon_daily_care",
+			"office_icon_pack",
+			"icon_fastfood",
+			"icon_ml_winter",
+			"summer_icon_pack_2014",
+			"worldcup_icon_pack_2014",
+			"summer_icon_pack"
+		],
+		"purchased": true
+	}
+}
+
+

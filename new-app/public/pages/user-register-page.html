@@ -1,0 +1,179 @@
+
+<polymer-element name="user-register-page" >
+    <template >
+        <style shim-shadowdom>
+            *{
+                margin: 0;
+            }
+            paper-button.ml-btn {
+                color: white;
+                background: green;
+            }
+
+            paper-input {
+                width: 100%;
+            }
+
+            .reg-captcha {
+                display: inline-block;
+                width: 42%;
+            }
+
+            .captcha-area {
+                display: inline-block;
+                width: 54%;
+                margin-left: 12px;
+                height: 40px;
+            }
+
+            .captcha-area img {
+                width: 220px;
+                margin-bottom: 8px;
+            }
+
+            .term-accept {
+                color: #aaa;
+                font-size: 15px;
+                line-height: 22px;
+                margin: 10px 0 30px;
+            }
+
+            .page-header {
+                display: block;
+            }
+            .refresh {
+                float: right;
+            }
+            p a {
+                color: rgb(43, 175, 43);
+            }
+            .form {
+                width: 500px !important;
+            }
+            .captcha-area  a img {
+                width: 20px;
+                height: 20px;
+                margin: 0 0 19px 4px;
+            }
+        </style>
+
+        <core-header-panel mode="cover" class="page-header">
+            <div id="logo"><img src="../images/app_icon_with_name.png"/></div>
+        </core-header-panel>
+
+        <div class="user-info-form form">
+            <h2 class="header-form text-title">Sign up</h2>
+            <div class="content-form">
+                <div class="form-input">
+                    <paper-input floatingLabel name="reg-email" id="reg-email" label="Email" type="email"></paper-input>
+                </div>
+                <div class="form-input">
+                    <paper-input floatingLabel name="reg-password" id="reg-password" label="Create a password" type="password"></paper-input>
+                </div>
+                <div class="form-input">
+                    <paper-input floatingLabel name="reg-repassword" id="reg-repassword" label="Confirm your password" type="password"></paper-input>
+                </div>
+                <div class="form-input term-accept text-body">
+                    <p>
+                        By submitting this form, you agree that you have read and understood our <a href="#">Privacy Policy</a>
+                        and you agree to them.
+                    </p>
+                </div>
+            </div>
+            <div class="form-input submit-button button">
+                <paper-button class="button-flat-color" id="reg-submit" on-click="{{signupAction}}" label="SIGN UP"></paper-button>
+            </div>
+        </div>
+
+        <div class="more-link">
+            <a href="/login">Already have account? Click here to sign in</a>
+        </div>
+        <div id="footer">
+            <ul>
+                <li><a href="//moneylover.me" target="_blank">Money Lover</a></li>
+                <li><a href="//moneylover.me/#money_lover_is_easy_to_get_started" target="_blank">Download</a></li>
+                <li><a href="//moneylover.me/policy.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <signup-success-dialog id="signupSuccessDialog"></signup-success-dialog>
+        <sign-up-service id="signUpService"></sign-up-service>
+    </template>
+
+    <script>
+        function checkCookie(){
+            var result = "";
+            var cookieName = 'userLogin=';
+            var ca = document.cookie.split(';');
+            ca.forEach(function(value){
+                if(value.indexOf(cookieName) != -1) result = value;
+            });
+            if (result == "") return false;
+            else {
+                var value = result.substr(11,1);
+                return (value == 1);
+            }
+        }
+        
+        if(checkCookie()) window.location.href = '/wallet';
+        
+        Polymer('user-register-page', {
+            signupAction: function(){
+                var that = this;
+                var email = this.$['reg-email'].value;
+                var password = this.$['reg-password'].value;
+                var repassword = this.$['reg-repassword'].value;
+
+                var txtEmail = this.shadowRoot.querySelector("#reg-email");
+                var txtPassword = this.shadowRoot.querySelector("#reg-password");
+                var txtRepassword = this.shadowRoot.querySelector("#reg-repassword");
+                var btnSubmit = this.shadowRoot.querySelector("#reg-submit");
+
+                if(email==="") {
+                    txtEmail.removeAttribute("invalid");
+                    txtEmail.setAttribute("invalid","true");
+                }
+                if(password==="") {
+                    txtPassword.removeAttribute("invalid");
+                    txtPassword.setAttribute("invalid","true");
+                }
+                if(repassword==="") {
+                    txtRepassword.removeAttribute("invalid");
+                    txtRepassword.setAttribute("invalid","true");
+                }
+
+                if(email!="" && password!="" && repassword!="") {
+                    if (password != repassword) {
+                        txtRepassword.removeAttribute("invalid");
+                        txtRepassword.removeAttribute("error");
+                        txtRepassword.setAttribute("invalid", "true");
+                        txtRepassword.setAttribute("error", "Password and Retype Password are not match");
+                    } else {
+                        var userInfo = {
+                            email: email,
+                            password: password
+                        };
+                        btnSubmit.setAttribute("disabled","true");
+
+                        this.$['signUpService'].signup(userInfo, function (data) {
+                            console.log(data);
+                            if (data.error === 1) {
+                                btnSubmit.removeAttribute("disabled");
+                                txtEmail.removeAttribute("invalid");
+                                txtEmail.removeAttribute("error");
+                                txtEmail.setAttribute("invalid", "true");
+                                txtEmail.setAttribute("error", "This email is exist in our database");
+                            } else {
+                                //error===0
+                                that.$['signupSuccessDialog'].showDialog();
+                            }
+                        });
+                    }
+                }
+            }
+        });
+
+        //theming paper-input
+        CoreStyle.g.paperInput.focusedColor = 'green';
+    </script>
+</polymer-element>

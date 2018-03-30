@@ -1,0 +1,24 @@
+<div class="module">
+    <div class="module-header">
+        <!--<ul id="myTab" class="nav nav-tabs">
+            <li ng-class="{'active':(currentTab == 'issue')}"><a href="#" ng-click="tabSelect('issue')">Total</a></li>
+            <li ng-class="{'active':(currentTab == 'monthly')}"><a href="#" ng-click="tabSelect('monthly')">Monthly</a></li>
+            <li ng-class="{'active':(currentTab == 'personal')}"><a href="#" ng-click="tabSelect('personal')">By mod</a></li>
+        </ul> -->
+        <h4>Help Desk All Time Stats</h4>
+    </div>
+    <div class="module-content">
+        <div class="chart" id="chart009" ng-init="helpdeskStats()" ng-bind="helpdeskChartMessage"></div>
+
+        <!--<div ng-include="'/partials/helpdesk/stats/issue.html'" ng-if="currentTab == 'issue'"></div> 
+         <div ng-include="'/partials/helpdesk/stats/monthly.html'" ng-if="currentTab == 'monthly'"></div>
+        <div ng-include="'/partials/helpdesk/stats/personal.html'" ng-if="currentTab == 'personal'"></div> -->
+    </div>
+
+    <div class="module-header">
+        <h4>Help Desk Daily Stats</h4>
+    </div>
+    <div class="module-content">
+        <div class="chart" id="chart010" ng-init="helpdeskDailyStats()" ng-bind="helpdeskDailyChartMessage"></div>
+    </div>
+</div>

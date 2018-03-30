@@ -1,0 +1,49 @@
+<div>
+    <div class="modal-header">
+        <h4>Subscription Code Generator</h4>
+    </div>
+    <div class="modal-body">
+        <form class="form form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-lg-2">Select Product</label>
+                <div class="col-lg-10">
+                    <div class="button-group">
+                        <button type="button" class="btn btn-blue dropdown-toggle" data-toggle="dropdown">{{genCodeOption.productId || "Select Product"}} <i class="caret"></i></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-repeat="product in products"><a href="#" ng-click="selectProduct(product.productId)">{{product.productId}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-2">Amount</label>
+                <div class="col-lg-10">
+                    <input type="number" class="form-control" ng-model="genCodeOption.amount"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-2">Expire?</label>
+                <div class="col-lg-10">
+                    <input type="checkbox" class="form-control" ng-model="genCodeOption.hasExpire"/>
+                </div>
+            </div>
+            <div class="form-group" ng-if="genCodeOption.hasExpire">
+                <label class="control-label col-lg-2">Expire Date</label>
+                <div class="col-lg-10" ng-controller="datePicker">
+                    <p class="input-group">
+                        <input type="text" class="form-control" datepicker-popup="dd-MM-yyyy" ng-model="genCodeOption.expireDate" min="minDate" placeholder="DD-MM-YYYY" />
+                        <span class="input-group-btn">
+                            <label class="btn btn-default">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </label>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="generate()">Generate</button>
+        <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

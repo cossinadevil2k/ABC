@@ -1,0 +1,6 @@
+<ul class="list-tasks">
+	<li id="category-{{ category._id }}" class="category-item animate-repeat" ng-repeat="category in categories | categoryFilter:2 track by $index">
+		<div class="clearfix" ng-include="'/partials/category/item.html'"></div>
+		<ul class="list-tasks category-sub" ng-include="'/partials/category/list-sub.html'" ng-if="category.child | validateSubCate:displaySub"></ul>
+	</li>
+</ul>

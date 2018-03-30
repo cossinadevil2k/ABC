@@ -1,0 +1,155 @@
+<% include header %>
+<body>
+	<div id="main-container">
+		<div class="container">
+			<div class="row">
+				<div id="money-container" class="col-md-5 col-xs-offset-0 col-xs-12 money-center">
+					<div id="money-main-box">
+						<div id="header">
+							<div class="money-header">
+								<a class="logo-app" href="http://moneylover.me" data-toggle="tooltip" data-placement="top" title="Money Lover">Money Lover</a>
+							</div>
+						</div>
+						<div id="list-card" class="money-card">
+							<div class="money-card-item">
+								<div class="row">
+									<div class="col-md-12 col-sm-12 ml-input-category">
+										<div class="col-md-2 col-xs-2">
+											<div class="img-category">
+												<img src="<%= parseIcon(transaction.category.icon) %>.png" alt="<%= transaction.category.name %>" />
+											</div>
+										</div>
+										<div class="col-md-10 col-xs-10">
+											<div class="form-control inp-fake inp-money text-color-p">
+												<%= transaction.category.name %>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 ml-input-amount">
+										<div class="col-md-2 col-xs-2"></div>
+										<div class="col-md-10 col-xs-10">
+											<div class="form-control inp-fake inp-money text-color-p <% if(transaction.category.type == 1) { %>color-green<% } else { %>color-red<% } %>">
+												<%= amount %>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 ml-input-note">
+										<div class="col-md-2 col-xs-2"></div>
+										<div class="col-md-10 col-xs-10">
+											<% if(transaction.note) { %>
+											<div class="form-control inp-fake inp-money text-color-p">
+												<%= transaction.note %>
+											</div>
+											<% } else { %>
+											<div class="form-control inp-fake inp-money text-color-h">
+												Note
+											</div>
+											<% } %>
+										</div>
+									</div>
+									<div class="col-md-12 ml-extent">
+										<div class="col-md-12 col-xs-12">
+											<span class="agrow-soild"></span>
+										</div>
+										<div class="col-md-6 col-xs-6">
+											<div class="ml-date-view">
+												<div class="ml-date-header caption">
+													<p class="text-color-s"><%= moment(transaction.displayDate).format('dddd') %></p>
+												</div>
+												<div class="ml-date-body">
+													<h1><%= moment(transaction.displayDate).format('DD') %></h1>
+												</div>
+												<div class="ml-date-footer caption">
+													<p class="text-color-s"><%= moment(transaction.displayDate).format('MMMM') %> <%= moment(transaction.displayDate).format('YYYY') %></p>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6 col-xs-6">
+											<div class="more-info">
+												<div class="inp-wallet">
+													<p class="caption">Wallet</p>
+													<div class="value text-color-p"><%= transaction.account %></div>
+												</div>
+												<div class="inp-event">
+													<p class="caption">Event</p>
+													<div class="value<% if(transaction.campaign.length == 0) { %> text-color-p-h<% } else { %> text-color-p<% } %>"><%= parseCampaign(transaction.campaign) %></div>
+												</div>
+												<div class="agrow"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="money-copyright">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="col-md-8 col-xs-8">
+									<p>Powered by <a id="money-link" href="//moneylover.me" target="_blank" title="Money Lover">Money Lover</a> - personal finance app on mobile platforms.</p>
+								</div>
+								<div class="col-md-4 col-xs-4 text-center">
+									<a id="money-download" href="http://moneylover.me/download" target="_blank">Get it now</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="<%= urlStatic %>lib/jquery/jquery-1.10.2.min.js"></script>
+	<script src="<%= urlStatic %>lib/bootstrap/js/bootstrap.min.js"></script>
+
+	<script>
+	(function() {
+		var _fbq = window._fbq || (window._fbq = []);
+		if (!_fbq.loaded) {
+			var fbds = document.createElement('script');
+			fbds.async = true;
+			fbds.src = '//connect.facebook.net/en_US/fbds.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(fbds, s);
+			_fbq.loaded = true;
+		}
+		_fbq.push(['addPixelId', '518931264882008']);
+	})();
+	window._fbq = window._fbq || [];
+	window._fbq.push(["track", "PixelInitialized", {}]);
+	</script>
+	<noscript>
+		<img height="1" width="1" border="0" alt="" style="display:none" src="https://www.facebook.com/tr?id=518931264882008&amp;ev=NoScript" />
+	</noscript>
+	<script type="text/javascript">
+	(function($){
+		$('[data-toggle="tooltip"]').tooltip();
+		var amount = $('.ml-input-amount .inp-fake').text();
+		if(amount.length > 14) $('.ml-input-amount .inp-fake').css({'font-size': '27px', 'line-height': '55px'});
+		var mainContainer = document.getElementById('main-container');
+		var mainContainerHeight = mainContainer.clientHeight;
+		setMainContainer();
+
+		window.onresize = setMainContainer;
+
+		function setMainContainer(){
+			var documentHeight = document.height || document.documentElement.clientHeight;
+			var documentWidth = document.width || document.documentElement.clientWidth;
+
+			if(documentWidth <= 445 && amount.length > 14) {
+				$('.ml-input-amount .inp-fake').css({'font-size': '24px', 'line-height': '55px'});
+			} else if(documentWidth > 445 && amount.length > 14) {
+				$('.ml-input-amount .inp-fake').css({'font-size': '27px', 'line-height': '55px'});
+			} else {
+				$('.ml-input-amount .inp-fake').css({'font-size': '', 'line-height': ''});
+			}
+
+			if(documentHeight > mainContainerHeight + 10){
+				mainContainer.style.marginTop = ((documentHeight - mainContainerHeight) / 2) + 'px';
+			} else {
+				mainContainer.style.marginTop = '10px';
+			}
+		}
+	}(jQuery));
+	</script>
+<% include footer %>

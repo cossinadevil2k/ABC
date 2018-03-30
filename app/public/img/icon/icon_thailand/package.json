@@ -1,0 +1,200 @@
+{
+  "name": "Thailand",
+  "product_id": "icon_thailand",
+  "icons": {
+    "thailand_01": [
+      "tom yum",
+      "tom yam",
+      "canh",
+      "lẩu",
+      "soup",
+      "hotpot",
+      "ต้มยำ"
+    ],
+    "thailand_02": [
+      "skytrain",
+      "tàu",
+      "tàu trên không",
+      "tàu bay",
+      "บีทีเอส"
+    ],
+    "thailand_03": [
+      "metro",
+      "tàu điện",
+      "tàu điện ngầm",
+      "đường sắt",
+      "bangkok metro",
+      "mrt",
+      "mass rapid transit",
+      "transit",
+      "รถไฟฟ้ากรุงเทพ"
+    ],
+    "thailand_04": [
+      "fruit juice",
+      "nước cam",
+      "nước quýt",
+      "đồ uống",
+      "orange juice",
+      "น้ำส้ม"
+    ],
+    "thailand_05": [
+      "tuk tuk",
+      "xe tuk tuk",
+      "xe",
+      "taxi tuk tuk"
+    ],
+    "thailand_06": [
+      "7eleven",
+      "siêu thị",
+      "mart",
+      "supermarket",
+      "ซุปเปอร์มาร์เก็ต"
+    ],
+    "thailand_07": [
+      "family mart",
+      "mart",
+      "siêu thị",
+      "supermarket",
+      "ซุปเปอร์มาร์เก็ต"
+    ],
+    "thailand_08": [
+      "waston",
+      "mĩ phẩm",
+      "cosmetic",
+      "trang điểm",
+      "apparel",
+      "ประทิ่น"
+    ],
+    "thailand_09": [
+      "trang phục truyền thống",
+      "trang phục",
+      "truyền thống",
+      "clothes",
+      "costume",
+      "dress",
+      "phasin",
+      "อาภรณ์"
+    ],
+    "thailand_10": [
+      "ais telco",
+      "ais",
+      "telco",
+      "di động",
+      "sim điện thoại",
+      "điện thoại",
+      "gsm",
+      "simcard",
+      "viễn thông"
+    ],
+    "thailand_11": [
+      "dtac telco",
+      "dtac",
+      "telco",
+      "di động",
+      "sim điện thoại",
+      "điện thoại",
+      "gsm",
+      "simcard"
+    ],
+    "thailand_12": [
+      "truemoveh telco",
+      "truemoveh",
+      "telco",
+      "di động",
+      "sim điện thoại",
+      "điện thoại",
+      "gsm",
+      "simcard"
+    ],
+    "thailand_13": [
+      "nước dừa",
+      "đồ uống",
+      "coconut juice",
+      "fruit juice",
+      "dừa",
+      "coconut",
+      "fruit",
+      "juice",
+      "ผลาผล"
+    ],
+    "thailand_14": [
+      "milk tea",
+      "milk",
+      "tea",
+      "trà sữa thái",
+      "trà sữa",
+      "trà",
+      "sữa",
+      "đồ uống",
+      "ชา"
+    ],
+    "thailand_15": [
+      "chèo thuyền",
+      "rowing",
+      "kayaking",
+      "chèo xuồng",
+      "การพาย"
+    ],
+    "thailand_16": [
+      "thanh long",
+      "fruit",
+      "dragon fruit",
+      "ผลาผล"
+    ],
+    "thailand_17": [
+      "pineapple",
+      "pine",
+      "apple",
+      "fruit",
+      "quả dứa",
+      "dứa",
+      "trái cây",
+      "trái thơm",
+      "ผลาผล"
+    ],
+    "thailand_18": [
+      "seaweed",
+      "dried seaweed",
+      "algae",
+      "rong biển",
+      "rong biển khô",
+      "rong biển ăn liền",
+      "bim bim rong biển",
+      "sea jelly",
+      "snack",
+      "seaweed snack"
+    ],
+    "thailand_19": [
+      "true visions",
+      "truyền hình",
+      "truyền hình cáp",
+      "kênh truyền hình",
+      "cable vision",
+      "cable televison",
+      "cctv",
+      "cable tv"
+    ],
+    "thailand_20": [
+      "thai airway",
+      "airline",
+      "hàng không",
+      "national airway",
+      "máy bay",
+      "air route",
+      "สายการบิน"
+    ]
+  },
+  "tags": [
+    "thailand",
+    "tourist",
+    "thái lan",
+    "du lịch",
+    "shopping",
+    "viễn thông",
+    "giao thông",
+    "ẩm thực",
+    "xứ sở chùa vàng",
+    "nước chùa vàng",
+    "phật giáo"
+  ]
+}

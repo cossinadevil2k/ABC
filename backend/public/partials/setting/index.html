@@ -1,0 +1,64 @@
+
+<div class="col-lg-12">
+    <div class="module module-orange">
+        <div class="module-header">
+            <h4>Turn Server's Maintain Status On/Off</h4>
+        </div>
+        <div class="module-content">
+            <div class="form-group row">
+                <label class="col-lg-3">Server Maintain Status:</label>
+                <div class="col-lg-9">
+                    <input
+                            type="checkbox"
+                            id="maintain-status"
+                            class="md-checkbox hidden"
+                            ng-model="setting.isServerMaintain"
+                            ng-true-value="true"
+                            ng-false-value="false"
+                            ng-change="changeStatus()"
+                    />
+                    <label for="maintain-status" class="md-checkbox-label"></label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-3">End Maintain Time:</label>
+                <div class="col-lg-9">
+                    <div ng-if="timeSetting">
+                        <input class="form-control" type="text" placeholder="(Optional) DD/MM/YYYY hh:mm" ng-model="setting.endMaintainTime">
+                        <button class="btn btn-xs btn-success" ng-click="changeStatus()"><i class="icon icon-save"></i> Set</button>
+                    </div>
+                    <div ng-if="!timeSetting">
+                        <p ng-bind="(setting.endMaintainTime || 'Not set'|checkDateTime)"></p>
+                        <button
+                                class="btn btn-xs"
+                                ng-click="editEndMaintainTime()"
+                                ng-class="{'btn-twitter': setting.isServerMaintain === 'true'}"
+                                ng-disabled="setting.isServerMaintain !== 'true'">
+                            <i class="icon icon-time"></i> Edit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="env != 'production'" class="module module-purple">
+        <div class="module-header">
+            <h4>Background Notification</h4>
+        </div>
+        <div class="module-content row">
+            <label class="col-lg-3">Enabled :</label>
+            <!--<button style="width: 60px;" class="btn" ng-class="{'btn-grape': !backgroundNotification, 'btn-twitter': backgroundNotification}" ng-click="changeBackgroundNotificationStatus()">-->
+                <!--{{backgroundNotification? 'ON': 'OFF'}}-->
+            <!--</button>-->
+            <div class="col-lg-9">
+                <input type="checkbox"
+                       id="noti-control"
+                       class="md-checkbox hidden"
+                       ng-model="backgroundNotification"
+                       ng-change="changeBackgroundNotificationStatus()"
+                />
+                <label for="noti-control" class="md-checkbox-label"></label>
+            </div>
+        </div>
+    </div>
+</div>

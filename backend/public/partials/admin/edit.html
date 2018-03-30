@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title title">Edit Admin</h4>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" action="#">
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Admin name:</label>
+            <div class="col-lg-9">
+                <input type="text" class="form-control" value="{{admin.username}}" disabled>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="adPw">Password:</label>
+            <div class="col-lg-9">
+                <input type="password" class="form-control" placeholder="********" disabled>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Team</label>
+            <div class="col-lg-9">
+                <select ng-model="adminInfo.permission" style="overflow:auto;">
+                    <option value="Admin" ng-selected="admin.permission == 'Admin'">Admin</option>
+                    <option value="Dev" ng-selected="admin.permission == 'Dev'">Dev</option>
+                    <option value="Marketing" ng-selected="admin.permission == 'Marketing'">Marketing</option>
+                    <option value="Support" ng-selected="admin.permission == 'Support'">Support</option>
+                    <option value="Voluntter" ng-selected="admin.permission == 'Voluntter'">Voluntter</option>
+                </select>
+            </div>
+
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+    <button type="button" class="btn btn-primary" ng-click="updateAdmin(adminInfo)">Update</button>
+</div>

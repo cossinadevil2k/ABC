@@ -1,0 +1,184 @@
+<div>
+    <div class="helpdesk-image-menu-action row">
+        <div class="col-lg-2">
+            <div class="title">
+                <div class="hidden-xs">Receipt</div>
+                <div>Information</div>
+            </div>
+        </div>
+
+        <div class="col-lg-10 info">
+            <div>
+                <strong>User : </strong> <span class="lightFont"><a href="/users/info?email={{receipt.user.email}}" target="_blank" class="helpdesk-link" style="font-size:16px;">{{receipt.user.email}}</a></span>
+            </div>
+            <div>
+                <strong>Status: <span ng-class="{rDraft: receipt.status === 'draft', rDone: receipt.status === 'done', rOpen: receipt.status === 'open', rReject: receipt.status === 'rejected'}">{{receipt.status}}</span></strong>
+            </div>
+            <div ng-show="receipt.metadata.reject_reason">
+                <strong>Reject Reason : {{receipt.metadata.reject_reason.message}}</strong>
+            </div>
+            <!--<div ng-show="!receipt.admin">
+                <strong>
+                    Assigned:
+                    <button class="btn btn-twitter" ng-click="selfAssign(receipt)">I'll handle this</button>
+                </strong>
+            </div>-->
+            <div ng-show="receipt.admin">
+                <strong>
+                    Assigned:
+                    <button class="btn btn-success" tooltip="Click to Unassign" ng-click="unassign(receipt)">
+                        Assigned to {{(receipt.admin.username === adminName)?'you':receipt.admin.username}}
+                    </button>
+                </strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-success alert-dismissable" id="successMain" hidden="true">
+        <button type="button" class="close" ng-click="hideSuccessMain()"><i class="icon-remove-sign"></i></button>
+        <strong id="successMainMessage"></strong>
+    </div>
+    <div class="alert alert-danger alert-dismissable" id="errorMain" hidden="true">
+        <button type="button" class="close" ng-click="hideErrorMain()"><i class="icon-remove-sign"></i></button>
+        <strong id="errorMainMessage"></strong>
+    </div>
+
+    <div class="col-lg-7 col-xs-12">
+        <loading ng-if="isLoading"></loading>
+        <a class="btn btn-primary backToIssueList" href="/receipt" ng-click="back()"><i class="icon-reply"></i> Back</a>
+        <div class="module border-module">
+            <div class="module-header" style="padding-left: 90px; min-height: 50px;">
+                <h4 ng-click="gotoBottom()">
+                    <span class="lightFont">{{receipt.user.email}}</span>
+                </h4>
+            </div>
+            <div class="alert alert-danger alert-dismissable" id="errorImage" hidden="true">
+                <button type="button" class="close" ng-click="hideErrorImage()"><i class="icon-remove-sign"></i></button>
+                Get image due to error or image is deleted
+            </div>
+            <div class="module-content pre-image text-center">
+                <img
+                    id="myimg"
+                    style="cursor: pointer"
+                    src="{{imageReceipt}}"
+                    tooltip="Double click to view image details"
+                    class="grow"
+                    ng-click="imageDetail()"
+                />
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-5 col-xs-12" id="viewInsertData" set-element-in-view>
+        <div class="module module-blue border-module-blue">
+            <div class="module-header">
+                <h4>Transaction info</h4>
+            </div>
+            <div class="module-content">
+                <div style="margin: auto;" class="text-center" ng-show="!receipt.admin">
+                    <div>
+                        <button style="width: 50%; margin: 10px;" ng-click="selfAssign(receipt)" name="quick-action" class="btn btn-twitter">I'll handle this</button>
+                    </div>
+                    <div>
+                        <button style="width: 50%; margin: 10px;" ng-click="reject(receipt)" name="quick-action" class="btn"> Reject</button>
+                    </div>
+                    <div>
+                        <button style="width: 50%; margin: 10px;" ng-click="nextReceipt()" name="quick-action" class="btn btn-orange"> Next open receipt</button>
+                    </div>
+                </div>
+                <form ng-show="receipt.admin">
+                    <div class="form-group">
+                        <label>Note</label>
+                        <input type="text" class="form-control" ng-model="receipt.data.note">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Display date (DD/MM/YYYY):</label>
+                        <input type="text" datepicker-popup="dd/MM/yyyy" id="inputDisplayDate" class="form-control" ng-model="receipt.data.displayDate">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-xs-6 form-group">
+                            <label>Wallet</label>
+                            <!--<input type="text" class="form-control" value="{{receipt.wallet.name || 'N/A'}}" disabled>-->
+                            <select class="form-control" ng-model="selectedWalletIndex" ng-change="selectWallet()" ng-disabled="hasWallet">
+                                <option 
+                                    ng-repeat="(key, wallet) in wallets"
+                                    ng-selected="receipt.wallet && receipt.wallet._id === wallet._id"
+                                    value={{key}} >
+                                    {{wallet.name}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="col-lg-6 col-xs-6">
+                            <label>Category</button></label>
+                            <!--<input type="text" ng-if="!receipt.category" class="form-control" value="N/A" disabled>-->
+                            <select class="form-control" ng-model="selectedCategoryIndex" ng-disabled="receipt.category">
+                                <option 
+                                    ng-repeat="(key, category) in categories"
+                                    ng-if="(receipt.category && category.type == receipt.category.type) || !receipt.category"
+                                    ng-selected="receipt.category && category._id === receipt.category._id"
+                                    value={{key}} >
+                                    {{category.name}} {{category.metadata? '(' + category.metadata + ')' : ''}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-xs-6 form-group">
+                            <label>Amount</label>
+                            <input type="number" step="any" class="form-control" ng-model="receipt.data.amount">
+                        </div>
+
+                        <div class="col-lg-6 col-xs-6">
+                            <label>Currency</label>
+                            <!--<select class="form-control" disabled>-->
+                                <!--<option ng-repeat="currency in listCurrency" ng-selected="currency.c == receipt.category.account.currency_id" value="{{currency.c}}">{{currency.n}}</option>-->
+                            <!--</select>-->
+                            <input type="text" class="form-control" value="{{receipt.wallet.currency_id | currency}}" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Address</label>
+                        <div class="input-group" style="width: 100%;">
+    						<input type="text" class="form-control" ng-model="receipt.data.address" ng-keyup="$event.keyCode == 13 && setLongLat(receipt.address.trim())">
+    						<span class="input-group-btn" tooltip="Press enter to set">
+    							<button type="button" class="btn btn-grape" ng-show="receipt.data.address.trim()" ng-click="setLongLat(receipt.data.address.trim())">
+                                    <span class="visible-xs"><i class="icon-compass"></i> Set</span>
+                                    <span class="hidden-xs"><i class="icon-compass"></i> Set long/lat</span>
+                                </button>
+    						</span>
+    					</div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-lg-6 col-xs-6 form-group">
+                            <label>Latitude</label>
+                            <input type="text" class="form-control" ng-model="receipt.data.latitude">
+                        </div>
+
+                        <div class="col-lg-6 col-xs-6">
+                            <label>Longtitude</label>
+                            <input type="text" class="form-control" ng-model="receipt.data.longtitude">
+                        </div>
+                    </div>
+
+                    <div class="text-right">
+                        <div ng-hide="receipt.status === 'rejected' || receipt.status === 'done'">
+                            <button ng-click="reject(receipt)" class="btn" ng-disabled="receipt.status === 'rejected' || receipt.status === 'done'"><i class="icon-ban-circle"></i> Reject</button>
+                            <button ng-click="draft(receipt)" class="btn btn-orange" ng-disabled="receipt.status === 'rejected' || receipt.status === 'done'"><i class="icon-minus"></i> Draft</button>
+                            <button ng-click="done(receipt)" class="btn btn-success" ng-disabled="receipt.status === 'rejected' || receipt.status === 'done'"><i class="icon-circle"></i> {{btnDoneLabel}}</button>
+                        </div>
+                        <div ng-show="receipt.status === 'rejected' || receipt.status === 'done'">
+                            <button ng-click="nextReceipt()" name="quick-action" class="btn btn-orange"> Next open receipt</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="module no-padding">
+    <div class="module-header">
+        <h4>
+            User list
+        </h4>
+    </div>
+    <div class="module-content table-responsive">
+        <loading ng-if="isLoading"></loading>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Email</th>
+                <th class="hidden-xs hidden-sm"></th>
+                <th class="hidden-xs hidden-sm">Created</th>
+                <th class="hidden-xs hidden-sm">Last login</th>
+                <th class="text-right hidden-xs">Actions</th>
+                <th class="text-right hidden-sm hidden-md hidden-lg">Act</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key, user) in listUser">
+                <td>
+                    <a class="helpdesk-link" href="#">{{ user.email }}</a>
+                    <img src="/images/facebook-icon.png" tooltip='Facebook' class="icon-user-platform" alt="facebook" ng-if="detectSocial(user.tags) == 'facebook'"/>
+                    <img src="/images/google-icon.png" tooltip='G+' class="icon-user-platform" alt="g+" ng-if="detectSocial(user.tags) == 'google'"/>
+                    <div>
+                        <img src="/images/android_96.png" tooltip='Android' class="icon-user-platform" alt="android_logo" ng-if="user.hasAndroid"/>
+                        <img src="/images/android_96_disabled.png" class="icon-user-platform" alt="android_logo" ng-if="!user.hasAndroid"/>
+                        <img src="/images/ios_96.png" tooltip='iOS' class="icon-user-platform" alt="apple_logo" ng-if="user.hasIos"/>
+                        <img src="/images/ios_96_disabled.png" class="icon-user-platform" alt="apple_logo" ng-if="!user.hasIos"/>
+                        <img src="/images/winphone_96.png" tooltip='Winphone' class="icon-user-platform" alt="windows_phone_logo" ng-if="user.hasWp"/>
+                        <img src="/images/winphone_96_disabled.png" class="icon-user-platform" alt="windows_phone_logo" ng-if="!user.hasWp"/>
+                        <img src="/images/osx_96.png" tooltip='OSX' class="icon-user-platform" alt="osx_logo" ng-if="user.hasOsx"/>
+                        <img src="/images/osx_96_disabled.png" class="icon-user-platform" alt="osx_logo" ng-if="!user.hasOsx"/>
+                        <img src="/images/windows_96.png" tooltip='Windows' class="icon-user-platform" alt="windows_logo" ng-if="user.hasWindows"/>
+                        <img src="/images/windows_96_disabled.png" class="icon-user-platform" alt="windows_logo" ng-if="!user.hasWindows"/>
+                        <img src="/images/web_96.png" tooltip='Web' class="icon-user-platform" alt="web_logo" ng-if="user.hasWeb"/>
+                        <img src="/images/web_96_disabled.png" class="icon-user-platform" alt="web_logo" ng-if="!user.hasWeb"/>
+                    </div>
+                </td>
+                <td class="hidden-xs hidden-sm">
+                    <span ng-if="user.flag" class="flag-icon flag-icon-{{user.flag}}" tooltip="{{user.flag.toUpperCase()}}"></span>
+                </td>
+                <td class="hidden-xs hidden-sm"><span ng-if="user.createdDate">{{ user.createdDate | date:'dd/MM/yyyy HH:mm' }}</span></td>
+                <td class="hidden-xs hidden-sm"><span ng-if="user.lastLogin">{{ user.lastLogin | date:'dd/MM/yyyy HH:mm' }}</span></td>
+                <td class="text-right">
+                    
+                </td>
+            </tr>
+            <tr ng-if="userList.length === 0">
+                <td>No data</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading"><i class="icon-fast-backward"></i></a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading"><i class="icon-fast-forward"></i></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

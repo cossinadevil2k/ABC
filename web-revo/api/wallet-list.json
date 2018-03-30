@@ -1,0 +1,75 @@
+{
+	"error": 0,
+	"data": [
+		{
+			"_id": "09cdddd4-d4b4-44c0-9810-d442d3bc7d90",
+			"currency_id": 4,
+			"name": "Lieu Duong",
+			"transaction_notification": false,
+			"archived": false,
+			"account_type": 0,
+			"exclude_total": false,
+			"icon": "icon_109",
+			"listUser": [
+				"53e48dab54e65f127100388e"
+			],
+			"isDelete": false
+		},
+		{
+			"_id": "C9208CB2753048C1B864ADD00C6ACBD9",
+			"currency_id": 4,
+			"name": "Son dầu dừa",
+			"transaction_notification": false,
+			"archived": false,
+			"account_type": 0,
+			"exclude_total": false,
+			"icon": "icon",
+			"listUser": [
+				"53e48dab54e65f127100388e"
+			],
+			"isDelete": false
+		},
+		{
+			"_id": "9B136450966045A79B236C940E9D896E",
+			"currency_id": 4,
+			"name": "Thu nhập",
+			"transaction_notification": false,
+			"archived": false,
+			"account_type": 0,
+			"exclude_total": true,
+			"icon": "icon",
+			"listUser": [
+				"53e48dab54e65f127100388e"
+			],
+			"isDelete": false
+		},
+		{
+			"_id": "405B113868814B9B9527F3BB601DF2B0",
+			"currency_id": 4,
+			"name": "Thẻ",
+			"transaction_notification": false,
+			"archived": false,
+			"account_type": 0,
+			"exclude_total": true,
+			"icon": "icon_94",
+			"listUser": [
+				"53e48dab54e65f127100388e"
+			],
+			"isDelete": false
+		},
+		{
+			"_id": "2928ced6eec44096b1a74cc35d3f8af9",
+			"currency_id": 4,
+			"name": "Tí",
+			"transaction_notification": false,
+			"archived": false,
+			"account_type": 0,
+			"exclude_total": false,
+			"icon": "icon_1",
+			"listUser": [
+				"53e48dab54e65f127100388e"
+			],
+			"isDelete": false
+		}
+	]
+}

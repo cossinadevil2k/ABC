@@ -1,0 +1,136 @@
+<polymer-element name="not-found-page">
+    <template>
+        <style type="text/css">
+            core-header-panel {
+                height: 100%
+            }
+
+            .core-header {
+                height: 64px;
+                background-color: #2baf2b;
+                color: white;
+
+            }
+
+            #logo {
+                width: 40px;
+                margin: 0 auto;
+                padding-top: 10px !important;
+            }
+
+            .form-404 {
+                background: #fff;
+                width: 577px;
+                margin: 0 auto;
+                margin-top: 32px;
+                margin-bottom: 32px;
+            }
+            p {
+                margin: 0 24px;
+            }
+            paper-button.colored {
+                margin: 1em;
+                width: 10em;
+                background: transparent !important;
+            }
+
+            paper-button.colored {
+                color: rgb(43, 175, 43);
+                fill: #4285f4;
+            }
+
+            :host deep/ .text-title {
+                            margin-top: 16px;
+                        }
+            a.user-email {
+                background: url('../images/ic_ab_account.png') no-repeat scroll 10px center transparent;
+                float: left;
+                position: relative;
+                height: 24px;
+                padding: 10px 8px 10px 12px;
+                width: 180px;
+                line-height: 24px;
+                margin: 10px 0 0 14px;
+            }
+
+            a.user-email span {
+                margin-left: 24px;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+                font-size: 12px;
+            }
+            #footer {
+                position: fixed;
+                bottom: 0;
+            }
+
+        </style>
+        <core-localstorage name="user-data" value="{{user}}"></core-localstorage>
+        <div class="core-header">
+            <template if="{{loggined}}">
+                <a class="user-email" on-click="{{showUserInfo}}">
+                    <span>{{user.email}}</span>
+                    <paper-ripple fit> </paper-ripple></a>
+                <user-info-dialog id="userInfoDialog" user="{{user}}"></user-info-dialog>
+            </template>
+            <div id="logo">
+                <paper-button iconSrc="../images/app_icon_flat.png" on-click="{{goToHome}}" ></paper-button>
+            </div>
+        </div>
+        <div class="form-content">
+            <section class="form-404">
+                <div class="content-form">
+                    <div class="img-content"><img src="../images/404.png"/></div>
+                    <p class="text-title">Sorry! The page you're looking for can't be found.</p>
+                    <p class="text-body">It could be not existed, or maybe an error on our side. Anyway, you can return to your wallets by pressing the button below.</p>
+                    <template if="{{loggined}}">
+                        <paper-button class="colored" label="Select a wallet" on-click="{{walletChangeAction}}"></paper-button>
+                        <core-menu-button id="walletPicker" class="menu-wallet-tall">
+                            <wallet-list current_walletId="{{walletId}}" wallet="{{wallet}}" class="wallet-list" include_all_wallet="true" add_wallet="true"></wallet-list>
+                        </core-menu-button>
+                    </template>
+                    <template if="{{!loggined}}">
+                        <paper-button class="colored" label="Login" on-click="{{goToLogin}}"></paper-button>
+                    </template>
+                </div>
+            </section>
+        </div>
+        <div id="footer">
+            <ul>
+                <li><a href="//moneylover.me" target="_blank">Money Lover</a></li>
+                <li><a href="//moneylover.me/#money_lover_is_easy_to_get_started" target="_blank">Download</a></li>
+                <li><a href="//moneylover.me/policy.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+    </template>
+
+
+    <script type="text/javascript">
+        Polymer('not-found-page', {
+            loggined: false,
+            showUserInfo: function(){
+                this.$.userInfoDialog.showDialog();
+            },
+
+            walletChangeAction: function(){
+                this.$.walletPicker.toggle();
+            },
+
+            walletChanged: function(){
+                history.pushState(null, "title", '/wallet/'+ this.wallet._id);
+                history.go(0);
+            },
+
+            goToLogin: function(){
+                history.pushState(null, "title", '/login');
+                history.go(0);
+            },
+
+            goToHome: function(){
+                history.pushState(null, "title", '/');
+                history.go(0);
+            },
+        });
+    </script>
+</polymer-element>

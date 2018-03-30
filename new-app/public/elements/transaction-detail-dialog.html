@@ -1,0 +1,486 @@
+<polymer-element name="transaction-detail-dialog" attributes="editMode walletList">
+    <template >
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            :host paper-dialog {
+                height: auto;
+                width: auto;
+                border-radius: 2px;
+            }
+
+            :host core-header-panel{
+                height: 100%;
+            }
+
+            :host .detail-dialog {
+                width: 400px;
+                height:566px;
+                border-radius: 2px;
+            }
+
+            :host .content{
+                height: 440px;
+            }
+
+            :host .text-input-hint {
+                color: rgba(0,0,0,0.26);
+            }
+
+            :host paper-input {
+                width:280px;
+            }
+
+            :host /deep/ #container #main{
+                overflow: hidden;
+            }
+
+            :host .amount {
+                font-size: 30px;
+            }
+
+            :host paper-button {
+                float: right;
+            }
+
+            :host .close {
+                float: left;
+                margin: 0 8px;
+            }
+
+            :host paper-dialog div#main {
+                padding: 0 !important;
+            }
+
+            :host .hide {
+                display: none !important;
+            }
+
+            :host category-picker-dialog {
+                display: block;
+                float: left;
+                width: 625px;
+                height: 495px;
+            }
+
+            :host date-picker-dialog {
+                display: block;
+                float: left;
+                width: 400px;
+                height: 360px;
+            }
+
+            :host .dialog-title {
+                position: relative;
+                margin-bottom: 16px !important;
+                cursor: pointer;
+                margin-top:8px !important;
+            }
+
+            :host .dialog-title  h3{
+                float: left;
+                width: 270px;
+                border-bottom: 1px solid rgba(0,0,0,0.12);
+                color: rgba(000,000,000,0.87);
+                font-weight: normal;
+                height: 44px;
+                cursor: pointer;
+            }
+
+            :host .arrow-drop-down {
+                float: right;
+                margin-top: 12px;
+                color: rgba(0,0,0,0.34);
+            }
+
+            :host paper-input #underline {
+                height: 2px;
+            }
+
+            :host .dialog-header {
+                width: 400px;
+            }
+
+            :host core-menu-button {
+                background: url("../images/ic_dropdown.png") no-repeat scroll right center #fff;
+                width: 28px;
+            }
+
+            :host event-list {
+                background: #fff;
+            }
+
+            :host .dialog-c {
+                position: relative;
+                margin-top: 6px;
+                cursor: pointer;
+            }
+
+            :host .dialog-header .detail {
+                color: rgb(255,255,255);
+            }
+
+            :host .wallet {
+                margin-top: -3px;
+            }
+
+            :host .core-menu {
+                width: 24px;
+                height: 24px;
+                float: right;
+            }
+
+            :host .event {
+                margin-top: -3px;
+            }
+
+            :host .dialog-right .dialog-c .option .option-title {
+                width: 130px;
+                float: left;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                cursor: pointer;
+            }
+
+            :host .dialog-date {
+                cursor: pointer;
+            }
+
+            :host .dialog-title h3 paper-button.title-dropdown {
+                background: none;
+                width: 32px;
+            }
+
+            :host .change_color {
+                color: #757575  !important;
+            }
+
+            :host .error {
+                float: left;
+                color: #d34336;
+                -webkit-flex: 1;
+                flex: 1;
+                font-size: 14px;
+                line-height : 16px;
+                padding: 0;
+            }
+
+            :host .errorIcon {
+                float: right;
+                background-image: url("../components/paper-input/error-100.png");
+                background-size: 24px 24px;
+                height: 24px;
+                width: 24px;
+            }
+
+            :host .errorContainer {
+                clear: inherit;
+                padding: 5px 0 5px 0;
+                display: block;
+                -webkit-align-items: center;
+                align-items: center;
+                height: 24px !important;
+                width: 280px !important;
+            }
+        </style>
+
+        <paper-dialog id="transactionDetailDialog" backdrop="true" autoCloseDisabled="true">
+            <div class="{{{hide: showFragment !== 'transactionDialog'} | tokenList}} detail-dialog">
+                <core-header-panel mode="seamed">
+                    <div class="core-header dialog-header">
+                        <paper-button icon="close" class="close" dismissive></paper-button>
+                        <div class="detail text-title">{{heading}}</div>
+                        <template if="{{editMode}}">
+                            <paper-button iconSrc="../images/ic_ab_delete.png" on-click="{{deleteTransaction}}"class="delete" ></paper-button>
+                        </template>
+                    </div>
+                    <div class="dialog-content content">
+                        <div class="col dialog-title" on-click="{{categoryChangeAction}}">
+                            <div class="dialog-img">
+                                <img src="{{transaction.category.icon | iconUrlFilter}}"/>
+                            </div>
+                            <h3 class="text-display1 {{{change_color: transaction.category.virtualCate} | tokenList}}">{{transaction.category.name}}
+                                <core-icon icon="chevron-right" class="arrow-drop-down title-dropdown"></core-icon>
+                            </h3>
+                            <paper-ripple fit> </paper-ripple>
+                            <div class="errorContainer" hidden="true" id="cate_error">
+                                <div class="error" role="alert" aria-hidden="false">Please select Category</div>
+                                <div class="errorIcon"></div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="dialog-img icon-amount"></div>
+                            <paper-input id="transAmount" type="number" step="any" label="How much?" value="{{transaction.amount}}" class="{{transaction.category.type | amountDisplayClass}} text-display1 amount-input"></paper-input>
+                        </div>
+                        <div class="col">
+                            <div class="dialog-img icon-edit color-title" style="margin-top:0;"></div>
+                            <paper-input maxlength="140" label="Note" value="{{transaction.note}}"></paper-input>
+                        </div>
+                        <div class="col">
+                            <div class="dialog-img icon-user color-title " style="margin-top:0;"></div>
+                            <paper-input disabled label="{{withLabel}}" value="{{transaction.with | generateWithPersonDisplay}}"></paper-input>
+                        </div>
+                        <div horizontal layout class="dialog-detail">
+                            <div class="dialog-date" on-click="{{datePickerClicked}}">
+                                <span class="month-1">{{transaction.displayDate | formatDate('dddd')}}</span>
+                                <span class="month-2 text-display1">{{transaction.displayDate | formatDate('DD')}}</span>
+                                <time class="month-3">{{group.displayDate | formatDate('MMMM YYYY')}}</time>
+                            </div>
+                            <div class="dialog-right">
+                                <div class="dialog-c" on-click="{{walletChangeAction}}">
+                                    <span class="text-caption">Wallet</span>
+                                    <div class="option wallet text-input"><div class="option-title change-color">{{transaction.account | walletFilter}}</div>
+                                        <core-menu-button id="walletPicker">
+                                            <wallet-list id="walletList" walletList="{{walletList}}" current_walletId="{{transaction.account._id}}" wallet="{{walletTransaction}}" mode_display="mini" class="wallet-list"></wallet-list>
+                                        </core-menu-button>
+                                        <paper-ripple fit> </paper-ripple>
+                                    </div>
+                                </div>
+                                <div class="dialog-c" on-click="{{eventChangeAction}}">
+                                    <span class="text-caption">Event</span>
+                                    <div class="option text-input-hint text-input"><div class="option-title">{{transaction.campaign | campaignFilter}}</div>
+                                        <core-menu-button id="eventPicker">
+                                            <event-list id="eventList" currentEvent="{{transaction.campaign}}" class="wallet-list"></event-list>
+                                        </core-menu-button>
+                                        <paper-ripple fit> </paper-ripple>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <paper-button label="Save" class="button-flat-color" on-click="{{saveTransaction}}" id="btnSave"/>
+                    </div>
+                </core-header-panel>
+            </div>
+
+            <category-picker-dialog id="category_picker" class="{{{hide: showFragment !== 'categoryDialog'} | tokenList}}" categorySelected="{{category}}" typeFilter="{{transaction.category.type}}" walletId="{{transaction.account._id}}" showFragment="{{showFragment}}"></category-picker-dialog>
+
+            <date-picker-dialog id="date_picker" class="{{{hide: showFragment !== 'dateDialog'} | tokenList}}"  showFragment="{{showFragment}}" currentDate="{{transaction.displayDate}}"></date-picker-dialog>
+        </paper-dialog>
+        <transaction-service id="transactionService"></transaction-service>
+    </template>
+    <script>
+        Polymer('transaction-detail-dialog', {
+            created: function(){
+                this.showFragment = 'transactionDialog';
+                this.withLabel = 'With';
+            },
+
+            domReady: function(){
+                if(!this.editMode){
+                    this.heading = 'Add Transaction';
+                    var firstWallet = this.$.walletList.getFirstWallet();
+                } else {
+                    this.heading = 'Edit Transaction';
+                }
+            },
+
+            amountDisplayClass: function(categoryType){
+                return categoryType === 1 ? 'positive' : 'negative';
+            },
+            iconUrlFilter: function (imgName) {
+                return (urlRoot + '/img/icon/' + imgName + '.png').replace('icon//icon', 'icon');
+            },
+
+            formatDate: function (date, format) {
+                return moment(date).format(format);
+            },
+
+            categoryChangeAction: function(){
+                if(this.transaction.account){
+                    this.category = this.transaction.category;
+                    this.showFragment = 'categoryDialog';
+                    this.$.category_picker.loadData(this.transaction.account._id);
+                } else {
+                    this.fire('showToast', {msg:'Please select wallet first'});
+                }
+            },
+
+            datePickerClicked: function(){
+                this.showFragment = 'dateDialog';
+            },
+
+            categoryChanged: function(){
+                this.transaction.category = this.category;
+
+                if(this.category.metadata == 'IS_DEBT'){
+                    this.withLabel = 'Debtor';
+                    this.transaction.exclude_report = true;
+                } else if(this.category.metadata == 'IS_LOAN'){
+                    this.withLabel = 'Lender';
+                    this.transaction.exclude_report = true;
+                } else {
+                    this.withLabel = 'With';
+                    this.transaction.exclude_report = false;
+                }
+            },
+
+            generateWithPersonDisplay: function(personList){
+                if(!personList || personList.length === 0) return '';
+                else return personList[0];
+            },
+
+            showTransaction: function(transaction){
+                this.showFragment = 'transactionDialog';
+                this.transaction = cloneObject(transaction);
+                this.transaction.displayDate = moment(this.transaction.displayDate, moment.ISO_8601).format("YYYY-MM-DD");
+                this.$.transactionDetailDialog.toggle();
+            },
+
+            showAddTransaction: function(wallet){
+                this.showFragment = 'transactionDialog';
+                this.transaction = {};
+                if(wallet && wallet._id == 'all'){
+                    this.transaction.account = this.$.walletList.getFirstWallet();
+                } else {
+                    this.transaction.account = wallet;
+                }
+
+                this.transaction.category = this.getNoCategory();
+                this.transaction.exclude_report = false;
+                this.transaction.displayDate = new Date();
+                this.showTransaction(this.transaction);
+            },
+
+            getNoCategory: function(){
+                return {
+                    name: 'Select Category',
+                    icon: defaultCategoryIcon,
+                    type: 2,
+                    virtualCate: true
+                }
+            },
+
+            deleteTransaction: function(){
+                var transactionService = this.$.transactionService;
+                var that = this;
+                transactionService.deleteTransaction(this.transaction, function(data){
+                    this.fire('deleteTransaction');
+                    that.$.transactionDetailDialog.toggle();
+                });
+            },
+
+            walletChangeAction: function(){
+                this.$.walletPicker.toggle();
+                this.$.eventPicker.opened = false;
+            },
+
+            eventChangeAction: function(){
+                var that = this;
+                if(!this.transaction.account){
+                    this.fire('showToast', {msg: 'Test'});
+                } else {
+                    this.$.eventList.getEventByWallet(this.transaction.account, function(eventList){
+                        if(eventList && eventList.length > 0) {
+                            that.$.eventPicker.toggle();
+                            that.$.walletPicker.opened = false;
+                        }
+                    });
+                }
+            },
+
+            walletTransactionChanged: function(){
+                if(!this.transaction) return;
+                this.transaction.account = this.walletTransaction;
+                this.transaction.category = this.getNoCategory();
+                this.transaction.campaign = [];
+            },
+
+            saveTransaction: function(){
+                var that = this;
+                var transactionService = this.$.transactionService;
+                var transaction = this.transaction;
+                var status = this.validateTransDetail(transaction);
+                var btnSave = this.shadowRoot.querySelector("#btnSave");
+                if(!status){
+                    //todo transaction err
+                    return;
+                }
+
+                btnSave.setAttribute("disabled","");
+
+                if(this.editMode){
+                    transactionService.editTransaction(this.transaction, function(data){
+                        if(data.error===0){
+                            that.$['transactionDetailDialog'].toggle();
+                            this.fire('editTransaction');
+                        } else {
+                            alert("Edit transaction due to error");
+                        }
+                        btnSave.removeAttribute("disabled");
+                    });
+                } else {
+                    transactionService.addTransaction(this.transaction, function(data){
+                        if(data.error===0){
+                            that.$['transactionDetailDialog'].toggle();
+                            this.fire('addTransaction');
+                        } else {
+                            alert("Add new transaction due to error");
+                        }
+                        btnSave.removeAttribute("disabled");
+                    });
+                }
+            },
+
+            campaignFilter: function(campaign){
+                if(!campaign || campaign.length === 0) return 'No event';
+
+                return campaign[0].name;
+            },
+
+            eventChanged: function(){
+                if(!this.event) this.transaction.campaign = null;
+                this.transaction.campaign = [this.event];
+            },
+
+            walletFilter: function(wallet){
+                if(!wallet) return 'Select wallet';
+                else return wallet.name;
+            },
+
+            validateTransDetail: function(transaction){
+                var error = 0;
+                var elmAmount = this.shadowRoot.querySelector("#transAmount");
+                var elmCate = this.shadowRoot.querySelector("#cate_error");
+
+                if(!transaction.category._id) {
+                    elmCate.removeAttribute("hidden");
+                    error++;
+                } else {
+                    if(!elmCate.getAttribute("hidden")) elmCate.setAttribute("hidden", "true");
+                }
+                if(!transaction.amount || transaction.amount==="") {
+                    elmAmount.removeAttribute("invalid");
+                    elmAmount.setAttribute("invalid","true");
+                    elmAmount.setAttribute("error","Amount field should not empty");
+                    error++;
+                } else {
+                    if(transaction.amount==="0" || transaction.amount===0){
+                        elmAmount.removeAttribute("invalid");
+                        elmAmount.setAttribute("invalid","true");
+                        elmAmount.setAttribute("error","Amount field should not be zero");
+                        error++;
+                    } else if (transaction.amount < 0) {
+                        elmAmount.removeAttribute("invalid");
+                        elmAmount.setAttribute("invalid","true");
+                        elmAmount.setAttribute("error","Amount must greater than zero");
+                        error++;
+                    }
+                }
+
+                if(!transaction.displayDate) error++;
+                if(!transaction.account._id) error++;
+
+                if(!error) return true;
+                else return false;
+            }
+
+        });
+
+    </script>
+
+</polymer-element>

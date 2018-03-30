@@ -1,0 +1,82 @@
+<div class="modal-header">
+    <h4>New Item</h4>
+</div>
+<div class="modal-body">
+    <div class="alert alert-warning alert-dismissable" ng-show="error.show">
+        <button ng-click="error.show = !error.show" type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="icon-remove-sign"></i></button>
+        <strong>Error!</strong> {{error.message}}
+    </div>
+    <form class="form-horizontal" ng-submit="save(item)">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Product ID:</label>
+            <div class="col-lg-10">
+                <select name="" id="" class="form-control" ng-model="item.productId" required>
+                    <option
+                            ng-repeat="product in products"
+                            value="{{product.product_id}}">
+                        {{product.product_id}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Name:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="item.name" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="control-label col-lg-2">Drop:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="item.drop" placeholder="value from 0 to 10000, 9669 means 96.69%" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Remain:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="item.remain" required/>
+            </div>            
+        </div>
+        <div class="form-group">
+            <label for="" class="col-lg-2 control-label">Has Expire Date?</label>
+            <div class="col-lg-10">
+                <input type="checkbox" class="form-control" ng-model="item.hasExpireDate"/>
+            </div>
+        </div>
+        <div class="form-group" ng-if="item.hasExpireDate">
+            <label class="control-label col-lg-2">Start Date:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="item.startDate" datepicker-popup="dd-MM-yyyy" min="minDate" placeholder="DD-MM-YYYY" required/>
+            </div>
+        </div>
+        <div class="form-group" ng-if="item.hasExpireDate">
+            <label for="" class="control-label col-lg-2">End Date:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="item.expireDate" datepicker-popup="dd-MM-yyyy" min="minDate" placeholder="DD-MM-YYYY" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-lg-2 control-label">Is Global?</label>
+            <div class="col-lg-10">
+                <input type="checkbox" class="form-control" ng-model="item.isGlobal"/>
+            </div>
+        </div>
+        <div class="form-group" ng-if="!item.isGlobal">
+            <label for="" class="control-label col-lg-2">Language:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="item.language"/>
+            </div>
+        </div>
+        <div class="form-group" ng-if="!item.isGlobal">
+            <label for="" class="control-label col-lg-2">Country:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="item.country" />
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+            <input type="submit" class="btn btn-success" value="Save"/>
+        </div>
+    </form>
+</div>
+

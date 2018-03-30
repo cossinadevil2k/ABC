@@ -1,0 +1,76 @@
+<div class="module">
+    <div class="module-header">
+        <div>
+            <label>Select Product:</label>
+            <div class="btn-group">
+                <button type="button" class="btn btn-blue dropdown-toggle" data-toggle="dropdown">{{selectedProduct}} <i class="caret"></i></button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#" ng-click="selectProduct('All')">All</a></li>
+                    <li ng-repeat="product in products" ng-click="selectProduct(product.productId)"><a href="#">{{product.productId}}</a></li>
+                </ul>
+            </div>
+            <label>Use Status:</label>
+            <div class="btn-group">
+                <button type="button" class="btn btn-blue dropdown-toggle" data-toggle="dropdown">{{filter.used}} <i class="caret"></i></button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#" ng-click="selectFilter('used','All')">All</a></li>
+                    <li><a href="#" ng-click="selectFilter('used','Used')">Used</a></li>
+                    <li><a href="#" ng-click="selectFilter('used','New')">New</a></li>
+                </ul>
+            </div>
+            <label>Expire Status:</label>
+            <div class="btn-group">
+                <button type="button" class="btn btn-blue dropdown-toggle" data-toggle="dropdown">{{filter.expire}} <i class="caret"></i></button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#" ng-click="selectFilter('expire','All')">All</a></li>
+                    <li><a href="#" ng-click="selectFilter('expire','Non Expire')">Non Expire</a></li>
+                    <li><a href="#" ng-click="selectFilter('expire','Has Expire')">Has Expire</a></li>
+                    <li><a href="#" ng-click="selectFilter('expire','Expired')">Expired</a></li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-twitter" ng-click="getList()">Get List</button>
+        </div>
+    </div>
+    <div class="module-content table-responsive">
+        <h4 class="module-subtitle">Info</h4>
+        <div>
+            <label>Total:</label> {{info.total}} <br/>
+            <label>Used:</label> {{info.used}} <br/>
+        </div>
+        <h4 class="module-subtitle">List for {{selectedProduct}}</h4>
+        <button class="btn btn-facebook" ng-click="addNew()"><i class="icon icon-plus"></i> Add new</button>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th class="text-center">Expire</th>
+                    <th class="text-center">Value</th>
+                    <th class="text-center">Used by</th>
+                    <th class="text-right">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="code in codeList">
+                    <td>{{code.code}}</td>
+                    <td class="text-center">{{code.expire | checkDateTime}}</td>
+                    <td class="text-center">{{code.timeValue + ' ' + code.timeUnit}}</td>
+                    <td class="text-center">{{code.usedBy}}</td>
+                    <td class="text-right">
+                        <button class="btn btn-xs btn-grape" tooltip="Delete" ng-click="delete(code._id)"><i class="icon icon-trash"></i></button>
+                    </td>
+                </tr>
+                <tr class="breakPage">
+                    <td colspan="12" class="text-center">
+                        <div class="btn-group">
+                            <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage"><i class="icon-fast-backward"></i></a>
+                            <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                            <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage"><i class="icon-fast-forward"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

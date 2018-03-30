@@ -1,0 +1,105 @@
+<div class="col-lg-12">
+    <div class="row">
+        <div class="module">
+            <div class="module-header">
+                <h4>FAQ View Options</h4>
+            </div>
+            <div class="module-content">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        By Section:
+                        <div class="btn-group dropdown-faq-mobile">
+                            <button type="button" class="btn btn-deepsea dropdown-toggle" data-toggle="dropdown" ng-disabled="isLoading">{{selectedSection.name}} <span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-repeat="(key, section) in sections"><a href="" ng-click="selectSection(key)">{{section.name}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 dropdown-language-faq">
+                        By Language:
+                        <div class="btn-group dropdown-faq-mobile">
+                            <button type="button" class="btn btn-deepsea dropdown-toggle" data-toggle="dropdown" ng-disabled="isLoading">{{selectedLanguage.name}} <span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-repeat="(key, language) in languages"><a href="" ng-click="selectLanguage(key)">{{language.name}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        By Platform:
+                        <div class="btn-group dropdown-faq-mobile">
+                            <button type="button" class="btn btn-deepsea dropdown-toggle" data-toggle="dropdown" ng-disabled="isLoading">{{selectedPlatform.name}} <span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-repeat="(key, platform) in platforms"><a href="" ng-click="selectPlatform(key)">{{platform.name}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="module no-padding">
+            <div class="module-header">
+                <h4 class="btn-faq-mobile">
+                    FAQ List
+                    <button class="btn" ng-click="getFaq()" ng-disabled="isLoading" style="float:right">
+                      Refresh
+                    </button>
+                    <a href="/helpdesk/faq/create" class="btn btn-primary" ng-disabled="isLoading" style="float:right">
+                      Create
+                    </a>
+                </h4>
+            </div>
+            <div class="module-content table-responsive">
+                <div class="text-center" ng-if="isLoading">
+                    <img src="/images/loading-pacman.gif" /><br />
+                    Loading
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Language</th>
+                        <th>Platform</th>
+                        <th>Settings</th>
+                        <th class="text-right">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="(key, faq) in faqs">
+                        <td><a class="helpdesk-link" href="/helpdesk/faq/edit/{{faq._id}}" target="_blank">{{faq.question}}</a></td>
+                        <td>{{faq.language}}</td>
+                        <td>
+                            <img src="/images/android.png" ng-if="faq.platform.indexOf('android')>=0"/>
+                            <img src="/images/ios.png" ng-if="faq.platform.indexOf('ios')>=0"/>
+                            <img src="/images/wp.png" ng-if="faq.platform.indexOf('wp')>=0"/>
+                            <img src="/images/osx.png" ng-if="faq.platform.indexOf('mac')>=0"/>
+                            <img src="/images/pc.png" ng-if="faq.platform.indexOf('win')>=0"/>
+                            <img src="/images/earth.png" ng-if="faq.platform.indexOf('web')>=0"/>
+                        </td>
+                        <td>
+                            <button class="btn btn-xs btn-deepsea" ng-if="faq.global" ng-click="changeGlobal(key, false)" tooltip="Click to change to non-global">global</button>
+                            <button class="btn btn-xs btn-success" ng-if="!faq.global" ng-click="changeGlobal(key, true)" tooltip="Click to change to global">non-global</button>
+                            <button class="btn btn-xs btn-facebook" ng-if="faq.published" ng-click="changePublish(key, false)" tooltip="Click to change to unpublished">published</button>
+                            <button class="btn btn-xs btn-info" ng-if="!faq.published" ng-click="changePublish(key, true)" tooltip="Click to change to published">unpublished</button>
+                        </td>
+                        <td class="text-right">
+                            <button class="btn btn-xs btn-danger" ng-click="delete(key, faq)">Delete</button>
+                        </td>
+                    </tr>
+                    <tr class="breakPage">
+                        <td colspan="12" class="text-center">
+                            <div class="btn-group">
+                                <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage"><i class="icon-fast-backward"></i></a>
+                                <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                                <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage"><i class="icon-fast-forward"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+
+<polymer-element name="icon-group" attributes="iconGroup mini">
+<template>
+  <style>
+
+    :host .stack-imgs img {
+      max-width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      outline: 1px solid transparent;
+    }
+
+    :host .stack-imgs {
+      width: 48px;
+      padding: 0;
+      position: relative;
+      max-width: 100%;
+      height: 48px;
+    }
+
+    :host .stack-imgs .image0 {
+      right: 0;
+      width: 22px;
+      left: 21px;
+      top: 2px;
+      height: 22px;
+    }
+
+    :host .stack-imgs .image1 { 
+      top: 4px;
+      left: 9px;
+      width: 34px;
+      height: 34px;
+    }
+    
+    :host .stack-imgs .image2 { 
+      top: 8px;
+      left: 0; 
+      width: 40px;
+      height: 40px;
+    }
+
+    :host .stack-border {
+      border: 1px solid rgba(0,0,0,0.12); 
+      height: 42px; 
+      width: 42px; 
+      margin: 2px; 
+      border-radius:50%;
+      background: rgba(0,0,0,0.07);
+    }
+
+    .stack-imgs img {
+      width: auto !important;
+    }
+
+  </style>
+  <div class="stack-imgs {{iconGroup | stackFilter}}">
+    <template repeat="{{icon,index in iconGroup}}">
+    <img width="48" lazyload="true" src="{{icon | iconUrlFilter}}" class="image{{index}}"/>
+    </template>
+    <div class="stack-border"></div>
+  </div>
+</template>
+
+<script type="text/javascript">
+	Polymer('icon-group', {
+		imgError: function(){
+			this.wallet.icon = defaultWalletIcon;
+		},
+
+		stackFilter: function(iconGroup){
+			var size = iconGroup.length;
+			return size === 2 ? 'stack2' : 'stack3';
+		},
+    iconUrlFilter: function (imgName) {
+      return (urlRoot + '/img/icon/' + imgName + '.png').replace('icon//icon', 'icon');
+    },
+  });
+</script>
+</polymer-element>

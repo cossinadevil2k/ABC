@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bank</title>
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="/css/style.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+        <!-- <script type="text/javascript" src="http://rawgit.com/BobKnothe/autoNumeric/master/autoNumeric.js"></script> -->
+
+    </head>
+
+    <body>
+
+        <div class="wrapper-bankDetail" style="padding: 0">
+            <div class="menu-detailbank">
+                <a href="/bank"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+            </div>
+            <div style="padding: 15px;">
+                <div class="bank-detail row">
+                    <div class="col-xs-4 logo-detailbank">
+                        <% if(result[0].provider){ %>
+                            <img src="/images/<%= result[0].provider.icon %>" alt="logo"/>
+                        <% } else { %>
+                            <img src="/images/bank_default.png" alt="logo"/>
+                        <% } %>
+                    </div>
+                    <div class="col-xs-8 name-detailbank">
+                        <div>Ngân hàng</div>
+                        <div><%= result[0].bankId.name %></div>
+                        <div>Thông tin chi tiết</div>
+                    </div>
+                </div><!-- /bank-->
+
+                <div class="row general">
+                    <div class="title-detailbank"><span>Thông tin chung</span></div>
+
+                    <div class="col-xs-6 labelCard">Lương tối thiểu:</div>
+                    <div class="col-xs-6"><%= numeral(result[0].minSalaryRequirement).format('0,0') %>
+                        <small> ₫</small>
+                    </div>
+
+                    <div class="col-xs-6 labelCard">Độ tuổi cho vay:</div>
+                    <div class="col-xs-6"><%= result[0].ageRequirement.min %> - <%= result[0].ageRequirement.max %>
+                        <small> tuổi</small>
+                    </div>
+                </div><!-- /general-->
+
+                <div class="row car">
+                    <div class="title-detailbank"><span>Mua xe</span></div>
+
+                    <div class="col-xs-6 labelCard">Lãi suất:</div>
+                    <div class="col-xs-6"><%= result[0].car.interestRate %><small>%</small>
+                    </div>
+
+                    <div class="col-xs-6 labelCard">Lãi suất điều chỉnh:</div>
+                    <div class="col-xs-6"><%= result[0].car.adjustableRate %><small>%</small>
+                    </div>
+
+                    <div class="col-xs-6 labelCard">Ưu đãi:</div>
+                    <div class="col-xs-6"><%= result[0].car.priviledge.interestRate %><small>%</small> trong <%= result[0].car.priviledge.numberMonth %><small> tháng</small>
+                    </div>
+
+                    <div class="col-xs-6 labelCard">Tỷ lệ cho vay tối đa:</div>
+                    <div class="col-xs-6"><%= result[0].car.maximumLendingRate %><small>%</small>
+                    </div>
+
+                    <div class="col-xs-6 labelCard">Kì hạn vay:</div>
+                    <div class="col-xs-6"><%= result[0].car.loanTenure.min %> - <%= result[0].car.loanTenure.max %>
+                        <small> tháng</small>
+                    </div>
+
+                    <div class="col-xs-6 labelCard">Thời gian ân hạn:</div>
+                    <div class="col-xs-6"><%= result[0].car.gracePeriod %>
+                        <small> tháng</small>
+                    </div>
+                </div><!-- /car-->
+
+                <div class="row house">
+                    <div class="title-detailbank"><span>Mua nhà</span></div>
+
+                    <div class="col-xs-6 labelCard">Lãi suất:</div>
+                    <div class="col-xs-6"><%= result[0].house.interestRate %><small>%</small>
+                    </div>
+
+                    <div class="col-xs-6 labelCard">Lãi suất điều chỉnh:</div>
+                    <div class="col-xs-6"><%= result[0].house.adjustableRate %><small>%</small>
+                    </div>
+
+                    <div class="col-xs-6 labelCard">Ưu đãi:</div>
+                    <div class="col-xs-6"><%= result[0].house.priviledge.interestRate %><small>%</small> trong <%= result[0].house.priviledge.numberMonth %><small> tháng</small>
+                    </div>
+
+                    <div class="col-xs-6 labelCard">Tỷ lệ cho vay tối đa:</div>
+                    <div class="col-xs-6"><%= result[0].house.maximumLendingRate %><small>%</small>
+                    </div>
+
+                    <div class="col-xs-6 labelCard">Kì hạn vay:</div>
+                    <div class="col-xs-6"><%= result[0].house.loanTenure.min %> - <%= result[0].house.loanTenure.max %>
+                        <small> tháng</small>
+                    </div>
+
+                    <div class="col-xs-6 labelCard">Thời gian ân hạn:</div>
+                    <div class="col-xs-6"><%= result[0].house.gracePeriod %>
+                        <small> tháng</small>
+                    </div>
+                </div><!-- /house-->
+
+                <div class="row personal">
+                    <div class="title-detailbank"><span>Chi tiêu cá nhân</span></div>
+
+                    <div class="col-xs-6 labelCard">Lãi suất:</div>
+                    <div class="col-xs-6"><%= result[0].personal.interestRate %><small>%</small>
+                    </div>
+
+                    <div class="col-xs-6 labelCard">Lãi suất điều chỉnh:</div>
+                    <div class="col-xs-6"><%= result[0].personal.adjustableRate %><small>%</small>
+                    </div>
+
+                    <div class="col-xs-6 labelCard">Ưu đãi:</div>
+                    <div class="col-xs-6"><%= result[0].personal.priviledge.interestRate %><small>%</small> trong <%= result[0].personal.priviledge.numberMonth %><small> tháng</small>
+                    </div>
+
+                    <div class="col-xs-6 labelCard">Tỷ lệ cho vay tối đa:</div>
+                    <div class="col-xs-6"><%= result[0].personal.maximumLendingRate %><small>%</small>
+                    </div>
+
+                    <div class="col-xs-6 labelCard">Kì hạn vay:</div>
+                    <div class="col-xs-6"><%= result[0].personal.loanTenure.min %> - <%= result[0].personal.loanTenure.max %>
+                        <small> tháng</small>
+                    </div>
+
+                    <div class="col-xs-6 labelCard">Thời gian ân hạn:</div>
+                    <div class="col-xs-6"><%= result[0].personal.gracePeriod %>
+                        <small> tháng</small>
+                    </div>
+                </div><!-- /personal-->
+            </div>
+
+        </div><!-- /wrapper-bankDetail-->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ​
+          ga('create', 'UA-39420218-15', 'auto');
+          ga('send', 'pageview');
+        ​
+        </script>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title title">Edit Actions</h4>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">
+                <div style="width: 15px; height: 15px; display: inline-block; vertical-align: middle; background-color: {{setting.color || '#ffffff'}};"></div> Color
+            </label>
+            <div class="col-lg-10">
+                <input colorpicker="hex" type="text" class="form-control" ng-model="setting.color">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Actions</label>
+            <div class="col-lg-10">
+                <table class="table table-stripted">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Color</th>
+                            <th class="text-right"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="action in setting.actions">
+                            <td>{{action.name}}</td>
+                            <td>
+                                <div style="width: 15px; height: 15px; display: inline-block; vertical-align: middle; background-color: {{action.color || '#ffffff'}};"></div>
+                                {{action.color}}
+                            </td>
+                            <td class="text-right">
+                                <button class="btn btn-xs btn-success" tooltip="Detail/Edit" ng-click="edit(action)"><i class="icon-pencil"></i></button>
+                                <button class="btn btn-xs btn-grape" tooltip="Delete"><i class="icon-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-right">
+                    <button class="btn btn-facebook" ng-click="addAction()"><i class="icon-plus"></i> Add an action</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="cancel();">Close</button>
+    <button class="btn btn-primary" ng-click="save(setting);">Save</button>
+</div>

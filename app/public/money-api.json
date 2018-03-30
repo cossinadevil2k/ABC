@@ -1,0 +1,2314 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Money Lover API",
+        "description": "The open API of Money Lover application\n## Host\n- Production: https://oapi.moneylover.me\n- Sandbox: https://oapi-sandbox.moneylover.me\n\n## Authenticate\nMoney Lover sử dụng công nghệ **OAuth2** để xác thực các request từ client. Chúng tôi sẽ cung cấp cho bạn bộ đôi API ID (Client ID) và Secret key. Hãy email gửi tới địa chỉ [contact@moneylover.me](contact@moneylover.me) và nói ra nhu cầu của bạn, chúng tôi sẽ cung cấp cho bạn bộ key này, ở cả 2 môi trường Production và Sandbox.\n\n*Note: Dữ liệu của Sandbox và Production hoàn toàn độc lập với nhau.*\n\nTừ API ID và Secret key, mỗi session đăng nhập bạn sẽ có `access_key`, `expire` &  `refresh_token` để lấy `access_key` khác khi hết hạn. Cách lấy như thế nào hãy xem ở API có tag **Auth** bên dưới.\n\nĐa số request của Money Lover đều có security, các parameters được đặt ở header. Hãy tham khảo phần **Security** \n",
+        "version": "4.0.0"
+    },
+    "host": "oapi.moneylover.me",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/v4/",
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "paths": {
+        "/authenticate": {
+            "post": {
+                "summary": "Get login URL",
+                "parameters": [
+                    {
+                        "name": "client",
+                        "type": "string",
+                        "in": "query",
+                        "required": true,
+                        "description": "Client ID"
+                    },
+                    {
+                        "name": "secret",
+                        "type": "string",
+                        "in": "query",
+                        "required": true,
+                        "description": "Secret"
+                    },
+                    {
+                        "name": "callback_url",
+                        "type": "string",
+                        "in": "query",
+                        "required": true,
+                        "description": "Sau khi đăng nhập thành công, hệ thống sẽ gửi `access_token`, `expire` & `refresh_token` đến URL này của bạn bằng method `GET`. Các giá trị này sẽ được tìm thấy ở query. \n"
+                    }
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns a login URL. Open at new tab or web view",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "login_url": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/account/list": {
+            "get": {
+                "summary": "Wallet list",
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Account"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of products",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "account_list": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/Account"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/account/info": {
+            "get": {
+                "summary": "Wallet info",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "description": "Account ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Account"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns wallet info",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "account": {
+                                            "$ref": "#/definitions/Account"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/account/create": {
+            "post": {
+                "summary": "Create a wallet",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Wallet's name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currency",
+                        "in": "query",
+                        "description": "Currency ID",
+                        "required": true,
+                        "type": "number",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "icon",
+                        "in": "query",
+                        "description": "Icon path",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Account"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns new wallet",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "account": {
+                                            "$ref": "#/definitions/Account"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/account/update": {
+            "put": {
+                "summary": "Edit a wallet",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "description": "Wallet ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Wallet name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "icon",
+                        "in": "query",
+                        "description": "Wallet icon path",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "exclude_total",
+                        "in": "query",
+                        "description": "Exclude from total",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "transaction_notification",
+                        "in": "query",
+                        "description": "Transaction notification",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "archived",
+                        "in": "query",
+                        "description": "Wallet's archived state",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Account"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns new wallet",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "account": {
+                                            "$ref": "#/definitions/Account"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/account/delete": {
+            "delete": {
+                "summary": "Delete a wallet",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "description": "Wallet ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Account"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns result",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/category/list": {
+            "get": {
+                "summary": "Category list",
+                "parameters": [
+                    {
+                        "name": "account",
+                        "in": "query",
+                        "description": "Wallet ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "skip",
+                        "in": "query",
+                        "description": "Số lượng item muốn bỏ qua trong request",
+                        "required": false,
+                        "type": "number",
+                        "format": "ingeter"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of max item in request",
+                        "required": false,
+                        "type": "number",
+                        "format": "integer"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns array of categories",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "category_list": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/Category"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/category/info": {
+            "get": {
+                "summary": "Category info",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "description": "Category ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns category info",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "category": {
+                                            "$ref": "#/definitions/Category"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/category/create": {
+            "post": {
+                "summary": "Create a category",
+                "parameters": [
+                    {
+                        "name": "account",
+                        "in": "query",
+                        "description": "Wallet ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Category's name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "1 is income, 2 is expense",
+                        "required": true,
+                        "type": "number",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "icon",
+                        "in": "query",
+                        "description": "Icon path",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "parent",
+                        "in": "query",
+                        "description": "Parent cateogry's ID",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns new category",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "category": {
+                                            "$ref": "#/definitions/Category"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/category/update": {
+            "put": {
+                "summary": "Edit a category",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "description": "Category ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Category name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "icon",
+                        "in": "query",
+                        "description": "Category icon path",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Category type",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "parent",
+                        "in": "query",
+                        "description": "Parent category's ID",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns new category",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "category": {
+                                            "$ref": "#/definitions/Category"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/category/delete": {
+            "delete": {
+                "summary": "Delete a category",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "type": "string",
+                        "required": true,
+                        "description": "Category's ID"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns result",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/budget/list": {
+            "get": {
+                "summary": "Budget limit",
+                "parameters": [
+                    {
+                        "name": "skip",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "format": "integer",
+                        "description": "Number of skip items"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "format": "integer",
+                        "description": "Max amount of budget list"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Budget"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns list budget",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "budget_list": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/Budget"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/budget/info": {
+            "get": {
+                "summary": "Budget info",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Budget ID"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Budget"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns budget info",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "budget": {
+                                            "$ref": "#/definitions/Budget"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/budget/create": {
+            "post": {
+                "summary": "Create a budget",
+                "parameters": [
+                    {
+                        "name": "account",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Wallet ID"
+                    },
+                    {
+                        "name": "amount",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "description": "Max expense amount. Greater than 0"
+                    },
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Category ID"
+                    },
+                    {
+                        "name": "is_repeat",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean",
+                        "description": "Auto create new budget in next period"
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "format": "YYYY-MM-DD",
+                        "description": "Start date"
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "format": "YYYY-MM-DD",
+                        "description": "End date"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Budget"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns new budget",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "budget": {
+                                            "$ref": "#/definitions/Budget"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/budget/update": {
+            "put": {
+                "summary": "Update a budget",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Budget ID"
+                    },
+                    {
+                        "name": "amount",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "description": "Max expense amount. Greater than 0"
+                    },
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Category ID"
+                    },
+                    {
+                        "name": "is_repeat",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean",
+                        "description": "Auto create new budget in next period"
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "YYYY-MM-DD",
+                        "description": "Start date"
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "YYYY-MM-DD",
+                        "description": "End date"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Budget"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns new budget",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "budget": {
+                                            "$ref": "#/definitions/Budget"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/budget/delete": {
+            "delete": {
+                "summary": "Delete a budget",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Budget ID"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Budget"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns result",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/campaign/list": {
+            "get": {
+                "summary": "Campaign list",
+                "parameters": [
+                    {
+                        "name": "skip",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "format": "integer",
+                        "description": "Number of skip items"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "format": "integer",
+                        "description": "Max amount of budget list"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Campaign"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns list campaign",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "campaign_list": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/Campaign"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/campaign/info": {
+            "get": {
+                "summary": "Campaign info",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Campaign ID"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Campaign"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns campaign info",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "campaign": {
+                                            "$ref": "#/definitions/Campaign"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/campaign/create": {
+            "post": {
+                "summary": "Create a campaign",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Campaign name"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "format": "integer",
+                        "description": "5 is Saving, 6 is Event"
+                    },
+                    {
+                        "name": "icon",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Icon path"
+                    },
+                    {
+                        "name": "start_amount",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "description": "Start amount of Saving"
+                    },
+                    {
+                        "name": "goal_amount",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "description": "Goal amount of Saving"
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "YYYY-MM-DD",
+                        "description": "End date"
+                    },
+                    {
+                        "name": "account",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Wallet ID"
+                    },
+                    {
+                        "name": "currency_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "format": "integer",
+                        "description": "Currency ID. Required if campaign have no account"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Campaign"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns new campaign",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "campaign": {
+                                            "$ref": "#/definitions/Campaign"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/campaign/update": {
+            "put": {
+                "summary": "Update a campaign",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Campaign ID"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Campaign name"
+                    },
+                    {
+                        "name": "icon",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Icon path"
+                    },
+                    {
+                        "name": "start_amount",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "description": "Start amount of Saving"
+                    },
+                    {
+                        "name": "goal_amount",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "description": "Goal amount of Saving"
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "YYYY-MM-DD",
+                        "description": "End date"
+                    },
+                    {
+                        "name": "currency_id",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "format": "integer",
+                        "description": "Currency ID. Required if campaign have no account"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Campaign"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns new campaign",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "campaign": {
+                                            "$ref": "#/definitions/Campaign"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/campaign/delete": {
+            "delete": {
+                "summary": "Delete a campaign",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Campaign ID"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Campaign"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns new campaign",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/transaction/list": {
+            "get": {
+                "summary": "Transaction list",
+                "parameters": [
+                    {
+                        "name": "account",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Wallet ID"
+                    },
+                    {
+                        "name": "skip",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "format": "integer",
+                        "description": "Number of skip items"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "format": "integer",
+                        "description": "Max transaction amount in request"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Transaction"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns list transaction",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "transaction_list": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/Transaction"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/transaction/get": {
+            "get": {
+                "summary": "Transaction info",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Transaction ID"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Transaction"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns transaction info",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "transaction": {
+                                            "$ref": "#/definitions/Transaction"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/transaction/create": {
+            "post": {
+                "summary": "Create a transaction",
+                "parameters": [
+                    {
+                        "name": "note",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Transaction note"
+                    },
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Category ID"
+                    },
+                    {
+                        "name": "amount",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "description": "Amount"
+                    },
+                    {
+                        "name": "longtitude",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Location longtitude"
+                    },
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Location latitude"
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Address"
+                    },
+                    {
+                        "name": "with",
+                        "in": "query",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of related person name"
+                    },
+                    {
+                        "name": "campaign",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Campaign ID"
+                    },
+                    {
+                        "name": "display_date",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "format": "YYYY-MM-DD",
+                        "description": "Transaction date"
+                    },
+                    {
+                        "name": "due_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "YYYY-MM-DD",
+                        "description": "Due date (for Debt/Loan transaction)"
+                    },
+                    {
+                        "name": "parent",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Parent transaction ID"
+                    },
+                    {
+                        "name": "exclude_report",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean",
+                        "description": "Exclude from report"
+                    },
+                    {
+                        "name": "account",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Wallet ID"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Transaction"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns new transaction",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "transaction": {
+                                            "$ref": "#/definitions/Transaction"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/transaction/update": {
+            "put": {
+                "summary": "Update a transaction",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Transaction ID"
+                    },
+                    {
+                        "name": "note",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Transaction note"
+                    },
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Category ID"
+                    },
+                    {
+                        "name": "amount",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "description": "Amount"
+                    },
+                    {
+                        "name": "longtitude",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Location longtitude"
+                    },
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Location latitude"
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Address"
+                    },
+                    {
+                        "name": "with",
+                        "in": "query",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of related person name"
+                    },
+                    {
+                        "name": "campaign",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Campaign ID"
+                    },
+                    {
+                        "name": "display_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "YYYY-MM-DD",
+                        "description": "Transaction date"
+                    },
+                    {
+                        "name": "due_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "YYYY-MM-DD",
+                        "description": "Due date (for Debt/Loan transaction)"
+                    },
+                    {
+                        "name": "parent",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Parent transaction ID (for Debt/Loan transaction)"
+                    },
+                    {
+                        "name": "exclude_report",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean",
+                        "description": "Exclude from report"
+                    },
+                    {
+                        "name": "account",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Wallet ID"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Transaction"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns new transaction",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "transaction": {
+                                            "$ref": "#/definitions/Transaction"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/transaction/delete": {
+            "delete": {
+                "summary": "Delete a transaction",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Transaction ID"
+                    }
+                ],
+                "security": [
+                    {
+                        "client": []
+                    },
+                    {
+                        "authorization": []
+                    },
+                    {
+                        "apiversion": []
+                    },
+                    {
+                        "dataformat": []
+                    }
+                ],
+                "tags": [
+                    "Transaction"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns new result",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "boolean",
+                                    "description": "Value is true"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "client": {
+            "type": "apiKey",
+            "name": "Client ID",
+            "in": "header"
+        },
+        "authorization": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "description": "\"Bearer ACCESS_TOKEN\"",
+            "in": "header"
+        },
+        "apiversion": {
+            "type": "apiKey",
+            "name": "API Version",
+            "description": "Default value is \"4\"",
+            "in": "header"
+        },
+        "dataformat": {
+            "type": "apiKey",
+            "name": "Data format",
+            "description": "Default value is \"json\"",
+            "in": "header"
+        }
+    },
+    "definitions": {
+        "Account": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "description": "ID của wallet"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Tên của wallet."
+                },
+                "currency_id": {
+                    "type": "number",
+                    "format": "integer",
+                    "description": "Mã tiền tệ, xem thêm về tiền tệ ở [đây](http://google.com)"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "Đường dẫn hình ảnh icon của wallet"
+                },
+                "exclude_total": {
+                    "type": "boolean",
+                    "description": "Đánh dấu trạng thái loại bỏ khỏi chế độ xem tổng quát"
+                },
+                "account_type": {
+                    "type": "number",
+                    "description": "Loại của wallet. Mặc định 0, null, hoặc undefined"
+                },
+                "metadata": {
+                    "type": "object",
+                    "description": "Thông tin mở rộng của wallet"
+                },
+                "archived": {
+                    "type": "boolean",
+                    "description": "Đánh dấu trạng thái đã được lưu trữ của wallet"
+                },
+                "transaction_notification": {
+                    "type": "boolean",
+                    "description": "Nếu true mỗi khi có transaction mới official app sẽ có thông báo"
+                },
+                "listUser": {
+                    "type": "array",
+                    "description": "Mảng user id của những người có quyền tương tác với wallet",
+                    "items": {
+                        "type": "string",
+                        "description": "user id của những người có quyền tương tác với wallet"
+                    }
+                },
+                "balance": {
+                    "type": "number",
+                    "description": "Thông tin mở rộng của wallet"
+                },
+                "sortIndex": {
+                    "type": "number",
+                    "description": "Vị trí nằm trong danh sách ví hiển thị ở UI"
+                }
+            }
+        },
+        "Category": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "description": "Category ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Tên của category"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "Đường dẫn hiển thị icon của category"
+                },
+                "type": {
+                    "type": "number",
+                    "description": "Loại category. 1 là Income(thu nhập), 2 là Expense(chi tiêu)"
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "ID của category ở cấp cao hơn"
+                },
+                "metadata": {
+                    "type": "object",
+                    "description": "Thông tin mở rộng của category"
+                }
+            }
+        },
+        "Budget": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "description": "Budget ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Tên của budget"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "Đường dẫn để hiển thị icon của budget"
+                },
+                "category": {
+                    "type": "string",
+                    "description": "ID của category"
+                },
+                "start_date": {
+                    "type": "string",
+                    "description": "Ngày bắt đầu budget. Dạng ISOString"
+                },
+                "end_date": {
+                    "type": "string",
+                    "description": "Ngày kết thúc budget. Dạng ISOString"
+                },
+                "account": {
+                    "type": "string",
+                    "description": "ID của ví"
+                },
+                "amount": {
+                    "type": "number",
+                    "description": "Số tiền mục tiêu đặt ra"
+                },
+                "isRepeat": {
+                    "type": "boolean",
+                    "description": "Mặc định false. Nếu true. Budget phải tự động được tạo lại ở chu kì tiếp theo"
+                }
+            }
+        },
+        "Campaign": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "description": "Campaign ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Tên của campaign"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "Đường dẫn hình ảnh hiển thị icon của campaign"
+                },
+                "type": {
+                    "type": "number",
+                    "description": "Loại campaign. 5 là Saving, 6 là Event"
+                },
+                "start_amount": {
+                    "type": "number",
+                    "description": "Số tiền ban đầu"
+                },
+                "goal_amount": {
+                    "type": "number",
+                    "description": "Số tiền mục tiêu"
+                },
+                "status": {
+                    "type": "boolean",
+                    "description": "Trạng thái hoàn thành. Default là false, sử dụng với type là 5"
+                },
+                "account": {
+                    "type": "string",
+                    "description": "ID của wallet"
+                },
+                "end_date": {
+                    "type": "string",
+                    "description": "Ngày kết thúc. Dạng ISOString"
+                },
+                "currency_id": {
+                    "type": "number",
+                    "description": "ID của currency. Sử dụng khi campaign không có account (Global Campaign) để xác định loại tiền tệ sử dụng"
+                }
+            }
+        },
+        "Transaction": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "number",
+                    "description": "ID của transaction"
+                },
+                "note": {
+                    "type": "string",
+                    "description": "Ghi chú của transaction"
+                },
+                "displayDate": {
+                    "type": "string",
+                    "description": "Ngày hiển thị. Dạng ISOString"
+                },
+                "amount": {
+                    "type": "number",
+                    "description": "Số tiền giao dịch"
+                },
+                "longtitude": {
+                    "type": "string",
+                    "description": "Tọa độ longtitude"
+                },
+                "latitude": {
+                    "type": "string",
+                    "description": "Tọa độ latitue"
+                },
+                "address": {
+                    "type": "string",
+                    "description": "Địa điểm giao dịch"
+                },
+                "category": {
+                    "type": "string",
+                    "description": "Category ID"
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "ID của transaction cấp cao hơn"
+                },
+                "with": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "description": "Tên của những người có liên quan đến giao dịch"
+                    }
+                },
+                "campaign": {
+                    "type": "string",
+                    "description": "Campaign ID"
+                },
+                "remind": {
+                    "type": "string",
+                    "description": "Thời gian nhắc lại transaction. Dạng ISOString"
+                },
+                "exclude_report": {
+                    "type": "boolean",
+                    "description": "Loại bỏ transaction khỏi thống kê"
+                },
+                "original_currency": {
+                    "type": "string",
+                    "description": "Mã tiền tệ nếu giao dịch sử dụng tiền tệ khác với wallet mà sở hữu transaction. VD: USD"
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "boolean",
+                    "description": "Value is false."
+                },
+                "error": {
+                    "type": "string",
+                    "description": "Mã lỗi"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Miêu tả lỗi"
+                }
+            }
+        }
+    }
+}

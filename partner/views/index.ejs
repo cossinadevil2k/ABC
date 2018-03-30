@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ML">
+	<head>
+		<% include header %>
+	</head>
+
+	<body>
+		<div id="wrapper">
+			<% include nav %>
+			<div id="content-wrapper" ng-controller="global" hotkey="{'ctrl+shift+f': userSpotlight}">
+				<input id="partnerId" type="text" value="<%= session.partnerId %>" hidden>
+				<header class="main-header">
+					<h3>
+						<a id="show-menu" href="#" class="btn btn-success"><i class="icon-reorder"></i>
+						</a>
+						<span ng-bind="MLPageDetail"></span>
+					</h3>
+					<div style="float: right">
+						<div class="hidden-xs" style="float:left;" ng-if="openIssues > 0">
+							<strong>Not resolved issues: </strong><a href="/helpdesk/issue" class="badge" ng-bind="openIssues+'/'+totalIssues"></a>
+						</div>
+						<a class="notification-button hidden-xs" ng-click="openNotification()" style="float: left; cursor: pointer;">
+							<i class="icon-bell-alt"></i>
+							<span class="badge" id="noti_number" ng-hide="new_noti == 0" ng-bind="new_noti"></span>
+						</a>
+						<nav class="user-profile">
+							<a href="#" class="user-dropdown" data-toggle="dropdown">
+								<span><%= session.partnerName %> </span>
+								<i class="icon-caret-down"></i>
+							</a>
+							<ul class="dropdown-menu pull-right" role="menu">
+								<li>
+									<a href="#" ng-click="changePassword()">
+										<i class="icon-wrench"></i>
+										Change password
+									</a>
+								</li>
+								<li class="hidden-md hidden-sm hidden-lg">
+									<a href="#" class="notification-button" ng-click="openNotification()" style="padding: 2px 0">
+										<i class="icon-bell"></i>
+										Notification
+										<span class="badge" id="noti_number" ng-hide="new_noti == 0" ng-bind="new_noti"></span>
+									</a>
+								</li>
+								<li>
+									<a ng-click="logout()">
+										<i class="icon-signout"></i>
+										Logout
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</header>
+				<section class="allContentListUser main-content padding">
+					<div class="fade-animate" ng-view></div>
+				</section>
+				<div id="footerMaintainStatus" class="alert alert-warning alert-dismissable maintainStatus" hidden>
+					<!-- <button aria-hidden="true" data-dismiss="alert" class="close" type="button"><i class="icon-remove-sign"></i></button> -->
+					<strong>Notice!</strong> Server is currently down for maintenance.
+				</div>
+			</div>
+			<!--NOTIFICATION CENTER-->
+			<div class="notification-center" id="noticenter" ng-controller="notification-center">
+				<div class="row">
+					<div style="float: left">
+						<button class="btn btn-facebook" style="border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; margin:10px" ng-click="close()"><i class="icon-long-arrow-right"></i> Close</button>
+					</div>
+					<div style="float: right">
+						<button class="btn btn-danger" style="border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; margin:10px" ng-if="notifications.length > 0" ng-click="clearAll()"><i class="icon-trash"></i> Clear All</button>
+					</div>
+				</div>
+				<ul>
+					<li ng-repeat="(key, notification) in notifications">
+						<notification-card data="notification" on-close="deleteNotify(key,notification._id)"></notification-card>
+					</li>
+				</ul>
+				<div class="notification-empty" ng-if="notifications.length == 0">
+					<img src="/images/no-notification.gif" alt="empty">
+				</div>
+			</div>
+		</div>
+		<% include footer %>
+		<script type="text/javascript">
+			document.addEventListener('DOMContentLoaded', function () {
+				if (Notification.permission !== "granted")
+					Notification.requestPermission();
+			});
+
+			$("#show-menu").click(function(e) {
+				e.preventDefault();
+				$("#wrapper").toggleClass("active");
+			});
+		</script>
+		<script>
+			angular.element('#sidebar-wrapper ul li').click(function(event){
+				event.stopPropagation();
+				angular.element('#sidebar-wrapper').addClass('active');
+			});
+
+			angular.element(document).click(function(){
+				angular.element('#sidebar-wrapper').removeClass('active');
+			});
+		</script>
+	</body>
+</html>

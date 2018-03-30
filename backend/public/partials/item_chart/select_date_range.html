@@ -1,0 +1,23 @@
+<div class="modal-title">
+
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Start date</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="startDate">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">End date</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="endDate">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="cancel()">Close</button>
+    <button class="btn btn-primary" ng-click="selectDate()">Select</button>
+</div>

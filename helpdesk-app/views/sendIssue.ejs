@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Send Issue</title>
+
+        <meta name="keywords" content="money manager, money management, expense tracker, expense manager, budget, budgeting app, budget planner, save money, saving planner, personal finance, money management app, money manager app, budget app, best money management app, personal finance management, home budget, family budget, bill reminder, bills reminder, bill manager, bills manager, payment reminder"/>
+        <meta name="description" content="Money Lover helps more than 2.500.000 peole keep track of expenses and budgets to reach their saving goals. It's simplest way to manage personal finances."/>
+        <meta property="og:title" content="Money Lover: Money Manager, Budget & Saving Planner"/>
+        <meta property="og:url" content="https://helpdesk.moneylover.me/"/>
+        <meta property="og:image" content="https://moneylover.me/source/ml-cover.png"/>
+        <meta property="og:description" content="Personal finance with no stress, live the life you want"/>
+        <meta property="og:type" content="website"/>
+
+
+        <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+        <script type="text/javascript" src='js/bootstrap.min.js'></script>
+        <script type="text/javascript" src='js/general.js'></script>
+        <script type="text/javascript" src='js/forIssuePage.js'></script>
+
+        <link rel="stylesheet" href="css/style.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="css/animation.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,700italic,700,900,900italic&subset=latin,vietnamese" type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" charset="utf-8">
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+        <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,vietnamese'>
+        <link rel="stylesheet", href="css/issuepage.css", media="screen", title="no title", charset="utf-8">
+
+    </head>
+
+    <body>
+        <div class="wrapper">
+
+            <div class="bars">
+                <ul>
+                    <li class="cor-1"></li>
+                    <li class="cor-2"></li>
+                    <li class="cor-3"></li>
+                    <li class="cor-4"></li>
+                    <li class="cor-5"></li>
+                </ul>
+            </div>
+
+            <div class="menu-top">
+                <div class="logo">
+                    <a href="/">
+                        <img src="/images/logo2.svg" alt="logo" style="height: 49px"/>
+                    </a>
+                </div>
+                <div class="group-btn">
+                    <a href="/" type="button" class='btn hvr-shutter-out-vertical' name="button">FAQ</a>
+
+                    <a href="/all-issue" type="button" class='btn hvr-shutter-out-vertical' name="button">All Issues</a>
+
+                    <!-- <a type='button', class='btn btn-s', href='/send-issue'>
+                        <i class="fa fa-paper-plane"></i>
+                        Send Message
+                    </a> -->
+                </div>
+                <div class="account dropdown">
+                    <span style="text-transform: none; font-weight: lighter; font-size: 13px;">Hello </span>
+                    <img src="/images/avatar.png" alt="avatar" class="dropdown-toggle" data-toggle="dropdown" role="button"/>
+                    <ul class="dropdown-menu" role="menu" style="min-width: 120px;">
+                        <li class="dropdown-header emailLogin"></li>
+                        <li><a id='logout'>Logout</a></li>
+                    </ul>
+                </div>
+            </div><!-- /menu-top -->
+
+            <div class="allContentUnderMenu">
+
+                <div class="middleContent">
+
+                    <div class="formForUser">
+                        <div style="margin-bottom: 38px">
+                            <div class="zero">
+                                <div class="errorMessage errInput">
+                                    <div class="iconMessage"><i class="fa fa-times-circle"></i></div>
+                                    <span style="line-height: 37px; padding-left: 20px;">Missing title or description!</span>
+                                </div><!--error message when empty input-->
+                            </div>
+
+                            <div class="zero">
+                                <div class="errorMessage errSelect">
+                                    <div class="iconMessage"><i class="fa fa-times-circle"></i></div>
+                                    <span style="line-height: 37px; padding-left: 20px;">Please select your platform!</span>
+                                </div><!--error message when not select platform-->
+                            </div>
+
+                            <div class="zero">
+                                <div class="successMessage">
+                                    <div class="iconMessage"><i class="fa fa-check-circle"></i></div>
+                                    <span style="line-height: 37px; padding-left: 20px;">Send Success!</span>
+                                </div><!--success message when send message-->
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin: 20px auto 10px;">
+                            <div class="col-md-9">
+                                <div class="titleForm">Title <span id='characters'></span></div>
+                                <input type="text" id='input-title' placeholder="Title should has max 50 characters" autocomplete='off' maxlength="50"/>
+
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="titleForm">Platform</div>
+                                <div class="dropdown dropdown-pl">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="height: 47px;">Select Platform
+                                        <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a>Android</a></li>
+                                        <li><a>iOS</a></li>
+                                        <li><a>Mac</a></li>
+                                        <li><a>Windows</a></li>
+                                        <li><a>Windows Phone</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div><!-- /input title -->
+
+                        <div class="row" style="padding: 15px; margin: 3px auto;">
+                            <div class="titleForm">Description <span id='area-characters'></span></div>
+                            <textarea id="input-description" type="text" placeholder="Your description here..." autocomplete='off'></textarea>
+                        </div><!-- /textarea descriptions -->
+
+                        <div class="formButton" style="margin-top: 25px;">
+                            <button id="sendIssue" class="button button--naira button--round-s button--border-thin" type="button">
+                                <i class="button__icon icon icon-download fa fa-paper-plane-o" style="font-size: 17px;"></i>
+
+                                <span>Send</span>
+                                <!-- <div class="iconLoading"><i class="fa fa-circle-o-notch" style="font-size: 17px;"></i></div> -->
+                            </button>
+                        </div><!-- /button Send -->
+
+                    </div><!-- /formForUser -->
+
+                    <div class="whiteBlank"></div>
+                </div>
+
+                <div class="footer">
+                    <div class="social">
+                        <a href="https://moneylover.me" class='web hvr-underline-from-center' target="_blank">
+                            <i class="fa fa-home" style="font-size: 20px;"></i>
+                        </a>
+                        <a href="https://www.facebook.com/moneylover.me/?fref=ts" class='facebook hvr-underline-from-center' target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="https://www.twitter.com/moneyloverapp" class='twitter hvr-underline-from-center' target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="https://plus.google.com/+MoneyloverMe" class='google hvr-underline-from-center' target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+
+                    <div class="bot-footer">
+                        <p><a href="https://moneylover.me/" style="color: #2DB54A">MoneyLover</a> © <span id='year'></span>. All Rights Reseverd</p>
+                    </div>
+
+                </div> <!-- /footer -->
+            </div> <!-- /allContentUnderMenu -->
+        </div> <!-- /wrapper -->
+
+        <!-- Modal Required Login-->
+        <div id="requireLoginModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-small">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body modalBodyRequire">
+                        <i class="fa fa-exclamation-circle"></i>
+                        <p class="titleModal">Login Required!</p>
+                        <p>You sould login to send issue.</p>
+                    </div>
+                    <div class="modal-footer modalFooterRequire">
+                        <button type="button" class="btn btn-lg btn-success btn-gotoLogin">Login</button>
+                        <button type="button" class="btn btn-lg btn-cancel btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Login-->
+        <div id="loginModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-small">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body modalBodyLogin">
+                        <i class="fa fa-sign-in"></i>
+                        <p class="titleModal">Login</p>
+                        <p>Enter your emaill & password to login.</p>
+                        <div class="overForm">
+                            <form>
+                                <label>
+                                    <input class='inputLogin' id="urEmail" type="email" placeholder="Email" autocomplete='off'>
+                                    <span>Email</span>
+                                    <i class="textError hidden">not valid email</i>
+                                </label>
+
+                                <label>
+                                    <input class='inputLogin' id='urPass' type="password" placeholder="Password" autocomplete='off'>
+                                    <span>Password</span>
+                                    <i class="textError hidden">not empty</i>
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer modalFooterRequire">
+                        <button type="button" class="btn btn-lg btn-success btn-login">Login</button>
+                        <button type="button" class="btn btn-lg btn-cancel btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

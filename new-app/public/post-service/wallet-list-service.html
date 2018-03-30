@@ -1,0 +1,62 @@
+
+<polymer-element name="wallet-list-service" attributes="walletList include_all_wallet">
+    <template>
+        <style>
+            :host {
+                display: none;
+            }
+        </style>
+        <core-ajax id="ajax"
+                   url="/api/account/list"
+                   method="POST"
+                   on-core-response="{{postsLoaded}}"
+                   handleAs="json">
+        </core-ajax>
+        <core-localstorage name="wallet-list" value="{{rawData}}"></core-localstorage>
+    </template>
+    <script>
+        Polymer('wallet-list-service', {
+            domReady: function(){
+                if(!this.rawData || this.rawData.length == 0){
+                    this.reloadFromServer();
+                } else {
+                    this.processData(this.rawData);
+                }
+            },
+
+            reloadFromServer: function(){
+                this.$.ajax.go();
+            },
+
+            rawDataChanged: function(oldData, newData){
+                this.processData(newData);
+            },
+
+            processData: function(data){
+                var size = data.length;
+                var list = [];
+
+                if(size === 0){
+                    this.fire('noWallet');
+                    return;
+                }
+
+                [].push.apply(list, data);
+
+                this.walletList = list;
+            },
+
+            postsLoaded: function(event, response) {
+                var status = response.xhr.status;
+                if(status){
+                    if (status===200){
+                        var data = response.response;
+                        if(data.error) {
+                            if(data.error===401) this.fire('sessionExpired');
+                        } else this.rawData = data;
+                    }
+                }
+            }
+        });
+    </script>
+</polymer-element>

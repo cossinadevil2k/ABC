@@ -1,0 +1,74 @@
+<div class="modal-header">
+    <h4>Create new premium product</h4>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-lg-2">* Name</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="info.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">* Product ID</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="info.product_id">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">Alias</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="info.alias">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">* Type</label>
+            <div class="col-lg-10">
+                <select ng-model="info.type">
+                    <option value="5">Premium</option>
+                    <option value="6">Semi Premium</option>
+                    <option value="99">Other</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" ng-show="info.type == 6">
+            <label class="col-lg-2 control-label">* Platform</label>
+            <div class="col-lg-10">
+                <select ng-model="metadata.platform" class="form-control">
+                    <option value="android">Android</option>
+                    <option value="ios">iOS</option>
+                    <option value="windows">Windows</option>
+                    <option value="wp">Windows Phone</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" ng-show="info.type == 6">
+            <label class="col-lg-2 control-label">* Script</label>
+            <div class="col-lg-10">
+                <input type="text" ng-model="metadata.script" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">* Price Global</label>
+            <div class="col-lg-10">
+                <input type="number" step="0.01" class="form-control" ng-model="info.price_gl">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">* Price VN</label>
+            <div class="col-lg-10">
+                <input type="number" step="100" class="form-control" ng-model="info.price_vn">
+            </div>
+        </div>
+        <!-- <div class="form-group">
+            <label class="control-label col-lg-2">* Discount</label>
+            <div class="col-lg-10">
+                <input type="number" step="100" class="form-control" ng-model="info.discount">
+            </div>
+        </div> -->
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-success" ng-click="submit()">Submit</button>
+</div>

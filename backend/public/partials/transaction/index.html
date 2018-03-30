@@ -1,0 +1,84 @@
+<div class="module">
+    <div class="module-content">
+        <button class="btn btn-success" ng-click="refresh()">
+            <i class="icon-refresh"></i> Refresh
+        </button>
+    </div>
+</div>
+<div class="module no-padding">
+    <div class="module-header">
+        <h4>Transaction</h4>
+    </div>
+    <div class="module-content">
+        <loading ng-if="isLoading"></loading>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Email</th>
+                    <th>Wallet</th>
+                    <th>Category</th>
+                    <th>Created At</th>
+                    <th>Display date</th>
+                    <th class="text-right">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="transaction in transaction_list">
+                    <td>
+                        <img src="/images/android_96.png" tooltip='Android' class="icon-user-platform" alt="android_logo" ng-if="transaction.device.appId === 1"/>
+                        <img src="/images/ios_96.png" tooltip='iOS' class="icon-user-platform" alt="apple_logo" ng-if="transaction.device.platform === 2"/>
+                        <img src="/images/winphone_96.png" tooltip='Winphone' class="icon-user-platform" alt="windows_phone_logo" ng-if="transaction.device.appId === 4"/>
+                        <img src="/images/osx_96.png" tooltip='OSX' class="icon-user-platform" alt="osx_logo" ng-if="transaction.device.appId === 6"/>
+                        <img src="/images/windows_96.png" tooltip='Windows' class="icon-user-platform" alt="windows_logo" ng-if="transaction.device.appId === 5"/>
+                        <img src="/images/web_96.png" tooltip='Web' class="icon-user-platform" alt="web_logo" ng-if="transaction.device.appId === 7"/>
+                    </td>
+                    <td><a href="/users/info?email={{transaction.account.owner.email}}">{{transaction.account.owner.email}}</a></td>
+                    <td>
+                        <img src="{{transaction.account.icon | walletIconLink}}" alt="{{transaction.account.name}}" class="icon-user-wallet">
+                        <a href="/users/info?email={{transaction.account.owner.email}}&wallet={{transaction.account._id}}">{{transaction.account.name}}</a>
+                    </td>
+                    <td>
+                        <img src="{{transaction.category.icon | walletIconLink}}" alt="{{transaction.category.name}}" class="icon-user-wallet">
+                        {{transaction.category.name}} {{transaction.category.metadata? '(' + transaction.category.metadata + ')' : ''}}
+                    </td>
+                    <td>{{transaction.createdAt | checkDateTimeSeconds}}</td>
+                    <td>{{transaction.displayDate | checkDateTimeDateOnly}}</td>
+                    <td class="text-right">
+                        <button class="btn btn-xs btn-info" tooltip="Detail" ng-click="detail(transaction)"><i class="icon-desktop"></i></button>
+                    </td>
+                </tr>
+                <tr ng-if="transaction_list.length === 0">
+                    <td>No data</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="breakPage">
+                    <td colspan="12" class="text-center">
+                        <div class="btn-group">
+                            <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading"><i class="icon-fast-backward"></i></a>
+                            <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                            <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading"><i class="icon-fast-forward"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/ng-template" id="transaction_detail.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Transaction</h4>
+    </div>
+    <div class="modal-body">
+        <loading ng-if="isLoading"></loading>
+        <pre pretty-json="transaction"></pre>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" ng-click="cancel()">Close</button>
+    </div>
+</script>

@@ -1,0 +1,56 @@
+<div class="module">
+    <div class="module-header">
+        <h4>CSV list receipt</h4>
+    </div>
+    <div class="module-content">
+        <form class="form form-horizontal">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Import CSV file:</label>
+                <div class="col-lg-10">
+                    <input type="file" accept="text/csv" id="csv_input">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button class="btn btn-primary" ng-disabled="processing" ng-click="check()">Check</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="module">
+    <div class="module-header">
+        <h4>Single receipt</h4>
+    </div>
+    <div class="module-content">
+        <form class="form form-horizontal">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Receipt:</label>
+                <div class="col-lg-10">
+                    <textarea cols="30" rows="10" ng-model="info.receipt"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Signature:</label>
+                <div class="col-lg-10">
+                    <textarea cols="30" rows="10" ng-model="info.signature"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button class="btn btn-primary" ng-disabled="processing" ng-click="checkSingleBill(info)">Check</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="module">
+    <div class="module-header">
+        <h4>Result</h4>
+    </div>
+    <div class="module-content">
+        <ul id="result_list">
+
+        </ul>
+    </div>
+</div>

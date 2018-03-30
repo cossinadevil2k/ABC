@@ -1,0 +1,36 @@
+<div class="row">
+	<div class="col-lg-12">
+		<div class="module">
+			<div class="module-content" style="position: relative;">
+                <div class="row">
+                    <button class="btn btn-orange" ng-click="addNew()">
+                        <i class="icon-plus"></i> Add
+                    </button>
+                    <a class="btn btn-info" ng-href="https://static.moneylover.me/data/currency.json">
+                        <i class="icon-download-alt"></i> Download
+                    </a> 
+                    <button class="btn btn-info" ng-click="getList(1)">
+                        <i class="icon-refresh"></i> Refesh
+                    </button>
+                    <button class="btn btn-success" ng-click="generate()" ng-disabled="sendUpload" style="position: absolute; right: 20px;"><i ng-class="{'icon-check': okCheck, 'icon-cloud-upload': sendUpload, 'icon-ok': sendOk}" ng-init="okCheck=true"></i> Build</button>
+                </div>
+				<div class="row">
+                    <p style="color: #ff0000">****Chỉnh sửa xong nhớ nhấp Build để update lên server >>>></p>
+                </div>
+			</div>
+		</div>
+
+		<div class="module no-padding">
+			<div class="module-header">
+				<h4>Currency - Last update: {{ lastUpdate | date:'dd/MM/yyyy HH:mm:ss'  }}</h4>
+				<div class="input-group quick-search-box">
+					<span class="input-group-addon"><i class="icon-search"></i></span>
+					<input type="text" placeholder="Enter keyword..." class="form-control" ng-model="searchKeyword">
+				</div>
+			</div>
+			<div class="module-content">
+				<div ng-include="'/partials/currency/list.html'" onload="getList(0)"></div>
+			</div>
+		</div>
+	</div>
+</div>

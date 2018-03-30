@@ -1,0 +1,55 @@
+{
+    "time_stamp": 0,
+    "d": [
+        {
+            "id": 1,
+            "type": 1,
+            "name": "Android Default",
+            "send": true,
+            "gcmId": "AIzaSyBZRMskytU6asBJIy5ULmtOOtmC9Lh48ZY"
+        },
+        {
+            "id": 2,
+            "type": 2,
+            "name": "iOS Money free",
+            "send": true,
+            "certFile": "/config/apns/aps_moneyfree_cert.pem",
+            "keyFile": "/config/apns/aps_moneyfree_key.pem",
+            "passphrase": "7337610"
+        },
+        {
+            "id": 3,
+            "type": 2,
+            "name": "iOS Money Plus",
+            "send": true,
+            "certFile": "/config/apns/aps_moneyplus_cert.pem",
+            "keyFile": "/config/apns/aps_moneyplus_key.pem",
+            "passphrase": "7337610"
+        },
+        {
+            "id": 4,
+            "type": 3,
+            "name": "Windows Phone",
+            "client_id": "ms-app://s-1-15-2-3803635411-2617635000-2298909580-703310778-269080258-467575372-2134348203",
+            "client_secret": "oEJ5go7g990kVWkKVlVt5jO+Mm5e8f5h",
+            "send": true
+        },
+        {
+            "id": 5,
+            "type": 3,
+            "name": "Windows",
+            "client_id": "ms-app://s-1-15-2-3803635411-2617635000-2298909580-703310778-269080258-467575372-2134348203",
+            "client_secret": "oEJ5go7g990kVWkKVlVt5jO+Mm5e8f5h",
+            "send": true
+        },
+        {
+            "id": 6,
+            "type": 6,
+            "name": "OS X",
+            "send": true,
+            "certFile": "/config/apns/moneylover_mac_cert.pem",
+            "keyFile": "/config/apns/moneylover_mac_key.pem",
+            "passphrase": "1234"
+        }
+    ]
+}

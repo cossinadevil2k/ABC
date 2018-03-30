@@ -1,0 +1,27 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()">&times;</button>
+	<h3 class="modal-title title">TITLE</b></h3>	
+	<br />
+	<button class="btn btn-success" tooltip="Xuất danh sách ra file Excel" ng-click="exportCode()">Export</button>
+</div>
+<div class="modal-body">
+	<table class="table table-striped">
+	<thead>
+		
+	</thead>
+	<tbody>
+		
+	</tbody>
+</table>
+</div>
+<div class="modal-footer">
+	<div class="breakPage">
+		<div colspan="7" class="text-center">
+			<div class="btn-group">
+				<a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage"><i class="icon-fast-backward"></i></a>
+				<button class="btn btn-default">Prev Next</button>
+				<a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage"><i class="icon-fast-forward"></i></a>
+			</div>
+		</div>
+	</div>
+</div>

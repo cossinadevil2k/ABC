@@ -1,0 +1,74 @@
+<div class="module-content table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th class="hidden-xs hidden-sm ">Status</th>
+                <th class="hidden-xs hidden-sm ">Group Name</th>
+                <th class="hidden-xs hidden-sm ">Country</th>
+                <th class="hidden-xs hidden-sm ">Actions</th>
+                <th class="hidden-xs hidden-sm ">Device</th>
+                <th class="hidden-xs hidden-sm ">Created Date</th>
+                <th class="hidden-xs hidden-sm ">Created By</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="group in groups track by $index">
+                <td>
+                    <p>{{$index + 1}}</p>
+                </td>
+                <td>
+                    <button class="btn btn-xs" ng-click="changeDisabledGroup(group)" tooltip="Enable" ng-class="{'btn-success': group.isDisable, 'btn-danger': !group.isDisable}">
+                        <i ng-class="{'icon-check': group.isDisable, 'icon-unchecked': !group.isDisable}"></i>
+                    </button>
+                </td>
+                <td class="">
+                    <p>{{group.name}}</p>
+                </td>
+                <td>
+                    <p>{{group.metadata.countries}}</p>
+                </td>
+                <td class="">
+                    <button class="btn btn-xs btn-primary" tooltip="Duplicate" ng-click="duplicateGroup(group)">
+                        <i class="icon-tags"></i>
+                    </button>
+                    <button class="btn btn-xs btn-facebook" tooltip="Details" ng-click="detailGroup(group)">
+                        <i class="icon-reorder"></i>
+                    </button>
+                    <button class="btn btn-xs btn-twitter" tooltip="Edit" ng-click="editGroup(group)">
+                        <i class="icon-edit"></i>
+                    </button>
+                    <button class="btn btn-xs btn-grape" tooltip="Delete" ng-click="deleteGroup(group)">
+                        <i class="icon-trash"></i>
+                    </button>
+                </td>
+                <td>
+                    <p>{{group.metadata.devices}}</p>
+                </td>
+                <td class="">
+                    <p ng-if="group.createdAt ">{{group.createdAt | displayTrueTime}}</p>
+                </td>
+                <td>
+                    <p>{{group.owner.username}}</p>
+                </td>
+
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage">
+                            <i class="icon-fast-backward"></i>
+                        </a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage">
+                            <i class="icon-fast-forward"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div ng-if="noContent == true" style="text-align: center;">
+        <h1>No Content</h1>
+    </div>
+</div>

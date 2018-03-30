@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keyword" content="Money Lover, tiết kiệm, quản lý thu chi, mẹo vặt tiết kiệm, quản lý chi tiêu,sổ thu chi, tiền,chi tiêu,mẹo vặt,thu chi">
+	<meta name="description" content="Nhận bản quyền miễn phí trị giá 4,99USD và có cơ hội nhận sổ tay cực chất. ">
+	<meta name="author" content="https://plus.google.com/+MoneyloverMe">
+	<link rel="icon" href="favicon.png">
+
+	<title>Money Lover - Ứng dụng quản lý chi tiêu hàng đầu.</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
+	<link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="libs/moneylover/css/style.css" rel="stylesheet">
+
+	<!--[if lt IE 9]><script src="libs/bootstrap/js/ie8-responsive-file-warning.js"></script><![endif]-->
+	<script type="text/javascript" src="libs/bootstrap/js/ie-emulation-modes-warning.js"></script>
+	<script type="text/javascript" src="libs/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script type="text/javascript" src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<div class="header-bg">&nbsp;</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="logo">
+					<img src="libs/moneylover/img/logo.png" alt="Money Lover">
+					<p>Money Lover</p>
+				</div>
+			</div>
+		</div>
+		<div id="money-form-main" class="row">
+			<div class="col-md-12 main-form">
+				<h4 class="form-header">Please complete this form to redeem your Money Lover Premium</h4>
+				<div class="form-input">
+					<div class="label">
+						<label for="redeem-code">Redeem Code</label>
+					</div>
+					<div class="input">
+						<input id="redeem-code" type="text" name="redeem-code" placeholder="Redeem Code" />
+					</div>
+				</div>
+				<div class="form-input">
+					<div class="label">
+						<label for="form-name">Name</label>
+					</div>
+					<div class="input">
+						<input id="form-name" type="text" class="input-normal" name="user-name" placeholder="What your name?" />
+					</div>
+				</div>
+				<div class="form-input">
+					<div class="label">
+						<label for="form-email">Email</label>
+					</div>
+					<div class="input">
+						<input id="form-email" type="text" class="input-normal" name="user-email" placeholder="...@yourmail.com" />
+						<input id="form-language" type="text" class="hide" value="us-en" />
+					</div>
+				</div>
+				<div id="recaptcha_widget" class="form-captcha clearfix">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-input col-md-6">
+								<div class="label">
+									<label for="recaptcha_response_field" class="recaptcha_only_if_image">Enter these characters</label>
+									<label for="recaptcha_response_field" class="recaptcha_only_if_audio" style="display:none">Enter the numbers you hear</label>
+								</div>
+								<div class="input">
+									<input id="recaptcha_response_field" name="recaptcha_response_field" class="input-normal" placeholder="Enter..." />
+								</div>
+							</div>
+							<div class="image-captcha col-md-6">
+								<div id="recaptcha_image"></div>
+								<!-- <div><a href="javascript:Recaptcha.reload()">Other</a></div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="money-accept" class="form-input">
+					<p>By submitting this form, you agree that you have read and understood our <a href="#" class="money-link" onclick="_gaq.push(['_trackEvent', 'Link', 'click', 'Terms of Use']);">Terms of Use</a> and <a href="#" class="money-link" onclick="_gaq.push(['_trackEvent', 'Link', 'click', 'Privacy Policy']);">Privacy Policy</a> and you agree to them.</p>
+				</div>
+				<div id="button-submit">
+					<button id="get-premium" class="btn-submit white" type="submit" onclick="_gaq.push(['_trackEvent', 'Form', 'click', 'Get premium']);">get premium</button>
+				</div>
+			</div>
+		</div>
+		<div id="money-form-success" class="row">
+			<div id="form-success" class="col-md-12 main-form">
+				<div id="image-success">
+					<img src="libs/moneylover/img/success.gif" alt="Money redeem success" />
+				</div>
+				<div class="main-form-success">
+					<h4 class="form-header">Thank you for using Money Lover</h4>
+					<div class="money-text-thanks">
+						<p>Money Lover Premium was activated for your email. Please sign in Money Lover with your email and enjoy!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			<p>Money Lover — personal financial manager. <a href="https://moneylover.me" class="money-link" target="_blank" onclick="_gaq.push(['_trackEvent', 'Link', 'click', 'Learn more']);">Learn more</a></p>
+		</div>
+
+	</div>
+	<!-- /container -->
+
+	<!-- modal terms -->
+	<div class="modal fade" id="money-terms" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">Modal title</h4>
+				</div>
+				<div class="modal-body">
+				...
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /modal terms -->
+
+	<!-- modal privacy -->
+	<div class="modal fade" id="money-privacy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">Modal title</h4>
+				</div>
+				<div class="modal-body">
+				...
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /modal privacy -->
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+	<script type="text/javascript" src="libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		var RecaptchaOptions = {
+			theme : 'custom',
+			custom_theme_widget: 'recaptcha_widget'
+		};
+	</script>
+	<script type="text/javascript" src="https://www.google.com/recaptcha/api/challenge?k=6LdB4fYSAAAAAPPqHELlMO3-l8Bsvw1wsCiLOpZ_"></script>
+	<script type="text/javascript">
+	$(function(){
+		function MLTrack(category, action, opt_label){
+			_gaq.push(['_trackEvent', category, action, opt_label]);
+		};
+		var lockForm = false;
+		var redeemCode = $('#redeem-code');
+		var formName = $('#form-name');
+		var formEmail = $('#form-email');
+
+		var submitRedeem = function(data, callback){
+			if(!lockForm){
+				$.ajax({
+					url: "https://tapi.moneylover.me/redeem-submit",
+					method: "get",
+					dataType : "jsonp",
+					contentType: "application/json",
+					data: data,
+					beforeSend: function(xhr) {
+						Recaptcha.reload();
+						lockForm = true;
+					}
+				}).done(function(data) {
+					lockForm = false;
+					callback(true, data);
+				}).fail(function() {
+					lockForm = false;
+					callback(false, null);
+				});
+			}
+		};
+
+		$('#get-premium').click(function(){
+			var recaptcha_challenge_field = $('#recaptcha_challenge_field');
+			var recaptcha_response_field = $('#recaptcha_response_field');
+			var data = {
+				redeemCode: redeemCode.val(),
+				formName: formName.val(),
+				formEmail: formEmail.val(),
+				recaptcha_challenge_field: recaptcha_challenge_field.val(),
+				recaptcha_response_field: recaptcha_response_field.val()
+			};
+
+			submitRedeem(data, function(status, data){
+				$('#money-form-main').slideUp(function(){
+					$('#money-form-success').fadeIn();
+				});
+			});
+		});
+	});
+	</script>
+	<script>
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-39420218-6']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+</body>
+</html>

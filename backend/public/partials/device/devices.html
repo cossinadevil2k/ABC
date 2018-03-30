@@ -1,0 +1,99 @@
+<div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+        <div class="box-module module-green">
+            <small>Android</small><h4 ng-bind="result.android | number" class="bold"></h4>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+        <div class="box-module module-red">
+            <small>iOS</small><h4 ng-bind="result.iOS | number" class="bold"></h4>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+        <div class="box-module module-red">
+            <small>OSX</small><h4 ng-bind="result.osx | number" class="bold"></h4>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+        <div class="box-module module-purple">
+            <small>Windows Mobile</small><h4 ng-bind="result.wp | number" class="bold"></h4>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+        <div class="box-module module-purple">
+            <small>Windows</small><h4 ng-bind="result.windows | number" class="bold"></h4>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+        <div class="box-module module-yellow">
+            <small>Web Browser</small><h4 ng-bind="result.web | number" class="bold"></h4>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="module no-padding">
+            <div class="module-header">
+                <h4>
+                    Total devices: <strong>{{result.total | number}}</strong>
+                </h4>
+            </div>
+            <div class="module-content table-responsive">
+                <loading ng-if="isLoading"></loading>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="text-center"></th>
+                        <th>Name</th>
+                        <th class="text-center">Version</th>
+                        <th>User</th>
+                        <th>Created</th>
+                        <th class="text-right"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="device in devices">
+                        <td class="text-center">
+                            <img src="/images/android_96.png" class="icon-user-platform" alt="android_logo" ng-if="device.platform===1"/>
+                            <img src="/images/ios_96.png" class="icon-user-platform" alt="android_logo" ng-if="device.platform===2"/>
+                            <img src="/images/winphone_96.png" class="icon-user-platform" alt="android_logo" ng-if="device.platform===3 && device.appId===4"/>
+                            <img src="/images/osx_96.png" class="icon-user-platform" alt="android_logo" ng-if="device.platform===6"/>
+                            <img src="/images/windows_96.png" class="icon-user-platform" alt="android_logo" ng-if="device.platform===3 && device.appId===5"/>
+                            <img src="/images/web_96.png" class="icon-user-platform" alt="web_logo" ng-if="device.platform===7"/>
+                        </td>
+                        <td>{{device.name || '---------'}}</td>
+                        <td class="text-center">{{device.version || '---------'}}</td>
+                        <td>
+                            <a ng-if="device.owner" class="helpdesk-link" href="/users/info?email={{device.owner.email}}">{{device.owner.email}}</a>
+                            <span ng-if="!device.owner">---------</span>
+                        </td>
+                        <td>{{device.createdDate | checkDateTime}}</td>
+                        <td class="text-right">
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Menu
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu menuActionProcess">
+                                    <li><a href="#" ng-click="notificationSelector(device)"><i class="icon-comment-alt" style="color: green"></i> Send notification</a></li>
+                                    <li><a href="#" ng-click="openDetailModal(device._id)"><i class="icon-info" style="color: #3498db"></i> Device info</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="breakPage">
+                        <td colspan="12" class="text-center">
+                            <div class="btn-group">
+                                <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading"><i class="icon-fast-backward"></i></a>
+                                <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                                <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading"><i class="icon-fast-forward"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

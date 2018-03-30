@@ -1,0 +1,308 @@
+<div class="col-lg-8 col-xs-12">
+    <div class="row text-center" ng-if="isLoading">
+        <img src="/images/loading-pacman.gif" /><br />
+        Loading
+    </div>
+    <a class="btn btn-primary backToIssueList" ng-click="back()"><i class="icon-reply"></i> Back</a>
+    <div class="module border-module">
+        <div class="module-header" style="padding-left: 90px;">
+            <h4 ng-click="gotoBottom()">
+              {{issue.name}}
+              <i class="hidden-md hidden-lg icon-info-sign" style="float: right; cursor:pointer" ng-click="showInfoIssues()"></i>
+            </h4>
+        </div>
+        <div id="scrollBottom" class="module-content" style="height: 481px; overflow-y: scroll;">
+            <div class="row" ng-repeat="message in messages" >
+                <div ng-class="{'example-obtuse':message.user, 'example-right':!message.user}">
+                    <div class="row inside-bubble" ng-if="!message.editMode">
+                        <p ng-bind-html="message.content | markdown"></p>
+                    </div>
+                    <div class="row inside-bubble form-group" ng-if="message.editMode">
+                        <div style="margin: 3px;">
+                            <textarea class="form-control" ng-model="message.content"></textarea>
+                        </div>
+                        <div class="text-right" style="margin: 3px;">
+                            <button class="btn" ng-click="message.editMode = false">Cancel</button>
+                            <button class="btn btn-primary" ng-click="editMessage(message)">Edit</button>
+                        </div>
+                    </div>
+                    <!--<div class="row">Multimedia</div>-->
+                    <div class="row inside-bubble">
+                        <div class="last-line">
+                          <div class="text-left chat-status" style="width: 50%; float: left"><span ng-if="message.mod" class="colorTime"> ** {{message.mod.username}} replied</span></div>
+                          <div class="text-right chat-status-right" ng-class="{'colorTime': message.mod}">
+                              {{message.send_date | displayTrueTime}}
+                              <a href="" style="color: grey;" ng-click="message.editMode = true"><i class="icon-pencil"></i></a>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span id="lastItem"></span>
+            <div class="seenIssues" ng-if="issue.seen">
+                <p class="text-right"><i class="icon-ok-sign"></i>  Seen</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 hidden-md hidden-lg">
+          <div class="alert alert-success alert-dismissable" ng-if="updateNoteSuccess">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="icon-remove-sign"></i></button>
+              <strong>Well done!</strong> Update note successfully.
+          </div>
+          <div class="alert alert-danger alert-dismissable" ng-if="updateNoteFailed">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="icon-remove-sign"></i></button>
+              <strong>Failed!</strong> Update note due to error.
+          </div>
+      </div>
+    </div>
+
+
+    <div class="module border-module">
+        <div class="module-header">
+            <h4>Reply</h4>
+            <!-- <a type="button" tooltip="Previous Issue" class="btn btn-primary quickIssue prev-quickIssue"> &#8592; </a>
+            <a href="" type="button" tooltip="Next Issue" class="btn btn-primary quickIssue next-quickIssue" ng-click> &#8594; </a> -->
+            <div class="dropdown send-gift" ng-if="env != 'production'">
+              <div class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-gift icon-large" tooltip='Send gifts'></i>
+              </div>
+              <ul class="dropdown-menu margin-ul-dropdown dropdown-menu-fix">
+                  <li><a href="#" ng-click="acceptPurchased(userInfo)">Set premium</a></li>
+                  <li><a href="#" ng-click="iconGift(userInfo)">Send icon pack</a></li>
+              </ul>
+            </div>
+        </div>
+        <div class="module-content">
+            <form class="form-horizontal">
+                <div class="text-center form-group" ng-if="isReplying">
+                    <img src="/images/loading-pacman.gif" /><br />
+                    Loading
+                </div>
+                <div class="form-group" ng-show="newMessage">
+                    <div clgitass="alert alert-info alert-dismissable" >
+                        <button type="button" class="close" ng-click="newMessage = !newMessage"><i class="icon-remove-sign"></i></button>
+                        <strong>User has reply new message!</strong>
+                    </div>
+                </div>
+                <div class="form-group" ng-show="replyError">
+                    <div class="alert alert-danger alert-dismissable">
+                        <button type="button" class="close" ng-click="replyError = !newMessage"><i class="icon-remove-sign"></i></button>
+                        <strong>Failed!</strong> Send message due to error.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <textarea class="form-control" rows="3" ng-model="message" style="resize: vertical; min-height: 80px"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <button type="button" class="hidden-xs hidden-sm btn-linkedin btn" ng-click="insertFaq()"><i class="icon-book"></i> Insert FAQ</button>
+                        <!--<button class="btn btn-twitter" ng-click="requestImage()"><i class="icon-camera"></i> Request Image</button>-->
+                        <button class="hidden-xs hidden-sm btn-linkedin btn" ng-click="requestReview()"><i class="icon-star"></i> Request Review</button>
+                        <button class="hidden-xs hidden-sm btn-linkedin btn" ng-click="setResolved()"><i class="icon-ok-circle"></i> Set Resolved</button>
+
+                        <div class="dropdown hidden-md hidden-lg">
+                          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Menu
+                            <span class="caret"></span></button>
+                          <ul class="dropdown-menu margin-ul-dropdown">
+                            <li>
+                              <a href="#" ng-click="insertFaq()">
+                                <i class="icon-book"></i> Insert FAQ
+                              </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                              <a href="#" ng-click="requestReview()">
+                                <i class="icon-star"></i> Request Review
+                              </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                              <a href="#" ng-click="setResolved()">
+                                <i class="icon-ok-circle"></i> Set Resolved
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div class="btn-group" style="float:right">
+                            <button class="btn btn-success" ng-click="replyAndResolved(message)">Send and set resolved</button>
+                            <button class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                            <ul class="dropdown-menu dropdown-menu-fix" role="menu">
+                                <li><a href="#" ng-click="reply(message)">Send</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-lg-4 col-xs-12">
+    <div class="module module-blue border-module-blue visible-md visible-lg">
+        <div class="module-header">
+            <h4>Info</h4>
+        </div>
+        <div class="module-content">
+            <div>
+                <div class="hightlight-info">
+                  User: <strong><a href="/users/info?email={{user.email}}" target="_blank" class="helpdesk-link" style="font-size:16px;">{{user.email}}</a></strong><br />
+                  <a class="btn btn-xs" href="#" ng-click="moreIssue(user)">See other issue</a>
+                  <div class="btn-group">
+                      <button class="btn btn-xs btn-twitter" ng-if="user.acceptSync" tooltip="Sync Enabled" style="margin-right: 4px; cursor: default;"><i class="icon-cloud-upload"></i></button>
+                      <button class="btn btn-xs btn-success" style="cursor: default;" ng-if="user.purchased" tooltip="Purchased"><i class="icon-money"></i></button>
+                  </div>
+                </div>
+
+                <br />
+                <div class=" infoMachine">
+                  <div class="row">
+                    <div class="col-md-4 col-xs-5 col-sm-4 col-lg-4">IP:</div>
+                    <div class="col-md-8 col-xs-7 col-sm-8 col-lg-8"><strong>{{issue.ip || "---------"}}</strong><span ng-if="user.flag" class="flag-icon flag-icon-{{user.flag}}" tooltip="{{user.flag.toUpperCase()}}"></span></div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-5 col-sm-4 col-lg-4">App Version:</div>
+                    <div class="col-md-8 col-xs-7 col-sm-8 col-lg-8"><strong>{{issue.metadata.av}}</strong></div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-5 col-sm-4 col-lg-4">Language:</div>
+                    <div class="col-md-8 col-xs-7 col-sm-8 col-lg-8"><strong>{{issue.metadata.l}}</strong></div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-5 col-sm-4 col-lg-4">OS:</div>
+                    <div class="col-md-8 col-xs-7 col-sm-8 col-lg-8">
+                      <img src="/images/android_96.png" class="icon-user-platform" alt="android_logo" ng-if="issue.metadata.os === 'Android'"/>
+                      <img src="/images/ios_96.png" class="icon-user-platform" alt="apple_logo" ng-if="issue.metadata.os === 'iOS'"/>
+                      <img src="/images/winphone_96.png" class="icon-user-platform" alt="windows_phone_logo" ng-if="issue.metadata.os ==='Windows Phone'"/>
+                      <img src="/images/osx_96.png" class="icon-user-platform" alt="osx_logo" ng-if="issue.metadata.os === 'Mac'"/>
+                      <img src="/images/windows_96.png" class="icon-user-platform" alt="windows_logo" ng-if="issue.metadata.os === 'Windows'"/>
+                      <img src="/images/web_96.png" class="icon-user-platform" alt="web_logo" ng-if="issue.metadata.os === 'Web'"/>
+                      <strong>{{issue.metadata.osv}}</strong>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-5 col-sm-4 col-lg-4">Device:</div>
+                    <div class="col-md-8 col-xs-7 col-sm-8 col-lg-8"><strong>{{issue.metadata.dn}}</strong></div>
+                  </div>
+
+                  <!--Sync: <strong>{{issue.metadata.s || false}}</strong><br />-->
+                  <!--Purchased: <strong>{{issue.metadata.p || false}}</strong><br />-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="module module-purple border-module-purple">
+        <div class="module-header">
+            <h4>Issue Control</h4>
+        </div>
+        <div class="module-content">
+            <div class="text-center row" ng-if="isUpdating">
+                <img src="/images/loading-pacman.gif" /><br />
+                Loading
+            </div>
+            <div class="row">
+                <div class="alert alert-success alert-dismissable col-lg-12" ng-if="updateNoteSuccess">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="icon-remove-sign"></i></button>
+                    <strong>Well done!</strong> Update note successfully.
+                </div>
+                <div class="alert alert-danger alert-dismissable col-lg-12" ng-if="updateNoteFailed">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="icon-remove-sign"></i></button>
+                    <strong>Failed!</strong> Update note due to error.
+                </div>
+            </div>
+
+            <div class="row">
+                <span class="col-lg-7 col-md-7 col-xs-9 col-sm-9" style="height: 32px; padding-top: 7px">Assigned:</span>
+                <div class="col-lg-5 col-md-5 col-xs-3 col-sm-3 btn-add-admin" style="text-align:right">
+                  <div class="btn-group" ng-if="issue.assigned.length != admins.length">
+                      <i class="icon-expand-alt icon-large dropdown-toggle add-admin hidden-md hidden-lg"></i>
+                      <button class="btn dropdown-toggle hidden-xs hidden-sm">Add <span class="caret"></span></button>
+                      <ul class="dropdown-menu dropdown-menu-fix" role="menu">
+                          <li><a href="#" ng-click="iosGroup(admins)">@iOS</a></li>
+                          <li><a href="#" ng-click="androidGroup(admins)">@android</a></li>
+                          <li><a href="#" ng-click="winGroup(admins)">@winphone</a></li>
+                          <li><a href="#" ng-click="bizGroup(admins)">@biz</a></li>
+                          <li><a href="#" ng-click="backendGroup(admins)">@backend</a></li>
+                          <li><a href="#" ng-click="conceptGroup(admins)">@concept</a></li>
+                          <li class="divider"></li>
+                          <li ng-repeat="admin in admins">
+                              <a href="#" ng-if="checkAdminAssigned(admin)" ng-click="assign(admin)">{{admin.username}}</a>
+                          </li>
+                      </ul>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                    <div>
+                        <button ng-repeat="(key, admin) in issue.assigned" class="btn  btn-name-admin" style="margin: 2px 2px;"
+                        tooltip="Click to remove" ng-click="removeAssign(key)">
+                            {{admin.username}}
+                            <!-- <i class="close" style="color: white;" tooltip="Click to remove" ng-click="removeAssign(key)">&times;</i> -->
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <hr />
+
+            <div class="row">
+                <span class="col-lg-4 col-md-4 col-xs-4 col-sm-4" style="height: 32px; padding-top: 7px">Status:</span>
+                <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8" style="text-align:right">
+                    <div class="btn-group">
+                        <button class="btn dropdown-toggle">{{issue.status || 'Open'}} <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu" style="left: auto; right: 0; min-width: auto">
+                            <li><a href="#" ng-click="selectStatus('Open')">Open</a></li>
+                            <li><a href="#" ng-click="selectStatus('Rejected')">Rejected</a></li>
+                            <li><a href="#" ng-click="selectStatus('Resolved')">Resolved</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <span class="hidden-xs hidden-sm"><hr /></span> -->
+
+            <!-- <div class="row visible-md visible-lg">
+                <span class="col-lg-3">Tags:</span>
+                <div class="col-lg-9">
+                    <input class="form-control" type="text" ng-model="issue.tags" placeholder="tag1, tag2..."/>
+                </div>
+            </div>
+            <hr /> -->
+
+            <!-- <div class="row visible-md visible-lg">
+                <span class="col-lg-3 col-sm-3 col-xs-3 col-md-3">Note: </span>
+                <div class="col-lg-9 col-sm-9 col-xs-9 col-md-9">
+                    <textarea rows="5" class="col-lg-12 col-sm-12 col-xs-12 col-md-12" ng-model="issue.note"></textarea>
+                </div>
+            </div> -->
+
+            <!-- <div class="row update-issue-control">
+                <span class="col-lg-3 col-sm-3 col-xs-3 col-md-3 visible-md visible-lg"></span>
+                <div class="col-lg-9 col-sm-9 col-xs-9 col-md-9">
+                    <button class="btn btn-orange" ng-click="updateIssue(issue)">Update</button>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var height = 0;
+        $('#scrollBottom row').each(function(i, value){
+            height += parseInt($(this).height());
+        });
+        height += '';
+        $('#scrollBottom').animate({scrollTop: height});
+    })
+</script>

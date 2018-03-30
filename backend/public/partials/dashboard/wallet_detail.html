@@ -1,0 +1,18 @@
+<div class="module">
+    <div class="module-header">
+
+    </div>
+    <div class="module-content">
+        <h4 class="module-subtitle">
+            Daily ({{dailyStart.format('DD/MM')}} - {{dailyEnd.format('DD/MM')}})
+        </h4>
+        <loading ng-if="isLoadingDaily"></loading>
+        <div class="chart" id="dailyChart"></div>
+
+        <h4 class="module-subtitle">
+            Monthly ({{monthlyStart.format('MM/YYYY')}} - {{monthlyEnd.format('MM/YYYY')}})
+        </h4>
+        <loading ng-if="isLoadingMonthly"></loading>
+        <div class="chart" id="monthlyChart"></div>
+    </div>
+</div>

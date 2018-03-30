@@ -1,0 +1,77 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">Details about <strong>{{itemDetailName}}</strong></h4>
+</div>
+<div class="modal-body form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Type</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="type" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Mode</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="autoDetail.mode" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Set Time</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="autoDetail.metadata.hourRun" tooltip="Thời gian chạy tự động" readonly>
+        </div>
+    </div>
+    <div class="form-group" ng-show="autoDetail.type == 2">
+        <label class="col-lg-2 control-label">Template</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="autoDetail.metadata.title" readonly>
+        </div>
+    </div>
+    <div class="form-group" >
+        <label class="col-lg-2 control-label">Search Query</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="autoDetail.searchQuery.name" readonly>
+        </div>
+    </div>
+    <div class="form-group" ng-show="autoDetail.type == 1">
+        <label class="col-lg-2 control-label">Template</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="autoDetail.metadata.template.name" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Name:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="name" ng-model="autoDetail.name" readonly>
+        </div>
+    </div>
+    <div class="form-group" ng-show="autoDetail.type == 1">
+        <label class="col-lg-2 control-label">Subject:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="subject" ng-model="autoDetail.metadata.subject" readonly>
+        </div>
+    </div>
+    <div class="form-group" ng-show="autoDetail.type == 1">
+        <label class="col-lg-2 control-label">From Name:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="fromName" ng-model="autoDetail.metadata.fromName" readonly>
+        </div>
+    </div>
+    <div class="form-group" ng-show="autoDetail.type == 1">
+        <label class="col-lg-2 control-label">From Email:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="fromEmail" ng-model="autoDetail.metadata.fromEmail" readonly>
+        </div>
+    </div>
+    <div class="form-group" ng-show="autoDetail.type == 1">
+        <label class="col-lg-2 control-label">Reply To:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="replyTo" ng-model="autoDetail.metadata.replyTo" readonly>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="cancel()">
+        <i class="icon-remove"></i> Close
+    </button>
+</div>

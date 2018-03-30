@@ -1,0 +1,81 @@
+<polymer-element name="item-wallet" attributes="current_walletId wallet">
+  <template>
+   <style>
+     * {
+      margin: 0;
+      padding: 0;
+    }
+    :host .card-header {
+      width: 90%;
+      position: relative;
+      padding: 4px 0 0 14px;
+      display: block !important;
+      height: 60px;
+
+    }
+
+    :host .wallet-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin-right: 16px;
+      float: left;
+      margin-top: 4px;
+      margin-left: 16px;
+    }
+
+    :host .wallet-img img {
+      width: 100%;
+      display: block;
+    }
+
+    :host .info {         
+      width: 100%;
+      text-align: left;
+
+    }
+    
+    :host .info h2 {
+      padding-top: 9px !important;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    
+    :host .info span{
+      font-size: 14px;
+      top: -7px;
+      position: relative;
+    }
+
+  </style>
+  <div class="card-header" layout horizontal center>
+    <div class="wallet-img">
+      <template if="{{wallet.iconGroup}}">
+        <icon-group iconGroup="{{wallet.iconGroup}}"></icon-group>
+      </template>
+      <template if="{{!wallet.iconGroup}}">
+       <img width="48" lazyload="true" src="{{wallet.icon | iconUrlFilter}}" />
+      </template>
+    </div>
+    <div class="info">
+      <h2 class="menu-title">{{wallet.name}}</h2>
+      <!-- <span>$12222</span> -->
+    </div>
+  </div>
+</template>
+
+<script type="text/javascript">
+  Polymer('item-wallet', {
+    imgError: function(){
+      this.wallet.icon = defaultWalletIcon;
+    },
+    // iconUrlFilter: function (imgName) {
+    //   console.log(imgName);
+
+    //   return (urlRoot + '/img/icon/' + imgName + '.png').replace('icon//icon', 'icon');
+    // },
+  });
+</script>
+
+</polymer-element>

@@ -1,0 +1,188 @@
+{
+  "name": "Houseware",
+  "product_id": "icon_houseware",
+  "icons": {
+    "Houseware_01": [
+      "TV",
+      "television",
+      "tivi",
+      "tele",
+      "ti vi",
+      "máy vô tuyến"
+    ],
+    "Houseware_02": [
+      "fridge",
+      "freezer",
+      "tủ lạnh",
+      "tủ đông",
+      "cold",
+      "refrigerated"
+    ],
+    "Houseware_03": [
+      "iron",
+      "ironing",
+      "iron clothes",
+      "ironing clothes",
+      "bàn là",
+      "bàn ủi",
+      "là",
+      "ủi"
+    ],
+    "Houseware_04": [
+      "washing machine",
+      "cleaner",
+      "washing",
+      "washer",
+      "laundry",
+      "máy giặt",
+      "giặt",
+      "washing clothes"
+    ],
+    "Houseware_05": [
+      "trash bin",
+      "bin",
+      "thùng",
+      "thùng rác"
+    ],
+    "Houseware_06": [
+      "dryer",
+      "dry",
+      "máy sấy",
+      "sấy",
+      "dry clothes"
+    ],
+    "Houseware_07": [
+      "fan",
+      "quạt",
+      "cool",
+      "kitchen",
+      "room",
+      "cái quạt"
+    ],
+    "Houseware_08": [
+      "vacuum cleaner",
+      "vacuum",
+      "clean",
+      "máy hút bụi",
+      "hút bụi",
+      "dọn dẹp",
+      "clean up",
+      "tổng vệ sinh"
+    ],
+    "Houseware_09": [
+      "microwave",
+      "ovens",
+      "lò vi sóng",
+      "lò nướng",
+      "quay",
+      "làm nóng",
+      "lò nướng",
+      "microwave oven"
+    ],
+    "Houseware_10": [
+      "pot",
+      "hot pot",
+      "time to cooking",
+      "chuẩn bị",
+      "chuẩn bị thức ăn",
+      "hot pot",
+      "nồi",
+      "nồi lẩu"
+    ],
+    "Houseware_11": [
+      "coffee machine",
+      "cafe machine",
+      "coffee maker",
+      "cafe maker",
+      "máy pha cafe",
+      "cafe",
+      "coffee",
+      "breakfast",
+      "relax",
+      "bữa sáng",
+      "thư giãn"
+    ],
+    "Houseware_12": [
+      "knife",
+      "dao",
+      "bộ dụng cụ",
+      "fear",
+      "market",
+      "tự nấu ăn",
+      "self cooking",
+      "planer",
+      "dao nạo",
+      "dao bào củ",
+      "dao nạo hoa quả",
+      "scraping"
+    ],
+    "Houseware_13": [
+      "sewing",
+      "sewing machine",
+      "máy may",
+      "may",
+      "sew"
+    ],
+    "Houseware_14": [
+      "heater",
+      "convector",
+      "furnace",
+      "lò sưởi",
+      "máy sưởi",
+      "lò",
+      "sưởi",
+      "sưởi ấm",
+      "giữ ấm"
+    ],
+    "Houseware_15": [
+      "water purifier",
+      "water",
+      "máy lọc nước",
+      "lọc nước"
+    ],
+    "Houseware_16": [
+      "air conditioner",
+      "refresh",
+      "refresh air",
+      "fresh air",
+      "điều hòa",
+      "điều hòa không khí"
+    ],
+    "Houseware_17": [
+      "power outlet",
+      "electric outlet",
+      "ổ cắm điện",
+      "cắm điện"
+    ],
+    "Houseware_18": [
+      "water heater",
+      "heater",
+      "bình nóng lạnh"
+    ],
+    "Houseware_19": [
+      "weight",
+      "scale",
+      "electronic scale",
+      "cân",
+      "cái cân",
+      "cân điện tử"
+    ],
+    "Houseware_20": [
+      "dustpan",
+      "clear garbage",
+      "garbage",
+      "remove garbage",
+      "hót rác"
+    ]
+  },
+  "tags": [
+    "houseware",
+    "housework",
+    "house",
+    "home",
+    "home work",
+    "đồ gia dụng",
+    "gia dụng",
+    "việc nhà"
+  ]
+}

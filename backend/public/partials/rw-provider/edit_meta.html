@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title title">Edit meta search</h4>
+</div>
+<div class="modal-body">
+    <div class="form-group" ng-if="errorMsg">
+        <label class="col-lg-2 control-label"></label>
+        <div class="col-lg-10">
+            <p>{{ errorMsg }}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Meta search:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="meta"/>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+    <input type="submit" class="btn btn-success" ng-click="save(meta)" value="Save">
+</div>

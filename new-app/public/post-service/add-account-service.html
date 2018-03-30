@@ -1,0 +1,37 @@
+<polymer-element name="add-account-service">
+	<template>
+		<style>
+			:host {
+				display: none;
+			}
+		</style>
+
+		<core-ajax
+			id="addAccountRequest"
+			url="../api/add-account.api"
+			handleAs="json"
+            params="{{param}}"
+			on-core-response="{{addAccountResult}}" >
+		</core-ajax>
+	</template>
+
+	<script type="text/javascript">
+		Polymer('add-account-service',{
+			addAccountResult: function(event, response){
+                var status = response.xhr.status;
+                if(status===200){
+                    var data = response.response;
+                    if(data.error===0) this.callback(data);
+                    else if(data.error===401) this.fire('sessionExpired');
+                }
+			},
+			addAccount: function(accountInfo, callback){
+                this.callback = callback;
+                if(accountInfo) {
+                    this.param = {walletInfo: accountInfo};
+                    this.$['addAccountRequest'].go();
+                } else this.callback({"error": 10, "msg":"account_info_empty"});
+			}
+		});
+	</script>
+</polymer-element>

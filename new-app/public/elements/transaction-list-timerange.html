@@ -1,0 +1,77 @@
+<polymer-element name="transaction-list-timerange" attributes="currentTime">
+<template>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  :host {
+    display: block;
+    width: 100%;
+    z-index:  9999
+  }
+  
+  :host paper-button {
+    font-size: 14px;
+    color: rgba(255,255,255,0.60);
+    border-bottom: 4px solid transparent;
+  }
+
+  :host paper-button:hover,
+  :host paper-button.selected,
+  :host paper-button:active {
+    border-bottom: 4px solid #5af158;
+    color: rgb(255,255,255);
+    border-radius: 0;
+  }  
+
+  </style>
+  <paper-button on-click="{{timeDecr}}" label="{{currentTime | showDisplay(-1) | friendlyDate}}"></paper-button>
+  <paper-button class="selected" label="{{currentTime | showDisplay(0) | friendlyDate}}"></paper-button>
+  <paper-button on-click="{{timeIncr}}" label="{{currentTime | showDisplay(1) | friendlyDate}}"></paper-button>    
+</template>
+<script>
+Polymer('transaction-list-timerange', {
+  lastMonthString : null,
+  thisMonthString : null,
+  nextMonthString : null,
+
+  created: function(){
+    if(!this.currentTime) this.currentTime = new Date();
+    this.thisMonthString = moment(new Date()).format('MMMM-YYYY');
+    this.nextMonthString = moment(new Date()).add(1, 'M').format('MMMM-YYYY');
+    this.lastMonthString = moment(new Date()).add(-1, 'M').format('MMMM-YYYY');
+  },
+
+  timeDecr: function(){
+    this.timeChange(-1);
+  },
+
+  timeIncr: function(){
+    this.timeChange(1);
+  },
+
+  timeChange: function(valueChange){
+    this.currentTime = moment(this.currentTime).add(valueChange, 'M');
+  },
+
+  showDisplay: function(date, timeChange){
+    return moment(date).add(timeChange, 'M').format('MMMM-YYYY');
+  },
+
+  friendlyDate: function(dateString){
+    if(dateString === this.thisMonthString){
+      return 'THIS MONTH';
+    } else if(dateString === this.lastMonthString) {
+      return 'LAST MONTH';
+    } else if( dateString === this.nextMonthString) {
+      return 'NEXT MONTH';
+    }
+
+    return dateString;
+  },
+
+});
+</script>
+
+</polymer-element>

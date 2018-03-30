@@ -1,0 +1,199 @@
+<polymer-element name="user-login-page">
+    <template bind="{{loginInfo}}">
+        <style type="text/css" shim-shadowdom>
+            paper-input {
+                width: 100%;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .form-content {
+                height:100%;
+            }
+
+            #footer {
+                position: fixed;
+                bottom: 0px;
+            }
+
+            :host paper-dialog {
+                width: 400px;
+                height: auto;
+            }
+
+            :host core-header-panel {
+                min-height: 200px;
+            }
+
+            :host #notice-dialog {
+                font-size: 14px;
+            }
+
+            :host paper-button.colored {
+                background: none;
+                fill: #000;
+                float: right;
+                color: red;
+            }
+
+
+        </style>
+        <core-localstorage name="email" value="{{email}}"></core-localstorage>
+        <core-header-panel mode="cover" class="page-header">
+            <div id="logo"><img src="../images/app_icon_with_name.png"/></div>
+        </core-header-panel>
+        <div class="form-content" on-keypress="{{pressEnter}}">
+            <section class="form">
+                <div class="header-form text-title">Sign In</div>
+                <div class="content-form">
+                    <paper-input id="user-email" floatingLabel label="Email" type="email" value="{{loginInfo.email}}"></paper-input>
+                    <paper-input id="user-password" floatingLabel label="Password" type="password" value="{{loginInfo.password}}"></paper-input>
+                </div>
+                <div class="button">
+                    <paper-button class="button-flat-color" id="btnLogin" label="Login" on-click="{{loginAction}}"></paper-button>
+                </div>
+            </section>
+            <div class="more-link text-body">
+                <a href="/register">Create an account</a>
+                <a href="/forgot-password">Forgot password?</a>
+            </div>
+        </div>
+        <user-login-service id="loginService" params="{{params}}"></user-login-service>
+        <div id="footer">
+            <ul>
+                <li><a href="//moneylover.me" target="_blank">Money Lover</a></li>
+                <li><a href="//moneylover.me/#money_lover_is_easy_to_get_started" target="_blank">Download</a></li>
+                <li><a href="//moneylover.me/policy.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <paper-dialog heading="" backdrop="true" id="notice-dialog">
+            <core-header-panel mode="seamed">
+                <div class="core-header dialog-header">
+                    <paper-button icon="close" class="close" dismissive></paper-button>
+                    <div class="detail text-title">User Info</div>
+                </div>
+                <div class="content">
+                    <p>
+                        Your Cloud feature has not been activated. <br />
+                        Please open your Money Lover app, go to Settings, and check "Enable Cloud". <br />
+                        After that you can log in again.
+                    </p>
+                </div>
+            </core-header-panel>
+            <paper-button affirmative class="colored r500" label="OK" autofocus></paper-button>
+        </paper-dialog>
+        <!-- </sidebar-layout> -->
+    </template>
+    <script>
+        function checkCookie(){
+            var result = "";
+            var cookieName = 'userLogin=';
+            var ca = document.cookie.split(';');
+            ca.forEach(function(value){
+                if(value.indexOf(cookieName) != -1) result = value;
+            });
+            if (result == "") return false;
+            else {
+                var value = result.substr(11,1);
+                return (value == 1);
+            }
+        }
+
+        Polymer('user-login-page', {
+            loginInfo: {},
+
+            domReady: function(){
+                if(!checkCookie()){
+                    this.loading = false;
+
+                    if(this.email)
+                    {
+                        if(this.email !== "undefined") {
+                            this.loginInfo.email = this.email;
+                            var txtPw = this.$['user-password'];
+                            txtPw.focus();
+                        }
+                    }
+                } else window.location.href = "/wallet";
+
+            },
+
+            loginAction :function(){
+                var that = this;
+                var txtEmail = this.shadowRoot.querySelector('#user-email');
+                var txtPassword = this.shadowRoot.querySelector('#user-password');
+                var btnLogin = this.shadowRoot.querySelector('#btnLogin');
+                var loginInfo = this.loginInfo;
+                var status = this.validateLogin(loginInfo);
+
+                this.loading = true;
+                btnLogin.setAttribute("disabled","true");
+
+                if(!status) {
+                    //do something
+                    this.loading = false;
+                    btnLogin.removeAttribute('disabled');
+                    return;
+                }
+
+                this.$['loginService'].login(loginInfo, function(data){
+                    if(data.error===1) {
+                        txtEmail.removeAttribute("invalid");
+                        txtEmail.setAttribute("invalid","true");
+                        txtEmail.setAttribute("error","Invalid Username or Password");
+                        txtPassword.removeAttribute("invalid");
+                        txtPassword.setAttribute("invalid","true");
+                        btnLogin.removeAttribute("disabled");
+                        that.loading = false;
+                    } else if(data.error===3){
+                        btnLogin.removeAttribute("disabled");
+                        that.loading = false;
+                        var dialog = that.$['notice-dialog'];
+                        dialog.toggle();
+                    }
+                });
+            },
+
+            validateLogin: function(loginInfo){
+                var error = 0;
+                var email = loginInfo.email;
+                var password = loginInfo.password;
+
+                var txtEmail = this.shadowRoot.querySelector('#user-email');
+                var txtPassword = this.shadowRoot.querySelector('#user-password');
+
+                if(!email || email===""){
+                    txtEmail.setAttribute("invalid", "true");
+                    txtEmail.setAttribute("error", "required");
+                    error++;
+                } else {
+                    if(txtEmail.getAttribute("invalid")) txtEmail.removeAttribute("invalid");
+                }
+                if(!password || password===""){
+                    txtPassword.setAttribute("invalid", "true");
+                    txtPassword.setAttribute("error", "required");
+                    error++;
+                } else {
+                    if(txtPassword.getAttribute("invalid")) txtPassword.removeAttribute("invalid");
+                }
+
+                return (!error);
+            },
+
+            pressEnter: function(event){
+                if(!this.loading) {
+                    var btnLogin = this.$['btnLogin'];
+                    if (event.keyCode === 13) {
+                        btnLogin.focus();
+                        this.loginAction();
+                    }
+                }
+            }
+        });
+
+        //theming paper-input
+        CoreStyle.g.paperInput.focusedColor = 'green';
+    </script>
+</polymer-element>

@@ -1,0 +1,802 @@
+body {
+	/*padding-top: 50px;*/
+	background: transparent url('../../../img/bg.jpg') no-repeat fixed center center;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	background-size: cover;
+	font-size: 12px;
+}
+.container {
+	margin: 0 auto;
+	max-width: 970px;
+}
+/* moneylover default class */
+ .text-size-m {
+	/* medium */
+	font-size: 16px;
+}
+.text-size-s {
+	/* small */
+	font-size: 14px;
+}
+.text-size-xs {
+	/* xsmall */
+	font-size: 12px;
+}
+.text-color-p {
+	/* primary */
+	color: #333;
+}
+.text-color-s {
+	/* secondary */
+	color: #999;
+}
+.text-color-p-h {
+	color: #ddd;
+}
+.color-green {
+	color: #59bf4a;
+}
+.color-blue {
+	color: #3498cb;
+}
+.color-red {
+	color: #e63a3a;
+}
+.color-green {
+	color: #59BF4A
+}
+.color-green_pressed {
+	color: #359b26
+}
+.color-green_disabled {
+	color:  rgba(89, 191, 74, 0.25);
+}
+.color-green_shadow {
+	color: #2c8f1d
+}
+.color-green_pressed_shadow {
+	color: #157506
+}
+.color-blue {
+	color: #3498cb
+}
+.color-blue_pressed {
+	color: #1e7baa
+}
+.color-blue_disabled {
+	color: rgba(52, 152, 203, 0.25);
+}
+.color-blue_shadow {
+	color: #176f9c
+}
+.color-blue_pressed_shadow {
+	color: #0f5579
+}
+.color-red {
+	color: #e63a3a
+}
+.color-red_pressed {
+	color: #cd2b2b
+}
+.color-red_disabled {
+	color: rgba(230, 58, 58, 0.25);
+}
+.color-red_shadow {
+	color: #c62323
+}
+.color-red_pressed_shadow {
+	color: #b21717
+}
+.color-orange {
+	color: #f59d00
+}
+.color-orange_pressed {
+	color: #cc8300
+}
+.color-orange_disabled {
+	color: rgba(245, 157, 0, 0.25);
+}
+.color-orange_shadow {
+	color: #a26800
+}
+.color-orange_pressed_shadow {
+	color: #865600
+}
+.color-yellow {
+	color: #f2c500
+}
+.bg-green,
+.btn-green,
+.btn-green:hover {
+	background-color: #59BF4A;
+}
+.btn-green:active {
+	background-color: #359b26;
+}
+.bg-green.disabled,
+.btn-green.disabled {
+	background-color: rgba(89, 191, 74, 0.25);
+}
+.bg-green.shadow,
+.btn-green.shadow {
+	-moz-box-shadow: 0 1px 0 #2c8f1d;
+	-webkit-box-shadow: 0 1px 0 #2c8f1d;
+	box-shadow: 0 1px 0 #2c8f1d;
+}
+.btn-green.shadow:active {
+	-moz-box-shadow: 0 1px 0 #157506;
+	-webkit-box-shadow: 0 1px 0 #157506;
+	box-shadow: 0 1px 0 #157506;
+}
+.bg-blue,
+.btn-blue,
+.btn-blue:hover {
+	background-color: #3498cb;
+}
+.btn-blue:active {
+	background-color: #1e7baa;
+}
+.bg-blue.disabled,
+.btn-blue.disabled {
+	background-color: rgba(52, 152, 203, 0.25);
+}
+.bg-blue.shadow,
+.btn-blue.shadow  {
+	-moz-box-shadow: 0 1px 0 #176f9c;
+	-webkit-box-shadow: 0 1px 0 #176f9c;
+	box-shadow: 0 1px 0 #176f9c;
+}
+.btn-blue.shadow:active {
+	-moz-box-shadow: 0 1px 0 #0f5579;
+	-webkit-box-shadow: 0 1px 0 #0f5579;
+	box-shadow: 0 1px 0 #0f5579;
+}
+.bg-red,
+.btn-red,
+.btn-red:hover {
+	background-color: #e63a3a;
+}
+.btn-red:active {
+	background-color: #cd2b2b;
+}
+.bg-red.disabled,
+.btn-red.disabled {
+	background-color: rgba(230, 58, 58, 0.25);
+}
+.bg-red.shadow,
+.btn-red.shadow {
+	-moz-box-shadow: 0 1px 0 #c62323;
+	-webkit-box-shadow: 0 1px 0 #c62323;
+	box-shadow: 0 1px 0 #c62323;
+}
+.btn-red.shadow:active {
+	-moz-box-shadow: 0 1px 0 #b21717;
+	-webkit-box-shadow: 0 1px 0 #b21717;
+	box-shadow: 0 1px 0 #b21717;
+}
+.bg-orange,
+.btn-orange,
+.btn-orange:hover {
+	background-color: #f59d00;
+}
+.btn-orange:active {
+	background-color: #cc8300;
+}
+.bg-orange.disabled,
+.btn-orange.disabled {
+	background-color: rgba(245, 157, 0, 0.25);
+}
+.bg-orange.shadow,
+.btn-orange.shadow {
+	-moz-box-shadow: 0 1px 0 #a26800;
+	-webkit-box-shadow: 0 1px 0 #a26800;
+	box-shadow: 0 1px 0 #a26800;
+}
+.btn-orange.shadow:active {
+	-moz-box-shadow: 0 1px 0 #865600;
+	-webkit-box-shadow: 0 1px 0 #865600;
+	box-shadow: 0 1px 0 #865600;
+}
+.bg-yellow {
+	background-color: #f2c500;
+}
+/* end */
+
+/* Style color */
+ .color-moneylover {
+	color: #59bf4a;
+}
+.color-white {
+	color: #FFF;
+}
+.color-dark {
+	color: #333;
+}
+/* Style color */
+
+/* Radius style */
+ .radius-1 {
+	-moz-border-radius: 1px;
+	-webkit-border-radius: 1px;
+	border-radius: 1px;
+}
+.radius-2 {
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+.radius-3 {
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+.radius-4 {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+.radius-5 {
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+.radius-6 {
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+}
+.radius-7 {
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+}
+.radius-8 {
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+}
+.radius-9 {
+	-moz-border-radius: 9px;
+	-webkit-border-radius: 9px;
+	border-radius: 9px;
+}
+.radius-10 {
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+/* Radius style */
+
+/* moneylover style */
+ a {
+	color: #59bf4a;
+	cursor: pointer;
+}
+a:hover, a:focus {
+	color: #47993b;
+	text-decoration: none;
+}
+a:focus {
+	outline: none;
+}
+/* moneylover style */
+
+/* Drop-down */
+ .dropdown-menu {
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.176);
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+/* Drop-down */
+
+/*  Navigation */
+ .navbar {
+	background: #59bf4a;
+	height: 46px;
+	border-bottom: 2px solid #50ac42;
+	-moz-box-shadow: 0 2px 0 #cecece;
+	-webkit-box-shadow: 0 2px 0 #cecece;
+	box-shadow: 0 2px 0 #cecece;
+}
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a, .navbar-brand, .navbar-nav > li > a {
+	color: #FFF;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+	background: #47993b;
+	color: #FFF;
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+	border: 0px;
+	background: #47993b;
+	color: #FFF;
+}
+.logo-app {
+	background: url('../../../img/app_icon_64.png') no-repeat center center / 32px 32px transparent;
+	width: 32px;
+	height: 32px;
+	text-indent: -1000px;
+	position: absolute;
+	left: 50%;
+	margin-left: -13px !important;
+	top: 7px;
+}
+.nav .user-info {
+	padding: 5px 20px;
+	cursor: default;
+}
+.navbar-toggle {
+	padding: 5px 10px;
+	color: #FFF;
+}
+.nav-mobile {
+	background: #59BF4A;
+	color: #FFFFFF;
+	margin-top: 1px;
+	border-bottom: 2px solid #50ac42;
+	-moz-box-shadow: 0 2px 0 #cecece;
+	-webkit-box-shadow: 0 2px 0 #cecece;
+	box-shadow: 0 2px 0 #cecece;
+}
+.nav-mobile .nav .user-info {
+	padding: 10px 20px;
+}
+/*  Navigation */
+
+/* Money Lover generate */
+ .money-shadow {
+	-moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
+}
+p.caption {
+	color: #999;
+}
+.inp-money {
+	border-width: 0 0 1px 0;
+	border-color: rgba(0, 0, 0, 0.1);
+	border-style: solid;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.inp-money:focus {
+	border-color: rgba(0, 0, 0, 0.1);
+	box-shadow: none;
+}
+/* Money Lover generate */
+
+/* Money Lover card */
+ .money-card {
+	background: #FFFFFF;
+	/*margin-top: 40px;*/
+	/*padding: 15px;*/
+	-moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
+}
+.money-card-action {
+	clear: both;
+	position: relative;
+	margin: 10px 0;
+	display: table;
+	width: 100%;
+}
+.money-card-action .btn-right {
+	float: right;
+}
+.money-card-action .text-action {
+	display: table-cell;
+	vertical-align: middle;
+}
+.money-card-action .text-action a {
+	color: #333;
+	font-size: 14px;
+	-moz-box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.3) inset;
+	-webkit-box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.3) inset;
+	box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.3) inset;
+}
+.card-list {
+	display: table;
+	width: 100%;
+	position: relative;
+}
+.card-list .item .img-thumb {
+	/*width: 53px;
+	height: 53px;*/
+	width: 100%;
+}
+.event img.event {
+	vertical-align: 0px;
+}
+.card-list .item .name {
+	font-size: 24px;
+}
+.card-list .item .note {
+	font-size: 14px;
+}
+.card-list .item .amount {
+	font-size: 24px;
+	position: absolute;
+	right: 15px;
+	top: 2px;
+}
+.card-list .item .amount.expense {
+	color: #e63a3a;
+}
+.card-list .item .amount.income {
+	color: #59bf4a;
+}
+/* Money Lover card */
+
+/* Money Lover button */
+.btn {
+	font-size: 12px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+.btn-money {
+	min-width: 100px;
+}
+.btn.btn-money {
+	/*background: #59BF4A;*/
+	border: 0 none;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	/*-moz-box-shadow: 0 1px 0 #2c8f1d;
+	-webkit-box-shadow: 0 1px 0 #2c8f1d;
+	box-shadow: 0 1px 0 #2c8f1d;*/
+}
+/* Money Lover button */
+
+/*  Money Lover form */
+ .main-info-top {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+	padding-bottom: 5px;
+}
+.form-money .form-group {
+	margin-bottom: 0px;
+}
+.form-money .inp-cate .inp-fake {
+	font-size: 24px;
+	height: 60px;
+	line-height: 45px;
+	cursor: pointer;
+}
+/*.form-money .icon-image {
+	z-index: 1;
+}*/
+.form-money .inp-cate img {
+	/*	left: 10px;
+	margin-left: 10px;
+	position: absolute;
+	top: 0;
+	width: 64px;*/
+	/*margin: 0px;*/
+	width: 100%;
+}
+.form-money .inp-cate .col-md-2 {
+	padding-top: 0;
+}
+.form-money .inp-cate .img-category {
+	cursor: pointer;
+}
+.form-money .inp-amount input {
+	font-size: 36px;
+	height: 65px;
+}
+.form-money .inp-note input, .form-money .inp-with input {
+	font-size: 16px;
+	height: 50px;
+}
+
+.form-money .inp-note input,
+.form-money .inp-with input {
+	border-bottom: 0px;
+}
+.form-money .ml-date-view {
+	/*border-right: 1px solid rgba(0,0,0,0.1);*/
+}
+.form-money .inp-wallet {
+	/*margin-top: 10px;*/
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	padding-bottom: 10px;
+}
+.form-money .inp-wallet .value,
+.form-money .inp-event .value {
+	font-size: 16px;
+	/*color: #555;*/
+}
+.form-money .main-info-bottom p.caption {
+	text-transform: uppercase;
+	margin-bottom: 0px;
+	font-size: 12px;
+}
+.main-info-bottom .col-md-6 {
+	padding: 0 5px;
+}
+.main-info-bottom .form-group .col-md-6:nth-child(2) {
+	padding-right: 15px;
+}
+.form-money .inp-event {
+	margin-top: 10px;
+}
+.form-money .value.disabled {
+	color: #dddddd;
+}
+.img-category {
+	display: block;
+	height: 54px;
+	position: relative;
+	width: 54px;
+	/*margin-left: 10%;*/
+}
+.form-money .more-info {
+	position: relative;
+	margin-top: 10px;
+}
+.form-money .more-info .value {
+	cursor: pointer;
+}
+.form-money .more-info .agrow {
+	background: rgba(0, 0, 0, 0.1);
+	display: block;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	width: 1px;
+	left: -10px;
+}
+/* Money Lover form */
+
+/* Money Lover Datepicker */
+ .ml-datepicker .h1, .ml-datepicker .h2, .ml-datepicker .h3, .ml-datepicker .h4, .ml-datepicker .h5, .ml-datepicker .h6, .ml-datepicker thead th {
+	font-weight: 300;
+}
+.ml-date-view {
+	text-align: center;
+	width: 100%;
+	margin: 16px 0 0;
+}
+.ml-date-view .caption {
+	color: #999;
+	text-transform: uppercase;
+}
+.ml-date-view .ml-date-footer.caption {
+	text-transform: capitalize;
+	font-size: 14px;
+}
+.ml-date-view p, .ml-date-body h1 {
+	margin: 0;
+	cursor: default;
+}
+.ml-date-view .ml-date-body h1 {
+	/*color: #555;*/
+	font-size: 44px;
+}
+.full-calendar {
+	position: relative;
+	width:100%;
+	border:1px solid #E8E8E8;
+}
+.full-calendar h1, .full-calendar h2, .full-calendar h3, .full-calendar h4, .full-calendar h5, .full-calendar h6, .full-calendar .h1, .full-calendar .h2, .full-calendar .h3, .full-calendar .h4, .full-calendar .h5, .full-calendar .h6 {
+	margin: 0;
+	text-align: center
+}
+.full-calendar .ml-calendar-day {
+	background: none repeat scroll 0 0 #F5F5F5;
+	margin-bottom: 15px;
+	padding: 5px;
+}
+.full-calendar .ml-calendar-month h3, .full-calendar .ml-calendar-date h1 {
+	font-weight: 400;
+	color: #00AEF9;
+}
+.full-calendar .ml-calendar-month, .full-calendar .ml-calendar-date {
+	margin-bottom: 10px;
+}
+.full-calendar .ml-calendar-date h1 {
+	font-size: 72px;
+}
+.full-calendar .ml-calendar-year {
+	padding: 10px;
+}
+/* Money Lover Datepicker */
+
+
+/* Money new style */
+#main-container {
+	margin-top: 5%;
+}
+
+#money-main-box {
+	-moz-box-shadow: 0 11px 27px rgba(0, 0, 0, 0.4);
+	-webkit-box-shadow: 0 11px 27px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 11px 27px rgba(0, 0, 0, 0.4);
+}
+
+.money-card-item > .row {
+	padding: 22px 0;
+}
+
+#list-card {
+	-moz-border-radius: 0 0 3px 3px;
+	-webkit-border-radius: 0 0 3px 3px;
+	border-radius: 0 0 3px 3px;
+}
+
+.money-header {
+	height: 50px;
+	background: #59BF4A;
+	-moz-border-radius: 3px 3px 0 0;
+	-webkit-border-radius: 3px 3px 0 0;
+	border-radius: 3px 3px 0 0;
+}
+
+.money-center {
+	margin: 0 auto;
+	float: none;
+}
+
+.money-card-item .img-category img {
+	width: 54px;
+}
+
+.ml-input-category .inp-fake {
+	font-size: 24px;
+	height: 54px;
+	line-height: 18px;
+	padding: 17px 0 19px 12px;
+}
+
+.ml-input-amount .inp-fake {
+	font-size: 38px;
+	height: 65px;
+}
+
+.ml-input-note .inp-fake {
+	font-size: 16px;
+	/*height: 46px;*/
+	line-height: 31px;
+	border-bottom: 0px;
+	min-height: 46px;
+	height: auto;
+}
+
+.agrow-soild {
+	border-top: 1px solid #d9d9d9;
+	display: block;
+	content: ".";
+	text-indent: -9999px;
+}
+
+.ml-extent > .col-md-12 {
+	margin-top: 6px;
+}
+
+.ml-extent .more-info {
+	position: relative;
+	margin-top: 10px;
+}
+.ml-extent .more-info .value {
+	/*cursor: pointer;*/
+}
+
+.ml-extent .more-info .agrow {
+	background: rgba(0, 0, 0, 0.1);
+	display: block;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	width: 1px;
+	left: -15px;
+}
+.ml-extent .inp-wallet {
+	/*margin-top: 10px;*/
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	padding-bottom: 10px;
+}
+.ml-extent .inp-event {
+	margin-top: 10px;
+}
+.ml-extent .inp-wallet .value,
+.ml-extent .inp-event .value {
+	font-size: 16px;
+	/*color: #555;*/
+}
+.ml-extent .more-info p.caption {
+	text-transform: uppercase;
+	margin-bottom: 0px;
+	font-size: 12px;
+}
+
+.ml-input-category .inp-fake,
+.ml-extent .inp-wallet .value,
+.ml-extent .inp-event .value {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.money-copyright {
+	margin-top: 20px;
+	color: rgba(255, 255, 255, 0.35);
+}
+#money-download {
+	border: 1px solid rgba(255, 255, 255, 0.35);
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	color: rgba(255, 255, 255, 0.35);
+	display: inline-block;
+	padding: 5px;
+	text-align: center;
+	width: 93px;
+	margin-top: 2px;
+}
+
+#money-download:hover {
+	border-color: rgba(255, 255, 255, 0.5);
+	color: rgba(255, 255, 255, 0.5);
+}
+#money-download:active {
+	border-color: rgba(255, 255, 255, 0.8);
+	color: rgba(255, 255, 255, 0.8);
+	/*margin-top: 6px;*/
+}
+
+#money-link {
+	color: rgba(255, 255, 255, 0.5);
+	font-weight: bold;
+}
+#money-link:hover {
+	color: rgba(255, 255, 255, 0.8);
+	font-weight: bold;
+}
+
+@media (min-width: 971px) and (max-width: 995px) {
+	/*.container {
+		max-width: 445px;
+	}*/
+}
+@media (min-width: 380px) and (max-width: 970px) {
+	/*body {
+		-moz-background-size: inherit;
+		-webkit-background-size: inherit;
+		background-size: inherit;
+	}*/
+	.container {
+		max-width: 445px;
+	}
+}
+
+@media (max-width: 380px) {
+	body {
+		background-position: inherit;
+		-moz-background-size: inherit;
+		-webkit-background-size: inherit;
+		background-size: inherit;
+	}
+	#money-download {
+		width: 100%;
+	}
+	.ml-input-category > .col-xs-2 {
+		padding-left: 8px;
+	}
+	.money-copyright .col-xs-8 {
+		padding: 0;
+	}
+	.money-copyright .col-xs-4 {
+		padding-left: 10px;
+		padding-right: 0;
+	}
+	.ml-input-amount .inp-fake {
+		font-size: 30px;
+		line-height: 55px;
+	}
+}

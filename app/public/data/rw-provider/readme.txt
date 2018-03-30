@@ -1,0 +1,1 @@
+This folder stores remote wallet provider's settings/actions

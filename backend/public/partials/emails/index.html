@@ -1,0 +1,34 @@
+<div>
+	<div class="module">
+		<div class="module-content">
+			<button class="btn btn-orange" ng-click="writeMail()"><i class="icon-plus"></i> Write mail</button>
+			<button class="btn btn-success" ng-click="getList()"><i class="icon-eye-open"></i> List mail</button>
+		</div>
+		<!--<div class="module-content" style="color: red">-->
+			<!--***Chú ý: Nếu trong mail có nội dung động, tức là mỗi mail sẽ hiển thị nội dung khác nhau tùy vào người nhận, chẳng hạn như tên người nhận, ví dụ như "Dear, Mr.Blah Blah(hoặc Miss Bleh Bleh)" thì cần gán cho nội dung động đó một cái biến (variable), hệ thống sẽ đối chiếu theo biến đó để điền vào cho chuẩn khỏi phải tự chỉnh.<br />-->
+			<!--Để tạo biến đó thì viết theo dạng *|tenbien|* <br/>-->
+			<!--Ví dụ: "Dear *|username|*, blah bleh bloh..." <br/>-->
+			<!--Đồng thời khai báo các biến đó ở ô Variable-->
+		<!--</div>-->
+	</div>
+	<div class="module" ng-if="createMail">
+		<div class="module-header">
+			<h4 ng-bind="titleFormMail">Write mail</h4>
+		</div>
+		<div class="module-content">
+			<div ng-include="'/partials/emails/create-mail.html'"></div>
+		</div>
+	</div>
+	<div class="module no-padding" ng-if="!createMail">
+		<div class="module-header">
+			<h4>Emails</h4>
+			<div class="input-group quick-search-box">
+				<span class="input-group-addon"><i class="icon-search"></i></span>
+				<input type="text" placeholder="Enter keyword..." class="form-control" ng-model="searchKeyword">
+			</div>
+		</div>
+		<div class="module-content">
+			<div ng-include="'/partials/emails/list.html'" onload="getList()"></div>
+		</div>
+	</div>
+</div>

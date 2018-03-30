@@ -1,0 +1,11 @@
+{
+    "status": "1",
+    "version": "7",
+    "versionShow": "3.0.4",
+    "url": "itms-apps://itunes.apple.com/us/app/money-lover-plus/id492648096?ls=1&mt=8",
+    "changelog": [
+        {
+            "en": " - Redesign budget view. \n - Search transactions function.  \n - Fix bugs for Thailand: view transactions by quarter and month. \n - Fix bugs migrate old data with decimal number.",
+            "vi": "- Sửa lại trang ngân sách. \n - Chức năng mới: tìm kiếm giao dịch. \n - Sửa lỗi xem giao dịch theo quý và tháng của Thái Lan."        }
+    ]
+}

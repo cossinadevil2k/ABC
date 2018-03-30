@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="module">
+        <div class="module-header">
+            <h4>
+                Chart
+                <div class="btn-group">
+                    <button class="btn btn-primary dropdown-toggle">{{viewMode}} <i class="caret"></i></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#" ng-click="selectView('Total')">Total</a></li>
+                        <li><a href="#" ng-click="selectView('Android')">Android</a></li>
+                        <li><a href="#" ng-click="selectView('Ios')">iOS</a></li>
+                        <li><a href="#" ng-click="selectView('Windows Desktop')">Windows Desktop</a></li>
+                        <li><a href="#" ng-click="selectView('Windows Mobile')">Windows Mobile</a></li>
+                    </ul>
+                </div>
+            </h4>
+        </div>
+        <div class="module-content">
+            <div ng-repeat="day in days">
+                <h4 class="module-subtitle">
+                    {{day}} day
+                </h4>
+                <div class="row">
+                    <div ng-if="viewMode === 'Total'">
+                        <div id="loyalTotal{{day}}" class="chart"></div>
+                    </div>
+                    <div ng-if="viewMode === 'Android'">
+                        <div id="loyalAndroid{{day}}" class="chart"></div>
+                    </div>
+                    <div ng-if="viewMode === 'Ios'">
+                        <div id="loyalIos{{day}}" class="chart"></div>
+                    </div>
+                    <div ng-if="viewMode === 'Windows Desktop'">
+                        <div id="loyalWindowsDesktop{{day}}" class="chart"></div>
+                    </div>
+                    <div ng-if="viewMode === 'Windows Mobile'">
+                        <div id="loyalWindowsMobile{{day}}" class="chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

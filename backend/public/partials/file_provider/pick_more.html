@@ -1,0 +1,73 @@
+<div class="modal-header">
+    <button type="button" ng-click="cancel()" class="close">&times;</button>
+    <h4 class="modal-title" style="margin-bottom : 10px;">Pick Providers</h4>
+    <h4 class="quick-box-search">
+        <div class="input-group">
+            <input type="text" class="form-control" id="txtKeyword" ng-model="keyword" ng-keyup="liveSuggest(keyword,$event)" placeholder="Enter keyword">
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-grape" ng-click="search(keyword)" ng-disabled="isLoading"><i class="icon-search"></i> SEARCH</button>
+            </div>
+        </div>
+    </h4>
+    <h6 class="suggest">
+        <ul ng-repeat="item in suggests">
+            <li ng-click="choose(item.name)">{{item.name}}</li>
+        </ul>
+    </h6>
+</div>
+<div class="modal-body">
+    <div class="module-content table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" title="Select All" ng-click="selectAll()" />
+                    </th>
+                    <th class="hidden-xs hidden-sm text-center">ID</th>
+                    <th class="hidden-xs hidden-sm"></th>
+                    <th>Name</th>
+                    <th class="hidden-xs hidden-sm text-center">Country</th>
+                    <th class="text-center hidden-xs">Service</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="provider in providersElse track by $index">
+                    <td>
+                        <input type="checkbox" name="select" id="{{provider.realId}}" value="{{provider.realId}}" ng-click="selectProvider(provider.realId)"
+                            ng-checked="isChecked[provider.realId]" />
+                    </td>
+                    <td class="text-center">
+                        <p>{{provider.realId}}</p>
+                    </td>
+                    <td>
+                        <img class="ml-thumbnail" src="{{provider.icon}}" alt="{{provider.name}}.png" />
+                    </td>
+                    <td>
+                        <p>{{provider.name}}</p>
+                    </td>
+                    <td class="text-center">
+                        <p>{{provider.country_code}}</p>
+                    </td>
+                    <td class="text-center">
+                        <p ng-if="provider.service == 1">Saltedge</p>
+                        <p ng-if="provider.service == 2">Finsify</p>
+                    </td>
+                </tr>
+                <tr class="breakPage">
+                    <td colspan="12" class="text-center">
+                        <div class="btn-group">
+                            <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPageMore"><i class="icon-fast-backward"></i></a>
+                            <button class="btn btn-default disabled" onclick="return false">Page {{pagePickMore}}</button>
+                            <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPageMore"><i class="icon-fast-forward"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" ng-click="save()">
+        <i class="icon-save"></i> Save
+    </button>
+</div>

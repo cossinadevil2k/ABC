@@ -1,0 +1,144 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()">&times;</button>
+	<h4 class="modal-title title">Icon info</h4>
+</div>
+<div class="modal-body">
+	<form class="form-horizontal" ng-submit="saveIconPack()">
+		<div class="form-group" ng-if="errorMsg">
+			<label class="col-lg-3 control-label"></label>
+			<div class="col-lg-9">
+				<p>{{ errorMsg }}</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 control-label" >Name:</label>
+			<div class="col-lg-9">
+				<input type="text" placeholder="Name..." class="form-control" ng-model="iconInfo.name" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 control-label" >Owner:</label>
+			<div class="col-lg-9">
+				<input type="text" placeholder="Name..." class="form-control" ng-model="iconInfo.owner" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 control-label" for="input2">Preview:</label>
+			<div class="col-lg-9">
+				<input type="file" accept="image/*" id="input2" class="form-control" file-model="iconInfo.preview" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 control-label" for="input3">Thumbnail:</label>
+			<div class="col-lg-9">
+				<input type="file" accept="image/*" id="input3" class="form-control" file-model="iconInfo.thumb" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 control-label" for="input4">Icon Pack (Zip file):</label>
+			<div class="col-lg-9">
+				<input type="file" accept="application/zip" id="input4" class="form-control" file-model="iconInfo.link" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 control-label">Product ID</label>
+			<div class="col-lg-9">
+				<input type="text" class="form-control" ng-model="iconInfo.product_id" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 control-label">Can buy?</label>
+			<div class="col-lg-9">
+				<div class="checkbox">
+					<input type="checkbox" ng-model="iconInfo.canBuy">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 control-label">Can share?</label>
+			<div class="col-lg-9">
+				<div class="checkbox">
+					<input type="checkbox" ng-model="iconInfo.canShare">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 control-label">Is Free?</label>
+			<div class="col-lg-9">
+				<div class="checkbox">
+					<input type="checkbox" ng-model="iconInfo.isFree">
+				</div>
+			</div>
+		</div>
+		<div class="form-group" ng-if="!iconInfo.isFree && !iconInfo.isShareOnly">
+			<label class="col-lg-3 control-label">Discount</label>
+			<div class="col-lg-9">
+				<input type="number" step="any" class="form-control" ng-model="iconInfo.discount" ng-required="!iconInfo.isFree && !iconInfo.isShareOnly"/>
+			</div>
+		</div>
+		<div class="form-group" ng-if="!iconInfo.isFree && !iconInfo.isShareOnly">
+			<label class="col-lg-3 control-label">Price VND</label>
+			<div class="col-lg-9">
+				<input type="number" step="any" class="form-control" ng-model="iconInfo.price_vn" ng-required="!iconInfo.isFree && !iconInfo.isShareOnly"/>
+			</div>
+		</div>
+		<div class="form-group" ng-if="!iconInfo.isFree && !iconInfo.isShareOnly">
+			<label class="col-lg-3 control-label">Price USD</label>
+			<div class="col-lg-9">
+				<input type="number" step="any" class="form-control" ng-model="iconInfo.price_gl" ng-required="!iconInfo.isFree && !iconInfo.isShareOnly"/>
+			</div>
+		</div>
+		<div class="form-group" ng-if="!iconInfo.isFree && !iconInfo.isShareOnly">
+			<label class="col-lg-3 control-label">Price Credit</label>
+			<div class="col-lg-9">
+				<input type="number" step="any" class="form-control" ng-model="iconInfo.price_credit" ng-required="!iconInfo.isFree && !iconInfo.isShareOnly"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 control-label">Is New?</label>
+			<div class="col-lg-9">
+				<div class="col-lg-5">
+					<div class="radio">
+						<label>
+							<input type="radio" name="type-new" ng-model="iconInfo.isNew" ng-value="false">
+							No
+						</label>
+					</div>
+				</div><div class="col-lg-5">
+					<div class="radio">
+						<label>
+							<input type="radio" name="type-new" ng-model="iconInfo.isNew" ng-value="true">
+							Yes
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Is Public?</label>
+            <div class="col-lg-9">
+                <div class="col-lg-5">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="type-public" ng-model="iconInfo.isPublic" ng-value="false">
+                            No
+                        </label>
+                    </div>
+                </div>
+				<div class="col-lg-5">
+					<div class="radio">
+						<label>
+							<input type="radio" name="type-public" ng-model="iconInfo.isPublic" ng-value="true">
+							Yes
+						</label>
+					</div>
+				</div>
+            </div>
+        </div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+			<input type="submit" class="btn btn-success" value="Save Icon Pack">
+		</div>
+	</form>
+</div>
+

@@ -1,0 +1,14 @@
+{
+	"name": "money-oauth",
+	"version": "1.0.22",
+	"description": "Money lover oauth for sync",
+	"main": "./lib",
+	"files": [
+		"lib"
+	],
+	"author": "Cuong Le",
+	"license": "ISC",
+	"dependencies": {
+		"jsonwebtoken": "^5.7.0"
+	}
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ML">
+<head>
+	<% include header %>
+</head>
+
+<body>
+<div id="wrapper">
+	<% include nav %>
+	<div id="content-wrapper" ng-controller="global" hotkey="{'ctrl+shift+f': userSpotlight}">
+		<input id="adminId" type="text" value="<%= session.adminId %>" hidden>
+		<header class="main-header">
+			<h3>
+				<a id="show-menu" href="#" class="btn btn-success"><i class="icon-reorder"></i>
+				</a>
+				<span ng-bind="MLPageDetail"></span>
+			</h3>
+			<div style="float: right">
+				<div class="hidden-xs globalBadge" ng-if="openIssues > 0">
+					<i class="icon-book"></i> <a href="/helpdesk/issue" class="badge" ng-bind="openIssues" tooltip="Open Issues"></a>
+				</div>
+				<div class="hidden-xs globalBadge" ng-if="openReceipts > 0">
+					<i class="icon-file"></i> <a href="/receipt" class="badge" ng-bind="openReceipts" tooltip="Open Receipts"></a>
+				</div>
+				<a class="notification-button hidden-xs" ng-click="openNotification()" style="float: left; cursor: pointer;">
+					<i class="icon-bell-alt"></i>
+					<span class="badge" id="noti_number" ng-hide="new_noti == 0" ng-bind="new_noti"></span>
+				</a>
+				<nav class="user-profile">
+					<a href="#" class="user-dropdown" data-toggle="dropdown">
+						<span><%= session.adminName %> </span>
+						<i class="icon-caret-down"></i>
+					</a>
+					<ul class="dropdown-menu pull-right" role="menu">
+						<li>
+							<a href="#" ng-click="changePassword('<%= session.adminId %>')">
+								<i class="icon-wrench"></i>
+								Change password
+							</a>
+						</li>
+						<li class="hidden-md hidden-sm hidden-lg">
+							<a href="#" class="notification-button" ng-click="openNotification()" style="padding: 2px 0">
+								<i class="icon-bell"></i>
+								Notification
+								<span class="badge" id="noti_number" ng-hide="new_noti == 0" ng-bind="new_noti"></span>
+							</a>
+						</li>
+						<li>
+							<a ng-click="logout()">
+								<i class="icon-signout"></i>
+								Logout
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<section class="allContentListUser main-content padding">
+			<div class="fade-animate" ng-view></div>
+		</section>
+		<div id="footerMaintainStatus" class="alert alert-warning alert-dismissable maintainStatus" hidden>
+			<!-- <button aria-hidden="true" data-dismiss="alert" class="close" type="button"><i class="icon-remove-sign"></i></button> -->
+			<strong>Notice!</strong> Server is currently down for maintenance.
+		</div>
+		<script type="text/ng-template" id="user_spotlight.html">
+			<div class="input-group">
+				<span class="input-group-addon" style="background: #F6F6F6;">
+					<i class="icon-search"></i>
+				</span>
+
+				<input type="text" class="form-control spotlight" ng-model="kw" placeholder="User Search" autofocus ng-change="listenKeyPress(kw)"/>
+			</div>
+			<loading ng-if="isLoading"></loading>
+			<div class="module module-blue no-padding" ng-if="hasResult">
+				<div class="module-header" ng-if="results.length === 0">No results</div>
+				<div class="module-content" ng-if="results.length > 0">
+					<table class="table table-responsive">
+						<thead>
+						<tr>
+							<th>email</th>
+							<th></th>
+							<th class="text-right">created</th>
+							<th class="text-right">last sync</th>
+							<th class="text-right">expire</th>
+							<th class="text-center">premium</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr ng-repeat="user in results">
+							<td>
+								<a class="helpdesk-link" ng-click="cancel()" href="/users/info?email={{user.email}}">{{user.email}}</a>
+								<img src="/images/facebook-icon.png" tooltip="Facebook" class="icon-user-platform" alt="facebook" ng-if="detectSocial(user.tags) == 'facebook'"/>
+								<img src="/images/google-icon.png" tooltip="G+" class="icon-user-platform" alt="g+" ng-if="detectSocial(user.tags) == 'google'"/>
+								<div>
+									<img src="/images/android_96.png" class="icon-user-platform" alt="android_logo" ng-if="user.hasAndroid"/>
+									<img src="/images/android_96_disabled.png" class="icon-user-platform" alt="android_logo" ng-if="!user.hasAndroid"/>
+									<img src="/images/ios_96.png" class="icon-user-platform" alt="apple_logo" ng-if="user.hasIos"/>
+									<img src="/images/ios_96_disabled.png" class="icon-user-platform" alt="apple_logo" ng-if="!user.hasIos"/>
+									<img src="/images/winphone_96.png" class="icon-user-platform" alt="windows_phone_logo" ng-if="user.hasWp"/>
+									<img src="/images/winphone_96_disabled.png" class="icon-user-platform" alt="windows_phone_logo" ng-if="!user.hasWp"/><img src="/images/osx_96.png" class="icon-user-platform" alt="osx_logo" ng-if="user.hasOsx"/>
+									<img src="/images/osx_96_disabled.png" class="icon-user-platform" alt="osx_logo" ng-if="!user.hasOsx"/>
+									<img src="/images/windows_96.png" class="icon-user-platform" alt="windows_logo" ng-if="user.hasWindows"/>
+									<img src="/images/windows_96_disabled.png" class="icon-user-platform" alt="windows_logo" ng-if="!user.hasWindows"/>
+									<img src="/images/web_96.png" class="icon-user-platform" alt="web_logo" ng-if="user.hasWeb"/>
+									<img src="/images/web_96_disabled.png" class="icon-user-platform" alt="web_logo" ng-if="!user.hasWeb"/>
+								</div>
+							</td>
+							<td>
+								<span ng-if="user.geo" class="flag-icon flag-icon-{{user.geo.country_code.toLowerCase()}}" tooltip="{{user.geo.country}}{{(user.geo.city || user.geo.city == '')? ' - ' + user.geo.city: ''}}"></span>
+							</td>
+							<td class="text-right">{{(user.createdDate || "- - - -") | checkDateTime}}</td>
+							<td class="text-right">{{(user.lastSync || "- - - -") | checkDateTime}}</td>
+							<td class="text-right">{{(user.expireDate || "- - - -") | checkDateTime}}</td>
+							<td class="text-center">
+								<a class="btn btn-xs" href="#" ng-click="setPurchased(user)" ng-class="{'btn-danger': !user.purchased, 'btn-success': user.purchased}" ng-disabled="user.purchased">
+									<i ng-class="{'icon-check': user.purchased, 'icon-unchecked': !user.purchased}"></i>
+								</a>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</script>
+	</div>
+	<!--NOTIFICATION CENTER-->
+	<div class="notification-center" id="noticenter" ng-controller="notification-center">
+		<div class="row">
+			<div style="float: left">
+				<button class="btn btn-facebook" style="border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; margin:10px" ng-click="close()"><i class="icon-long-arrow-right"></i> Close</button>
+			</div>
+			<div style="float: right">
+				<button class="btn btn-danger" style="border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; margin:10px" ng-if="notifications.length > 0" ng-click="clearAll()"><i class="icon-trash"></i> Clear All</button>
+			</div>
+		</div>
+		<ul>
+			<li ng-repeat="(key, notification) in notifications">
+				<notification-card data="notification" on-close="deleteNotify(key,notification._id)"></notification-card>
+			</li>
+		</ul>
+		<div class="notification-empty" ng-if="notifications.length == 0">
+			<img src="/images/no-notification.gif" alt="empty">
+		</div>
+	</div>
+</div>
+<% include footer %>
+<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function () {
+		if (Notification && Notification.permission !== "granted") {
+			Notification.requestPermission();
+		}
+	});
+
+	$("#show-menu").click(function(e) {
+		e.preventDefault();
+		$("#wrapper").toggleClass("active");
+	});
+</script>
+<script>
+	angular.element('#sidebar-wrapper ul li').click(function(event){
+		event.stopPropagation();
+		angular.element('#sidebar-wrapper').addClass('active');
+	});
+
+	angular.element(document).click(function(){
+		angular.element('#sidebar-wrapper').removeClass('active');
+	});
+</script>
+<script>
+//	if (env === 'production') Bugsense.initAndStartSession( { apiKey: "5ddeea65" } );
+	var ADMIN_ID = "<%= session.adminId %>";
+	var ADMIN_NAME = "<%= session.adminName %>"
+</script>
+</body>
+</html>

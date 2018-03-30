@@ -1,0 +1,48 @@
+<div>
+    <div class="module">
+        <div class="module-header">
+            <h4>Permission Info</h4>
+        </div>
+        <div class="module-content">
+            <loading ng-if="loadingPermission"></loading>
+            <table ng-if="!loadingPermission" class="table table-responsive table-striped">
+                <tbody ng-repeat="user in permissionInfo">
+                    <tr>
+                        <td><h4><strong><a href="/users/info/{{user.email}}" target="_blank">{{user.email}}</a><span>{{(user.isOwner)?' (Owner)':''}}</span></strong></h4></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Read
+                        </td>
+                        <td ng-class="{'text-success': user.read, 'text-fail': !user.read}">
+                            {{user.read ? 'Yes' : 'No'}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Write
+                        </td>
+                        <td ng-class="{'text-success': user.write, 'text-fail': !user.write}">
+                            {{user.write ? 'Yes' : 'No'}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="module">
+        <div class="module-header">
+            <div class="row">
+                <h4 class="left">Transaction Statistic</h4>
+            </div>
+        </div>
+        <div class="module-content">
+            <loading ng-if="loadingDiagnose"></loading>
+            <h4 class="module-subtitle">
+                Total: {{totalCreate}}, Delete: {{totalDelete}}
+            </h4>
+            <div class="chart" id="transactionCreateChart"></div>
+        </div>
+    </div>
+</div>

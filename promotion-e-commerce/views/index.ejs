@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>Promotions | Money Lover</title>
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="/css/style.css" media="screen" title="no title" charset="utf-8">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:800&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="/css/effect2.css" />
+
+        <script src="https://use.fontawesome.com/19505e7970.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/js/action.js"></script>
+        <script src="/js/modernizr.custom.js"></script>
+    </head>
+    <body>
+        <!-- Feedback to me (nguyenz.anhduc@gmail.com)-->
+        <div class="wrapper">
+
+            <div id="ip-container" class="ip-container">
+                <header class="ip-header">
+                    <div class="ip-logo">
+                        <div class="group-ribbon animated fadeInUp">
+                            <div class="ribbon">
+                                PROMOTION
+                            </div>
+                            <div class="moneylover">
+                                Money lover
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ip-loader">
+    					<svg class="ip-inner" width="60px" height="60px" viewBox="0 0 80 80">
+    						<path class="ip-loader-circlebg" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"/>
+    						<path id="ip-loader-circle" class="ip-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"/>
+    					</svg>
+    				</div>
+                </header>
+
+                <div class="ip-main">
+                    <div class="allContent">
+                        <div class="row listPromotions"></div><!-- /listPromotions-->
+
+                        <div class="row emptyList hidden">
+                            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-xs-12 col-sm-8 col-sm-offset-2 text-center">
+                                <div>
+                                    <!-- <i class="fa fa-smile-o fa-5x" aria-hidden="true"></i> -->
+                                    <img src="/images/singmysong.gif" alt="funny" style="width: 70%;"/>
+                                </div>
+                                <div class="messageError">We have no promotion for you.</div>
+                                <div>
+                                    But, this guy is funny. Right?
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="error row hidden">
+                            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-xs-12 col-sm-8 col-sm-offset-2 text-center">
+                                <div>
+                                    <i class="fa fa-bug fa-5x" aria-hidden="true" style="color: #FFDD00;"></i>
+                                </div>
+                                <div class="messageError">Some bugs are gnawing our code.</div>
+                                <div>
+                                    Relax or
+                                    <button type="button" name="button" class="btn" onclick="location.reload(); $('.fa-circle-o-notch').removeClass('hidden')">
+                                        <i class="fa fa-circle-o-notch fa-spin fa-fw hidden"></i>
+                                        try again
+                                    </button>
+                                </div>
+                            </div>
+                        </div><!-- /error-->
+
+                        <div class="loadSequence text-center">
+                            <i class="fa fa-cog fa-spin fa-2x fa-fw hidden"></i>
+                        </div>
+
+                    </div><!-- /all content-->
+                </div><!-- /ip-main-->
+            </div><!-- /ip-container-->
+        </div><!-- /wrapper-->
+
+        <script src="/js/classie.js"></script>
+		<script src="/js/pathLoader.js"></script>
+		<script src="/js/main.js"></script>
+    </body>
+</html>

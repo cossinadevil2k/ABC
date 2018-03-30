@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+        <a href="/dashboard/users" target="_blank" style="color: black;">
+            <div class="box-module box-module-clickable">
+                <small>Users</small><h4 ng-bind="mlNumbers.users | number" class="bold"></h4>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+        <a href="/dashboard/premium" target="_blank" style="color: black;">
+            <div class="box-module module-blue box-module-clickable">
+                <small>Premiums</small><h4 ng-bind="mlNumbers.premium | number" class="bold"></h4>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+        <a href="/dashboard/wallet" target="_blank" style="color: black;">
+            <div class="box-module module-purple box-module-clickable">
+                <small>Wallets</small><h4 ng-bind="mlNumbers.wallets | number" class="bold"></h4>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+        <a href="/dashboard/linked-wallet" target="_blank" style="color: black;">
+            <div class="box-module module-red box-module-clickable">
+                <small>Linked Wallets</small><h4 ng-bind="mlNumbers.linkedWallets | number" class="bold"></h4>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+        <a href="/dashboard/transaction" target="_blank" style="color: black;">
+            <div class="box-module module-pink box-module-clickable">
+                <small>Transactions</small><h4 ng-bind="mlNumbers.transactions | number" class="bold"></h4>
+            </div>
+        <a/>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+        <a href="/dashboard/platform" target="_blank" style="color: black;">
+            <div class="box-module module-yellow box-module-clickable">
+                <small>Devices</small><h4 ng-bind="mlNumbers.devices | number" class="bold"></h4>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="module">
+			<div class="module-header">
+                <div class="row">
+                    <h4 class="left">Statistics ({{startDate.valueOf()|date:'dd/MM'}} - {{endDate.valueOf()|date:'dd/MM'}})</h4>
+                    <h4 class="right" style="margin: 0 10px;" tooltip="Pick date range"><a href="" ng-click="setDateRange()" style="color: white;"><i class="icon-calendar"></i></a></h4>
+                </div>
+			</div>
+			<div class="module-content">
+                <div class="row">
+                    <div class="col-lg-6" ng-include="'/partials/dashboard/user_chart.html'" onload="userStats()"></div>
+                    <div class="col-lg-6" ng-include="'/partials/dashboard/premium_chart.html'" onload="premiumStats()"></div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>

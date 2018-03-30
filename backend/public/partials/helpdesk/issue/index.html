@@ -1,0 +1,223 @@
+<div class="col-lg-1 col-md-1">
+    <button type="button" class="sendMessage" ng-click="sendMessage()" tooltip="New Message">
+        <i class="icon-comments-alt"></i>
+        <p>New message</p>
+    </button>
+</div>
+
+<div class="col-lg-6 col-md-6">
+    <div class="module hidden-xs">
+        <div class="module-content action-in-issues" style="padding-top: 25px;">
+            <a
+                    ng-repeat="status in statused"
+                    class="btn"
+                    ng-class="{'btn-twitter': filters.status === status.value && filters.mine === status.is_mine}"
+                    ng-disabled="isLoading"
+                    ng-click="selectStatus(status.value, status.is_mine)">
+                {{status.label}}
+            </a>
+        </div>
+    </div>
+    <div class="group-mobile-btn-issue hidden-sm hidden-md hidden-lg">
+        <div class="row issue-button-mobile">
+            <div ng-repeat="status in statused" ng-if="!status.is_mine" class="col-xs-4 last-btn">
+                <a
+                        class="btn"
+                        ng-disabled="isLoading"
+                        ng-class="{'btn-twitter': filters.status === status.value && filters.mine === status.is_mine}"
+                        ng-click="selectStatus(status.value, status.is_mine)">
+                    {{status.label}}
+                </a>
+            </div>
+        </div>
+
+        <div class="row issue-button-mobile">
+            <div class="col-xs-6 last-btn" ng-repeat="status in statused" ng-if="status.is_mine">
+                <a
+                        class="btn"
+                        ng-disabled="isLoading"
+                        ng-class="{'btn-twitter': filters.status === status.value && filters.mine === status.is_mine}"
+                        ng-click="selectStatus(status.value, status.is_mine)">
+                    {{status.label}}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-5 col-md-5 hidden-xs ">
+    <div class="module">
+        <div class="module-content action-in-issues">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div>Type of User:</div>
+                    <div class="btn-group">
+                        <button type="button" ng-disabled="isLoading" class="btn btn-facebook dropdown-toggle" data-toggle="dropdown">{{(filters.purchased)?'premium':'free'}} <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ng-click="changeUserType(true)">premium</a></li>
+                            <li><a ng-click="changeUserType(false)">free</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div>Platform:</div>
+                    <div class="btn-group">
+                        <button type="button" ng-disabled="isLoading" class="btn btn-facebook dropdown-toggle" data-toggle="dropdown">{{filters.platform}} <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-repeat="platform in platforms">
+                                <a ng-click="changePlatform(platform.value)">{{platform.label}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div>Sort by:</div>
+                    <div class="btn-group">
+                        <button type="button" ng-disabled="isLoading" class="btn btn-facebook dropdown-toggle" data-toggle="dropdown">{{filters.sort}} <span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-fix" role="menu">
+                            <li><a ng-click="changeSort('newest')">newest</a></li>
+                            <li><a ng-click="changeSort('oldest')">oldest</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hidden-sm hidden-md hidden-lg">
+    <div class="module">
+        <div class="module-content">
+            <div class="row dropdown-mobile-issue">
+                <div class="col-xs-4">
+                    <div>Type:</div>
+                    <div class="btn-group">
+                        <button type="button" ng-disabled="isLoading" class="btn btn-deepsea dropdown-toggle" data-toggle="dropdown">{{(filters.purchased)?'premium':'free'}} <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ng-click="changeUserType(true)">premium</a></li>
+                            <li><a ng-click="changeUserType(false)">free</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div>Platform:</div>
+                    <div class="btn-group">
+                        <button type="button" ng-disabled="isLoading" class="btn btn-deepsea dropdown-toggle" data-toggle="dropdown">{{filters.platform}} <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-repeat="platform in platforms">
+                                <a ng-click="changePlatform(platform.value)">{{platform.label}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div>Sort by:</div>
+                    <div class="btn-group">
+                        <button type="button" ng-disabled="isLoading" class="btn btn-deepsea dropdown-toggle" data-toggle="dropdown">{{filters.sort}} <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ng-click="changeSort('newest')">newest</a></li>
+                            <li><a ng-click="changeSort('oldest')">oldest</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12 col-md-12">
+    <div class="module no-padding">
+        <div class="module-header">
+            <h4>List</h4>
+            <div class="input-group quick-search-box" style="width: 50% !important;">
+                <input type="text" class="form-control" ng-model="searchKeyword" placeholder="Search Issue By Tag1, Tag2..." >
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-grape hidden-xs" ng-click="searchByTag(searchKeyword)" ng-disabled="isLoading"><i class="icon-search"></i> SEARCH</button>
+                    <button type="button" class="btn btn-grape hidden-sm hidden-md hidden-lg" ng-click="searchByTag(searchKeyword)" ng-disabled="isLoading"><i class="icon-search icon-large"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="module-content table-responsive">
+            <div class="module" style="overflow-x: auto;">
+                <div class="module-header no-padding">
+                    <ul id="myTab" class="nav nav-tabs" style="background-color: rgb(80, 89, 98);">
+                        <li>
+                            <a href="#" ng-click="selectTab('user')" ng-class="{'active': filters.sender === 'user'}">
+                                From Users
+                                <span class="badge" style="margin-left: 10px" ng-if="issuesOpenedFromUser">{{issuesOpenedFromUser}}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" ng-click="selectTab('admin')" ng-class="{'active': filters.sender === 'admin'}">
+                                From Admins
+                                <span class="badge" style="margin-left: 10px" ng-if="issuesOpendFromAdmin">{{issuesOpendFromAdmin}}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" ng-click="selectTab('all')" ng-class="{'active': filters.sender === 'all'}">
+                                From All
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="text-center" ng-if="isLoading">
+                    <img src="/images/loading-pacman.gif" /><br />
+                    Loading
+                </div>
+                <div class="module-content no-padding">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Title</th>
+                            <th>User</th>
+                            <th>Admins</th>
+                            <th>Last update</th>
+                            <th>Status</th>
+                            <!-- <th class="text-right">Action</th> -->
+                        </tr>
+                        </thead>
+                        <tbody >
+                        <tr ng-if="issues.length === 0">
+                            <td></td>
+                            <td>No Result Found</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <!-- <td></td> -->
+                        </tr>
+                        <tr ng-repeat="(key, issue) in issues">
+                            <td class="">
+                                <img src="/images/android_96.png" class="icon-user-platform" alt="android_logo" ng-if="issue.metadata.os === 'Android'"/>
+                                <img src="/images/ios_96.png" class="icon-user-platform" alt="apple_logo" ng-if="issue.metadata.os === 'iOS'"/>
+                                <img src="/images/winphone_96.png" class="icon-user-platform" alt="windows_logo" ng-if="issue.metadata.os === 'Windows Phone'"/>
+                                <img src="/images/windows_96.png" class="icon-user-platform" alt="windows_logo" ng-if="issue.metadata.os === 'Windows'"/>
+                                <img src="/images/osx_96.png" class="icon-user-platform" alt="windows_logo" ng-if="issue.metadata.os === 'Mac'"/>
+                                <img src="/images/web_96.png" class="icon-user-platform" alt="web_logo" ng-if="issue.metadata.os === 'Web'"/>
+                            </td>
+                            <td><a class="helpdesk-link" href="/helpdesk/issue_details/{{issue._id}}">{{issue.name}}</a></td>
+                            <td><a href="/users/info?email={{issue.user.email}}" target="_blank">{{issue.user.email}}</a></td>
+                            <td>{{displayAssigned(issue.assigned)}}</td>
+                            <td>{{issue.last_update | checkDateTime}}</td>
+                            <td><span ng-class="{'text-success': issue.status, 'text-warning': !issue.status}">{{issue.status || 'Open'}}</span></td>
+                            <!-- <td class="text-right">
+                                <button class="btn btn-xs btn-danger" ng-click="deleteIssue(key, issue._id)"><i class="icon-trash"></i></button>
+                            </td> -->
+                        </tr>
+                        <tr class="breakPage">
+                            <td colspan="12" class="text-center">
+                                <div class="btn-group">
+                                    <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage"><i class="icon-fast-backward"></i></a>
+                                    <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                                    <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage"><i class="icon-fast-forward"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

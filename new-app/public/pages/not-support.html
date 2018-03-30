@@ -1,0 +1,79 @@
+<html>
+<head>
+	<style type="text/css">
+		.core-header {
+		height: 64px;
+		background-color: #2baf2b;
+		color: white;
+
+		}
+
+		#logo {
+		width: 40px;
+		margin: 0 auto;
+		padding-top: 10px !important;
+		}
+
+		.form-404 {
+		background: #fff;
+		width: 577px;
+		margin: 0 auto;
+		margin-top: 32px;
+		margin-bottom: 32px;
+		}
+		p {
+		margin: 0 24px;
+		}
+		button.colored {
+		margin: 1em;
+		width: 10em;
+		background: transparent !important;
+		}
+
+		button.colored {
+		color: rgb(43, 175, 43);
+		fill: #4285f4;
+		}
+
+		:host deep/ .text-title {
+		margin-top: 16px;
+		}
+		a.user-email {
+		background: url('../images/ic_ab_account.png') no-repeat scroll 10px center transparent;
+		float: left;
+		position: relative;
+		height: 24px;
+		padding: 10px 8px 10px 12px;
+		width: 180px;
+		line-height: 24px;
+		margin: 10px 0 0 14px;
+		}
+
+		a.user-email span {
+		margin-left: 24px;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 400;
+		font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+	<div class="core-header">
+		<a class="user-email" on-click="{{showUserInfo}}">
+		  <span>{{user.email}}</span>
+		  <paper-ripple fit> </paper-ripple></a>
+		  <user-info-dialog id="userInfoDialog" user="{{user}}"></user-info-dialog>
+		<div id="logo"><img src="../images/app_icon_flat.png"></div> 
+	</div>  
+	<div class="form-content"> 
+		<section class="form-404">
+		<div class="content-form">
+			 <div class="img-content"><img src="../images/404.png"/></div>
+			 <p class="text-title">Sorry! The page you're looking for can't be found.</p> 
+			 <p class="text-body">If colfjasffffffffffffffffffffffffffffffff</p>
+			 <button class="colored" label="Google Chrome"></button>
+		</div>
+		</section>   
+	</div> 
+</body>	
+</html>

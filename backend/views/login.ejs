@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title ng-bind="MLTitle">Money Lover</title>
+		<meta name="description" content="{{ MLDescription | limitTo:500 }}">
+		<meta name="author" content="{{ MLAuthor }}">
+		<meta name="keyword" content="{{ MLKeyword }}">
+
+		<link rel="shortcut icon" href="<%= urlStatic2 %>favicon.ico">
+
+		<link href="<%= urlStatic2 %>libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="<%= urlStatic2 %>libs/font-awesome/css/font-awesome.css" rel="stylesheet">
+		<link href="<%= urlStatic2 %>css/app.css" rel="stylesheet">
+		<script src='https://www.google.com/recaptcha/api.js'></script>
+
+		<!--[if lt IE 9]>
+		<script src="<%= urlStatic2 %>libs/bootstrap/js/ie8-responsive-file-warning.js"></script>
+		<![endif]-->
+		<!--[if lt IE 9]>
+		<script src="<%= urlStatic2 %>libs/bootstrap/js/html5shiv.js"></script>
+		<script src="<%= urlStatic2 %>libs/bootstrap/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body class="full-page">
+		<form class="login-box" action="/login" method="post">
+			<h1>Money Lover</h1>
+			<% if(error) {%><p class="text-danger"><%= error %></p><%} %>
+			<input type="text" class="form-control" placeholder="Account" name="account" />
+			<input type="password" class="form-control" placeholder="Password" name="password" />
+			<div class="g-recaptcha" style="margin-bottom: 20px;" data-sitekey="6LeohPoSAAAAAEP1-VlqPbwMZ2p8V2SYRo7pmdfN"></div>
+			<button class="btn btn-success full-width" type="submit">Login</button>
+		</form>
+
+		<script src="<%= urlStatic2 %>libs/jquery/jquery-1.10.2.min.js"></script>
+		<script src="<%= urlStatic2 %>libs/jquery/jquery.cookie.js"></script>
+		<script src="<%= urlStatic2 %>libs/bootstrap/js/bootstrap.min.js"></script>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<div class="row">
+	<div class="col-lg-6">
+		<div class="module no-padding">
+			<div class="module-header">
+				<h4>{{ 'category_manager_title' | translate }}</h4>
+			</div>
+			<div class="module-content">
+				<div class="fade-animate" ng-include="'/partials/category/list.html'" onload="getListCategory({type:0, getsub: true})" scope="categoryTab" ng-init="categoryTab=0"></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-6">
+		<div class="module">
+			<div class="module-header">
+				<h4>{{ categoryDetailTitle | translate }}</h4>
+				<div class="btn-action-manager">
+					<button class="btn btn-default" tooltip="Edit" ng-click="editWallet()"><i class="icon-pencil"></i></button>
+					<button class="btn btn-primary" tooltip="New category" ng-click="newWallet()"><i class="icon-plus"></i></button>
+				</div>
+			</div>
+			<div class="module-content">
+				<div ng-include="'/partials/category/detail.html'" onload="detailDefault()"></div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,137 @@
+<body ng-class="{'lock-screen': lockScreen}">
+	<header class="navbar navbar-bright navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button data-target=".navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+					<i class="icon-ellipsis-vertical"></i>
+				</button>
+				<a class="navbar-brand logo-app" href="/">MoneyLover</a>
+			</div>
+			<nav role="navigation" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav nav-mobile visible-xs">
+						<li class="user-info" ng-bind="userEmail">
+						thaiduy@outlook.com
+					</li>
+					<li><a role="menuitem" tabindex="-1" href="#"><i class="icon-signout"></i> Logout</a></li>
+				</ul>
+				<ul class="nav navbar-right navbar-nav hidden-xs">
+					<li class="dropdown">
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+							<i class="icon-user"></i>
+						</a>
+						<ul class="dropdown-menu" role="user-menu">
+							<li class="user-info" ng-bind="userEmail">
+								thaiduy@outlook.com
+							</li>
+							<li>
+								<a role="menuitem" tabindex="-1" href="#"><i class="icon-signout"></i> Logout</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-offset-3 col-md-6">
+				<div class="money-card radius-2 money-shadow">
+					<div class="card-list">
+						<div class="item row">
+							<div class="col-md-2">
+								<div class="img-category">
+									<img class="img-thumb" src="//static.moneylover.me/img/icon/ic_category_give.png" />
+								</div>
+							</div>
+							<div class="col-md-10">
+								<div class="name text-color-p">Travel</div>
+								<div class="event">
+									<span class="note text-color-s">To Co To island</span>
+									<span><img class="event" src="//static.moneylover.me/img/app/event.png" alt="Event" /></span>
+								</div>
+								<div class="amount color-red">1,500,000 đ</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="money-card-action">
+					<!-- <div class="text-action">
+						<a>Tell your friends</a>
+					</div> -->
+					<div class="btn btn-default btn-money radius-2 btn-right btn-green shadow">Add More</div>
+					<div class="clear-fix"></div>
+				</div>
+			</div>
+			<div class="col-md-offset-3 col-md-6">
+				<div class="money-card radius-2 money-shadow">
+					<form class="form-horizontal form-money" role="form">
+						<div class="main-info-top">
+							<div class="form-group inp-cate">
+								<div class="col-md-2 control-label">
+									<div class="img-category">
+										<img src="//static.moneylover.me/img/icon/ic_category_give.png" />
+									</div>
+								</div>
+								<div class="col-md-10">
+									<div class="form-control inp-fake inp-money text-color-p text-color-p-h">Travel</div>
+								</div>
+							</div>
+							<div class="form-group inp-amount">
+								<label class="col-md-2 control-label"> </label>
+								<div class="col-md-10">
+									<input type="text" placeholder="0" class="form-control inp-money text-color-p text-color-p-h">
+								</div>
+							</div>
+							<div class="form-group inp-note">
+								<label class="col-md-2 control-label"> </label>
+								<div class="col-md-10">
+									<input type="text" placeholder="Note" class="form-control inp-money text-color-p text-color-p-h">
+								</div>
+							</div>
+							<!-- <div class="form-group inp-with">
+								<label class="col-md-2 control-label"> </label>
+								<div class="col-md-10">
+									<input type="text" placeholder="With" class="form-control inp-money text-color-p text-color-p-h">
+								</div>
+							</div> -->
+						</div>
+						<div class="main-info-bottom">
+							<div class="form-group">
+								<div class="  col-md-6">
+									<div class="ml-date-view" ng-click="dateModal()">
+										<div class="ml-date-header caption">
+											<p class="text-color-s ng-cloak">{{ transaction.displayDate | date:'EEEE' }}</p>
+										</div>
+										<div class="ml-date-body">
+											<h1 class="ng-cloak">{{ transaction.displayDate | date:'dd' }}</h1>
+										</div>
+										<div class="ml-date-footer caption">
+											<p class="text-color-s ng-cloak">{{ transaction.displayDate | date:'MMMM yyyy' }}</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="more-info">
+										<div class="inp-wallet">
+											<p class="caption">Wallet</p>
+											<div ng-bind="wallet.name" class="value text-color-p">Tango Delta</div>
+										</div>
+										<div class="inp-event">
+											<p class="caption">Event</p>
+											<div ng-bind="event.name" class="value disabled text-color-p">No event</div>
+										</div>
+										<div class="agrow"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="money-card-action">
+					<div class="btn btn-default btn-money radius-2 btn-right btn-green shadow">Done</div>
+					<div class="clear-fix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<ng-view></ng-view>

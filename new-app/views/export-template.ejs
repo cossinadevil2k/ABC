@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <style>
+        body {
+            background-color: white;
+        }
+
+        #header-wrap h2,h4 {
+            margin: 0;
+        }
+
+        #footer {
+            text-align: right;
+        }
+
+        .table-transaction {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        .table-transaction td {
+            border: 1px solid black;
+        }
+
+        .table-transaction th {
+            border: 1px solid black;
+        }
+
+        .text-align-left {
+            text-align: left;
+        }
+
+        .text-align-center {
+            text-align: center;
+        }
+
+        .text-align-right {
+            text-align: right;
+        }
+
+        .text-italic {
+            font-style: italic;
+        }
+
+        .text-underline {
+            text-decoration: underline;
+        }
+
+        .row-blank {
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+<!-- HEADER -->
+<!--<div id="header-wrap">-->
+<!--<img src="http://upload.wikimedia.org/wikipedia/en/thumb/e/ea/SteelSeries_logo.svg/922px-SteelSeries_logo.svg.png" style="width: 64px; height: 64px; float: left">-->
+<!--<div>-->
+<!--<h2>Money Lover - Expensive Manager</h2>-->
+<!--<h4>Because money matters</h4>-->
+<!--</div>-->
+
+<!--</div>-->
+<!-- CONTENT -->
+<div id="content-wrap">
+    <div class="report-info">
+        <h1>Report for wallet <%= wallet %>, event <%= event %></h1>
+        <table>
+            <tr>
+                <td>Made by account:</td>
+                <td><%= user %></td>
+            </tr>
+            <tr>
+                <td>Invoice Date:</td>
+                <td>July 10th, 2015</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table style="width: 100%;" class="table-transaction">
+            <tr>
+                <th class="text-align-center">Transactions</th>
+                <th class="text-align-center">Date incurred</th>
+                <th class="text-align-center">Amount</th>
+                <th class="text-align-center">Currency</th>
+            </tr>
+            <% items.forEach(function(item){
+            %><tr>
+                <td>
+                    <p>
+                        <img src="https://static.moneylover.me/img/icon/<%= item.category.icon %>.png" alt="category" style="width: 32px; height: 32px; float: left"/>
+                    <h4><%= item.category.name %></h4>
+                    <span class="text-italic"><%= item.note %></span>
+                    </p>
+                </td>
+                <td class="text-align-center"><%= item.displayDate.toDateString() %></td>
+                <td class="text-align-center"><% if (item.category.type == 2) { %>-<% } %><%= item.amount %></td>
+                <td class="text-align-center"><%= item.account.currency_id %></td>
+            </tr><%
+            }) %>
+            <tr class="row-blank">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <% total.currency.forEach(function(value, index){ %>
+            <tr>
+                <td></td>
+                <td class="text-align-center"><% if(index === 0) { %>Total:<% } %></td>
+                <td class="text-align-center"><%= total.amount[index] %></td>
+                <td class="text-align-center"><%= value %></td>
+            </tr>
+            <% }) %>
+        </table>
+    </div>
+</div>
+</body>
+</html>

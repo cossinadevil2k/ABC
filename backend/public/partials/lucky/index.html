@@ -1,0 +1,41 @@
+<div class="module">
+    <div class="module-header">
+    </div>
+    <div class="module-content">
+        <button class="btn btn-success" ng-click="addNew()">New <i class="icon icon-plus"></i></button>
+        <button class="btn btn-success" ng-click="getAll()">Reload <i class="icon icon-refresh"></i></button>
+    </div>
+</div>
+<div class="module no-padding">
+    <div class="module-header">
+        <h4>Item List</h4>
+    </div>
+    <div class="module-content table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Item Name</th>
+                <th class="text-center">Remain</th>
+                <th class="text-center">Drop</th>
+                <th class="text-center">Start Date</th>
+                <th class="text-center">Expire</th>
+                <th class="text-center">Language</th>
+                <th class="text-center">Country</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(key, item) in itemList">
+                    <td>{{key + 1}}</td>
+                    <td>{{item.name}}</td>
+                    <td class="text-center">{{item.remain}}</td>
+                    <td class="text-center">{{item.drop}}</td>
+                    <td class="text-center">{{item.startDate || "null" | date:'dd-MM-yyyy'}}</td>
+                    <td class="text-center">{{item.expireDate || "null" | date:'dd-MM-yyyy'}}</td>
+                    <td class="text-center">{{item.language || "null"}}</td>
+                    <td class="text-center">{{item.country || "null"}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

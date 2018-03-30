@@ -1,0 +1,70 @@
+<div class="module no-padding">
+    <div class="module-header">
+        <div>
+            <button class="btn btn-success" ng-click="newProduct()"><i class="icon icon-plus"> Add new</i></button>
+            <button class="btn"><i class="icon icon-refresh" ng-click="getProduct()"> Refresh</i></button>
+            <button class="btn btn-info" ng-click="build()"><i class="icon icon-save"> Build</i></button>
+        </div>
+        <div>
+            <p>***Thêm/sửa/xoá xong làm ơn bấm nút Build màu blue ở trên để lưu data lên server hộ em với ạ</p>
+            <p>***Top download là để hiển thị trên web store để bán nhá.</p>
+        </div>
+    </div>
+    <div class="module-content table-responsive">
+        <table class="table table-striped" ng-init="getProduct()">
+            <thead>
+            <tr>
+                <th class="text-center">Public</th>
+                <th class="text-center">Top Download</th>                  
+                <th class="text-left">ID</th>
+                <th class="text-left">Name</th>
+                <th class="text-left">Type</th>
+                <th class="text-center">Has Trial</th>
+                <th>Price VN</th>
+                <th>Price GL</th>
+                <th class="text-center">Discount %</th>
+                <th>Expire Unit</th>
+                <th class="text-center">Expire Value</th>
+                <th class="text-center">Mark as gift</th>
+                <th class="text-right">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(index, product) in products">
+                <td class="text-center">
+                    <a class="btn btn-xs" href="#" ng-click="changePublic(product)" ng-class="{'btn-danger': !product.isPublic, 'btn-success': product.isPublic}">
+                        <i ng-class="{'icon-check': product.isPublic, 'icon-unchecked': !product.isPublic}"></i>
+                    </a>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-xs" href="#" ng-click="changeTopDownload(product)" ng-class="{'btn-danger': !product.isTopDownload, 'btn-success': product.isTopDownload}">
+                        <i ng-class="{'icon-check': product.isTopDownload, 'icon-unchecked': !product.isTopDownload}"></i>
+                    </a>
+                </td>
+                <td class="text-left">{{product.product_id}}</td>
+                <td class="text-left">{{product.name}}</td>
+                <td class="text-left">{{product.metadata.type}}</td>
+                <td class="text-center">
+                    <a class="btn btn-xs" href="#" ng-class="{'btn-danger': !product.has_trial, 'btn-success': product.has_trial}">
+                        <i ng-class="{'icon-check': product.has_trial, 'icon-unchecked': !product.has_trial}"></i>
+                    </a>
+                </td>
+                <td>{{product.price_vn | number}}</td>
+                <td>{{product.price_gl | number}}</td>
+                <td class="text-center">{{product.metadata.discount | number}}</td>
+                <td class="text-left">{{product.expire_unit}}</td>
+                <td class="text-center">{{product.expire_value}}</td>
+                <td class="text-center">
+                    <a class="btn btn-xs" href="#" ng-click="changeMarkAsGiftState(product)" ng-class="{'btn-danger': !product.markAsGift, 'btn-success': product.markAsGift}">
+                        <i ng-class="{'icon-check': product.markAsGift, 'icon-unchecked': !product.markAsGift}"></i>
+                    </a>
+                </td>
+                <td class="text-right">
+                    <button class="btn btn-sm btn-info" tooltip="Edit" ng-click="edit(index)"><i class="icon icon-edit"></i></button>
+                    <button class="btn btn-sm btn-grape" tooltip="Delete" ng-click="delete(product, index)"><i class="icon icon-trash"></i></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

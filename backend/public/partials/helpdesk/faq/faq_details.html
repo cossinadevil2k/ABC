@@ -1,0 +1,115 @@
+<script type="text/ng-template" id="customTemplate.html">
+    <a>
+        [{{match.model.language}}] <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+    </a>
+</script>
+<div class="text-center" ng-if="isLoading">
+    <img src="/images/loading-pacman.gif" /><br />
+    Loading
+</div>
+<form class="form-horizontal" ng-submit="submitForm()">
+    <div class="form-group">
+        <label class="col-lg-2 control-label">* Options:</label>
+        <div class="col-lg-10">
+            <label class="control-label">
+                Publish: <input type="checkbox" ng-model="item.published" />
+            </label>
+            <label class="control-label">
+                Global: <input type="checkbox" ng-model="item.global" />
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">* Language:</label>
+        <div class="col-lg-10">
+            <select class="form-control" ng-model="item.language" >
+                <option ng-repeat="language in languages" ng-selected="item.language === language._id" value="{{language._id}}">{{language.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">* Section:</label>
+        <div class="col-lg-10">
+            <select class="form-control" ng-model="item.section" >
+                <option ng-repeat="section in sections" ng-selected="item.section === section._id" value="{{section._id}}">{{section.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Linked with:</label>
+        <div class="col-lg-10">
+            <ul style="list-style: none">
+                <li ng-repeat="(key,link) in links">
+                    <a href="/helpdesk/faq/edit/{{link._id}}">[{{link.language}}] {{link.question}}</a>
+                    <button class="btn btn-xs btn-grape" ng-click="removeLink(key)">Remove</button>
+                </li>
+            </ul>
+
+            <input
+                    ng-disabled="!item.global"
+                    type="text"
+                    class="form-control"
+                    ng-model="sltd"
+                    placeholder="Only for Global FAQ, type question of another FAQ here"
+                    typeahead="faq.question for faq in filterFaq($viewValue)"
+                    typeahead-loading="loadingFaqs"
+                    typeahead-template-url="customTemplate.html"
+                    typeahead-on-select="addLink($item, $model, $label)"
+                    />
+            <i ng-show="loadingFaqs" class="icon-refresh"></i>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">* Platform:</label>
+        <div class="col-lg-10">
+            <div class="form-group">
+                <div class="col-lg-10">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" ng-checked="allPlatformChecked" ng-click="checkAllPlatform()" />All
+                    </label>
+                    <label class="checkbox-inline" ng-repeat="platform in platforms">
+                        <input type="checkbox" ng-disabled="allPlatformChecked" ng-checked="item.platform && item.platform.indexOf(platform._id)!==-1 || allPlatformChecked" ng-click="platformChanged(platform._id)"/>{{platform.name}}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">* Question:</label>
+        <div class="col-lg-10">
+            <input type="text" placeholder="Question" class="form-control" ng-model="item.question" required >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">* Answer: </label>
+        <div class="col-lg-10">
+            <textarea rows="6" class="form-control" ng-model="item.answer" required ></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Preview: </label>
+        <div class="col-lg-10">
+            <p style="background-color: #ffffff;" ng-bind-html="item.answer | markdown"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"></label>
+        <div class="col-lg-10">
+            <input type="submit" id="btnSubmit" class="btn btn-success" value="Submit">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="alert alert-warning alert-dismissable" ng-show="isWarning">
+            <button type="button" class="close" ng-click="isWarning = false"><i class="icon-remove-sign"></i></button>
+            <strong>Warning!</strong> Please complete all required (stared) fields!
+        </div>
+        <div class="alert alert-danger alert-dismissable" ng-show="isError">
+            <button type="button" class="close" ng-click="isError = false"><i class="icon-remove-sign"></i></button>
+            <strong>Well done!</strong> Create new FAQ failed.
+        </div>
+        <div class="alert alert-success alert-dismissable" ng-show="isSuccess">
+            <button type="button" class="close" ng-click="isSuccess = false"><i class="icon-remove-sign"></i></button>
+            <strong>Well done!</strong> You successfully create a new FAQ.
+        </div>
+    </div>
+</form>

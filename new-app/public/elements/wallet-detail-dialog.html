@@ -1,0 +1,293 @@
+<polymer-element name="wallet-detail-dialog" attributes="editMode">
+<template bind="{{wallet}}">
+    <style type="text/css">
+        :host * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .hide{
+            display: none;
+        }
+
+        :host paper-dialog {
+            height: auto;
+            width: auto;
+        }
+
+        :host core-header-panel{
+            height: 100%;
+        }
+
+        :host .detail-dialog {
+            width: 400px;
+            height:285px;
+            border-radius: 2px;
+        }
+
+        :host /deep/ #container #main{
+                         overflow: hidden;
+                     }
+
+        :host .content{
+            height: 135px;
+            padding-top: 8px;
+        }
+
+        :host .hide {
+            display: none !important;
+        }
+
+        :host currency-picker-dialog {
+            display: block;
+            float: left;
+            width: 626px;
+            height: 730px;
+        }
+
+        :host icon-picker-dialog {
+            display: block;
+            float: left;
+            width: 626px;
+            height: 730px;
+        }
+
+        :host .dialog-title {
+            position: relative;
+            margin-bottom: 16px !important;
+        }
+
+        :host .dialog-title  h3{
+            float: left;
+            width: 270px;
+            border-bottom: 1px solid rgba(0,0,0,0.12);
+            color: rgba(000,000,000,0.87) !important;
+            font-weight: normal;
+            height: 44px;
+        }
+
+        :host .arrow-drop-down {
+            float: right;
+            position: relative;
+            top: 50px;
+        }
+
+        :host paper-input {
+            width: 280px;
+        }
+
+        :host .button-flat-color {
+            float: right;
+        }
+
+        :host .col  h3{
+            float: left;
+            border-bottom: 1px solid rgba(0,0,0,0.12);
+
+            font-weight: normal;
+            height: 44px;
+            margin-top: 20px;
+            padding: 0 !important;
+            line-height: 52px !important;
+        }
+
+        :host core-menu-button {
+            background: url("../images/ic_dropdown.png") no-repeat scroll right center #fff;
+            width: 28px;
+        }
+        :host .arrow-drop-down {
+            float: right;
+            position: relative;
+            top: -35px;
+            color: rgba(0,0,0,0.34);
+        }
+
+        :host .col {
+            cursor: pointer;
+        }
+
+        :host .change_color {
+            color: #757575  !important;
+        }
+
+        :host .currency-picker {
+            height: 90px !important;
+        }
+        :host .error {
+            float: left;
+            color: #d34336;
+            -webkit-flex: 1;
+            flex: 1;
+            font-size: 14px;
+            line-height : 16px;
+            padding: 0;
+        }
+
+        :host .errorIcon {
+            float: right;
+            background-image: url("../components/paper-input/error-100.png");
+            background-size: 24px 24px;
+            height: 24px;
+            width: 24px;
+        }
+
+        :host .errorContainer {
+            clear: inherit;
+            padding: 5px 0 5px 0;
+            display: block;
+            -webkit-align-items: center;
+            align-items: center;
+            height: 24px !important;
+            width: 280px !important;
+        }
+    </style>
+
+    <paper-dialog id="wlDialog" backdrop="true" autoCloseDisabled="true">
+        <div class="{{{hide: showFragment !== 'walletDialog'} | tokenList}} detail-dialog">
+            <core-header-panel mode="seamed">
+                <div class="dialog-header core-header">
+                    <paper-button icon="close" class="close" dismissive></paper-button>
+                    <div class="detail text-title">{{heading}}</div>
+                    <template if="{{editMode}}">
+                        <paper-button iconSrc="../images/ic_ab_delete.png" on-click="{{deleteTransaction}}"class="delete" ></paper-button>
+                    </template>
+                </div>
+
+                <div class="dialog-content content">
+                    <div class="col dialog-title">
+                        <div class="dialog-img" on-click="{{changeIconAction}}">
+                            <img src="{{wallet.icon | iconUrlFilter}}"/>
+                        </div>
+                        <paper-input maxlength="50" id="walletName" label="Name" value="{{wallet.name}}" class="text-display1" type="text"></paper-input>
+                    </div>
+                    <div class="col currency-picker" on-click="{{currencyPickerClicked}}">
+                        <div class="dialog-img icon-amount" style="margin-top:0;"></div>
+                        <h3 class="text-input {{{change_color: !currency} | tokenList}}">{{currency.n | currencyFilter}}</h3>
+                        <core-icon icon="chevron-right" class="arrow-drop-down"></core-icon>
+                        <div class="errorContainer" hidden="true" id="currency_error">
+                            <div class="error" role="alert" aria-hidden="false">Please select currency</div>
+                            <div class="errorIcon"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <paper-button on-click="{{saveAction}}" label="Save"  autofocus class="button-flat-color"/>
+            </core-header-panel>
+        </div>
+
+        <currency-picker-dialog id="currency_picker" class="{{{hide: showFragment !== 'currencyDialog'} | tokenList}}"  currencySelected="{{currency}}" showFragment="{{showFragment}}"></currency-picker-dialog>
+        <icon-picker-dialog id="icon_picker" class="{{{hide: showFragment !== 'iconDialog'} | tokenList}}"  iconSelected="{{wallet.icon}}" showFragment="{{showFragment}}"></icon-picker-dialog>
+    </paper-dialog>
+    <wallet-service id="walletService"></wallet-service>
+</template>
+<script>
+    Polymer('wallet-detail-dialog', {
+        created: function(){
+            this.showFragment = 'walletDialog';
+        },
+
+        domReady: function(){
+            if(!this.editMode){
+                this.heading = 'Add Wallet';
+            } else {
+                this.heading = 'Edit Wallet';
+            }
+        },
+        iconUrlFilter: function (imgName) {
+            return (urlRoot + '/img/icon/' + imgName + '.png').replace('icon//icon', 'icon');
+        },
+
+        changeIconAction: function(){
+            this.showFragment = 'iconDialog';
+            this.$['icon_picker'].showDialog();
+        },
+
+        currencyPickerClicked: function(){
+            this.showFragment = 'currencyDialog';
+            this.$['currency_picker'].showDialog();
+        },
+
+
+        show: function(){
+            //remove required error neu co
+            var currencyError = this.shadowRoot.querySelector('#currency_error');
+            if(!currencyError.getAttribute("hidden")) currencyError.setAttribute("hidden", "true");
+
+            this.showFragment = 'walletDialog';
+            this.wallet = {};
+            this.currency = null;
+            this.wallet.icon = 'icon';
+            this.$['wlDialog'].toggle();
+        },
+
+        showAddFirstWallet: function(){
+            this.addFirstWallet = true;
+            this.show();
+        },
+
+        currencyChanged: function(){
+            this.wallet.currency_id = this.currency.i;
+        },
+
+        currencyFilter: function(name){
+            if(!name) return 'Select currency';
+            else return name;
+        },
+
+        saveAction: function(){
+            var that = this;
+            var walletService = this.$.walletService;
+            var status = this.validateWalletDetail(this.wallet);
+            if(!status) {
+                return;
+            }
+
+            if(this.editMode){
+                walletService.editWallet(this.wallet, function(data){
+                    if(data.error===0){
+                        that.$['wlDialog'].toggle();
+                        this.fire('editWallet');
+                    }
+                });
+            } else {
+                walletService.addWallet(this.wallet, function(data){
+                    if(data.error===0) {
+                        that.$['wlDialog'].toggle();
+                        this.fire('addWallet');
+                    }
+                });
+            }
+        },
+
+        validateWalletDetail: function(wallet){
+            var error = 0;
+            var elmWalletName = this.shadowRoot.querySelector('#walletName');
+            var currencyError = this.shadowRoot.querySelector('#currency_error');
+
+            if(!wallet.icon) error++;
+            if(!wallet.currency_id) {
+                currencyError.removeAttribute("hidden");
+                error++;
+            } else {
+                if(!currencyError.getAttribute("hidden")) currencyError.setAttribute("hidden","true");
+            }
+
+            if(!wallet.name || wallet.name===""){
+                elmWalletName.removeAttribute("invalid");
+                elmWalletName.setAttribute("invalid", "true");
+                elmWalletName.setAttribute("error", "Wallet's name must not empty");
+                error++;
+            } else {
+                if(elmWalletName.getAttribute("invalid")) elmWalletName.removeAttribute("invalid");
+            }
+
+            if(!error)
+                return true;
+            else return false;
+        }
+
+    });
+
+</script>
+
+</polymer-element>

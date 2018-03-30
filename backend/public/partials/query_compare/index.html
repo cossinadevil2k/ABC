@@ -1,0 +1,48 @@
+<div class="module">
+    <div class="module-header">
+        <div class="row">
+            <h4 class="left">Set queries ({{startDate}} - {{endDate}})</h4>
+            <h4 class="right" style="margin: 0 10px;" tooltip="Pick date range">
+                <a href="" ng-click="setDateRange()" style="color: white;"><i class="icon-calendar"></i></a>
+            </h4>
+        </div>
+    </div>
+    <div class="module-content">
+        <div class="input-group">
+            <input type="text" ng-model="query" placeholder="Input query here, press enter to add" class="form-control" ng-keypress="enterToAdd($event, query)">
+            <span class="input-group-btn">
+                <button class="btn btn-facebook" ng-click="add(query)"><i class="icon-plus"></i> Add</button>
+            </span>
+        </div>
+
+        <h4 class="module-subtitle">Query list
+            <button ng-if="queries.length > 0" class="btn btn-xs btn-grape" ng-click="clearQueryList()">
+                <i class="icon-trash"></i> Clear
+            </button>
+        </h4>
+        <p ng-if="queries.length === 0">No query added</p>
+        <div>
+            <p ng-repeat="(key, q) in queries">{{key + 1}}. {{q}}
+                <button class="btn btn-xs btn-grape" ng-click="removeQuery(key)">
+                    <i class="icon-remove"></i>
+                </button>
+            </p>
+        </div>
+        <button ng-if="queries.length > 1" class="btn btn-success" ng-click="startCompare()">
+            <i class="icon-tasks"></i> Compare
+        </button>
+    </div>
+</div>
+
+<div class="module">
+    <div class="module-header">
+        <h4>Results</h4>
+        <h5 ng-repeat="(key, t) in results.total track by $index">Query {{key + 1}} total user: {{t | number}}</h5>
+    </div>
+    <div class="module-content">
+        <loading ng-if="chartRendering"></loading>
+        <div id="compare-result" class="chart">
+
+        </div>
+    </div>
+</div>

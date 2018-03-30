@@ -1,0 +1,86 @@
+<div class="module no-padding">
+	<div class="module-header">
+		<h4>List   <i class="icon-refresh" style="cursor: pointer" ng-click="get()"></i></h4>
+		<div class="input-group quick-search-box">
+			<input type="text" class="form-control" ng-model="keyword" placeholder="Enter keyword...">
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-grape" ng-click="search()">
+					 <i class="icon-search"></i> 
+				</button>
+			</span>
+			<div class="input-group-btn">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					<i class="icon-cog"></i>
+				</button>
+				<ul class="dropdown-menu pull-right">
+					<li>
+						<a href="javascript:;">
+							<label><input type="radio" ng-model="invStatus" ng-value="-1"> All</label>
+						</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="javascript:;">
+							<label><input type="radio" ng-model="invStatus" ng-value="0"> New</label>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<label><input type="radio" ng-model="invStatus" ng-value="1"> Accept</label>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<label><input type="radio" ng-model="invStatus" ng-value="2"> Deny</label>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="module-content table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Email</th>
+					<th>Reason</th>
+					<th class="text-right">Created</th>
+					<th class="text-right">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="(key, invite) in listInvite | filter:keyword">
+					<td>{{ key + indexList + 1 }}</td>
+					<td>{{ invite.owner.email }}</td>
+					<td>
+						<span style="cursor: pointer;">{{ invite.reason }}</span>
+					</td>
+					<td class="text-right">
+						<span ng-if="invite.createdDate">{{ invite.createdDate | date:'dd/MM/yyyy HH:mm' }}</span>
+					</td>
+					<td class="text-right">
+						<button class="btn btn-xs btn-success" ng-click="update(invite, true)" ng-if="!invite.status">
+							<i class="icon-unchecked"></i>
+						</button>
+						<button class="btn btn-xs btn-success" ng-class="{'icon-success': (invite.status == 1), 'icon-danger': (invite.status == 2)}" ng-if="invite.status">
+							<i ng-class="{'icon-ok': (invite.status == 1), 'icon-remove': (invite.status == 2)}"></i>
+						</button>
+						<button class="btn btn-xs btn-danger" ng-click="update(invite, false)">
+							<i class="icon-trash"></i>
+						</button>
+					</td>
+				</tr>
+				<tr class="breakPage">
+					<td colspan="6" class="text-center">
+						<div class="btn-group">
+							<a class="btn btn-default" ng-click="nextPage(-1)"><i class="icon-fast-backward"></i></a>
+							<button class="btn btn-default disabled" onclick="return false">Chuyển trang</button>
+							<a class="btn btn-default" ng-click="nextPage(+1)"><i class="icon-fast-forward"></i></a>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

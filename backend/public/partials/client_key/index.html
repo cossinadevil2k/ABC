@@ -1,0 +1,31 @@
+<div class="row">
+	<div class="col-lg-12">
+		<div class="module">
+			<div class="module-content" style="position: relative;">
+				<button class="btn btn-orange" ng-click="addNew()">
+					<i class="icon-plus"></i> Add
+				</button>
+				<button class="btn btn-info" ng-click="getList()">
+					<i class="icon-refresh"></i> Refresh
+				</button>
+			</div>
+		</div>
+
+		<div class="module no-padding" ng-init="view = 'finsify'">
+			<div class="module-header no-padding">
+				<ul class="nav nav-tabs">
+					<li ng-class="{active: view === 'finsify'}">
+						<a href="" ng-click="view = 'finsify'">Finsify</a>
+					</li>
+					<li ng-class="{active: view === 'customer'}">
+						<a href="" ng-click="view = 'customer'">Customer</a>
+					</li>
+				</ul>
+			</div>
+			<div class="module-content">
+				<div ng-if="view === 'finsify'" ng-include="'/partials/client_key/list.html'" onload="getList(0)"></div>
+				<div ng-if="view === 'customer'" ng-include="'/partials/client_key/customer.html'" onload="getList(1)"></div>
+			</div>
+		</div>
+	</div>
+</div>

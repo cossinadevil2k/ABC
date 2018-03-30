@@ -1,0 +1,296 @@
+<polymer-element name="category-picker-dialog" attributes="categorySelected typeFilter showFragment">
+<template>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.categories-item {
+			width: 110px;
+			height: 120px;
+			float: left;
+			display: block;
+			text-align: center;
+			position: relative;
+			cursor: pointer;
+			transition-delay: 0.2s;
+			border: 1px dashed transparent;
+			cursor: pointer;
+		}
+
+		.categories-item:focus {
+			transition-delay: 0.2s;
+		}
+
+		core-header-panel{
+			height: 100%;
+		}
+
+	    .content{
+	      height:375px;
+	      width: 92%;
+	    }
+
+		.categories-item .categories-img {
+			width: 48px;
+			height: 48px;
+			padding: 0 30px;
+			margin-top: 16px;
+		}
+
+		.categories-item .categories-img img {
+			width: 100%;
+		}
+
+		.categories-item:hover {
+			border: 1px dashed #2baf2b;
+		}
+
+		.categories-item.selected{
+			background: rgba(43,175,43,0.15);
+			transition-delay: 0.2s;
+		}
+
+		.categories-content {
+			float: left;
+			padding: 8px 24px;
+		}
+
+		.search {
+			float: right;
+		}
+
+		.button-tab {
+			display: block;
+			float: left;
+			color: rgba(255,255,255,0.60);
+			margin-left: 72px;
+			font-size: 13px;
+			height: 44px;
+			border-radius: 0;
+			border-bottom: 4px solid transparent;
+		}
+
+		.button-tab paper-button {
+			padding: 0 16px;
+		}
+		.button-tab paper-button:hover,
+		.button-tab paper-button.selected {
+			border-bottom: 4px solid #14e715;
+			color: white;
+			border-radius: 0;
+		}
+		.top-header {
+			width: 100%;
+			float: left;
+		}
+		host: deep/ .dialog-header {
+			width: 626px !important;
+		}
+
+		#searchInput.hide {
+			display: none;
+		}
+
+		#searchInput {
+			float: right;
+			color: rgba(255,255,255,0.26);
+		}
+		#searchInput {
+			width: 184px;
+			margin-top: 8px;
+			margin-right: -44px;
+			height: 56px;
+		}
+
+		#errorContainer {
+			display: none;
+		}
+		.right-header {
+			float: right;
+		}
+
+		.right-header .icon-search {
+			margin-top: 25px;
+			margin-right: 7px;
+		}
+
+		.category-header {
+			height: 102px !important;
+		}
+		.hide {
+			display: none;	
+		}
+
+		.tab2 {
+			margin-left: -3px;
+		}
+
+		.loader {
+			margin-top: 130px;
+			text-align: center;
+		}
+	</style>
+	<core-header-panel mode="seamed">
+	<div class="dialog-header category-header core-header"> 
+		<div class="top-header">
+			<paper-button icon="arrow-back" class="arrow-back" on-click="{{goBack}}"></paper-button>
+			<div class="detail text-title">Select Category</div>
+			<div class="right-header ">
+				<paper-button on-click="{{toggleSearchInput}}" icon="search" class="search" on-click="searchCategory"></paper-button>
+				<paper-input type="text" on-focus="{{searchInputFocus}}" on-blur="{{searchInputBlur}}" class="{{{hide: hideSearchInput} | tokenList}}" id="searchInput" label="search..." inputValue="{{searchByNameInput}}">
+			</paper-input>
+		</div>
+	</div>
+	<div class="button-tab">
+		<paper-button label="INCOME" on-click="{{incomeCategoryFilter}}" class="{{{selected: typeFilter == 1}|tokenList}}"></paper-button>
+		<paper-button label="EXPENSE" on-click="{{expenseCategoryFilter}}" class="tab2 {{{selected: typeFilter == 2}|tokenList}}"></paper-button>
+	</div>
+	
+</div>
+<div class="categories-content content">
+<template if="{{processedResults}}">
+	<template repeat="{{category in processedResults}}">
+		<div on-click="{{categoryClicked}}" class="categories-item {{{selected: (categorySelected && category._id == categorySelected._id)} | tokenList}}">
+			<div class="categories-img"><img src="{{category.icon | iconUrlFilter}}" /></div>
+			<span class="text-body">{{category.name}}</span>
+			<paper-ripple fit> </paper-ripple>
+		</div>
+	</template>
+	</template>
+<template if="{{!processedResults}}">
+
+	    <div class="loader" style="text-align:center;">
+            <img src="../images/loading.gif"/>
+        </div>
+</template>
+</div>
+</core-header-panel>
+<category-list-service id="service" categoryList="{{categoryList}}"></category-list-service>
+</template>
+<script>
+	Polymer('category-picker-dialog', {
+		hideSearchInput: true,
+
+		imgError: function(){
+			this.category.icon = defaultCategoryIcon;
+		},
+
+		categoryClicked: function(event, detail, sender){
+			var category = sender.templateInstance.model.category;
+			this.categorySelected = category;
+			this.goBack();
+		},
+		loadData: function(walletId){
+			this.$.service.run(walletId, function(data){
+                if(data.error !== 0) alert(data.msg);
+            });
+		},
+
+		amountDisplayClass: function(categoryType){
+			return categoryType === 1 ? 'positive' : 'negative';
+		},
+		iconUrlFilter: function (imgName) {
+			return (urlRoot + '/img/icon/' + imgName + '.png').replace('icon//icon', 'icon');
+		},
+
+		formatDate: function (date, format) {
+			return moment(date).format(format);
+		},
+
+		goBack: function(){
+			this.showFragment = 'transactionDialog';
+		},
+
+		searchCategory: function(){
+			console.log('searchCategory');
+		},
+
+		incomeCategoryFilter: function(){
+			this.typeFilter = 1;
+			this.processedResults = this.filterByType(this.categoryList);
+		},
+
+		expenseCategoryFilter: function(){
+			this.typeFilter = 2;
+			this.processedResults = this.filterByType(this.categoryList);
+		},
+
+		categoryListChanged: function(){
+			this.processedResults = this.filterByType(this.categoryList);
+		},
+
+		typeFilterChanged: function(){
+			this.processedResults = this.filterByType(this.categoryList);
+		},
+
+		processedResultsChanged: function(){
+			console.log('list: ' + this.processedResults.length);
+		},
+
+		filterByType: function(categoryList){
+			if(!categoryList) return list;
+			var list = [];
+
+			for(key in categoryList){
+				var category = categoryList[key];
+				if(category.type == this.typeFilter) list.push(category);
+			}
+
+			return list;
+		},
+
+		searchByNameInputChanged: function(){
+			var input = this.searchByNameInput;
+
+			if(!this.searchByNameInput){
+				this.processedResults = this.filterByType(this.categoryList);
+				return;
+			}
+
+			var input = this.searchByNameInput.trim().toLowerCase();
+			var list = [];
+
+			var categories = this.filterByType(this.categoryList);
+
+			for(key in categories){
+				var category = categories[key];
+				var categoryName = category.name.trim().toLowerCase();
+				var parts = categoryName.split(' ');
+
+				for(key in parts){
+					var part = parts[key];
+
+					if(part.indexOf(input) === 0){
+						list.push(category);
+						break;
+					}
+				}
+			}
+
+			if(list.length > 0){
+				this.processedResults = list;
+			} else{
+				this.processedResults = this.filterByType(this.categoryList);
+			}
+		},
+
+		toggleSearchInput: function(){
+			this.hideSearchInput = !this.hideSearchInput;
+
+			if(this.hideSearchInput == true){
+				this.searchByNameInput = '';
+			}
+		},
+
+		searchInputBlur: function(){
+			console.log('blurrrr');
+			this.hideSearchInput = true;
+		},
+
+		searchInputFocus: function(){
+			console.log('focusss');
+		},
+	});
+</script>
+</polymer-element>

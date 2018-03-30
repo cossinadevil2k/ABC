@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+
+        <meta name="keywords" content="money manager, money management, expense tracker, expense manager, budget, budgeting app, budget planner, save money, saving planner, personal finance, money management app, money manager app, budget app, best money management app, personal finance management, home budget, family budget, bill reminder, bills reminder, bill manager, bills manager, payment reminder"/>
+        <meta name="description" content="Money Lover helps more than 2.500.000 peole keep track of expenses and budgets to reach their saving goals. It's simplest way to manage personal finances."/>
+        <meta property="og:title" content="Money Lover: Money Manager, Budget & Saving Planner"/>
+        <meta property="og:url" content="https://helpdesk.moneylover.me/"/>
+        <meta property="og:image" content="https://moneylover.me/source/ml-cover.png"/>
+        <meta property="og:description" content="Personal finance with no stress, live the life you want"/>
+        <meta property="og:type" content="website"/>
+
+        <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+        <script type="text/javascript" src='js/forIssuePage.js'></script>
+        <script type="text/javascript" src='js/bootstrap.min.js'></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="css/animation.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,700italic,700,900,900italic&subset=latin,vietnamese" type='text/css'>
+        <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" charset="utf-8">
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+        <link rel="stylesheet", href="css/issuepage.css?v=1", media="screen", title="no title", charset="utf-8">
+    </head>
+    <body style="background: #F1F1F1">
+        <div class="">
+            <div class="modalBodyLogin">
+                <div class="loginBanner">
+                    <img src="/images/logo1.svg" alt="logo" style="height: 100px"/>
+                    <!-- <div>Money Lover</div> -->
+                </div>
+                <p class="titleModal">Login</p>
+                <div class="overForm">
+                    <form style="padding-top: 60px">
+                        <p>Enter your emaill & password Money Lover to login.</p>
+                        <label>
+                            <input class='inputLogin' id="urEmail" type="email" placeholder="Email" autocomplete='off'>
+                            <span>Email</span>
+                            <i class="textError hidden">invalid email</i>
+                        </label>
+
+                        <label>
+                            <input class='inputLogin' id='urPass' type="password" placeholder="Password" autocomplete='off'>
+                            <span>Password</span>
+                            <i class="textError hidden">password empty</i>
+                        </label>
+                        <button type="button" class="btn btn-lg btn-block btn-success" id='btnLogin'>
+                            <i class="iconLoading hidden fa fa-circle-o-notch fa-spin-2x"></i>
+                            LOGIN
+                        </button>
+                        <a href="/" type="button" class="btn btn-lg btn-cancel">
+                            <i class="fa fa-arrow-circle-left"></i>
+                            Back to FAQ
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src='js/forLoginPage.js'></script>
+    </body>
+</html>

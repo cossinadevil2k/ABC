@@ -1,0 +1,155 @@
+  <polymer-element name="item-transaction" attributes="wallet transaction currencyList">
+  <template>
+    <style >
+     * {
+      margin: 0;
+      padding: 0;
+    }
+    :host {
+      display: block;
+      background-color: white;
+      font-size: 1.2rem;
+      font-weight: 300;
+      padding: 20px 20px 0;
+    }
+
+    :host polyfill-next-selector { content: '.card-header h2'; }
+    .card-header ::content h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 300;
+    } 
+
+    :host item-amount {
+     float: right !important;
+   } 
+
+   :host core-tooltip {
+    width: 48px;
+    height: 48px;
+    margin-right: 8px !important;
+    margin: 12px 10px 0 0 !important;
+  }
+
+  :host core-tooltip img {
+    width: 100%;
+  }
+
+  :host .desc-item {
+    display: inline-block !important;
+    vertical-align: top;
+    font-size: 16px;
+    font-weight: normal;
+    max-width: 200px;
+    position: relative;
+    top: 17px;
+  }
+
+  :host .desc-item h3 {
+    margin-top: 0;
+    margin-bottom: -10px;
+    vertical-align: top;
+    font-weight: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+  }
+
+  :host .desc-item span {
+    font-size: 13px;
+    line-height: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    margin-top: 11px;
+  }
+
+  :host .transation-item {
+    display: block !important;
+    padding: 0 16px !important;
+    position: relative;
+  }
+
+  :host .transation-item paper-ripple {
+    overflow: hidden;
+  }
+
+  :host item-amount {
+    position: relative;
+    top: 8px;
+  }
+  </style>
+  <div class="transation-item" layout horizontal>
+    <core-tooltip label="{{transaction.category.name}}" position="left">
+    <img width="48" lazyload="true" src="{{transaction.category.icon | iconUrlFilter}}" />
+  </core-tooltip>
+  <div layout vertical flex class="desc-item">
+    <h3 class="text-body">{{transaction.category.name}}</h3>
+    <span class="text-caption">{{transaction | makeNote}}</span>
+  </div>
+  <item-amount amount="{{transaction.amount}}" currencyList="{{currencyList}}" currencyId="{{transaction.account.currency_id}}" categoryType="{{transaction.category.type}}" id="amount"></item-amount>
+  <paper-ripple fit> </paper-ripple>
+  </div>
+  </template>
+  <script>
+    Polymer('item-transaction', {
+
+      makeNote: function(transaction){
+        var note = '';
+        var personSize = transaction.with.length;
+
+
+        if(transaction.note){
+          note += transaction.note;
+        }
+
+        if(note && personSize > 0){
+          note += " ";
+        }
+
+        var sWith = this.makeWith(transaction);
+
+        note += sWith;
+
+        return note;
+      },
+
+      makeWith: function(transaction){
+        var sWith = '';
+        var personSize = transaction.with.length;
+
+        if(this.checkTransactionDebtOrLoan(transaction)){
+          var personName = personSize > 0 ? transaction.with[0] : 'someone';
+          sWith += "with " + personName;
+        } else {
+          if (personSize == 1) {
+            sWith += "with " + transaction.with[0];
+          } else if(personSize ==2){
+            sWith += "with " + transaction.with[0] + " ," + transaction.with[1];
+          } else if(personSize >2){
+            var personLeft = personSize -1;
+            sWith += "with " + transaction.with[0] + " & " + personLeft;
+          }
+        }
+
+        return sWith;
+      },
+
+      checkTransactionDebtOrLoan: function(transaction){
+        var metadata = transaction.category.metadata;
+        return metadata && (metadata == 'IS_DEBT' || metadata == 'IS_LOAN');
+      },
+
+      imgError: function(e){
+        console.log(e);
+        this.imgError = null;
+        this.transaction.category.icon = defaultCategoryIcon;
+      },
+      iconUrlFilter: function (imgName) {
+        return (urlRoot + '/img/icon/' + imgName + '.png').replace('icon//icon', 'icon');
+      },
+    });
+  </script>
+  </polymer-element>

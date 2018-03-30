@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title title">Tags of <span style="color: #34495E">{{userInfo.email}}</span></h4>
+</div>
+<div class="modal-body modal-body-tag">
+  <div class="input-group" id="tag_{{key}}" ng-repeat="(key, value) in userInfo.tags track by $index">
+    <span class="input-group-addon"><i class="icon-tag icon-large" style="color: #34495E;"></i></span>
+		<input type="text" class="form-control inputTags" ng-model="value" placeholder="Add new tag">
+		<span class="input-group-btn">
+			<button type="button" ng-click="removeTag(key)" class="btn btn-grape btn-del-tag"><i class="icon-remove icon-large"></i> </button>
+		</span>
+	</div>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="icon-tag icon-large" style="color: #34495E;"></i></span>
+		<input type="text" class="form-control inputTags" id="newTag" ng-model="newTag" placeholder="Add new tag">
+    <span class="input-group-btn" ng-show="newTag && newTag.length >= 3">
+      <button type="button" class="btn btn-add-tag" ng-if="newTag && newTag.length >= 3" ng-click="addTag(newTag)"><i class="icon-plus"></i></button>
+    </span>
+	</div>
+</div>
+<div class="modal-footer footer-tag">
+    <span style="float: left; padding-top:7px; color: red" ng-show="errorSave">* Fails to save!</span>
+    <span style="float: left; padding-top:7px; color: red" ng-show="errorAdd">* Cann't add tags!</span>
+    <button class="btn btn-default" ng-click="cancel()">Close</button>
+    <button class="btn btn-success" ng-click="save(newTag)">Save</button>
+</div>

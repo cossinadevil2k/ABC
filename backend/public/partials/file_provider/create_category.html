@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">Create Category</h4>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <label for="country">Default name</label>
+        <input type="text" class="form-control" id="category" ng-model="provider.name" autofocus required>
+    </div>
+    <div class="form-group">
+        <label for="key_name">Key Name</label>
+        <input type="text" class="form-control" id="key_name" ng-model="provider.key_name" required>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" ng-click="save()">
+        <i class="icon-save"></i> Save
+    </button>
+</div>

@@ -1,0 +1,80 @@
+<div class="module no-padding">
+    <div class="module-header">
+        <h4>List</h4>
+
+        <h4 class="hidden-xs hidden-sm">
+            <div class="input-group quick-search-box">
+                <input type="text" autofocus class="form-control" id="txtKeyword" ng-model="keyword" placeholder="Type email need search..."
+                    ng-keydown="searchKey($event, keyword)">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-grape" ng-click="search(keyword)" ng-disabled="isLoading"><i class="icon-search"></i> SEARCH</button>
+                    <button class="btn btn-grape dropdown-toggle" style="margin-left: -6px"><span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li ng-click="filter(0)"><a href="javascript:void(0)">All</a></li>
+                        <li ng-click="filter(1)"><a href="javascript:void(0)">Android</a></li>
+                        <li ng-click="filter(2)"><a href="javascript:void(0)">Ios</a></li>
+                        <li ng-click="filter(7)"><a href="javascript:void(0)">Web</a></li>
+                        <li ng-click="filter(3)"><a href="javascript:void(0)">Windows</a></li>
+                        <li ng-click="filter(3)"><a href="javascript:void(0)">Winphone</a></li>
+                        <li ng-click="filter(6)"><a href="javascript:void(0)">Osx</a></li>
+                    </ul>
+                </div>
+            </div>
+        </h4>
+
+    </div>
+    <div class="module-content">
+        <loading ng-if="isLoading"></loading>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th class="text-center">Platform</th>
+                    <th>User</th>
+                    <th>URL</th>
+                    <th class="text-center">Error</th>
+                    <th>Date</th>
+                    <th class="text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(key, exception) in exceptionList">
+                    <td class="text-center">
+                        <img src="/images/android_96.png" class="icon-user-platform" alt="android_logo" ng-if="exception.platform === 1" />
+                        <img src="/images/ios_96.png" class="icon-user-platform" alt="apple_logo" ng-if="exception.platform === 2" />
+                        <img src="/images/winphone_96.png" class="icon-user-platform" alt="windows_logo" ng-if="exception.platform === 3" />
+                        <img src="/images/windows_96.png" class="icon-user-platform" alt="windows_logo" ng-if="exception.platform === 3" />
+                        <img src="/images/osx_96.png" class="icon-user-platform" alt="windows_logo" ng-if="exception.platform === 6" />
+                        <img src="/images/web_96.png" class="icon-user-platform" alt="web_logo" ng-if="exception.platform === 7" />
+                    </td>
+                    <td><a href="/users/info?email={{exception.user.email}}" target="_blank">{{exception.user.email}}</a></td>
+                    <td>{{exception.url}}</td>
+                    <td class="text-center">{{exception.errorCode}} - {{exception.errorMessage}}</td>
+                    <td>{{exception.errorDate | checkDateTime}}</td>
+                    <td class="text-right">
+                        <button class="btn btn-xs btn-blue" tooltip="Details" ng-click="detail(key)"><i class="icon-book"></i></button>
+                        <button class="btn btn-xs btn-grape" tooltip="Delete"><i class="icon-trash"></i></button>
+                    </td>
+                </tr>
+
+                <tr ng-if="exceptionList.length === 0">
+                    <td>No result found</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr class="breakPage">
+                    <td colspan="12" class="text-center">
+                        <div class="btn-group">
+                            <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading"><i class="icon-fast-backward"></i></a>
+                            <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                            <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading"><i class="icon-fast-forward"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()">&times;</button>
+	<h4 class="modal-title title">{{ 'add_account_currency_title' | translate }}</h4>
+</div>
+<div class="modal-body">
+	<div class="list-currency">
+		<div class="input-group search-currency">
+			<div class="input-group">
+				<span class="input-group-addon"><i class="icon-search"></i></span>
+				<input type="text" class="form-control" ng-model="searchKeyword" placeholder="{{ 'search' | translate }}">
+			</div>
+		</div>
+		<div class="disply-list-currency">
+			<div class="animate-repeat" ng-repeat="currency in currencyList | filter:searchKeyword">
+				<div class="select-currency" ng-click="setCurrency(currency)" ng-class="{selected: (currency | currencySelected:currencySelect) }">
+					<h4 class="module-subtitle">
+						<span>{{ currency.n }}</span>
+					</h4>
+					<span class="currency-symbol">{{ currency.s }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <h4>Purchase history</h4>
+</div>
+<div class="modal-body no-padding-no-margin">
+    <table class="table table-responsive">
+        <loading ng-if="isLoading"></loading>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Product</th>
+                <th>Source</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="history in history_list">
+                <td>{{history.purchased_date | checkDateTime}}</td>
+                <td>{{history.product}}</td>
+                <td>{{history.source}}</td>
+            </tr>
+            <tr ng-if="history_list.length === 0">
+                <td>No result found</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading"><i class="icon-fast-backward"></i></a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading"><i class="icon-fast-forward"></i></a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="close()">Close</button>
+</div>

@@ -1,0 +1,48 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()">&times;</button>
+	<h3 class="modal-title title">Event: <b>{{event.name}}</b></h3>
+	<h4>Total: {{total}}, Used: {{usedCodeAmount}}</h4>
+	<br />
+	<button class="btn btn-success" tooltip="Xuất danh sách ra file Excel" ng-click="exportCode()">Export</button>
+	<p class="text-success">Khi check vào Unused Code sẽ export ra danh sách chỉ có các code chưa được dùng, nếu bỏ check sẽ xuất ra tất cả code đã sử dụng và chưa	sử dụng</p>
+</div>
+<div class="modal-body">
+	<div class="form-group">
+		<label class="col-lg-5 control-label">Unused Code</label>
+		<div class="col-lg-7">
+			<a class="btn btn-xs" href="#" ng-class="{'btn-danger': !unusedCodes, 'btn-success': unusedCodes}" ng-click="checkUnusedCodes()">
+				<i ng-class="{'icon-check': unusedCodes, 'icon-unchecked': !unusedCodes}"></i>
+			</a>
+		</div>
+	</div>
+
+	<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Code</th>
+			<th>Is Used?</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="animate-repeat" ng-repeat="(key, value) in codeList" ng-hide="(value.status==true)&&(unusedCodes==true)" >
+			<td>{{value.code}}</td>
+			<td class="text-left">
+				<a class="btn btn-xs" href="#" ng-class="{'btn-danger': !value.status, 'btn-success': value.status}" ng-click="changeCodeStt(value)">
+					<i ng-class="{'icon-check': value.status, 'icon-unchecked': !value.status}"></i>
+				</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<div class="modal-footer">
+	<div class="breakPage">
+		<div colspan="7" class="text-center">
+			<div class="btn-group">
+				<a class="btn btn-default" ng-click="switchPage('prev')" ng-disabled="isFirstPage"><i class="icon-fast-backward"></i></a>
+				<button class="btn btn-default">Page {{pageNo}} of {{totalPage}}</button>
+				<a class="btn btn-default" ng-click="switchPage('next')" ng-disabled="isLastPage"><i class="icon-fast-forward"></i></a>
+			</div>
+		</div>
+	</div>
+</div>

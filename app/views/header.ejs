@@ -1,0 +1,12 @@
+<header class="main-header">
+	<h3>
+		<a id="show-menu" href="#" class="btn btn-primary"><i class="icon-reorder"></i></a>
+		<span ng-bind="MLPageDetail">Money Lover</span>
+	</h3>
+	<nav class="user-profile">
+		<a class="btn btn-success btn-lg" href="/wallet/{{ wallet.id }}/transaction/add" >
+			<i class="icon-plus"></i>
+			{{ 'cashbook_contentdescription_add_transaction' | translate }}
+		</a>
+	</nav>
+</header>

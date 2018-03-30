@@ -1,0 +1,17 @@
+[{
+	"name"		: "[Dev] ML.Sync",
+	"script"	: "./syncDev.js",
+	"instances"	: "1"
+},{
+	"name"      : "[Pro] ML.Sync",
+	"script"    : "./sync.js",
+	"instances" : "1"
+},{
+	"name"		: "[Dev] ML.App",
+	"script"	: "./app/appDev.js",
+	"instances"	: "1"
+},{
+	"name"		: "[Pro] ML.App",
+	"script"	: "./app/app.js",
+	"instances"	: "1"
+}]

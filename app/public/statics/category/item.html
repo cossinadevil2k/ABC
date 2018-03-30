@@ -1,0 +1,6 @@
+<span class="sparkline-pie category-icon">
+	<img class="category-icon" ng-src="{{ category.icon | generateIconLink}}" alt="{{ category.name }}" />
+</span>
+<a class="category-name" href="#" ng-click="selectCategory(category)">{{ category.name | categoryParseName:category.metadata }}</a>
+<i class="cateogry-action icon-cogs icon-2x" ng-click="selectCategory(category)"></i>
+<i class="icon-lock icon-2x" ng-show="category.metadata | lockCategory"></i>

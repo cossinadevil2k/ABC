@@ -1,0 +1,96 @@
+
+
+<polymer-element name="transaction-service">
+    <template>
+        <style>
+            :host {
+                display: none;
+            }
+        </style>
+
+        <core-ajax id="service"
+                url={{url}}
+                method="POST"
+                handleAs="json"
+                params='{{params}}'
+                on-core-response="{{postLoaded}}">
+        </core-ajax>
+    </template>
+
+    <script>
+        Polymer('transaction-service', {
+            postLoaded: function(event, response){
+                var status  = response.xhr.status;
+                if(status){
+                    if(status===200) {
+                        var data = response.response;
+                        if(data.error===0) this.callback(data);
+                        else if (data.error===401) this.fire('sessionExpired');
+                    }
+                }
+            },
+            
+            addTransaction: function(transaction, callback){
+                this.callback = callback;
+                console.log(transaction);
+                if(transaction){
+                    var transInfo = this.handleTransaction(transaction);
+                    console.log(transInfo);
+
+                    this.url = "/api/transaction/add";
+                    this.params = {"transInfo": JSON.stringify(transInfo)};
+                    this.$['service'].go();
+                } else this.callback({error:10, msg:"transaction_info_empty"});
+            },
+
+            editTransaction: function(transaction, callback){
+                this.callback = callback;
+                if(transaction) {
+                    var transInfo = this.handleTransaction(transaction);
+
+                    this.url = "/api/transaction/update";
+                    this.params = {"transInfo": JSON.stringify(transInfo)};
+                    this.$['service'].go();
+                } else this.callback({error:10, msg:"transaction_info_empty"});
+            },
+
+            deleteTransaction: function(transaction, callback){
+                this.callback = callback;
+                if(transaction) {
+                    var transInfo = this.handleTransaction(transaction);
+
+                    this.url = "/api/transaction/delete";
+                    this.params = {"transInfo": JSON.stringify(transInfo)};
+                    this.$['service'].go();
+                } else this.callback({error:10, msg:"transaction_info_empty"});
+            },
+
+            handleTransaction: function(transaction) {
+                var newTran = {
+                    account : transaction.account._id,
+                    category : transaction.category._id,
+                    displayDate : moment(transaction.displayDate).format('YYYY-MM-DD'),
+                    amount: transaction.amount,
+                    campaign: []
+                };
+
+                if (transaction._id) newTran._id = transaction._id;
+
+                if (transaction.note) newTran.note = transaction.note;
+
+                if (transaction.exclude_report != null || transaction.exclude_report != undefined ){
+                    newTran.exclude_report = transaction.exclude_report;
+                }
+
+                if (transaction.campaign && transaction.campaign.length > 0) {
+                    transaction.campaign.forEach(function(element, index){
+                        if (typeof element == 'string') newTran.campaign[index] = element;
+                        else if (element._id) newTran.campaign[index] = element._id;
+                    });
+                }
+
+                return newTran;
+            }
+        });
+    </script>
+</polymer-element>

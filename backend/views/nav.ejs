@@ -1,0 +1,167 @@
+<!-- Sidebar -->
+<aside id="sidebar-wrapper" ng-controller="navigation">
+	<ul class="sidebar-icon">
+		<li class="sidebar-header" id="backend_logo">
+			<a href="/changelog">
+				<img class="logo" src="<%= urlStatic2 %>images/logo.png" alt="Logo" />
+				<br />
+				<span class="currentVersion" ng-bind="currentVersion"></span>
+			</a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:1)}">
+			<a ng-click="tab(1)"><i class="icon-dashboard icon-large" tooltip="Dashboard"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:2)}" ng-show="roles['Users']">
+			<a ng-click="tab(2)"><i class="icon-user icon-large" tooltip="Users"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:8)}" ng-show="roles['Products'] || roles['Marketing']">
+			<a ng-click="tab(8)"><i class="icon-money icon-large" tooltip="Products"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:4)}" ng-show="roles['Marketing']">
+			<a ng-click="tab(4)"><i class="icon-gift icon-large" tooltip="Marketing"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:10)}" ng-show="roles['Marketing']">
+			<a ng-click="tab(10)"><i class="icon-group icon-large" tooltip="Marketing Extension"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:5)}" ng-show="roles['Helpdesk']">
+			<a ng-click="tab(5)"><i class="icon-book icon-large" tooltip="Helpdesk"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:6)}" ng-show="roles['Subscription']">
+			<a ng-click="tab(6)"><i class="icon-th icon-large" tooltip="Subscription"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:7)}" ng-show="roles['Tools']">
+			<a ng-click="tab(7)"><i class="icon-briefcase icon-large" tooltip="Tools"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:9)}" ng-show="roles['Receipts']">
+			<a ng-click="tab(9)"><i class="icon-credit-card icon-large" tooltip="Receipts"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:3)}" ng-show="roles['Settings']">
+			<a ng-click="tab(3)"><i class="icon-gear icon-large" tooltip="Settings"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:11)}" ng-show="roles['LandingPage']">
+			<a ng-click="tab(11)"><i class="icon-home icon-large" tooltip="LandingPage"></i></a>
+		</li>
+
+
+	</ul>
+	<div class="tab-content">
+		<ul class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:1)}">
+			<li class="navigation-header">DASHBOARD</li>
+			<li><a href="/">Overview</a></li>
+			<li><a href="/stats/daily">Statistics</a></li>
+			<li><a href="/active">Active Users</a></li>
+			<li><a href="/exception">Sync Exception Log</a></li>
+		</ul>
+
+		<ul class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:2)}">
+			<li class="navigation-header">USER</li>
+			<li><a href="/users">Users</a></li>
+			<li><a href="/users?subscription=premium">Premium Subscriptions</a></li>
+			<li><a href="/users?subscription=linked-wallet">Linked Wallet Subscriptions</a></li>
+			<li><a href="/users?subscription=no-linked-wallet">No LW Subscriptions</a></li>
+			<li><a href="/users?subscription=no-premium">No Premium Subscriptions</a></li>						
+			<li><a href="/devices">Devices</a></li>
+			<li><a href="/transaction">Transaction</a></li>
+		</ul>
+
+		<ul class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:8)}">
+			<li class="navigation-header">PRODUCTS</li>
+			<li><a href="/icons">Icons</a></li>
+			<li><a href="/subscription-products">Subscriptions</a></li>
+			<li><a href="/use-credits">Use Credits</a></li>
+			<li><a href="/premium-products">Premiums</a></li>
+			<li><a href="/item-log">Purchase Log</a></li>
+			<li><a href="/item-chart">Chart</a></li>
+			<li><a href="/subscription_renew_log">Subscription Renew Log</a></li>
+		</ul>
+
+		<ul class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:4)}">
+			<li class="navigation-header">MARKETING TOOLS</li>
+			<li><a href="/emails">Email</a></li>
+			<li><a href="/email_push_automation">Automation</a></li>
+			<li><a href="/automation_log">Automation Log</a></li>
+			<li><a href="/messages">Push Notifications</a></li>
+			<li><a href="/push-notification-request">Notification Requests</a></li>
+			<li><a href="/events">Events</a></li>
+			<!--<li><a href="/sponsored">Sponsored</a></li>-->
+			<li><a href="/send-premium-code">Send Premium Code</a></li>
+			<li><a href="/search-query">Search Queries</a></li>
+			<li><a href="/query-compare">Search Query Compare</a></li>
+			<li><a href="/lucky">Free item manager</a></li>
+			<li><a href="/mac-beta">Mac Beta</a></li>
+			<li><a href="/coupon">Coupon</a></li>
+			<li><a href="/gift">User gift</a></li>
+			<li><a href="/discount">User discount</a></li>
+		</ul>
+		<ul class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:10)}">
+			<li class="navigation-header">MARKETING EXTENSION</li>	
+			<!-- <li><a href="/icons">Icons</a></li>
+			<li><a href="/subscription-products">Subscriptions</a></li>
+			<li><a href="/use-credits">Use Credits</a></li>
+			<li><a href="/premium-products">Premiums</a></li>
+			<li><a href="/item-log">Purchase Log</a></li>
+			<li><a href="/item-chart">Chart</a></li>
+			<li><a href="/subscription_renew_log">Subscription Renew Log</a></li> -->
+			<li><a href="/campaign">Campaign</a></li>
+			<li><a href="/group">Group</a></li>				
+		</ul>
+		<ul class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:5)}">
+			<li class="navigation-header">HELPDESK</li>
+			<li><a href="/helpdesk/issue">Issues</a></li>
+			<li><a href="/helpdesk/faq">FAQ</a></li>
+			<li><a href="/helpdesk/section">Section</a></li>
+			<li><a href="/helpdesk/stats">Statistic</a></li>
+			<li><a href="/helpdesk/edit-auto-reply-messages">Edit auto-reply messages</a></li>
+		</ul>
+		<ul class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:6)}">
+			<li class="navigation-header">SUBSCRIPTION</li>
+			<!-- <li><a href="/subscription-stats">Stats</a></li> -->
+			<!-- <li><a href="/subscription-log">Log</a></li> -->
+			<li><a href="/subscription-code">Code</a></li>
+			<li><a href="/remote-wallet/service">RW Service</a></li>
+			<li><a href="/remote-wallet/request">RW Request</a></li>
+			<li><a href="/remote-wallet/list">RW List</a></li>
+			<li><a href="/classification-log">Classification Logs</a></li>
+			<li><a href="/uncategorized-transaction">Uncategorized Transactions</a></li>
+			<li><a href="/provider-country-code">Provider</a></li>
+		</ul>
+		<ul class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:7)}">
+			<li class="navigation-header">TOOLS</li>
+			<li><a href="/find">Find by ID</a></li>
+			<li><a href="/bonus">Check Wallet Permission</a></li>
+			<!-- <li><a href="/test-shoeboxed">Test Shoeboxed</a></li> -->
+			<li><a href="/image-manager">Image Manager</a></li>
+			<li><a href="/change-email">Change Email</a></li>
+			<li><a href="/icons/info-maker">Icon Pack Info Maker</a></li>
+			<li><a href="/check-purchase-bill">Check purchase bill</a></li>
+			<li><a href="/tags">Tags</a></li>
+		</ul>
+		<ul class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:9)}">
+			<li class="navigation-header">Receipt</li>
+			<li><a href="/receipt">Receipt Manager</a></li>
+			<li><a href="/receipt/ranking">Receipt Handle Statistics</a></li>
+		</ul>
+		<ul class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:3)}">
+			<li class="navigation-header">SETTINGS</li>
+			<li><a href="/admin">Admins</a></li>
+			<li><a href="/partners">Partners</a></li>
+			<li><a href="/register_dev_ml">Partner Open Api</a></li>
+			<li><a href="/currency">Currency</a></li>
+			<li><a href="/bank">Bank</a></li>
+			<li><a href="/userbankmsg">Bank Message from User</a></li>
+			<li><a href="/clientkey">Client Keys</a></li>
+			<li><a href="/server-setting">Backend Setting</a></li>
+			<li><a href="/systems-info">Systems Info</a></li>
+			<li><a href="/premiumlog">Admin Log</a></li>
+			<!--<li><a href="/logsync">Client Sync Fail Log</a></li>-->
+			<li><a href="/changelog">Changelogs</a></li>
+			<li><a href="/milestone">Milestones</a></li>
+		</ul>
+		<ul class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:11)}">
+			<li class="navigation-header">LANDING STATIC</li>
+			<li><a href="/landing">Admins</a></li>
+		</ul>
+		
+	</div>
+</aside>
+<!-- /Sidebar -->

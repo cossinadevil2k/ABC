@@ -1,0 +1,215 @@
+
+<polymer-element name="currency-picker-dialog" attributes="currencySelected showFragment">
+<template>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		:host .currency-item {
+			width: 110px;
+			height: 122px;
+			float: left;
+			display: block;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+			border: 1px dashed transparent;
+			cursor: pointer;
+		}
+
+		:host core-header-panel{
+			height: 100%;
+		}
+
+		:host .content{
+			height:730px;
+			width: 580px;
+		}
+
+		:host .currency-item .categories-img {
+			width: 46px;
+			height: 46px;
+			margin: 0 28px;
+			margin-top: 8px;
+			border: 1px solid rgba(0,0,0,0.12);
+		}
+
+		:host .currency-item .categories-img img {
+			width: 100%;
+		}
+
+		:host .currency-item:hover {
+			border: 1px dashed #2baf2b;
+		}
+
+		:host .currency-item.selected {
+			background: rgba(43,175,43,0.15);
+		}
+
+		:host .currency-content {
+			float: left;
+			padding: 8px 24px;
+		}
+
+		:host .search {
+			float: right;
+		}
+
+		:host .dialog-header {
+			width: 626px !important;
+		}
+
+		:host #searchInput.hide {
+			display: none;
+		}
+
+		:host #searchInput {
+			float: right;
+			color: rgba(255,255,255,0.56);
+		}
+
+		:host #searchInput {
+			width: 184px;
+			margin-top: 8px;
+			margin-right: -44px;
+			height: 56px;
+		}
+
+		:host #errorContainer {
+			display: none;
+		}
+		
+		:host .right-header {
+			float: right;
+		}
+
+		:host .right-header .icon-search {
+			margin-top: 25px;
+			margin-right: 7px;
+		}
+
+		:host span.text-over {
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+
+		.loader {
+			margin-top: 130px;
+			text-align: center;
+		}
+
+	</style>
+	<core-header-panel mode="seamed">
+	<div class="dialog-header core-header"> 
+		<div class="top-header">
+			<paper-button icon="arrow-back" class="arrow-back" on-click="{{goBack}}"></paper-button>
+			<div class="detail text-title">Select Currency</div>
+			<div class="right-header ">
+				<paper-button on-click="{{toggleSearchInput}}" icon="search" class="search" on-click="searchCurrency"></paper-button>
+				<paper-input type="text" on-focus="{{searchInputFocus}}" on-blur="{{searchInputBlur}}" class="{{{hide: hideSearchInput} | tokenList}}" id="searchInput" label="search..." inputValue="{{searchByNameInput}}">
+			</paper-input>
+		</div>
+	</div>
+</div>
+<div class="currency-content content">
+	<template if="{{processedResults}}" repeat="{{currency in processedResults}}">
+		<div on-click="{{currencyClicked}}" class="currency-item {{{selected: (currencySelected && currency.i == currencySelected.i)} | tokenList}}">
+			<div class="categories-img">
+				<img width="46" lazyload="true" src="{{currency.c | flagUrlFilter}}" />
+			</div>
+			<span class="text-body text-over">{{currency.n}}</span>
+			<paper-ripple fit> </paper-ripple>
+		</div>
+	</template>
+	<template if="{{!processedResults}}">
+		<!-- loader -->
+		<div class="loader" style="text-align:center;">
+			<img src="../images/loading.gif"/>
+		</div>
+	</template>
+</div>
+</core-header-panel>
+<core-localstorage name="currency-list" value="{{currencyList}}"></core-localstorage>
+</template>
+<script>
+	Polymer('currency-picker-dialog', {
+		hideSearchInput: true,
+		currencyClicked: function(event, detail, sender){
+			var currency = sender.templateInstance.model.currency;
+			this.currencySelected = currency;
+			this.goBack();
+			this.searchByNameInput = '';
+			this.hideSearchInput = true;
+		},
+
+		goBack: function(){
+			this.showFragment = 'walletDialog';
+		},
+
+		showDialog: function(){
+			this.processedResults = this.currencyList;
+		},
+
+		imgError: function(){
+    	},
+
+    	flagUrlFilter: function (shortName) {
+    		return (urlRoot + '/img/flag/ic_currency_' + shortName.toLowerCase() + '.png');
+    	},
+
+    	searchCurrency: function(){
+    	},
+
+    	processedResultsChanged: function(){
+    	},
+
+
+    	searchByNameInputChanged: function(){
+    		var input = this.searchByNameInput;
+    		if(!this.searchByNameInput){
+    			this.processedResults = this.currencyList
+    			return;
+    		}
+
+    		var input = this.searchByNameInput.trim().toLowerCase();
+    		var list = [];
+
+    		var currencies = this.processedResults;
+
+    		for(key in currencies){
+    			var currency = currencies[key];
+    			var currencyName = currency.n.trim().toLowerCase();
+    			var parts = currencyName.split(' ');
+
+    			for(key in parts){
+    				var part = parts[key];
+
+    				if(part.indexOf(input) === 0){
+    					list.push(currency);
+    					break;
+    				}
+    			}
+    		}
+
+    		if(list.length > 0){
+    			this.processedResults = list;
+    		} else{
+    			this.processedResults = this.currencyList;
+    		}
+    	},
+
+    	toggleSearchInput: function(){
+    		this.hideSearchInput = !this.hideSearchInput;
+
+    		if(this.hideSearchInput == true){
+    			this.searchByNameInput = '';
+    		}
+    	},
+
+    	searchInputBlur: function(){
+    		this.hideSearchInput = true;
+    	},
+    });
+</script>
+</polymer-element>

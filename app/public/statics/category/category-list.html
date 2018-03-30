@@ -1,0 +1,13 @@
+<ul id="categoryTab" class="nav nav-tabs">
+	<li ng-class="{active: !categoryTab}"><a href="#" ng-click="categoryTab=0">{{ 'income' | translate }}</a></li>
+	<li ng-class="{active: categoryTab}"><a href="#" ng-click="categoryTab=1">{{ 'expense' | translate }}</a></li>
+</ul>
+
+<div id="categoryTabContent" class="tab-content">
+	<div class="tab-pane fade in" id="categoryIncomeTab" ng-class="{active: !categoryTab}">
+		<div class="fade-animate" scope="categories" ng-include="'/partials/category/list-income.html'"></div>
+	</div>
+	<div class="tab-pane fade in" id="categoryExpenseTab" ng-class="{active: categoryTab}">
+		<div class="fade-animate" scope="categories" ng-include="'/partials/category/list-expense.html'"></div>
+	</div>
+</div>

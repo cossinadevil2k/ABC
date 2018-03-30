@@ -1,0 +1,92 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()">&times;</button>
+	<h4 class="modal-title title">BankMessage info</h4>
+</div>
+<div class="modal-body">
+	<form class="form-horizontal" action="#">
+		<div class="form-group" ng-if="errorMsg">
+			<label class="col-lg-2 control-label"></label>
+			<div class="col-lg-10">
+				<p>{{ errorMsg }}</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Sender(s):</label>
+			<div class="col-lg-10">
+				<input type="text" placeholder="Sender..." class="form-control" ng-model="bankMsg.s">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Bank Name(b):</label>
+			<div class="col-lg-10">
+				<input type="text" placeholder="Bank name..." class="form-control" ng-model="bankMsg.b">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Nation(nai):</label>
+			<div class="col-lg-10">
+				<input type="text" placeholder="Nation..." class="form-control" ng-model="bankMsg.nai">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Pattern(p):</label>
+			<div class="col-lg-10">
+				<input type="text" placeholder="Pattern..." class="form-control" ng-model="bankMsg.p">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Bank Index(bi):</label>
+			<div class="col-lg-10">
+				<input type="text" placeholder="Bank Index..." class="form-control" ng-model="bankMsg.bi">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Transaction Index(p):</label>
+			<div class="col-lg-10">
+				<input type="text" placeholder="Transaction Index..." class="form-control" ng-model="bankMsg.ti">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Note(ni):</label>
+			<div class="col-lg-10">
+				<input type="text" placeholder="Note..." class="form-control" ng-model="bankMsg.ni">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Format(fm):</label>
+			<div class="col-lg-10">
+				<input type="number" placeholder="Format..." class="form-control" ng-model="bankMsg.fm">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Type(t):</label>
+			<div class="col-lg-10">
+				<div class="col-lg-5">
+					<div class="radio">
+						<label>
+							<input type="radio" name="type-bank-acc" ng-model="bankMsg.t" ng-value="1">
+							ATM
+						</label>
+					</div>
+				</div><div class="col-lg-5">
+					<div class="radio">
+						<label>
+							<input type="radio" name="type-bank-acc" ng-model="bankMsg.t" ng-value="2">
+							Visa
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Category(ca):</label>
+			<div class="col-lg-10">
+				<input type="number" step="1" placeholder="Category" class="form-control" ng-model="bankMsg.ca">
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+	<button type="button" class="btn btn-primary" ng-click="saveBankMsg(bankMsg)">Save changes</button>
+</div>

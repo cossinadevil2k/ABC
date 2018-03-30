@@ -1,0 +1,126 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="module no-padding">
+            <div class="module-header">
+                <h4 class="listHeader">
+                    <button class="btn btn-orange btn-back" ng-if="isSearchPage" ng-click="backToList()"><i class="icon-long-arrow-left"></i> Back</button>
+                    <span class="hidden-xs" ng-if="isSearchPage">Search Results: {{resultAmount|number}}</span>
+                    <span class="hidden-xs" ng-if="!isSearchPage">{{ tableName }}</span>
+                    <span class="hidden-sm hidden-md hidden-lg">{{ (isSearchPage) ? "" : "User list" }}</span>
+                    <!--<i class="icon-refresh" style="cursor: pointer" ng-click="getListUser()" tooltip="Cập nhật" ng-if="!isSearchPage"></i>-->
+                    <!--<i class="icon-upload-alt" style="cursor: pointer" ng-click="exportEmail()" tooltip="Export email"></i>-->
+                     <button ng-click="showSearchMobile()" class="searchMobile btn hidden-md hidden-lg" type="button" style="float:right">
+                        <i class="icon-search"></i>
+                     </button>
+                </h4>
+                <h4 class="hidden-xs hidden-sm">
+                    <div class="input-group quick-search-box">
+                        <input type="text" autofocus class="form-control" id="txtKeyword" ng-model="keyword" placeholder="Type something..." ng-keydown="searchKey($event, keyword)">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-grape" ng-click="search(keyword)" ng-disabled="isLoading"><i class="icon-search"></i> SEARCH</button>
+                            <button class="btn btn-grape dropdown-toggle" style="margin-left: -6px"><span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="" ng-click="findAndExportCsv(keyword)" ng-if="!isWaitingFile"><i class="icon-download-alt"></i> Export to CSV</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </h4>
+            </div>
+            <div class="module-content table-responsive">
+                <loading ng-if="isLoading"></loading>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th class="hidden-xs hidden-sm"></th>
+                        <th class="hidden-xs hidden-sm text-right">Created</th>
+                        <th class="hidden-xs hidden-sm text-right">Last login</th>
+                        <th class="hidden-xs hidden-sm text-right" ng-if="!subscription || subscription && subscription !== 'no-premium' && subscription !== 'no-linked-wallet'">Expire</th>
+                        <th class="hidden-xs hidden-sm text-right" ng-if="subscription && subscription !== 'no-premium' && subscription !== 'no-linked-wallet'">Renew date</th>
+                        <th class="text-center hidden-xs">Premium</th>
+                        <th class="text-center hidden-sm hidden-md hidden-lg">Pre</th>
+                        <th class="text-right hidden-xs">Actions</th>
+                        <th class="text-right hidden-sm hidden-md hidden-lg">Act</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="(key, user) in listUser">
+                        <td>
+                            <a class="helpdesk-link" target="_blank" href="/users/info?email={{user.email}}">{{ user.email }}</a>
+                            <img src="/images/facebook-icon.png" tooltip='Facebook' class="icon-user-platform" alt="facebook" ng-if="user.facebookId"/>
+                            <img src="/images/google-icon.png" tooltip='G+' class="icon-user-platform" alt="g+" ng-if="user.googleId"/>
+                            <div>
+                                <img src="/images/android_96.png" tooltip='Android' class="icon-user-platform" alt="android_logo" ng-if="user.hasAndroid"/>
+                                <img src="/images/android_96_disabled.png" class="icon-user-platform" alt="android_logo" ng-if="!user.hasAndroid"/>
+                                <img src="/images/ios_96.png" tooltip='iOS' class="icon-user-platform" alt="apple_logo" ng-if="user.hasIos"/>
+                                <img src="/images/ios_96_disabled.png" class="icon-user-platform" alt="apple_logo" ng-if="!user.hasIos"/>
+                                <img src="/images/winphone_96.png" tooltip='Winphone' class="icon-user-platform" alt="windows_phone_logo" ng-if="user.hasWp"/>
+                                <img src="/images/winphone_96_disabled.png" class="icon-user-platform" alt="windows_phone_logo" ng-if="!user.hasWp"/>
+                                <img src="/images/osx_96.png" tooltip='OSX' class="icon-user-platform" alt="osx_logo" ng-if="user.hasOsx"/>
+                                <img src="/images/osx_96_disabled.png" class="icon-user-platform" alt="osx_logo" ng-if="!user.hasOsx"/>
+                                <img src="/images/windows_96.png" tooltip='Windows' class="icon-user-platform" alt="windows_logo" ng-if="user.hasWindows"/>
+                                <img src="/images/windows_96_disabled.png" class="icon-user-platform" alt="windows_logo" ng-if="!user.hasWindows"/>
+                                <img src="/images/web_96.png" tooltip='Web' class="icon-user-platform" alt="web_logo" ng-if="user.hasWeb"/>
+                                <img src="/images/web_96_disabled.png" class="icon-user-platform" alt="web_logo" ng-if="!user.hasWeb"/>
+                            </div>
+                        </td>
+                        <td class="hidden-xs hidden-sm">
+                            <span ng-if="user.flag" class="flag-icon flag-icon-{{user.flag}}" tooltip="{{user.flag.toUpperCase()}}"></span>
+                        </td>
+                        <td class="hidden-xs hidden-sm text-right"><span ng-if="user.createdDate">{{ user.createdDate | date:'dd/MM/yyyy HH:mm' }}</span></td>
+                        <td class="hidden-xs hidden-sm text-right"><span ng-if="user.lastLogin">{{ user.lastLogin | date:'dd/MM/yyyy HH:mm' }}</span></td>
+                        <td class="hidden-xs hidden-sm text-right" ng-show="subscription && subscription !== 'no-premium' && subscription !== 'no-linked-wallet'" ng-if="!subscription || subscription === 'premium'">{{(user.expireDate || "- - - -") | checkDateTime}}</td>
+                        <td class="hidden-xs hidden-sm text-right" ng-show="subscription && subscription !== 'no-premium' && subscription !== 'no-linked-wallet'"  ng-if="subscription === 'linked-wallet' ">{{(user.rwExpire || "- - - -") | checkDateTime}}</td>
+                        <td class="hidden-xs hidden-sm text-right" ng-show="subscription && subscription !== 'no-premium' && subscription !== 'no-linked-wallet'"  ng-if="subscription === 'premium'">{{user.lastPurchase | checkDateTime}}</td>
+                        <td class="hidden-xs hidden-sm text-right" ng-show="subscription && subscription !== 'no-premium' && subscription !== 'no-linked-wallet'" ng-if="subscription === 'linked-wallet'">{{user.rwLastPurchase | checkDateTime}}</td>
+
+                        <!--<td class="text-center hidden-xs hidden-sm">-->
+                            <!--<a class="btn btn-xs" href="#" ng-click="changeSync(user)" ng-class="{'btn-danger': !user.acceptSync, 'btn-success': user.acceptSync}" ng-disabled="user.acceptSync">-->
+                                <!--<i ng-class="{'icon-check': user.acceptSync, 'icon-unchecked': !user.acceptSync}"></i>-->
+                            <!--</a>-->
+                        <!--</td>-->
+                        <td class="text-center">
+                            <a class="btn btn-xs" href="#" ng-click="acceptPurchased(user)" ng-class="{'btn-danger': !user.purchased, 'btn-success': user.purchased}" ng-disabled="env==='production' && user.purchased">
+                                <i ng-class="{'icon-check': user.purchased, 'icon-unchecked': !user.purchased}"></i>
+                            </a>
+                        </td>
+                        <td class="text-right">
+                            <button class="btn btn-xs btn-twitter" tooltip="Customer support mode" ng-click="changeCustomerSupport(user)"><i class="icon-magic"></i></button>
+                            <button ng-if="env != 'production'" class="btn btn-xs btn-grape" tooltip="Delete user" ng-click="deleteUser(user, key)"><i class="icon-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr ng-show="noResult">
+                        <td>No result found</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td ng-if="subscription"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="breakPage">
+                        <td colspan="12" class="text-center">
+                            <div class="btn-group">
+                                <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading"><i class="icon-fast-backward"></i></a>
+                                <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                                <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading"><i class="icon-fast-forward"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="alert.html">
+        <div class="modal-header">
+            <h4 class="modal-title">Notice</h4>
+        </div>
+        <div class="modal-body">
+            <p>{{message}}</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-default" ng-click="cancel()">Close</button>
+        </div>
+    </script>
+</div>

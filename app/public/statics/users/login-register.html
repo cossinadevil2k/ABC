@@ -1,0 +1,83 @@
+<div id="display-login">
+	<div class="disable-background">
+		<div id="user-action" ng-controller="userAction">
+			<div class="user-title-page">
+				<h1 ng-bind="userPageTitle">Money Lover</h1>
+				<ml-msg ml-bind-content="formStatus"></ml-msg>
+			</div>
+			<!--<div class="user-login" ng-show="displayLogin" ng-init="initLogin()">-->
+				<!--<form name="frmUserLogin" class="login-box" ng-submit="submitLogin()" autocomplete="off" novalidate>-->
+					<!--<div class="form-group" ng-class="{'has-error': validatorEmail}" ng-init="validatorEmail=false">-->
+						<!--<input type="email" class="form-control" placeholder="{{'login_hint_email'|translate}}" ng-model="userInfo.email" name="email" ng-blur="validatorEmail=frmUserLogin.email.$error.email" ng-keyup="validatorEmail=false" auto-fillable-field required>-->
+					<!--</div>-->
+					<!--<div class="form-group" ng-class="{'has-error': validatorPassword, 'has-warning': errorPassword}" ng-init="validatorPassword=false">-->
+						<!--<input type="password" class="form-control" placeholder="{{'login_hint_password'|translate}}" ng-model="userInfo.password" name="password" auto-fillable-field required />-->
+					<!--</div>-->
+					<!--<div class="form-group">-->
+						<!--<button class="btn" type="submit" ng-disabled="frmUserLogin.$invalid">{{ 'login_title' | translate }}</button>-->
+						<!--<a href="#" ng-click="showBox('register')">{{'login_hint_create_account' | translate}}</a>-->
+						<!--<p class="p-link" ng-click="showBox('forgotpassword')">{{'login_hint_forgotpassword' | translate}}</p>-->
+					<!--</div>-->
+				<!--</form>-->
+			<!--</div>-->
+			<!--<div class="user-register" ng-show="displayRegister">-->
+				<!--<form name="userRegister" class="login-box" ng-submit="submitRegister()" autocomplete="off" novalidate>-->
+					<!--<div class="form-group" ng-class="{'has-error': validatorEmail}" ng-init="validatorEmail=false">-->
+						<!--<input type="email" class="form-control" placeholder="{{ 'login_hint_email' | translate }}" ng-model="userInfo.email" name="email" ng-blur="validatorEmail=userRegister.email.$error.email" ng-keyup="validatorEmail=false" auto-fillable-field required />-->
+					<!--</div>-->
+					<!--<div class="form-group" ng-class="{'has-error': validatorPassword, 'has-warning': errorPassword}" ng-init="validatorEmail=false">-->
+						<!--<input type="password" class="form-control" placeholder="{{ 'login_hint_password' | translate }}" ng-model="userInfo.password" name="password" ng-minlength="6" ng-blur="validatorPassword=userRegister.password.$error.minlength" ng-keyup="errorPassword=false" auto-fillable-field required />-->
+						<!--<p class="text-danger" ng-show="userRegister.password.$error.minlength">{{ 'login_hint_warning_password1' | translate}}</p>-->
+					<!--</div>-->
+					<!--<div class="form-group" ng-class="{'has-error': validator_rePassword, 'has-warning': errorPassword}" ng-init="validator_rePassword=false">-->
+						<!--<input type="password" class="form-control" placeholder="{{ 'login_hint_repassword' | translate}}" ng-model="userInfo.repassword" name="repassword" ng-minlength="6" ng-blur="validatorPassword=userRegister.repassword.$error.minlength" ng-keyup="errorPassword=false" auto-fillable-field required />-->
+					<!--</div>-->
+					<!--<div class="form-group">-->
+						<!--<button class="btn" type="submit" ng-disabled="userRegister.$invalid">{{ 'register_register' | translate }}</button>-->
+						<!--<a href="#" ng-click="showBox('login')">{{'login_title' | translate}}</a>-->
+					<!--</div>-->
+				<!--</form>-->
+			<!--</div>-->
+			<!--<div class="user-ForgotPassword" ng-show="displayForgotPassword">-->
+				<!--<form class="login-box" name="forgotPassword" ng-submit="submitForgot()" autocomplete="off" novalidate>-->
+					<!--<div class="message-forgotpassword">{{ 'user_forgot_password_helper' | translate }}</div>-->
+					<!--<div class="form-group" ng-class="{'has-error': validatorEmail}" ng-init="validatorEmail=false">-->
+						<!--<input type="email" class="form-control" placeholder="{{'login_hint_email'|translate}}" ng-model="userInfo.email" name="email" ng-blur="validatorEmail=frmUserLogin.email.$error.email" ng-keyup="validatorEmail=false" auto-fillable-field required>-->
+					<!--</div>-->
+					<!--<span ng-bind="status_forgotpassword"></span>-->
+					<!--<button class="btn" type="submit" ng-disabled="forgotPassword.$invalid">{{ 'confirm' | translate }}</button>-->
+					<!--<a href="#" ng-click="showBox('login')">{{'login_title' | translate}}</a>-->
+				<!--</form>-->
+			<!--</div>-->
+			<div class="user-ConfirmResetPassword" ng-show="displayConfirmResetPassword">
+				<form class="login-box" name="confirmResetPassword" ng-submit="submitConfirm()" autocomplete="off" novalidate>
+					<div class="message-forgotpassword">{{ 'forgot_pass_success' | translate }}</div>
+					<div class="form-group" ng-class="{'has-error': validatorEmail}" ng-init="validatorEmail=false">
+						<input type="email" class="form-control" placeholder="{{'login_hint_email'|translate}}" ng-model="userInfo.email" name="email" ng-blur="validatorEmail=frmUserLogin.email.$error.email" ng-keyup="validatorEmail=false" auto-fillable-field required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="{{'login_hint_confirm_code'|translate}}" ng-model="userInfo.confirmCode" name="confirmCode" auto-fillable-field required />
+					</div>
+					<div class="form-group">
+						<button class="btn" type="submit" ng-disabled="confirmResetPassword.$invalid">{{ 'confirm' | translate }}</button>
+					</div>
+				</form>
+			</div>
+			<div class="user-ResetPassword" ng-show="displayResetPassword">
+				<form class="login-box" name="resetPassword"  ng-submit="submitResetpassword()" autocomplete="off" novalidate>
+					<div class="message-forgotpassword">Enter new password</div>
+					<div class="form-group" ng-class="{'has-error': validatorPassword, 'has-warning': errorPassword}" ng-init="validatorEmail=false">
+						<input type="password" class="form-control" placeholder="{{ 'login_hint_new_password' | translate }}" ng-model="userInfo.password" name="password" ng-minlength="6" ng-blur="validatorPassword=userRegister.password.$error.minlength" ng-keyup="errorPassword=false" auto-fillable-field required />
+						<p class="text-danger" ng-show="userRegister.password.$error.minlength">{{ 'login_hint_warning_password1' | translate}}</p>
+					</div>
+					<div class="form-group" ng-class="{'has-error': validator_rePassword, 'has-warning': errorPassword}" ng-init="validator_rePassword=false">
+						<input type="password" class="form-control" placeholder="{{ 'login_hint_repassword' | translate}}" ng-model="userInfo.repassword" name="repassword" ng-minlength="6" ng-blur="validatorPassword=userRegister.repassword.$error.minlength" ng-keyup="errorPassword=false" auto-fillable-field required />
+					</div>
+					<div class="form-group">
+						<button class="btn" type="submit" ng-disabled="resetPassword.$invalid">{{ 'confirm' | translate }}</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

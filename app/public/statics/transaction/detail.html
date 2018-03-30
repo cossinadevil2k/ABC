@@ -1,0 +1,65 @@
+<form class="frmTransaction" name="frmTransaction" autocomplete="off" novalidate>
+	<div class="form-group">
+		<ml-category-view ml-category="transaction.category"></ml-category-view>
+	</div>
+	<div class="form-group">
+		<div class="input-group">
+			<span class="input-group-addon"></span>
+			<input id="inputTransactionAmount" type="number" class="form-control" ng-model="transaction.amount" placeholder="{{ 'add_transaction_amount_title' | translate }}" ng-focus="displayPreview=true" ng-init="displayPreview=false" ng-blur="displayPreview=false">
+			<div class="ml-preview-amount fade-animate" ng-show="displayPreview"><p class="amount" ng-class="{'amount-expense': (transaction.category.type === 2), 'amount-income': (transaction.category.type === 1) }">{{ transaction.amount | MLCurrency }}</p></div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="input-group">
+			<span class="input-group-addon"><i class="icon-pencil"></i></span>
+			<input id="inputTransactionNote" type="text" class="form-control" placeholder="{{ 'add_transaction_note_title_normal' | translate }}" ng-model="transaction.note">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="input-group">
+			<span class="input-group-addon"><i class="icon-group"></i></span>
+			<input id="inputTransactionNote" type="text" class="form-control" placeholder="{{ 'add_transaction_with_hint' | translate }}" ng-model="transaction.with">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="agrow"></div>
+		</div>
+		<div class="col-lg-6">
+			<div class="form-group">
+				<div class="ml-date-view" ng-click="selectDate()">
+					<div class="ml-date-header">
+						<p>{{ transaction.displayDate | MLDayFormatter }}</p>
+					</div>
+					<div class="ml-date-body">
+						<h1>{{ transaction.displayDate | date:'dd' }}</h1>
+					</div>
+					<div class="ml-date-footer">
+						<p>{{ transaction.displayDate | date:'MMMM yyyy' }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="form-group">
+				<label class="control-label">{{'account' | translate}}</label>
+				<div class="form-control">{{wallet.name}}</div>
+			</div>
+            <div class="form-group" ng-init="getEvent(walletId)">
+                <label class="control-label">Event</label>
+                <div class="form-control dropdown-toggle">{{selectedEvent.name}}<span class="caret"></span></div>
+                <ul class="dropdown-menu" ng-repeat="evt in eventList">
+                    <li>{{evt.name}}</li>
+                </ul>
+            </div>
+		</div>
+	</div>
+	<br />
+
+	<div class="form-group">
+		<button class="btn btn-primary" ng-click="editTransaction(transaction)">Save Edit</button>
+		<a type="reset" class="btn btn-default" ng-click="detailReset(transaction)">{{ 'cancel' | translate }}</a>
+        <button class="btn btn-default" ng-click="delete(transaction)">Delete</button>
+        <button class="btn btn-facebook" ng-click="addTransaction(transaction, wallet)">Add new transaction</button>
+	</div>
+</form>

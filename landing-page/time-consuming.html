@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Thank You!</title>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link href='https://fonts.googleapis.com/css?family=Signika:400,300,700' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <!-- feedback to me (nguyenz.anhduc@gmail.com)-->
+        <style media="screen">
+            @media (max-width: 750px) {
+                .thankyou {
+                    font-size: 33px;
+                }
+                .text-feedback {
+                    font-size: 17px
+                }
+                .moneylover {
+                    font-size: 16px;
+                }
+                .action a {
+                    font-size: 11px;
+                }
+                .wrapper > div:last-child > div {
+                    margin-left: 24px;
+                    margin-top: 24px;
+                }
+            }
+            @media (min-width: 751px) {
+                .thankyou {
+                    font-size: 60px;
+                }
+                .text-feedback {
+                    font-size: 24px
+                }
+                .moneylover {
+                    font-size: 24px;
+                }
+                .wrapper > div:last-child > div {
+                    margin-left: 45px;
+                    margin-top: 33px;
+                }
+            }
+            .wrapper {
+                color: white;
+                height: 100vh;
+                width: 100vw;
+                background-color: #373244;
+                font-family: 'Signika', sans-serif;
+                margin: 0
+            }
+
+            .wrapper > div{
+                position: absolute;
+                transform: translate(0, -50%);
+                top: 50%;
+            }
+            .wrapper > div:first-child {
+                z-index: 1;
+                line-height: 1.1;
+            }
+            .wrapper > div:first-child > div{
+                box-shadow: 0 0 70px rgba(13, 165, 116, 0.6);
+                background-color: white;
+                padding: 30px;
+                width: 91%;
+                margin: 0 auto;
+                border-radius: 11px;
+                height: 350px;
+            }
+            .wrapper > div:last-child {
+                z-index: 0;
+            }
+            .wrapper > div:last-child > div {
+                width: 91%;
+                border-radius: 11px;
+                height: 350px;
+                background-color: #0DA574;
+            }
+            .thankyou {
+                color: #0DA574;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+            .moneylover {
+                font-weight: lighter;
+                color: #0DA574;
+                text-transform: uppercase;
+                letter-spacing: 5px;
+            }
+            .text-feedback {
+                color: rgba(55, 50, 68, 0.7);
+                padding-left: 0;
+                margin-top: 30px;
+                font-weight: lighter;
+                line-height: 1.5
+            }
+            .action {
+                text-align: center;
+                padding-left: 0;
+                margin-top: 30px;
+            }
+            .action a {
+                height: 55px;
+                line-height: 41px;
+                width: 90%;
+                border-radius: 40px;
+                background-color: #0DA574;
+                color: white;
+                text-transform: uppercase;
+                letter-spacing: 4px;
+            }
+            .action a:hover {
+                color: white;
+                text-shadow: 0 0 10px white
+            }
+            .action a:active, .action a:focus {
+                color: white;
+                text-shadow: 0 0 15px white
+            }
+            .heart {
+                position: absolute;
+                top: 0%;
+                right: 7%;
+                width: 100vh;
+                height: 100vh;
+                max-width: 230px;
+                max-height: 230px;
+                -ms-transform: rotate(17deg);
+                -webkit-transform: rotate(17deg);
+                transform: rotate(17deg);
+            }
+
+            .heart > div {
+                position: absolute;
+                background: #f62357;
+                border-radius: 100%;
+                box-shadow: 0 0 15px 5px rgba(246, 35, 87, 0.4);
+                animation: beat 0.8s infinite ease;
+            }
+
+            .heart .left {
+                top: 20%;
+                left: 12.5%;
+                width: 44%;
+                height: 44%;
+            }
+
+            .heart .right {
+                top: 20%;
+                left: 43.5%;
+                width: 44%;
+                height: 44%;
+            }
+
+            .heart .center {
+                top: 38%;
+                left: 29%;
+                width: 42%;
+                height: 42%;
+                border-radius: 0;
+                transform: rotate(45deg);
+            }
+
+            .heart .shine {
+                top: 25%;
+                left: 50%;
+                width: 30%;
+                height: 30%;
+                background: linear-gradient(180deg, #fa85a2 0%, #f62357 10%);
+                transform: rotate(45deg);
+            }
+
+            .heart .cover {
+                top: 26%;
+                left: 53%;
+                width: 26%;
+                height: 26%;
+            }
+
+            @keyframes beat {
+              30% {
+                transform: scale(1.1)rotate(45deg);
+              }
+            }
+        </style>
+
+        <div class="wrapper row">
+            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-xs-12">
+                <div class="row">
+                    <div class="moneylover">
+                        Money lover
+                    </div>
+                    <div class="thankyou">
+                        Thank you!
+                    </div>
+                    <div class="text-feedback col-md-8 col-xs-9">
+                        Link to bank account is coming soon. Let try out Uber & PayPal!          </div>
+                    <div class="col-md-8 col-xs-10 action">
+                        <a type="button" class="btn" name="button" href="http://u.moneylover.me/1WJLCe0" target="_blank">How it works</a>
+                    </div>
+                    <!-- <div class='heart hidden-xs'>
+                      <div class='left'></div>
+                      <div class='right'></div>
+                      <div class='center'></div>
+                      <div class='shine'></div>
+                      <div class='cover'></div>
+                    </div> -->
+                </div>
+
+            </div>
+            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-xs-12"><div></div></div>
+
+        </div>
+    </body>
+</html>
+ 

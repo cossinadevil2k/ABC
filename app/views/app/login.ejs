@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ML">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title ng-bind="MLTitle">Money Lover</title>
+		<meta name="description" content="{{ MLDescription | limitTo:500 }}">
+		<meta name="author" content="{{ MLAuthor }}">
+		<meta name="keyword" content="{{ MLKeyword }}">
+
+		<link rel="shortcut icon" href="<%= urlStatic %>img/favicon.png">
+
+		<link href="<%= urlStatic %>lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="<%= urlStatic %>lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+		<link href="<%= urlStatic %>css/app.css" rel="stylesheet">
+
+		<!--[if lt IE 9]>
+		<script src="/lib/bootstrap/js/ie8-responsive-file-warning.js"></script>
+		<![endif]-->
+		<!--[if lt IE 9]>
+		<script src="/lib/bootstrap/js/html5shiv.js"></script>
+		<script src="/lib/bootstrap/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div id="display-login">
+			<div class="disable-background">
+				<div id="user-action" ng-controller="userAction">
+					<div class="user-title-page">
+						<h1 ng-bind="userPageTitle">Money Lover</h1>
+						<ml-msg ml-bind-content="formStatus"></ml-msg>
+					</div>
+					<!-- <div class="user-login" ng-show="displayLogin" ng-init="initLogin()">
+						<form name="frmUserLogin" class="login-box" ng-submit="submitLogin()" autocomplete="off" novalidate>
+							<div class="form-group" ng-class="{'has-error': validatorEmail}" ng-init="validatorEmail=false">
+								<input type="email" class="form-control" placeholder="{{'login_hint_email'|translate}}" ng-model="userInfo.email" name="email" ng-blur="validatorEmail=frmUserLogin.email.$error.email" ng-keyup="validatorEmail=false" auto-fillable-field required>
+							</div>
+							<div class="form-group" ng-class="{'has-error': validatorPassword, 'has-warning': errorPassword}" ng-init="validatorPassword=false">
+								<input type="password" class="form-control" placeholder="{{'login_hint_password'|translate}}" ng-model="userInfo.password" name="password" auto-fillable-field required />
+							</div>
+							<div class="form-group">
+								<button class="btn" type="submit" ng-disabled="frmUserLogin.$invalid">{{ 'login_title' | translate }}</button>
+								<a href="#" ng-click="showBox('register')">{{'login_hint_create_account' | translate}}</a>
+								<p class="p-link" ng-click="showBox('forgotpassword')">{{'login_hint_forgotpassword' | translate}}</p>
+							</div>
+						</form>
+					</div> -->
+					<!--<div class="user-register" ng-show="displayRegister">-->
+						<!--<form name="userRegister" class="login-box" ng-submit="submitRegister()" autocomplete="off" novalidate>-->
+							<!--<div class="form-group" ng-class="{'has-error': validatorEmail}" ng-init="validatorEmail=false">-->
+								<!--<input type="email" class="form-control" placeholder="{{ 'login_hint_email' | translate }}" ng-model="userInfo.email" name="email" ng-blur="validatorEmail=userRegister.email.$error.email" ng-keyup="validatorEmail=false" auto-fillable-field required />-->
+							<!--</div>-->
+							<!--<div class="form-group" ng-class="{'has-error': validatorPassword, 'has-warning': errorPassword}" ng-init="validatorEmail=false">-->
+								<!--<input type="password" class="form-control" placeholder="{{ 'login_hint_password' | translate }}" ng-model="userInfo.password" name="password" ng-minlength="6" ng-blur="validatorPassword=userRegister.password.$error.minlength" ng-keyup="errorPassword=false" auto-fillable-field required />-->
+								<!--<p class="text-danger" ng-show="userRegister.password.$error.minlength">{{ 'login_hint_warning_password1' | translate}}</p>-->
+							<!--</div>-->
+							<!--<div class="form-group" ng-class="{'has-error': validator_rePassword, 'has-warning': errorPassword}" ng-init="validator_rePassword=false">-->
+								<!--<input type="password" class="form-control" placeholder="{{ 'login_hint_repassword' | translate}}" ng-model="userInfo.repassword" name="repassword" ng-minlength="6" ng-blur="validatorPassword=userRegister.repassword.$error.minlength" ng-keyup="errorPassword=false" auto-fillable-field required />-->
+							<!--</div>-->
+							<!--<div class="form-group">-->
+								<!--<button class="btn" type="submit" ng-disabled="userRegister.$invalid">{{ 'register_register' | translate }}</button>-->
+								<!--<a href="#" ng-click="showBox('login')">{{'login_title' | translate}}</a>-->
+							<!--</div>-->
+						<!--</form>-->
+					<!--</div>-->
+					<div class="user-ForgotPassword" ng-show="displayForgotPassword">
+						<form class="login-box" name="forgotPassword" ng-submit="submitForgot()" autocomplete="off" novalidate>
+							<div class="message-forgotpassword">{{ 'user_forgot_password_helper' | translate }}</div>
+							<div class="form-group" ng-class="{'has-error': validatorEmail}" ng-init="validatorEmail=false">
+								<input type="email" class="form-control" placeholder="{{'login_hint_email'|translate}}" ng-model="userInfo.email" name="email" ng-blur="validatorEmail=frmUserLogin.email.$error.email" ng-keyup="validatorEmail=false" auto-fillable-field required>
+							</div>
+							<span ng-bind="status_forgotpassword"></span>
+							<button class="btn" type="submit" ng-disabled="forgotPassword.$invalid">{{ 'confirm' | translate }}</button>
+						</form>
+					</div>
+					<div class="user-ConfirmResetPassword" ng-show="displayConfirmResetPassword">
+						<form class="login-box" name="confirmResetPassword" ng-submit="submitConfirm()" autocomplete="off" novalidate>
+							<div class="message-forgotpassword">{{ 'forgot_pass_success' | translate }}</div>
+							<div class="form-group" ng-class="{'has-error': validatorEmail}" ng-init="validatorEmail=false">
+								<input type="email" class="form-control" placeholder="{{'login_hint_email'|translate}}" ng-model="userInfo.email" name="email" ng-blur="validatorEmail=frmUserLogin.email.$error.email" ng-keyup="validatorEmail=false" auto-fillable-field required>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="{{'login_hint_confirm_code'|translate}}" ng-model="userInfo.confirmCode" name="confirmCode" auto-fillable-field required />
+							</div>
+							<div class="form-group">
+								<button class="btn" type="submit" ng-disabled="confirmResetPassword.$invalid">{{ 'confirm' | translate }}</button>
+							</div>
+						</form>
+					</div>
+					<div class="user-ResetPassword" ng-show="displayResetPassword">
+						<form class="login-box" name="resetPassword"  ng-submit="submitResetpassword()" autocomplete="off" novalidate>
+							<div class="message-forgotpassword">Enter new password</div>
+							<div class="form-group" ng-class="{'has-error': validatorPassword, 'has-warning': errorPassword}" ng-init="validatorEmail=false">
+								<input type="password" class="form-control" placeholder="{{ 'login_hint_new_password' | translate }}" ng-model="userInfo.password" name="password" ng-minlength="6" ng-blur="validatorPassword=userRegister.password.$error.minlength" ng-keyup="errorPassword=false" auto-fillable-field required />
+								<p class="text-danger" ng-show="userRegister.password.$error.minlength">{{ 'login_hint_warning_password1' | translate}}</p>
+							</div>
+							<div class="form-group" ng-class="{'has-error': validator_rePassword, 'has-warning': errorPassword}" ng-init="validator_rePassword=false">
+								<input type="password" class="form-control" placeholder="{{ 'login_hint_repassword' | translate}}" ng-model="userInfo.repassword" name="repassword" ng-minlength="6" ng-blur="validatorPassword=userRegister.repassword.$error.minlength" ng-keyup="errorPassword=false" auto-fillable-field required />
+							</div>
+							<div class="form-group">
+								<button class="btn" type="submit" ng-disabled="resetPassword.$invalid">{{ 'confirm' | translate }}</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	
+		<script src="<%= urlStatic %>lib/jquery/jquery-1.10.2.min.js"></script>
+		<script src="<%= urlStatic %>lib/jquery/jquery.cookie.js"></script>
+		<script src="<%= urlStatic %>lib/bootstrap/js/bootstrap.min.js"></script>
+		<script src="<%= urlStatic %>lib/angular/angular.min.js"></script>
+		<script src="<%= urlStatic %>lib/angular/angular-route.min.js"></script>
+		<script src="<%= urlStatic %>lib/angular/angular-animate.min.js"></script>
+		<script src="<%= urlStatic %>lib/angular/angular-sanitize.min.js"></script>
+		<script src="<%= urlStatic %>lib/angular/angular-local-storage.min.js"></script>
+		<script src="<%= urlStatic %>lib/angular/ui-bootstrap-tpls-0.10.0.min.js"></script>
+		<script src="<%= urlStatic %>lib/angular/angular-translate.min.js"></script>
+		<script src="<%= urlStatic %>lib/moneylover/moneylover.js"></script>
+		<script src="<%= urlStatic %>lib/moneylover/language.js"></script>
+		<script src="<%= urlStatic %>lib/moneylover/utils.js"></script>
+		<script src="<%= urlStatic %>lib/moneylover/datetimeUtils2.js"></script>
+		<script src="<%= urlStatic %>lib/js/accounting.min.js"></script>
+		<script src="<%= urlStatic %>lib/js/numeral.min.js"></script>
+		<script src="<%= urlStatic %>lib/js/moment.min.js"></script>
+		<script src="<%= urlStatic %>lib/js/sparklines.min.js"></script>
+		<script src="<%= urlStatic %>lib/js/knob.js"></script>
+		<script src="<%= urlStatic %>lib/js/fullcalendar.min.js"></script>
+		<script src="<%= urlStatic %>lib/js/underscore-min.js"></script>
+		<script src="<%= urlStatic %>js/script.js"></script>
+		<script src="<%= urlStatic %>js/app.js"></script>
+		<script src="<%= urlStatic %>js/services.js"></script>
+		<script src="<%= urlStatic %>js/controllers.js"></script>
+		<script src="<%= urlStatic %>js/filters.js"></script>
+		<script src="<%= urlStatic %>js/directives.js"></script>
+		<script>
+		(function() {
+			var _fbq = window._fbq || (window._fbq = []);
+			if (!_fbq.loaded) {
+				var fbds = document.createElement('script');
+				fbds.async = true;
+				fbds.src = '//connect.facebook.net/en_US/fbds.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(fbds, s);
+				_fbq.loaded = true;
+			}
+			_fbq.push(['addPixelId', "518931264882008"]);
+		})();
+		window._fbq = window._fbq || [];
+		window._fbq.push(["track", "PixelInitialized", {}]);
+		</script>
+		<noscript>
+			<img height="1" width="1" border="0" alt="" style="display:none" src="https://www.facebook.com/tr?id=518931264882008&amp;ev=NoScript" />
+		</noscript>
+	</body>
+</html>

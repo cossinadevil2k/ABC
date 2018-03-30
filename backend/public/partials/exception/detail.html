@@ -1,0 +1,50 @@
+<div class="modal-header">
+    <h4>Exception detail</h4>
+</div>
+<div class="modal-body form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-2 control-label">User:</label>
+        <div class="col-lg-10">
+            <pre>{{detail.userId}}</pre>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">URL:</label>
+        <div class="col-lg-10">
+            <pre>{{detail.url}}</pre>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Error code:</label>
+        <div class="col-lg-10">
+            <pre>{{detail.errorCode}}</pre>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Error message:</label>
+        <div class="col-lg-10">
+            <pre>{{detail.errorMessage}}</pre>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Post data:</label>
+        <div class="col-lg-10">
+            <pre>{{detail.postData}}</pre>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Detail:</label>
+        <div class="col-lg-10">
+            <pre>{{detail.errorDetail || "No detail"}}</pre>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Date:</label>
+        <div class="col-lg-10">
+            <pre>{{detail.errorDate | checkDateTime}}</pre>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="close()">Close</button>
+</div>

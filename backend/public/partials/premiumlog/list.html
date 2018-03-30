@@ -1,0 +1,50 @@
+<div class="module no-padding">
+    <div class="module-header">
+        <h4>Admin Log
+            <button class="btn btn-danger" ng-click="clearList()">Clear log</button>
+            <i class="icon-refresh" style="cursor: pointer" ng-click="getList()" tooltip="Cập nhật"></i>
+        </h4>
+        <div class="input-group quick-search-box" style="width: 50% !important;">
+            <span class="input-group-btn">
+				<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">{{searchMode.title}} <span class="caret"></span></button>
+				<ul class="dropdown-menu pull-right">
+                    <li><a href="#" ng-click="selectSearchMode(1)">Tìm theo email</a></li>
+                    <li><a href="#" ng-click="selectSearchMode(0)">Tìm theo admin</a></li>
+                </ul>
+			</span>
+            <input type="text" class="form-control" ng-model="keyword" placeholder="Enter email..." ng-keydown="searchKey($event, keyword)">
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-grape" ng-click="search(keyword)"><i class="icon-search"></i> SEARCH</button>
+			</span>
+        </div>
+    </div>
+    <div class="module-content table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Email</th>
+                <th>Admin</th>
+                <th>Action</th>
+                <th>Update At</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key, log) in listLog | filter:keyword track by $index">
+                <td>{{ log.email }}</td>
+                <td>{{ log.admin }}</td>
+                <td>{{ log.action }}</td>
+                <td>{{ log.updateAt | date:'dd/MM/yyyy HH:mm' }}</td>
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage"><i class="icon-fast-backward"></i></a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage"><i class="icon-fast-forward"></i></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

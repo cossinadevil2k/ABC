@@ -1,0 +1,57 @@
+<div class="module no-padding">
+    <div class="module-header">
+        <h4>List</h4>
+    </div>
+    <div class="module-content">
+        <loading ng-if="isLoading"></loading>
+        <table class="table table-responsive">
+            <thead>
+            <tr>
+                <th>Note</th>
+                <th>Provider</th>
+                <th>Amount</th>
+                <th>Currency</th>
+                <th>Type</th>
+                <th>Created At</th>
+                <th class="text-right">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key, transaction) in transactions" ng-if="transaction.account && transaction.category">
+                <td>{{transaction.note}}</td>
+                <td>{{transaction.account.rwInfo.p_code}}</td>
+                <td>{{transaction.amount | number}}</td>
+                <td>{{transaction.account.currency_id | currency}}</td>
+                <td>{{(transaction.category.type === 1)?'Income':'Expense'}}</td>
+                <td>{{transaction.createdAt| checkDateTime}}</td>
+                <td class="text-right">
+                    <button class="btn btn-xs btn-twitter" ng-click="detail(transaction)">
+                        <i class="icon-desktop"></i> Detail
+                    </button>
+                    <button class="btn btn-xs btn-success" ng-click="changeCategory(transaction)">
+                        <i class="icon-exchange"></i> Change category
+                    </button>
+                </td>
+            </tr>
+            <tr ng-if="transactions.length === 0">
+                <td>No result found</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading"><i class="icon-fast-backward"></i></a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading"><i class="icon-fast-forward"></i></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

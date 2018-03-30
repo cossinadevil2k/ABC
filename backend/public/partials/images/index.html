@@ -1,0 +1,44 @@
+<div>
+    <h4>Total:</h4>
+</div>
+
+<div class="module no-padding">
+    <div class="module-header">
+        <h4>Detail</h4>
+    </div>
+    <div class="module-content table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Img id</th>
+                <th class="text-center">Wallet</th>
+                <th class="text-center">Created</th>
+                <th class="text-right">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="transaction in transactions">
+                <td>{{transaction.images}}</td>
+                <td class="text-center">
+                    {{transaction.account.name}}
+                </td>
+                <td class="text-center">
+                    {{transaction.createdAt | checkDateTime}}
+                </td>
+                <td class="text-right">
+                    <button class="btn btn-xs btn-info" tooltip="View Image" ng-click="view(transaction.images)"><i class="icon-eye-open"></i></button>
+                </td>
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading"><i class="icon-fast-backward"></i></a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading"><i class="icon-fast-forward"></i></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+
+<div class="totalCate">
+    <span>Number of logs: </span>{{total_changelog}}
+</div>
+
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="module no-padding">
+            <div class="module-header" style="min-height: 49px;">
+                <h4 class="hidden-xs">List</h4>
+            </div>
+            <div class="module-content">
+                <div class="module" style="overflow-x: auto;">
+                    <div class="module-header no-padding">
+        			</div>
+                    <loading ng-if="isLoading"></loading>
+                    <div class="module-content no-padding table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Provider</th>
+                                    <th>Note</th>
+                                    <th>Amount</th>
+                                    <th>Source Cate</th>
+                                    <th>Destination Cate</th>
+                                    <th>Update</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                <tr ng-if="noResult">
+                                    <td></td>
+                                    <td>No Result Found</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr ng-repeat="(key, log) in logs">
+                                    <td><a href="/users/info?email={{log.transaction.account.owner.email}}" target="_blank">{{log.transaction.account.owner.email}}</a></td>
+                                    <td>{{log.metadata.provider}}</td>
+                                    <td>{{log.transaction.note}}</td>
+                                    <td>{{log.transaction.amount | number : fractionSize}}</td>
+                                    <td>{{log.old_category}}</td>
+                                    <td>{{log.new_category}}</td>
+                                    <td>{{log.changed_date | checkDateTime}}</td>
+                                    <td class="text-right">
+                                        <button class="btn btn-twitter" ng-click="showTransaction(log.transaction)"><i class="icon-desktop"></i> Show transaction</button>
+                                        <button class="btn btn-deepsea" type="button" ng-click="editUserCate(log)"  tooltip="Change destination cate"><i class="icon-random"></i> Edit</button>
+                                        <button class="btn btn-danger" type="button" ng-click="delUserCate(log, key)"><i class="icon-remove"></i> Delete</button>
+                                    </td>
+                                </tr>
+
+                                <tr class="breakPage">
+                                    <td colspan="12" class="text-center">
+                                        <div class="btn-group">
+                                            <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage"><i class="icon-fast-backward"></i></a>
+                                            <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                                            <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage"><i class="icon-fast-forward"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

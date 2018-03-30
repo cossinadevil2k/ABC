@@ -1,0 +1,11 @@
+{
+  "name": "Money Lover Headquarter",
+  "short_name": "NSFW",
+  "start_url": "/",
+  "display": "standalone",
+  "gcm_sender_id": "232289542997",
+  "gcm_user_visible_only": true,
+  "permissions": [
+    "gcm"
+  ]
+}

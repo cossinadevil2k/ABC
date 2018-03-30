@@ -1,0 +1,48 @@
+<div>
+    <div class="module">
+        <div class="module-header">
+            <div>
+                <button class="btn btn-success" ng-click="addNew()"><i class="icon-plus"></i> New</button>
+            </div>
+        </div>
+    </div>
+    <div class="module">
+        <div class="module-header no-padding">
+            <ul class="nav nav-tabs">
+                <li ng-class="{active: (selectedTab === 'enabled')}"><a href="#" ng-click="tabSelect('enabled')">Enabled</a></li>
+                <li ng-class="{active: (selectedTab === 'disabled')}"><a href="#" ng-click="tabSelect('disabled')">Disabled</a></li>
+            </ul>
+        </div>
+        <div class="module-content">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>provider</th>
+                        <th>location</th>
+                        <th>start</th>
+                        <th>end</th>
+                        <th>creator</th>
+                        <th>last update</th>
+                        <th class="text-right">action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="coupon in listCoupon">
+                        <td>{{coupon.name}}</td>
+                        <td>{{coupon.provider}}</td>
+                        <td>{{coupon.location}}</td>
+                        <td>{{coupon.startDate  || '------' | checkDateTime}}</td>
+                        <td>{{coupon.endDate || '------' | checkDateTime}}</td>
+                        <td>{{coupon.creator.username}}</td>
+                        <td>{{coupon.updateAt | checkDateTime}}</td>
+                        <td class="text-right">
+                            <button class="btn btn-xs btn-facebook" ng-click="edit(coupon)">Detail/Edit</button>
+                            <button class="btn btn-xs btn-grape" ng-click="delete(coupon)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

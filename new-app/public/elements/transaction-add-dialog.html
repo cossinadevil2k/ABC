@@ -1,0 +1,24 @@
+<polymer-element name="transaction-add-dialog">
+    <template>
+        <paper-dialog heading="note" id="transactionAddDialog" autoCloseDisabled="true">
+            <p>Id qui scripta ...</p>
+            <paper-button label="Accept" affirmative autofocus></paper-button>
+        </paper-dialog>
+    </template>
+    <script>
+        Polymer('transaction-add-dialog', {
+            created: function(){
+            },
+            domReady: function(){
+            },
+
+            showAdd: function(transaction){
+                this.transaction = transaction;
+                console.log(transaction);
+                this.$.transactionAddDialog.toggle();
+            },
+
+        });
+    </script>
+
+</polymer-element>

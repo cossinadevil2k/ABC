@@ -1,0 +1,27 @@
+@media (max-width: 1024px) {
+  .navbar-fixed-top {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding: 0px 0px !important;
+  }
+}
+@media (min-width: 767px) and (max-width: 979px) {
+  .navbar-fixed-top {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding: 0px 0px !important;
+  }
+}
+@media (max-width: 599px) {
+  .navbar-fixed-top {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding: 0px 24px;
+  }
+  .navbar-fixed-top .container {
+    width: 100% !important;
+  }
+  .navbar-fixed-top .navbar-inner {
+    padding: 0px !important;
+  }
+}

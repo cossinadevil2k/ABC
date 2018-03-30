@@ -1,0 +1,106 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="module no-padding">
+            <div class="module-header">
+                <h4 class="listHeader">
+                    <span class="">Providers of {{categoryName}} category</span>
+                </h4>
+                <button class="btn right btn-grape" ng-click="saveProviderList()">Save</button>
+                <button class="btn right btn-primary" ng-click="pickMoreProvider()" style="margin-right : 2%">Add Providers</button>
+            </div>
+            <div class="module-content table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="hidden-xs hidden-sm text-center">ID</th>
+                            <th class="hidden-xs hidden-sm"></th>
+                            <th>Name</th>
+                            <th class="hidden-xs hidden-sm text-center">Type</th>
+                            <th class="hidden-xs hidden-sm text-center">Country</th>
+                            <th class="text-center hidden-xs">Service</th>
+                            <th class="hidden-xs hidden-sm text-center">Action</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="provider in providers track by $index">
+                            <td class="text-center">
+                                <p>{{provider.realId}}</p>
+                            </td>
+                            <td>
+                                <img class="ml-thumbnail" src="{{provider.icon}}" alt="{{provider.name}}.png" />
+                            </td>
+                            <td>
+                                <p>{{provider.name}}</p>
+                            </td>
+                            <td class="text-center">
+                                <p>{{provider.type}}</p>
+                            </td>
+                            <td class="text-center">
+                                <p>{{provider.country_code}}</p>
+                            </td>
+                            <td class="text-center">
+                                <p ng-if="provider.service == 1">Saltedge</p>
+                                <p ng-if="provider.service == 2">Finsify</p>
+                            </td>
+                            <td class="text-center">
+                                 <button class="btn btn-xs btn-grape" tooltip="Delete Provider" ng-click="deleteProviderChoose(provider.realId,categoryName)"><i class="icon-trash"></i></button>
+                            </td>
+                            <td>
+                                <a class="btn btn-default" ng-click="move($index, -1)" ng-disabled="$index == 0"><i class="icon-sort-up"></i></a>
+                                <a class="btn btn-default" ng-click="move($index,1)" ng-disabled="$index == providers.length -1 "><i class="icon-sort-down"></i></a>
+                            </td>
+                        </tr>
+                        <!--<tr class="breakPage">
+                            <td colspan="12" class="text-center">
+                                <div class="btn-group">
+                                    <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage"><i class="icon-fast-backward"></i></a>
+                                    <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                                    <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage"><i class="icon-fast-forward"></i></a>
+                                </div>
+                            </td>
+                        </tr>-->
+                    </tbody>
+                </table>
+                <div ng-if="noContent == true" style="text-align: center;">
+                    <h1>No Content</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<script>
+    window.array_id_provider = null;
+
+    function toggle(source) {
+        checkboxes = document.getElementsByName('select');
+        for (var i = 0, n = checkboxes.length; i < n; i++) {
+            checkboxes[i].checked = source.checked;
+        }
+        var array_id_provider = [];
+        for (var i = 0, n = checkboxes.length; i < n; i++) {
+            if (checkboxes[i].checked) {
+                array_id_provider.push(document.getElementsByName('select')[i].value);
+            }
+        }
+
+        // console.log('toggle', array_id_provider);
+        window.array_id_provider = array_id_provider;
+        return false;
+    }
+    function selectThis() {
+        checkboxes = document.getElementsByName('select');
+        var array_id_provider = [];
+        for (var i = 0, n = checkboxes.length; i < n; i++) {
+            if (checkboxes[i].checked) {
+                array_id_provider.push(document.getElementsByName('select')[i].value);
+            }
+        }
+        console.log('select', array_id_provider);
+        window.array_id_provider = array_id_provider;
+
+        return false;
+    }
+
+</script>-->

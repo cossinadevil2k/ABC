@@ -1,0 +1,128 @@
+{
+  "name": "Banks in Thailand",
+  "product_id": "icon_thailand_bank",
+  "icons": {
+    "thai_bank_01": [
+      "bank of ayudhya",
+      "ayudhya",
+      "bank",
+      "ธนาคารกรุงศรีอยุธยา จำกัด",
+      "มหาชน"
+    ],
+    "thai_bank_02": [
+      "bangkok bank",
+      "bangkok",
+      "bank",
+      "ธนาคารกรุงเทพ"
+    ],
+    "thai_bank_03": [
+      "cimb bank",
+      "cimb",
+      "bank",
+      "cimb of malaysia"
+    ],
+    "thai_bank_04": [
+      "kasikornbank",
+      "kasikkorn",
+      "bank",
+      "ธนาคารกสิกรไทย"
+    ],
+    "thai_bank_05": [
+      "kiatnakin bank",
+      "kiatnakin",
+      "bank",
+      "ธนาคารเกียรตินาคิน"
+    ],
+    "thai_bank_06": [
+      "krungthai bank",
+      "krungthai",
+      "bank",
+      "ธนาคารกรุงไทย"
+    ],
+    "thai_bank_07": [
+      "thanachart bank",
+      "thanachart",
+      "bank",
+      "ธนาคารธนชาต"
+    ],
+    "thai_bank_08": [
+      "tmb bank",
+      "tmb",
+      "bank",
+      "thai military bank",
+      "military",
+      "ธนาคารทหารไทย"
+    ],
+    "thai_bank_09": [
+      "siam commercial bank",
+      "siam",
+      "commercial",
+      "bank",
+      "ธนาคารไทยพาณิชย์"
+    ],
+    "thai_bank_10": [
+      "standard chartered bank",
+      "standard",
+      "chartered",
+      "bank",
+      "standard shartered bank of the uk",
+      "uk"
+    ],
+    "thai_bank_11": [
+      "united overseas bank",
+      "united",
+      "overseas",
+      "bank",
+      "united overseas bank of singapore",
+      "singapore"
+    ],
+    "thai_bank_12": [
+      "tisco bank",
+      "tisco",
+      "bank"
+    ],
+    "thai_bank_13": [
+      "icbc bank",
+      "icbc",
+      "bank",
+      "industrial and commercial bank of china",
+      "industrial",
+      "commercial",
+      "china",
+      "中国工商银行",
+      "Zhōngguó Gōngshāng Yínháng"
+    ],
+    "thai_bank_14": [
+      "citibank",
+      "city",
+      "citi",
+      "bank",
+      "city bank of new york"
+    ],
+    "thai_bank_15": [
+      "the hongkong and shanghai bank",
+      "hsbc",
+      "hongkong",
+      "shanghai",
+      "bank",
+      "香港上海滙豐銀行有限公司"
+    ],
+    "thai_bank_16": [
+      "land and house bank",
+      "land",
+      "house",
+      "bank"
+    ]
+  },
+  "tags": [
+    "bank",
+    "thailand",
+    "banks",
+    "Thailand",
+    "Thái Lan",
+    "ราชอาณาจักรไทย",
+    "ประเทศไทย",
+    "siam",
+    "ธนาคารแห่งประเทศไทย"
+  ]
+}

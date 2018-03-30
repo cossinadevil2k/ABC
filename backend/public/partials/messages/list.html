@@ -1,0 +1,37 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Campaign</th>
+            <th>Group</th>
+            <th>Owner</th>
+            <th>Last Edit</th>
+            <th>Created At</th>
+            <th class="text-right">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="animate-repeat" ng-repeat="(key, mess) in listMsg | filter:searchKeyword" ng-hide="mess.isDelete">
+            <td>{{mess.title}}</td>
+            <td>{{mess.option.ca}}</td>
+            <td>{{mess.option.group}}</td>
+            <td>{{mess.owner.username}}</td>
+            <td>{{mess.lastEditBy.username}}</td>
+            <td>{{mess.createdAt | date: 'dd/MM/yyyy HH:mm'}}</td>
+            <td class="text-right">
+                <button class="btn btn-xs btn-orange" tooltip="Send to User" ng-click="sendMessage(mess,'user')">
+                    <i class="icon-share"></i>
+                </button>
+                <button class="btn btn-xs btn-info" tooltip="View push sessions" ng-click="sessionList(mess)">
+                    Push sessions
+                </button>
+                <button class="btn btn-xs btn-facebook" ng-click="editMessage(mess)" tooltip="Edit">
+                    <i class="icon-pencil"></i>
+                </button>
+                <button class="btn btn-xs btn-danger" ng-click="deleteMessage(mess, key)">
+                    <i class="icon-trash"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

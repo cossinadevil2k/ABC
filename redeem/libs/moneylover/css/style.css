@@ -1,0 +1,376 @@
+/*
+	Money Lover
+	style event
+ */
+
+body {
+	background: #EEE;
+	font-family: "Roboto", sans-serif;
+}
+
+a.money-link {
+	text-decoration: underline;
+	color: #999;
+}
+
+a.money-link:hover {
+	color: #59bf4a;
+}
+
+a.money-link:active {
+	color: #157506;
+}
+
+.modal-content, .btn {
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+
+.header-bg {
+	background-color: #59bf4a;
+	height: 232px;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+.header, .marketing{
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.header {
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.header h3 {
+	padding-bottom: 19px;
+	margin-top: 0;
+	margin-bottom: 0;
+	line-height: 40px;
+}
+
+.footer {
+	width: 100%;
+	padding-top: 15px;
+	color: #999;
+	text-align: center;
+	font-size: 12px;
+}
+
+.container {
+	margin-top: 52px;
+	margin-bottom: 28px;
+	max-width: 410px;
+}
+
+#money-form-main {
+	/*display: none;*/
+}
+
+#money-form-success {
+	display: none;
+}
+
+.logo {
+	text-align: center;
+}
+
+.logo p {
+	/*text-transform:uppercase;*/
+	color: #FFF;
+	font-size: 14px;
+	/*font-weight: bold;*/
+	margin-top: 5px;
+	margin-bottom: 19px;
+	font-weight: 500;
+}
+
+.main-form {
+	background-color: #fff;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.23);
+	padding: 20px 16px 16px;
+}
+
+.form-header {
+	font-size: 20px;
+	line-height: 24px;
+	margin: 0 0 18px 0;
+}
+.form-input {
+	height: auto;
+	width: 100%;
+	background: #fff;
+	margin-bottom: 13px;
+}
+
+.label {
+	padding: 0;
+	color: #adadad;
+}
+
+.label label {
+	font-size: 12px;
+	margin-top: 18px;
+	font-weight: normal;
+}
+
+.input input {
+	background: #fff;
+	width: 100%;
+	font-size: 16px;
+	padding: 0;
+	margin-top: 6px;
+	/*text-transform:uppercase;*/
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 1px solid #e6e6e6;
+	padding-bottom: 5px;
+}
+
+.form-control {
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	color: #333;
+	height: 32px;
+}
+
+.form-control.inp-error {
+	border-color: #e04747;
+}
+
+.form-control:focus {
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-bottom: 1px solid #999;
+}
+
+#redeem-code {
+	text-transform: uppercase;
+}
+
+.input input.input-normal {
+	font-size: 16px;
+}
+
+.error {
+	display: none;
+    margin-top: 12px;
+    position: relative;
+}
+
+.error p {
+	color: #e04747;
+	font-size: 12px;
+	line-height: 14px;
+	margin-right: 25px;
+}
+
+.error .icon-error {
+	background: transparent url(../img/error.png) no-repeat center center;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	right: 0;
+	top: -5px;
+}
+
+.error a {
+	color: #e04747
+}
+
+.form-captcha .form-input {
+	display: table-cell;
+	padding-right: 20px;
+	vertical-align: top;
+}
+.form-captcha .image-captcha {
+	display: table-cell;
+	/*width: 100%;*/
+}
+
+.form-captcha #recaptcha_image {
+	width: 100% !important;
+	display: block;
+	text-align: right;
+}
+
+.form-captcha .button-refresh {
+	display: table-cell;
+	vertical-align: top;
+	/*padding-top: 2px;*/
+}
+
+.captcha-label {
+	display: block;
+	padding-right: 0;
+	margin-bottom: 0
+}
+
+#recaptcha_challenge_image {
+	width: 220px;
+	height: 40px;
+}
+
+#money-accept {
+	margin-top: 9px;
+	border-bottom: none;
+	color: #999;
+	font-size: 12px;
+	height: auto;
+	line-height: 16px;
+}
+
+#recaptcha_widget {
+	padding-top: 8px;
+	position: relative;
+}
+
+#button-submit {
+	margin-top: 37px;
+	text-align: right;
+	position: relative;
+}
+
+#button-submit .btn-submit {
+	border: none;
+	font-size: 14px;
+	font-weight: 500;
+	text-transform: uppercase;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	background: transparent;
+	padding: 7px 15px;
+	color: #59bf4a;
+}
+
+#button-submit a.btn-submit,
+#button-submit a.btn-submit:hover {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#button-submit a.btn-submit:active {
+	color: #157506;
+}
+
+#button-submit .btn-submit.green, #button-submit .btn-submit.white:hover {
+	background-color: #59bf4a;
+	color: #FFF;
+	border: 1px solid #59bf4a;
+}
+
+#button-submit .btn-submit.white {
+	background-color: #fff;
+	color: #59bf4a;
+	border: 1px solid #59bf4a;
+}
+
+#button-submit .btn-submit.white:active {
+	background-color: #157506;
+	color: #FFF;
+	border: 1px solid #157506;
+}
+
+#button-submit .btn-submit.green:active {
+	background-color: #359b26;
+	color: #fff;
+	border: 1px solid #359b26;
+}
+
+#recaptcha_widget .col-xs-5,
+#recaptcha_widget .col-xs-7 {
+	padding: 0;
+}
+
+#form-success {
+	padding: 0;
+}
+
+#image-success {
+	overflow: hidden;
+	-moz-border-radius: 2px 2px 0 0;
+	-webkit-border-radius: 2px 2px 0 0;
+	border-radius: 2px 2px 0 0;
+}
+
+.main-form-success {
+	padding: 15px 16px 28px;
+}
+
+.main-form-success .form-header {
+	margin-bottom: 14px;
+}
+
+.money-text-thanks p,
+.money-text-tips p {
+	font-size: 14px;
+	line-height: 20px;
+	margin-bottom: 20px;
+}
+
+.money-text-tips p {
+	margin-top: 5px;
+}
+
+#special-thanks {
+	padding-bottom: 0;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+#btn-refresh {
+	background: transparent url('../img/btn-refresh.png') no-repeat center center;
+	width: 32px;
+	height: 32px;
+	display: block;
+	cursor: pointer;
+	content: " ";
+}
+@media screen and (max-width: 460px) {
+	body {
+		overflow-x: hidden;
+	}
+	.container {
+		width: 100%;
+	}
+	.main-form {
+		margin: 0 15px;
+	}
+	.form-captcha .form-input {
+		display: block;
+	}
+}
+#social-plugin {
+	left: 0px;
+	position: absolute;
+	top: 0px;
+	/*width: 100%;*/
+	text-align: left;
+}
+
+#___plusone_0 {
+	width: 65px !important;
+	overflow: hidden !important;
+}
+
+#facebook-like {
+	overflow: hidden !important;
+	width: 130px;
+	padding-top: 1px;
+}

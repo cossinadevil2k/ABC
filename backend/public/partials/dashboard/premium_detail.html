@@ -1,0 +1,97 @@
+<div class="module">
+    <div class="module-header">
+        
+    </div>
+    <div class="module-content">
+        <h4 class="module-subtitle">
+            Daily ({{dailyStartTime}} - {{dailyEndTime}})
+        </h4>
+        <loading ng-if="isLoadingDaily"></loading>
+        <div class="chart" id="dailyChart"></div>
+
+        <h4 class="module-subtitle">
+            Monthly ({{monthlyStartTime}} - {{monthlyEndTime}})
+        </h4>
+        <loading ng-if="isLoadingMonthly"></loading>
+        <div class="chart" id="monthlyChart"></div>
+
+        <h4 class="module-subtitle">
+            Yearly ({{yearlyStartTime}} - {{yearlyEndTime}})
+        </h4>
+        <loading ng-if="isLoadingYearly"></loading>
+        <div class="chart" id="yearlyChart"></div>
+
+        <div class="row">
+            <h4 class="module-subtitle">
+                Country stats ({{countryStartTime}} - {{countryEndTime}})
+                <button class="btn btn-xs btn-primary" ng-click="openDateRangePicker2()">Change date range</button>
+            </h4>
+            <h4>Total: {{totalByDateRange | number}}</h4>
+            <loading ng-if="isLoadingCountry"></loading>
+            <div>
+                <div class="col-lg-6">
+                    <h4 class="module-subtitle">
+                        Ratio chart (%)
+                    </h4>
+                    <div ng-if="userCountryData.length === 0">
+                        <h3>No data</h3>
+                    </div>
+                    <div class="chart" id="countryChart"></div>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="module-subtitle">
+                        Top 10
+                    </h4>
+                    <div ng-if="userCountryData.length === 0">
+                        <h3>No data</h3>
+                    </div>
+                    <table class="table table-responsive" ng-if="userCountryData.length > 0">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th></th>
+                            <th>Country</th>
+                            <th>New Users</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="(key, record) in userCountryData" ng-if="key < 10">
+                            <td>{{key + 1}}</td>
+                            <td>
+                                <span ng-if="record.country_code" class="flag-icon flag-icon-{{record.country_code}}"></span>
+                            </td>
+                            <td>{{record.label}}</td>
+                            <td>{{record.value | number}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="change-user-daily-date-range.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Pick daily date range</h4>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-lg-2">Start Date</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="info.sd" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-2">End Date</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="info.ed" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" ng-click="cancel()">Close</button>
+        <button class="btn btn-primary" ng-click="pick()">Pick</button>
+    </div>
+</script>

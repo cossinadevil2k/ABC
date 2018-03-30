@@ -1,0 +1,21 @@
+<polymer-element name="item-amount" attributes="amount categoryType currencyId currencyList">
+<template>
+  <span class="text-body {{ categoryType | amountDisplayClass }}">{{amount | amountDisplay}} </span>
+</template>
+<script>
+  Polymer('item-amount', {
+    amountDisplay: function(amount){
+      if(this.currencyList){
+        var currency = this.currencyList[this.currencyId -1];
+        var format = currency.t === 1 ? "%v %s" : "%s %v";
+        return accounting.formatMoney(amount, { symbol: currency.s,  format: format });
+      } else{
+        return '';
+      }
+    },
+    amountDisplayClass: function(categoryType){
+      return categoryType === 1 ? 'positive' : 'negative';
+    },
+  });
+</script>
+</polymer-element>

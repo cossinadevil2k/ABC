@@ -1,0 +1,56 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title title">Email sender</h4>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" action="#">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Push options:</label>
+            <div class="col-lg-7">
+                <input type="radio" ng-model="sendMode" value="manual" id="manual" /> <label for="manual">Manual</label><br />
+                <input type="radio" ng-model="sendMode" value="search_query" id="search_query" /> <label for="search_query">Search query</label><br />
+                <input type="radio" ng-model="sendMode" value="csv_file" id="csv" /> <label for="csv">CSV email file</label><br />
+            </div>
+        </div>
+        <div class="form-group" ng-show="sendMode === 'manual'">
+            <label class="col-lg-2 control-label">To email(s)</label>
+            <div class="col-lg-10">
+                <input type="text" placeholder="email1@abc.com, email2@gmail.com..." class="form-control" ng-model="emailList">
+            </div>
+        </div>
+        <div class="form-group" ng-show="sendMode === 'search_query'">
+            <label class="col-lg-2 control-label">Select query</label>
+            <div class="col-lg-10">
+                <select name="selectSearchQuery" ng-model="searchQuery" class="form-control">
+                    <option ng-repeat="query in queryList" value="{{query}}">{{query.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" ng-show="sendMode === 'csv_file'">
+            <label class="col-lg-2 control-label">Select file</label>
+            <div class="col-lg-10">
+                <input type="file" class="form-control" accept="text/csv" id="csv_file">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Scheduled?</label>
+            <div class="col-lg-10">
+                <input type="radio" ng-model="scheduled" value="yes" /> Yes <br />
+                <input type="radio" ng-model="scheduled" value="no" /> No <br />
+            </div>
+        </div>
+        <div class="form-group" ng-show="scheduled === 'yes'">
+            <label class="col-lg-2 control-label">Select date</label>
+            <div class="col-lg-7">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="schedule.date"/>
+            </div>
+            <div class="col-lg-3">
+                <input type="time" class="form-control" placeholder="hh:mm" ng-model="schedule.time">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+    <button type="button" class="btn btn-primary" ng-click="send(sendMode)"><i class="icon-plane"></i> Send now</button>
+</div>

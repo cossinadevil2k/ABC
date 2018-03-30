@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title title" ng-show='createPage'>New Milestone</h4>
+    <h4 class="modal-title title" ng-show='editPage'>Edit Milestone</h4>
+</div>
+<div class="modal-body">
+    <form name="creatMilestone">
+        <label class="labelMessenger">Date</label>
+        <span ng-show='(creatMilestone.eventDate.$dirty || checkRequired) && creatMilestone.eventDate.$error.required' class="errSendMessage"><i class="icon-warning-sign"></i> This is required?</span>
+        <div class="input-group" style="margin-bottom: 30px;">
+            <input class="form-control" ng-show='createPage' datepicker-popup="dd/MM/yyyy" name="eventDate" ng-model="milestone.eventDate" placeholder="eg: 27/03/2016" required>
+            <input class="form-control" ng-show='editPage' datepicker-popup="dd/MM/yyyy" name="eventDate" ng-model="thisMilestone.eventDate" placeholder="eg: 27/03/2016" required>
+            <span class="input-group-addon" style="font-size: 12px">
+                <i class="glyphicon glyphicon-calendar"></i>
+            </span>
+        </div>
+
+        <label class="labelMessenger">Title</label>
+        <span ng-show="(creatMilestone.titleEvent.$dirty || checkRequired) && creatMilestone.titleEvent.$error.required" class="errSendMessage"><i class="icon-warning-sign"></i> You should enter title</span>
+        <div class="input-group" style="margin-bottom: 30px;">
+            <input ng-show='createPage' class="form-control" name="titleEvent" ng-model="milestone.title" placeholder="Max 250 characters" required maxlength="250" ng-trim="false">
+            <input ng-show='editPage' class="form-control" name="titleEvent" ng-model="thisMilestone.title" placeholder="Max 250 characters" required maxlength="250" ng-trim="false">
+            <span class="input-group-addon" style="font-size: 12px">{{(250 - milestone.title.length)}} left</span>
+        </div>
+
+        <label class="labelMessenger">Description</label>
+        <textarea ng-show='createPage' name="description" rows="8" cols="40" class="form-control" placeholder="I saw Susie sitting in a shoe shine shop. Where she sits she shines, and where she shines she sits." ng-model="milestone.content" style="resize: vertical;"></textarea>
+        <textarea ng-show='editPage' name="description" rows="8" cols="40" class="form-control" placeholder="I saw Susie sitting in a shoe shine shop. Where she sits she shines, and where she shines she sits." ng-model="thisMilestone.content" style="resize: vertical;"></textarea>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="cancel()">Close</button>
+    <button class="btn btn-twitter" ng-show='createPage' ng-click="add(milestone)">Add</button>
+    <button class="btn btn-twitter" ng-show='editPage' ng-click="save(thisMilestone)">Save</button>
+</div>

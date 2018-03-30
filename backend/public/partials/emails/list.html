@@ -1,0 +1,46 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Subject</th>
+			<th class="hidden-xs">Created</th>
+			<th>By</th>
+			<th class="text-right">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="animate-repeat" ng-repeat="(key, mail) in listMail | filter:searchKeyword" ng-hide="mail.isDelete">
+			<td>{{ key + indexList + 1 }}</td>
+			<td>{{ mail.subject }}</td>
+			<td class="hidden-xs">
+				<span>{{ mail.createDate | date:'dd/MM/yyyy HH:mm' }}</span>
+			</td>
+			<td>
+				<span>{{ mail.owner.username }}</span>
+			</td>
+			<td class="text-right hidden-xs">
+				<button class="btn btn-xs btn-success" ng-click="send(mail)" tooltip="Send mail">
+					<i class="icon-rocket"></i>
+				</button>
+				<button class="btn btn-xs btn-orange" ng-click="editMail(mail, createMail)" tooltip="Sửa mail">
+					<i class="icon-pencil"></i>
+				</button>
+				<button class="btn btn-xs btn-danger" ng-click="deleteMail(mail)">
+					<i class="icon-trash"></i>
+				</button>
+			</td>
+			<td class="text-right hidden-sm hidden-md hidden-lg">
+				<button ng-click='openActions(mail)' class="btn btn-deepsea" type="button"><i class="icon-tasks"></i></button>
+			</td>
+		</tr>
+		<!-- <tr class="breakPage">
+			<td colspan="6" class="text-center">
+				<div class="btn-group">
+					<a class="btn btn-default" ng-click="nextPage(-1)"><i class="icon-fast-backward"></i></a>
+					<button class="btn btn-default disabled" onclick="return false">Chuyển trang</button>
+					<a class="btn btn-default" ng-click="nextPage(+1)"><i class="icon-fast-forward"></i></a>
+				</div>
+			</td>
+		</tr> -->
+	</tbody>
+</table>

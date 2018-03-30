@@ -1,0 +1,223 @@
+{
+  "name": "Furniture",
+  "product_id": "icon_furniture",
+  "icons": {
+    "furniture_01": [
+      "bed",
+      "giường",
+      "постель",
+      "cama",
+      "katil",
+      "เตียง",
+      "bedding"
+    ],
+    "furniture_02": [
+      "table",
+      "sofa",
+      "bàn ghế",
+      "bàn uống nước",
+      "bàn trà",
+      "tea table",
+      "โซฟา",
+      "диван"
+    ],
+    "furniture_03": [
+      "lamb",
+      "light",
+      "đèn",
+      "đèn ngủ",
+      "bed lamp",
+      "table lamp",
+      "лампа",
+      "โคมไฟ",
+      "lampada"
+    ],
+    "furniture_04": [
+      "sofa",
+      "ghế",
+      "đi văng",
+      "couch",
+      "seat",
+      "divano",
+      "โซฟา",
+      "диван",
+      "trường kỷ"
+    ],
+    "furniture_05": [
+      "sofa",
+      "ghế",
+      "đi văng",
+      "couch",
+      "seat",
+      "divano",
+      "โซฟา",
+      "диван",
+      "trường kỷ"
+    ],
+    "furniture_06": [
+      "table",
+      "desk",
+      "working desk",
+      "bàn học",
+      "bàn làm việc",
+      "bàn",
+      "học tập"
+    ],
+    "furniture_07": [
+      "mirror",
+      "makeup table",
+      "bàn trang điểm",
+      "makeup",
+      "tavolo trucco",
+      "mesa de maquillaje",
+      "โต๊ะแต่งหน้า",
+      "meja rias"
+    ],
+    "furniture_08": [
+      "billar",
+      "relax",
+      "bàn bi a",
+      "giải trí"
+    ],
+    "furniture_09": [
+      "giá sách",
+      "sách",
+      "giá để sách",
+      "tủ sách",
+      "bookselves",
+      "bookself",
+      "bookcase",
+      ""
+    ],
+    "furniture_10": [
+      "carpet",
+      "thảm",
+      "thảm trải sàn",
+      "พรม",
+      "tappeto",
+      "ковер",
+      "alfombra"
+    ],
+    "furniture_11": [
+      "chair",
+      "ghế",
+      "ghế tựa",
+      "стул",
+      "silla",
+      "sedia",
+      "เก้าอี้",
+      "kursi",
+      "chaise"
+    ],
+    "furniture_12": [
+      "cabinet",
+      "kabinet",
+      "tủ",
+      "tủ quần áo",
+      "ตู้",
+      "armario",
+      "стенной шкаф"
+    ],
+    "furniture_13": [
+      "tree",
+      "bonsai",
+      "cây trang trí",
+      "cây cảnh"
+    ],
+    "furniture_14": [
+      "bath",
+      "bathtub",
+      "shower",
+      "tắm",
+      "bồn tắm"
+    ],
+    "furniture_15": [
+      "curtain",
+      "rèm",
+      "rèm cửa",
+      "cửa sổ",
+      "windows",
+      "rideau",
+      "tirai",
+      "tenda",
+      "ผ้าม่าน"
+    ],
+    "furniture_16": [
+      "chair",
+      "ghế",
+      "ghế tựa",
+      "стул",
+      "silla",
+      "sedia",
+      "เก้าอี้",
+      "kursi",
+      "chaise"
+    ],
+    "furniture_17": [
+      "lamb",
+      "light",
+      "đèn",
+      "đèn ngủ",
+      "bed lamp",
+      "table lamp",
+      "лампа",
+      "โคมไฟ",
+      "lampada"
+    ],
+    "furniture_18": [
+      "clock",
+      "đồng hồ",
+      "báo thức",
+      "gym",
+      "giờ",
+      "reminder",
+      "nhắc nhở",
+      "date",
+      "alarm",
+      "chuông báo thức",
+      "remember",
+      "time"
+    ],
+    "furniture_19": [
+      "sofa",
+      "ghế",
+      "đi văng",
+      "couch",
+      "seat",
+      "divano",
+      "โซฟา",
+      "диван",
+      "trường kỷ"
+    ],
+    "furniture_20": [
+      "lamb",
+      "light",
+      "đèn",
+      "đèn ngủ",
+      "bed lamp",
+      "table lamp",
+      "лампа",
+      "โคมไฟ",
+      "lampada"
+    ]
+  },
+  "tags": [
+    "furniture",
+    "đồ đạc",
+    "đồ",
+    "nội thất",
+    "trang trí",
+    "nhà cửa",
+    "house",
+    "bàn ghế",
+    "đồ nội thất",
+    "เฟอร์นิเจอร์",
+    "mobilia",
+    "mebel",
+    "perabot",
+    "mueble",
+    "мебель",
+    "decor",
+    "room"
+  ]
+}

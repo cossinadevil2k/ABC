@@ -1,0 +1,50 @@
+
+
+<polymer-element name="icon-list-service">
+    <template>
+        <style>
+            :host {
+                display: none;
+            }
+        </style>
+
+        <core-ajax
+                id="getIconList"
+                url="../lib/moneylover/icon-list.json"
+                handleAs="json"
+                on-core-response="{{getIconListResult}}">
+        </core-ajax>
+        <core-localstorage name="icon-list" value="{{iconList}}"></core-localstorage>
+    </template>
+    <script>
+        Polymer('icon-list-service', {
+            getData: function(callback){
+                this.callback = callback;
+                if(!this.iconList || this.iconList.length === 0 || this.iconList === "undefined" || this.iconList == undefined) {
+                    this.$.getIconList.go();
+                }
+                else {
+                    callback(true, this.iconList);
+                }
+            },
+
+            getIconListResult: function(){
+                var data = this.$['getIconList'].response;
+                if(data.error === 0) {
+                    if (this.iconList) {
+                        if(this.iconList.timeStamp){
+                            if (this.iconList.timeStamp < data.timeStamp) {
+                                this.iconList = data;
+                            }
+                        } else {
+                            this.iconList = data;
+                        }
+                    } else {
+                        this.iconList = data;
+                    }
+                    this.callback(true, data);
+                }
+            }
+        });
+    </script>
+</polymer-element>

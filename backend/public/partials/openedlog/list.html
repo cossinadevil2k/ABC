@@ -1,0 +1,53 @@
+<div class="module no-padding">
+    <div class="module-header">
+        <h4>App Opened Log  
+            <button class="btn btn-danger" ng-click="clearList()">Clear log</button>
+            <i class="icon-refresh" style="cursor: pointer" ng-click="getList()" tooltip="Cập nhật"></i>
+        </h4>
+        <div class="input-group quick-search-box">
+            <input type="text" class="form-control" ng-model="keyword" placeholder="Enter username" ng-keydown="searchKey($event, keyword)">
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-grape" ng-click="search()"><i class="icon-search"></i> SEARCH</button>
+			</span>
+        </div>
+    </div>
+    <div class="module-content table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>name</th>
+                <th class="text-center">platform</th>
+                <th class="text-center">Version</th>
+                <th class="text-center">VersionCode</th>
+                <th>user</th>
+                <th>ip</th>
+                <th>date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key, log) in listLog | filter:keyword track by $index">
+                <td>{{ log.device.name }}</td>
+                <td class="text-center">
+                    <img src="//static.moneylover.me/img/android_40.png" style="width:24px; height:24px;" alt="android_logo" ng-if="log.device.platform===1"/>
+                    <img src="//static.moneylover.me/img/apple_40.png" style="width:24px; height:24px;" alt="android_logo" ng-if="log.device.platform===2"/>
+                    <img src="//static.moneylover.me/img/windows_40.png" style="width:24px; height:24px;" alt="android_logo" ng-if="log.device.platform===3"/>
+                </td>
+                <td class="text-center">{{ appVersion[log.device.appId - 1] }}</td>
+                <td class="text-center">{{ log.versionCode }}</td>
+                <td>{{ log.user.email }}</td>
+                <td>{{ log.ip }}</td>
+                <td>{{ log.time | date:'dd/MM/yyyy HH:mm' }}</td>
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage"><i class="icon-fast-backward"></i></a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage"><i class="icon-fast-forward"></i></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

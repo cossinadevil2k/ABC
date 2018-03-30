@@ -1,0 +1,101 @@
+<div class="module">
+    <div class="module-header">
+        <h4>Filter</h4>
+    </div>
+    <div class="module-content">
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                Platform:
+                <div class="btn-group">
+                    <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">{{selectedPlatform || 'Select'}} <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#" ng-click="selectQuery('platform', 'all')">all</a></li>
+                        <li><a href="#" ng-click="selectQuery('platform', 'android')">android</a></li>
+                        <li><a href="#" ng-click="selectQuery('platform', 'ios')">ios</a></li>
+                        <li><a href="#" ng-click="selectQuery('platform', 'windowsphone')">windowsphone</a></li>
+                        <li><a href="#" ng-click="selectQuery('platform', 'windows')">windows</a></li>
+                        <li><a href="#" ng-click="selectQuery('platform', 'mac')">mac</a></li>
+                        <li><a href="#" ng-click="selectQuery('platform', 'web')">web</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                Product:
+                <div class="btn-group">
+                    <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">{{selectedProduct || 'Select'}} <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">all</a></li>
+                        <li><a href="#">android</a></li>
+                        <li><a href="#">ios</a></li>
+                        <li><a href="#">windowsphone</a></li>
+                        <li><a href="#">windows</a></li>
+                        <li><a href="#">mac</a></li>
+                        <li><a href="#">web</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                Market:
+                <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown">{{selectedMarket || 'Select'}} <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#" ng-click="selectQuery('market', 'all')">all</a></li>
+                    <li><a href="#" ng-click="selectQuery('market', 'appstore')">appstore</a></li>
+                    <li><a href="#" ng-click="selectQuery('market', 'playstore')">playstore</a></li>
+                    <li><a href="#" ng-click="selectQuery('market', 'windowsstore')">windowsstore</a></li>
+                    <li><a href="#" ng-click="selectQuery('market', 'appota')">appota</a></li>
+                    <li><a href="#" ng-click="selectQuery('market', 'amazon')">amazon</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="module module-grape no-padding" ng-init="getAll()">
+    <div class="module-header">
+        <h4>
+            List
+            <i class="icon-refresh" style="cursor:pointer;" tooltip="Reload" ng-click="getAll()"></i>
+        </h4>
+        <div class="input-group quick-search-box">
+            <input type="text" class="form-control" id="txtKeyword" ng-model="keyword" placeholder="Enter email..." ng-keydown="searchKey($event, keyword)">
+
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-twitter" ng-click="search(keyword)" ng-disabled="isLoading"><i class="icon-search"></i> SEARCH</button>
+			</span>
+        </div>
+    </div>
+    <div class="module-content table-responsive">
+        <div class="text-center" ng-if="isLoading">
+            <img src="/images/loading-pacman.gif" /><br />
+            Loading
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>email</th>
+                <th class="text-center">platform</th>
+                <th class="text-center">product</th>
+                <th class="text-center">market</th>
+                <th>date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key, log) in logs">
+                <td>{{log.payer.email}}</td>
+                <td class="text-center">{{log.platform}}</td>
+                <td class="text-center">{{log.product}}</td>
+                <td class="text-center">{{log.market}}</td>
+                <td>{{log.purchaseDate | checkDateTime}}</td>
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage"><i class="icon-fast-backward"></i></a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage"><i class="icon-fast-forward"></i></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

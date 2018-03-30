@@ -1,0 +1,24 @@
+<div>
+    <div class="col-lg-12">
+		<div class="row">
+			<div class="col-md-12 col-lg-12">
+				<small>All about</small><br>
+				<span class="sizeEmail"> {{userInfo.email}}</span><i class="icon-money" ng-show="userInfo.purchased" style="color: green; margin-left:10px; font-size: 22px" tooltip='Purchased'></i>
+				<img src="/images/facebook-icon.png" tooltip='Facebook' class="icon-user-platform" alt="facebook" ng-if="userInfo.facebookId" style="height:35px; width: auto; padding-bottom: 8px"/>
+				<img src="/images/google-icon.png" tooltip='G+' class="icon-user-platform" alt="g+" style="height:34px; width: auto; padding-bottom: 4px" ng-if="userInfo.googleId"/>
+				<br /><span ng-if="credits">Credits: {{credits}}</span>
+			</div>
+		</div>
+
+		<div class="row">
+			<div style="position: relative; width: 100%; background-color: white; margin: 5px 0; padding: 5px;" ng-if="isWalletPage">
+				<a class="btn btn-orange" ng-click="backToUserDetail()"><i class="icon icon-long-arrow-left"></i> User Detail</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div ng-include="'/partials/info/userdetails.html'" ng-if="isUserDetailsPage" class="col-lg-12" style="padding-left: 0; padding-right: 0"></div>
+			<div ng-include="'/partials/info/walletdetails.html'" ng-if="isWalletPage"></div>
+		</div>
+	</div>
+</div>

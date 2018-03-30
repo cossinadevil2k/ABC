@@ -1,0 +1,61 @@
+<form class="form-horizontal" action="#">
+    <div class="form-group">
+        <label class="col-lg-2 control-label" for="inputName">Name</label>
+        <div class="col-lg-10">
+            <input type="text" placeholder="Enter email's name a.k.a. template's name" id="inputName" class="form-control" ng-model="emailInfo.name">
+        </div>
+    </div>
+	<div class="form-group">
+		<label class="col-lg-2 control-label" for="input1">Subject</label>
+		<div class="col-lg-10">
+			<input type="text" placeholder="Enter subject here..." id="input1" class="form-control" ng-model="emailInfo.subject">
+		</div>
+	</div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label" for="inputFromEmail">From Email</label>
+        <div class="col-lg-10">
+            <input type="text" placeholder="contact@moneylover.me" id="inputFromEmail" class="form-control" ng-model="emailInfo.from_email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label" for="inputFromName">From Name</label>
+        <div class="col-lg-10">
+            <input type="text" placeholder="Money Lover" id="inputFromName" class="form-control" ng-model="emailInfo.from_name">
+        </div>
+    </div>
+	<div class="form-group">
+		<label class="col-lg-2 control-label" for="input2">Content</label>
+		<div class="col-lg-10">
+			<textarea id="input2" rows="3" class="form-control" ckeditor="editorOptions" ng-model="emailInfo.content"></textarea>
+		</div>
+	</div>
+    <!--<div class="form-group">-->
+        <!--<label class="col-lg-2 control-label" for="inputVariable">Variable</label>-->
+        <!--<div class="col-lg-10">-->
+            <!--<input type="text" placeholder="varName1, varName2, username..." id="inputVariable" class="form-control" ng-model="emailInfo.variable">-->
+        <!--</div>-->
+    <!--</div>-->
+	<div class="form-group">
+		<label class="col-lg-2 control-label"></label>
+		<div class="col-lg-10">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" ng-model="checkPreview" ng-true-value="1" ng-false-value="0" ng-init="checkPreview=0">Preview
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="form-group" ng-show="checkPreview">
+		<label class="col-lg-2 control-label"></label>
+		<div class="col-lg-10">
+			<ml-preview-iframe content="emailInfo.content"></ml-preview-iframe>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-lg-2 control-label" for="input4"></label>
+		<div class="col-lg-10">
+			<button type="button" class="btn btn-primary" ng-click="submitMail(emailInfo)">Save</button>
+			<button type="button" class="btn btn-default" ng-click="createMail=0; getList()">Cancel</button>
+		</div>
+	</div>
+</form>

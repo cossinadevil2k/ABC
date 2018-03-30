@@ -1,0 +1,36 @@
+<div class="titleReport">
+  <h4>Report of notification "{{session.notification.title}}"</h4>
+</div>
+<div class="row">
+  <loading ng-if="isStatLoading"></loading>
+  <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+    <div class="box-module">
+        <small>Total</small>
+        <h4 class="bold">{{stat.total}}</h4>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+    <div class="box-module module-blue">
+        <small>Sent</small>
+        <h4 class="bold">{{stat.sent}}</h4>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+      <div class="box-module module-purple extend-box-module" ng-click="userListReport('Opened')">
+          <small>Open</small>
+          <h4 class="bold valueOpenReport">
+            {{stat.open}}
+            <i class="icon-external-link-sign open-report-color icon-large"></i>
+          </h4>
+      </div>
+  </div>
+  <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+      <div class="box-module module-yellow extend-box-module" ng-click="userListReport('Error')">
+          <small>Error</small>
+          <h4 class="bold valueErrorReport">
+            {{stat.error}}
+            <i class="icon-external-link-sign error-report-color icon-large"></i>
+          </h4>
+      </div>
+  </div>
+</div>

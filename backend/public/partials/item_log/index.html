@@ -1,0 +1,47 @@
+<div class="module no-padding">
+    <div class="module-header">
+        <h4>List</h4>
+    </div>
+    <div class="module-content">
+        <loading ng-if="isLoading"></loading>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Item</th>
+                    <th>Item type</th>
+                    <th>Source</th>
+                    <th>Purchase date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="log in listLog">
+                    <td><a href="/users/info?email={{log.user.email}}">{{log.user.email || '-----'}}</a></td>
+                    <td>{{log.product}}</td>
+                    <td>{{log.type | itemType}}</td>
+                    <td>
+                        <i ng-class="{'icon-apple':log.source.indexOf('apple')!=-1,'icon-android':log.source.indexOf('google')!=-1,'icon-windows':log.source.indexOf('windows')!=-1,'icon-gift':log.source.indexOf('admin')!=-1}"></i>
+                        {{log.source || '-----'}}
+                    </td>
+                    <td>{{log.purchased_date | checkDateTime}}</td>
+                </tr>
+                <tr ng-show="noResult">
+                    <td>No result found</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="breakPage">
+                    <td colspan="12" class="text-center">
+                        <div class="btn-group">
+                            <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading"><i class="icon-fast-backward"></i></a>
+                            <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                            <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading"><i class="icon-fast-forward"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

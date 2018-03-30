@@ -1,0 +1,72 @@
+<!-- Sidebar -->
+<aside id="sidebar-wrapper">
+	<ul class="sidebar-icon">
+		<li class="sidebar-header">
+			<img class="logo" src="/img/logo.png" alt="Logo" />
+			<span id="notification">1</span>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:1)}">
+			<a href="#" ng-click="tabSelect=1"><i class="icon-dashboard icon-large"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:2)}">
+			<a href="#" ng-click="tabSelect=2"><i class="icon-compass icon-large"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:3)}">
+			<a href="#" ng-click="tabSelect=3"><i class="icon-book icon-large"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:4)}">
+			<a href="#" ng-click="tabSelect=4"><i class="icon-user icon-large"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:5)}">
+			<a href="#" ng-click="tabSelect=5"><i class="icon-question icon-large"></i></a>
+		</li>
+	</ul>
+	<div class="tab-content">
+		<ul id="ml-wallet" class="sidebar-group tab-pane">
+			<!--<li class="navigation-header" ng-click="changeWallet()">-->
+			<li class="navigation-header btn-group">
+				<div class="wallet-name">
+					<span class="name" ng-bind="wallet.name">Money Lover</span>
+					<span class="amount" ng-bind="wallet.amount | MLCurrency">1</span>
+				</div>
+				<button type="button" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="icon-caret-down"></i><
+				</button>
+				<ul class="dropdown-menu" role="menu" ng-repeat="listWalletItem in listWallet track by $index" ng-hide="listWalletItem.name===wallet.name">
+					<li><a href="/wallet/{{listWalletItem._id}}">{{listWalletItem.name}}</a></li>
+				</ul>
+			</li>
+		</ul>
+		<ul id="dashboard" class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:1)}">
+			<li><a href="/wallet/{{ wallet.id }}">{{ 'event_overview_view_transactions' | translate }}</a></li>
+			<li><a href="/wallet/{{ wallet.id }}/debts">{{ 'navigation_debt_manager' | translate }}</a></li>
+			<li><a href="/wallet/{{ wallet.id }}/trends">{{ 'statistic_trends' | translate }}</a></li>
+			<li><a href="/wallet/{{ wallet.id }}/monthly-report">{{ 'monthly_report_title' | translate }}</a></li>
+			<li><a href="/wallet/{{ wallet.id }}/category">{{ 'navigation_category_manager' | translate }}</a></li>
+			<li><a href="/wallet/{{ wallet.id }}/budget">{{ 'navigation_budget' | translate }}</a></li>
+			<li><a href="/wallet/{{ wallet.id }}/savings">{{ 'navigation_campaign' | translate }}</a></li>
+			<li><a href="/wallet/{{ wallet.id }}/events">{{ 'navigation_event' | translate }}</a></li>
+		</ul>
+		<ul id="tabcomponents" class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:2)}">
+			<li><a href="calendar.html">Calendar</a></li>
+			<li><a href="tables.html">Tables</a></li>
+			<li><a href="charts.html">Charts</a></li>
+			<li><a href="more.html">More</a></li>
+		</ul>
+		<ul class="sidebar-group tab-pane" id="tabforms" ng-class="{'active': (tabSelect|selectMenu:3)}">
+			<li><a href="forms.html">Basic elements</a></li>
+		</ul>
+		<ul class="sidebar-group tab-pane" id="tabUser" ng-controller="userAction" ng-class="{'active': (tabSelect|selectMenu:4)}">
+			<li><a href="/wallet-manager">{{ 'navigation_accounts' | translate }}</a></li>
+			<li><a href="/setting">{{ 'navigation_settings' | translate }}</a></li>
+			<li><a href="/change-password">{{ 'navigation_change_password' | translate }}</a></li>
+			<li><a href="#" ng-click="switchLanguage('vi_VN')">{{ 'settings_select_language' | translate }}</a></li>
+			<li><a href="#" ng-click="logoutUser()">{{ 'navigation_logout' | translate }}</a></li>
+		</ul>
+		<ul id="tabHelp" class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:5)}">
+			<li><a href="/support">{{ 'navigation_group_support' | translate }}</a></li>
+			<li><a href="/about">{{ 'navigation_about' | translate }}</a></li>
+		</ul>
+	</div>
+</aside>
+<!-- Sidebar -->

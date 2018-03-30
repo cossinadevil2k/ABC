@@ -1,0 +1,7 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()">&times;</button>
+	<h4 class="modal-title title">{{ 'add_transaction_category_title' | translate }}</h4>
+</div>
+<div class="modal-body">
+	<div class="fade-animate" ng-include="'/partials/category/list.html'" scope="categoryTab" ng-init="categoryTab=0"></div>
+</div>

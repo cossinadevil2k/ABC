@@ -1,0 +1,31 @@
+<div class="row" ng-init="getStats()">
+    Year: <input type="text" ng-model="query.year" />
+    Month: <input type="text" ng-model="query.month" />
+    <button class="btn btn-facebook" ng-click="customGetStats()">Get</button>
+</div>
+<div class="row text-center" ng-if="isLoading">
+    <img src="/images/loading-pacman.gif" /><br />
+    Loading
+</div>
+<div class="row" ng-if="!isLoading">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Month</th>
+                <th>Admin</th>
+                <th>Assigned</th>
+                <th>Resolved</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="record in stats">
+                <td>{{record.year}}</td>
+                <td>{{record.month + 1}}</td>
+                <td>{{record.adminId.username}}</td>
+                <td>{{record.assigned}}</td>
+                <td>{{record.solved}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

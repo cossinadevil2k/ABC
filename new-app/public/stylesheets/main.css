@@ -1,0 +1,532 @@
+
+
+html,body {
+    background-color: #E5E5E5;
+    font-family: 'Roboto', sans-serif;
+    line-height: 34px;
+    height: 100%;
+    margin: 0 auto;
+    margin: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+.hide{
+    display: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Clearfix */
+
+body /deep/ .clearfix:after {
+                clear: both;
+                content: ".";
+                display: block;
+                height: 0;
+                visibility: hidden;
+            }
+
+body /deep/ .clearfix {
+                display: inline-block;
+            }
+
+body /deep/ .clearfix {
+                display: block;
+            }
+
+body /deep/ .not-select {
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+/* Main */
+
+body /deep/ .page-header {
+                height: 240px;
+                background-color: #2baf2b;
+                color: white;
+
+            }
+
+body /deep/ core-menu#menu {
+                overflow: hidden;
+            }
+
+body /deep/ .detail-dialog {
+                border-radius: 2px;
+            }
+
+/*Font*/
+
+body /deep/ .text-display1 {
+                font-family: 'Roboto', sans-serif;
+                font-size: 32px;
+                line-height: 40px;
+                /*color: rgba(000,000,000,0.54);*/
+                font-weight: 400;
+
+            }
+
+body /deep/ .text-title {
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 30px;
+                color: rgba(000,000,000,0.87);
+            }
+
+body /deep/ .text-body {
+                font-family: 'Roboto', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 20px;
+                color: rgba(000,000,000,0.87);
+            }
+
+body /deep/ .text-caption {
+                font-family: 'Roboto', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 20px;
+                color: rgba(000,000,000,0.54);
+            }
+
+body /deep/ .button-flat-color {
+                font-family: 'Roboto', sans-serif;
+                font-size: 14px;
+                font-weight: 500;
+                color: rgb(255,255,255);
+            }
+
+body /deep/ .text-input {
+                font-family: 'Roboto', sans-serif;
+                font-size: 16px;
+                line-height: 20px;
+                color: rgba(000,000,000,0.87);
+                font-weight: 400;
+            }
+
+body /deep/ .menu-title {
+                font-family: 'Roboto', sans-serif;
+                font-size: 14px;
+                line-height: 20px;
+                color: rgba(000,000,000,0.87);
+                font-weight: 500;
+                margin: 0;
+            }
+
+body /deep/ .dialog-popup {
+                width: 400px;
+                background: white;
+            }
+
+body /deep/ .dialog-header {
+                background: #2baf2b;
+                color: white;
+                display: inline-block;
+                width: 100%;
+                z-index: 9;
+                height: 64px;
+                padding: 0;
+                border-radius: 2px 2px 0 0;
+            }
+
+body /deep/ paper-dialog {
+                border-radius: 2px;
+            }
+
+body /deep/ .dialog-header .detail {
+                float: left;
+                margin-top: 18px;
+                color: #fff;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 40%;
+            }
+
+body /deep/ .dialog-header .delete,
+            body /deep/ .dialog-header .search {
+                            margin:10px 14px;
+                        }
+
+body /deep/ .dialog-content {
+                float: left;
+                /*  overflow-y: scroll;
+                  overflow-x: hidden;*/
+            }
+
+body /deep/ .dialog-content .dialog-img {
+                width: 48px;
+                float: left;
+                height: 48px;
+                margin: 8px 0;
+                margin-right: 24px;
+            }
+body /deep/ .dialog-content .col-img {
+                margin: 0;
+                margin-right: 24px;
+            }
+
+body /deep/ .dialog-content .dialog-img  img {
+                width: 100%;
+            }
+
+body /deep/ .dialog-content .col {
+                float: left;
+                width: 352px;
+                height: 64px;
+                margin: 0 24px;
+            }
+
+body /deep/ .dialog-content .col  h3 {
+                padding:12px 0 4px 0;
+                width: 280px;
+                margin: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+body /deep/ .dialog-content .col p {
+                border-bottom: 1px solid #ddd;
+                width: 72%;
+                margin-left: 60px;
+                color: #aaa;
+            }
+body /deep/ .dialog-content .col .amount {
+                color: red;
+                font-size: 27px;
+                line-height: 20px;
+            }
+
+body /deep/ .dialog-content .dialog-img img {
+                width: 100%;
+            }
+
+body /deep/ .dialog-content .icon-amount {
+                background: url('../images/ic_currency.png') no-repeat center center;
+
+            }
+
+body /deep/ .dialog-content .icon-edit {
+                background: url('../images/ic_edit.png') no-repeat center center;
+
+            }
+
+body /deep/ .dialog-content .icon-user {
+                background: url('../images/ic_with.png') no-repeat center center;
+            }
+
+body /deep/ .dialog-detail {
+                float: left;
+                border-top: 1px solid #ddd;
+                width: 100%;
+            }
+body /deep/ .dialog-detail .dialog-date {
+                color: rgba(0,0,0,0.54);
+                font-family: 'RobotoRegular', sans-serif;
+                vertical-align: middle;
+                white-space: nowrap;
+                padding: 0 16px 0 24px;
+                text-align: center;
+                width: 50%;
+                float: left;
+                font-size: 12px;
+                cursor: pointer;
+            }
+
+body /deep/ .dialog-detail .dialog-date .month-1 {
+                text-transform: uppercase;
+                position: relative;
+                top: 19px;
+            }
+
+body /deep/ .dialog-detail .dialog-date .month-2 {
+                display: block;
+                color: rgba(0,0,0,0.87);
+                font-size: 48px;
+                margin-top: 14px;
+            }
+
+body /deep/ .dialog-detail .dialog-date .month-3 {
+                position: relative;
+                top: -5px;
+            }
+
+body /deep/ .dialog-detail .dialog-right {
+                float: right;
+                padding: 0 24px 8px 16px;
+                width: 50%;
+                border-left: 1px solid #ddd;
+            }
+
+body /deep/ .dialog-detail .dialog-right .option {
+                border-bottom: 1px solid rgba(0,0,0,0.12);
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                padding-bottom: 3px;
+
+            }
+
+body /deep/ #logo {
+                text-align: center;
+                padding-top: 36px;
+            }
+
+body /deep/ .form {
+                width: 408px;
+                margin: 0 auto !important;
+                background: white;
+                border-radius: 3px;
+                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+                border-radius: 2px;
+                position: relative;
+                top: -120px;
+                padding-top: 16px;
+            }
+
+body /deep/ .form .content-form {
+                margin: 0 16px;
+            }
+
+body /deep/ .header-form {
+                text-align: center;
+            }
+
+body /deep/ .more-link {
+                text-align: center;
+                position: relative;
+                top: -83px;
+            }
+
+body /deep/ .more-link a {
+                color: #2baf2b;
+                text-decoration: none;
+                margin-right: 20px;
+                font-size: 14px;
+            }
+
+body /deep/ .more-link a:hover {
+                text-decoration: underline;
+            }
+
+
+body /deep/ .amountDisplay .income {
+                color: blue;
+            }
+body /deep/ .expense {
+                color: red;
+            }
+
+body /deep/ .income {
+                color: blue;
+            }
+
+body /deep/ paper-button {
+                background: rgb(43, 175, 43);
+            }
+
+body /deep/ #footer {
+                border-top:1px solid rgba(0,0,0,0.12);
+                width: 100%;
+                display: block;
+                height: 36px;
+
+            }
+
+body /deep/ #footer ul {
+                padding: 0;
+                margin: 0 0 0 32px;
+            }
+
+body /deep/ #footer ul li {
+                display: inline-block;
+                text-decoration: none;
+                padding-right:24px;
+            }
+
+body /deep/ #footer ul li a {
+                text-decoration: none;
+                color: rgba(0,0,0,0.87);
+                font-size: 10px;
+            }
+
+body /deep/ #footer ul li a:hover {
+                color: #2baf2b;
+            }
+
+body /deep/ .fg-instruction {
+                text-align: center;
+            }
+
+body /deep/ .rs-title {
+                text-align: center;
+            }
+
+body /deep/ .button {
+                text-align: right;
+            }
+
+body /deep/ user-login-page {
+                display: block;
+            }
+
+body /deep/ .toast-text {
+                text-align: center;
+                margin-top: 8px;
+            }
+
+
+body /deep/ wallet-list {
+                width: auto;
+                background: #fff;
+            }
+/* COlOR*/
+body /deep/ .r500 {
+                color: #e51c23
+            }
+
+body /deep/ .p500 {
+                background: #2baf2b;
+                color:#fff;
+            }
+
+body /deep/ paper-button.button-flat-color {
+                margin:24px 16px 16px 0;
+            }
+
+body /deep/ .btn {
+                margin: 10px 0;
+            }
+
+body /deep/ .close,
+            body /deep/ .arrow-back {
+                            margin: 10px 26px;
+                            float: left;
+                            color: #fff;
+                        }
+
+body /deep/ input,
+            body /deep/ textarea {
+                            margin: 0.5em 0 0 0;
+                            height: 36px;
+                        }
+
+body /deep/  #underline {
+                 border-bottom-color: rgba(0,0,0,0.12) !important;
+                 background: rgba(0,0,0,0.12) !important;
+             }
+
+
+body /deep/ .negative {
+                font-family: 'Roboto', sans-serif;
+                color: #e51c23;
+                font-weight: 400;
+            }
+
+body /deep/ .positive {
+                font-family: 'Roboto', sans-serif;
+                color: #039be5;
+                font-weight: 400;
+            }
+
+
+body /deep/ paper-input.negative /deep/ input[aria-label='How much?'] {
+                                            font-family: 'Roboto', sans-serif;
+                                            color: #e51c23;
+                                            font-weight: 400;
+                                        }
+
+body /deep/ paper-input.positive /deep/ input[aria-label='How much?'] {
+                                            font-family: 'Roboto', sans-serif;
+                                            color: #039be5;
+                                            font-weight: 400;
+                                        }
+
+body /deep/ paper-input[label='How much?'] {
+                margin-top: -10px;
+            }
+
+body /deep/ #transactionDetailDialog /deep/ #container #actions {
+                                                padding: 0 !important;
+                                            }
+
+body /deep/ .mini item-wallet /deep/ .card-header .info  span {
+                                         top: 0;
+                                         position: relative;
+                                     }
+
+body /deep/ paper-input#searchInput /deep/ input {
+                                               color: #fff;
+                                           }
+
+body /deep/ .core-header.tallHeader .header #logo-item icon-group /deep/ .stack-imgs .image0 {
+                                                                             right: 0;
+                                                                             width: 33px;
+                                                                             left: 31.5px;
+                                                                             top: 3px;
+                                                                             height: 33px;
+                                                                         }
+
+body /deep/ .core-header.tallHeader .header #logo-item icon-group /deep/ .stack-imgs .image1 {
+                                                                             top: 6px;
+                                                                             left: 13.5px;
+                                                                             width: 51px;
+                                                                             height: 51px;
+                                                                         }
+
+body /deep/ .core-header.tallHeader .header #logo-item icon-group /deep/ .stack-imgs .image2 {
+                                                                             top: 12px;
+                                                                             left: 0;
+                                                                             width: 60px;
+                                                                             height: 60px;
+                                                                         }
+
+body /deep/ .core-header.tallHeader .header #logo-item icon-group /deep/ .stack-imgs {
+                                                                             width: 72px;
+                                                                             height: 72px;
+                                                                         }
+
+
+body /deep/ .core-header.tallHeader .header #logo-item icon-group /deep/ .stack-border {
+                                                                             height: 66px;
+                                                                             width: 66px;
+                                                                             border: 2px solid rgba(255,255,255,0.24);
+                                                                             background: rgba(255,255,255,0.07);
+                                                                         }
+
+body /deep/ .wallet-img /deep/ .stack-imgs{
+                                   margin-left: -16px;
+                               }
+
+body /deep/ .item-wallet.mini item-wallet /deep/ .wallet-img{
+                                                     margin-left: -8px;
+                                                 }
+
+body /deep/ #walletDetailDialog /deep/ #container #actions {
+                                           padding: 0 !important;
+                                       }
+
+body /deep/ #currency_picker /deep/ core-header-panel /deep/ #outerContainer {
+                                                                 height: 455px;
+                                                             }
+
+body /deep/ #category_picker /deep/ core-header-panel /deep/ #outerContainer {
+                                                                 height: 495px;
+                                                             }
+

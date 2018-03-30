@@ -1,0 +1,503 @@
+> ## VERSION 2.36.0 (2018 JANUARY 08)
+
+*- Improve Automation Tool*
+
+*- Fix connection timeout mongodb for cronjob*
+
+*- Management by campaign & group*
+
+> ## VERSION 2.35.2 (2017 DECEMBER 20)
+
+*- Top download for item*
+
+*- All permission for view push notification request*
+
+*- Push notification without requirement approver *
+
+> ## VERSION 2.35.1 (2017 SEPTEMBER 7)
+
+*- Restore Credit for user*
+
+> ## VERSION 2.35 (2017 SEPTEMBER 7)
+
+*- Build subscription product by platform*
+
+*- Automation tracking log*
+
+*- Add campaign (ca) for form create push notification to track GA.*
+
+*- Add open store type on create push notification template*
+
+*- Fix isFree in metadata of wallet after build provider services*
+
+*- Inactive wallet when sub expire*
+
+*- View campaign at push message*
+
+> ## VERSION 2.34 (2017 JUNE 26)
+
+*- Phân quyền nsfw*
+
+> ## VERSION 2.34 BETA (2017 JUNE 26)
+
+*- Partner Open API*
+
+*- Statistic Helpdesk Resolve Issue Daily*
+
+*- Change Structure Navigation*
+
+*- Phân quyền nsfw (processing)*
+
+> ## VERSION 2.33 (2017 APRIL 26)
+
+*- Custom tag management*
+
+*- Linked wallet provider by country management*
+
+
+
+> ## VERSION 2.32 (2017 APRIL 4)
+
+*- [New] Send gift to various users*
+
+
+
+> ## VERSION 2.31 (2017 FEB 13)
+
+*- Update dashboard premium & linked details *
+
+*- Update event product list*
+
+
+
+> ## VERSION 2.30 (2017 FEB 05)
+
+*- Update dashboard user chart detail
+
+
+
+> ## VERSION 2.29 (2016 DECEMBER 27)
+
+*- Update thống kê premium*
+
+
+
+> ## VERSION 2.28 (2016 DECEMBER 26)
+
+*- Biểu đồ doanh thu vật phẩm IAP*
+
+*- Update Google play bill tool*
+
+
+
+> ## VERSION 2.27 (2016 NOVEMBER 28)
+
+*- Nâng cấp giao diện tặng quà cho User*
+
+*- Hiển thị danh sách Premium subscription user và Linked wallet subscription user*
+
+*- Thêm thông về giá 'share' của icon*
+
+
+
+> ## VERSION 2.26 (2016 NOVEMBER 11)
+
+*- [Product] bổ sung phần discount cho Subscription*
+
+
+
+> ## VERSION 2.25 (2016 NOVEMBER 4)
+
+*- [Helpdesk] Thêm tab 'All' tổng hợp các issue từ admin và user*
+
+*- [Product] Thêm option chọn type 'Premium' hoặc 'Linked Wallet' cho Subscription*
+
+
+
+> ## VERSION 2.24 (2016 SEPTEMBER 14)
+
+*- Sửa lỗi input ngày tháng ở Receipt details*
+
+*- Thêm nút Next receipt cho các receipt đã done/rejected*
+
+
+
+> ## VERSION 2.23 (2016 AUGUST 31)
+
+*- Thống kê khối lượng xử lý Receipt*
+
+
+
+> ## VERSION 2.22 (2016 AUGUST 23)
+
+*- Sửa lỗi không hiển thị amount receipt*
+
+*- Tắt tự động assign receipt, thay vào đó hiển thị quick action*
+
+*- Mở nút bấm Unassign receipt*
+
+*- Check các trường của receipt trước khi hiện dialog confirm*
+
+*- Loại bỏ các ví deleted, archived, và linked ra khỏi list danh sách ví chọn trong receipt*
+
+
+
+> ## VERSION 2.21 (2016 AUGUST 18)
+
+*- Update giao diện Receipt reject*
+
+
+
+> ## VERSION 2.20 (2016 AUGUST 17)
+
+*- Đặt giờ gửi issue helpdesk*
+
+*- Hỗ trợ nhập list email qua file CSV ở notification và helpdesk issue*
+
+*- Đặt thứ tự mặc định hiển thị receipt từ cũ nhất đến mới nhất*
+
+*- Nâng cấp hệ thống tặng quà từ AdminCP, hỗ trợ tặng các gói Premium và Use Credit*
+
+*- Chọn ví cho receipt khi chưa được chọn*
+
+
+
+> ## VERSION 2.19 (2016 AUGUST 10)
+
+*- Đặt giờ push notification*
+
+*- Sửa lỗi không chọn được category ở trang receipt details*
+
+
+
+> ## VERSION 2.18 (2016 AUGUST 05)
+
+*- Hỗ trợ query premiumstartdate:DD-MM-YYYY và premiumenddate:DD-MM-YYYY*
+
+*- Thống kê lượng premium theo đơn vị ngày mua*
+
+*- Mở userinfo sang tab mới ở trang danh sách User*
+
+*- Bấm vào logo ở nav bar chuyển đến trang Changelogs*
+
+*- Sửa lỗi không gửi notification khi receipt không có cate, ví*
+
+
+
+> ## VERSION 2.17 (2016 AUGUST 01)
+
+*- Xoá ảnh khi reject receipt*
+
+*- Ảnh mặc định của receipt khi không load được ảnh*
+
+*- Set bộ lọc mặc định thành 'Open' ở trang helpdesk issue và receipt*
+
+*- Tạo url tìm kiếm ở trang danh sách user để tiện chia sẻ*
+
+
+
+> ## VERSION 2.16 (2016 JULY 20)
+
+*- Fix receipt management*
+
+*- Fix helpdesk management*
+
+*- Receipt history at user info*
+
+*- Purchase history at user info*
+
+*- Fix linked wallet's uncategorized transaction list*
+
+*- Open receipt counting*
+
+
+
+> ## VERSION 2.15 (2016 JULY 15)
+
+*- New icon, all apps, all pages*
+
+*- Rework Helpdesk*
+
+*- Fix lỗi vài ví linked không thấy được balance*
+
+*- Nâng cấp bảng xem tỉ lệ/số lượng user đăng kí theo country theo ngày*
+
+*- Mở đổi email cho Biz *admins
+
+*- Check code limit trang happy.moneylover.me*
+
+
+
+> ## VERSION 2.14 (2016 JULY 7)
+
+*- Images of Transaction list
+
+*- Linked Wallet's Uncategorize Transaction management (WIP)*
+
+*- Fix global campaign bugs*
+
+*- Auto clear failed kue every week*
+
+
+
+> ## VERSION 2.13 (2016 JUNE 26)
+
+*- Classification log management*
+
+*- Receipt Management*
+
+*- Fix icon update*
+
+*- Product group in ML Headquarter*
+
+
+
+> ## VERSION 2.12 (2016 MAY 9)
+
+*- Active users*
+
+*- Find device by deviceId(channel/token/uri)*
+
+
+
+> ## VERSION 2.11.7 (2016 APRIL 15)
+
+*- Update email template, responsive*
+
+
+
+> ## VERSION 2.11.6 (2016 APRIL 12)
+
+*- Split Partner & Sponsored view*
+
+*- Upgrade Partner Manager*
+
+
+
+
+> ## VERSION 2.11.5 (2016 MARCH 29)
+
+*- Add Find by Linked Wallet Login Id into Utilities*
+
+*- Only show up notification in focus tab*
+
+
+
+> ## VERSION 2.11.4 (2016 MARCH 29)
+
+*- Update wildcard & negative search query*
+
+*- Linked Wallet Provider actions manager*
+
+*- Bug Fixed*
+
+
+
+> ## VERSION 2.11.3 (2016 MARCH 25)
+
+*- Update export user email*
+
+*- Add search query options in email sending*
+
+
+
+> ## VERSION 2.11.2 (2016 MARCH 15)
+
+*- Update dashboard stats APIs*
+
+*- Linked Wallet count in Dashboard*
+
+
+
+> ## VERSION 2.11.1 (2016 MARCH 14 WHITE VALENTINE)
+
+*- Gulp for backend css & controllers*
+
+*- Fix Gadget icon pack*
+
+*- Pagination for push notification session list*
+
+
+
+> ## VERSION 2.11 (2016 FEBRUARY 3)
+
+*- User Search Query comparison*
+
+*- Icon Pack Metadata CSV to JSON converter*
+
+*- Runs on NodeJS 5.6.0*
+
+*- Fix upload & edit icon pack*
+
+
+
+> ## VERSION 2.10.2 (2016 FEBRUARY 3)
+
+*- Add filter in RW Provider Manager*
+
+
+
+> ## VERSION 2.10.1 (2016 FEBRUARY 2)
+
+*- Fix maintain status UI*
+
+*- Newest milestone on top*
+
+*- Add Balance into wallet info*
+
+*- Add description for Auto-reply Message Setting*
+
+
+
+> ## VERSION 2.10 (2016 JANUARY 28)
+
+*- Milestone*
+
+*- Server Maintenance footer*
+
+*- Tự động rename tên các file Thumb, Preview, Zip của Icon Pack theo ID khi upload*
+
+*- Sửa lỗi không tự động cập nhật file icon mới vào static*
+
+*- Sửa lỗi newhook file*
+
+*- Detect xoá ví đặc biệt, để báo lên Finsify/SaltEdge ngừng crawl*
+
+*- Thêm trường original_currency trong Transaction*
+
+*- Bỏ console.log không cần thiết còn sót lại*
+
+
+
+> ## VERSION 2.9 (2016 JANUARY 21)
+
+*- Auto reply helpdesk issue every Sundays*
+
+*- Helpdesk Auto-reply Messages Manager*
+
+*- WEB type for client key manager*
+
+*- Add bugsense into backend*
+
+
+
+> ## VERSION 2.8 (2016 JANUARY 18)
+
+*- fix Finsify webhook bugs*
+
+*- UI upgrade for Issue List*
+
+*- Set user discount at User details page (read more at Money Lover API doc)
+
+
+
+
+> ## VERSION 2.7.1 (2016 JANUARY 14)
+
+*- Send premium/send icon gift and create issue feedback at the same time*
+
+*- Set premium at User details page*
+
+
+
+> ## VERSION 2.7 (2016 JANUARY 12)
+
+*- Disable auto close notification panel after click on notification*
+
+*- Admin can start an helpdesk issue from User Info*
+
+*- Text are bolder*
+
+
+
+> ## VERSION 2.6 (2016 JANUARY 10)
+
+*- Debug status for Remote Wallet Provider*
+
+*- Hook for Finsify*
+
+
+
+> ## VERSION 2.5 (2016 JANUARY 4)
+
+*- Fix Share wallet*
+
+*- Push notification statistics*
+
+*- Remote wallet list*
+
+*- Loading effect & 'No result' for Budget/Campaign/Category/Transaction list at wallet details*
+
+
+
+> ## VERSION 2.4 (2015 CHRISTMAS)
+
+*- Different logo background color between Backend's environments*
+
+*- Search-query Manager*
+
+*- New push notification mechanism (push notification service)*
+
+*- Push notification session approver for 100+ device sessions*
+
+*- Remote Wallet Provider update button, and build cache options*
+
+*- Show wallet type in list wallet & wallet details*
+
+*- Auto tag admin whenever reply an issue*
+
+
+
+> ## VERSION 2.3 (2015 DECEMBER 12)
+
+*- Update new elastic host*
+
+*- Add Redis info in System Info*
+
+*- Fix lowercase nsfw login*
+
+
+
+> ## VERSION 2.2 (2015 DECEMBER 11)
+
+*- Fix filter by OS in Helpdesk's My Closed Issues & My Open Issues*
+
+*- Add role for admin, update in Add admin function, Edit admin function coming soon*
+
+
+
+> ## VERSION 2.1 (2015 DECEMBER 7)
+
+*- Fix upload icon pack*
+
+*- Add "Device info" action in list device*
+
+*- Fix do not auto save issue status error*
+
+
+
+> ## VERSION 2.0 (2015 DECEMBER 4)
+
+*- AdminCP version and changelog for each release*
+
+*- Add 2 fields in Account Schema: **archived** & **transaction_notification**, [read more](https://docs.google.com/document/d/1mt7o6QSbiZCx5BitiPjYd4MYJO54OXjd58MWj9JqYV4)*
+
+*- Fix google tag search*
+
+*- Fix user result total*
+
+*- Fix search user by tag result order*
+
+*- Fix delete shared wallet function*
+
+*- Device manager*
+
+*- System Info and Process Manager (Process Manager only System Admin can change)*
+
+*- Change user email (only System Admin)*
+
+*- Mobile UI for main functions*
+
+*- Date picker for Daily Statistics*
+
+*- Sort for Helpdesk Issues*

@@ -1,0 +1,41 @@
+
+
+<polymer-element name="delete-transaction-service">
+    <template>
+        <style>
+            :host {
+                display: none;
+            }
+        </style>
+
+        <core-ajax id="delTransRequest"
+                url="../api/delete-transaction.json"
+                handleas="json"
+                params='{{param}}'
+                on-core-response="{{delTransResult}}">
+        </core-ajax>
+    </template>
+
+    <script>
+        Polymer('delete-transaction-service',{
+            delTransResult: function(event, response){
+                var status = response.xhr.status;
+                if(status){
+                    if(status===401){
+                        this.fire('sessionExpired');
+                    } else if (status===200) {
+                        var data = response.response;
+                        this.callback(data);
+                    }
+                }
+            },
+            delete: function(transaction, callback){
+                this.callback = callback;
+                if(transaction) {
+                    this.param = {transInfo: transaction};
+                    this.$['delTransRequest'].go();
+                } else this.callback({error:10, msg:"transaction_info_empty"});
+            }
+        });
+    </script>
+</polymer-element>

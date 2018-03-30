@@ -1,0 +1,59 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title title">Issues from {{user.email}}</h4>
+    <h5>Total: {{listIssue.length}}</h5>
+</div>
+<div class="modal-body no-padding-no-margin">
+    <div class="module no-padding">
+        <div class="module-header no-padding">
+            <ul id="myTab" class="nav nav-tabs">
+                <li><a href="#" ng-click="selectTab('open')" ng-class="{'active': tabSelected=='open'}">Open</a></li>
+                <li><a href="#" ng-click="selectTab('resolved')" ng-class="{'active': tabSelected=='resolved'}">Resolved</a></li>
+            </ul>
+        </div>
+        <div class="module-content no-padding">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>OS</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody ng-if="tabSelected === 'open'">
+                <tr ng-repeat="issue in listIssue" ng-if="!issue.status || issue.status !== 'Resolved'">
+                    <td>
+                        <a class="helpdesk-link" href="/helpdesk/issue_details/{{issue._id}}" target="_blank" >{{issue.name}}</a>
+                    </td>
+                    <td>
+                        <img src="//static.moneylover.me/img/android_40.png" style="width:24px; height:24px;" alt="android_logo" ng-if="issue.metadata.os === 'Android'"/>
+                        <img src="//static.moneylover.me/img/apple_40.png" style="width:24px; height:24px;" alt="apple_logo" ng-if="issue.metadata.os === 'iOS'"/>
+                        <img src="//static.moneylover.me/img/wp_40.png" style="width:24px; height:24px;" alt="windows_logo" ng-if="issue.metadata.os === 'Windows Phone'"/>
+                        <img src="//static.moneylover.me/img/windows_40.png" style="width:24px; height:24px;" alt="windows_logo" ng-if="issue.metadata.os === 'Windows'"/>
+                        <img src="//static.moneylover.me/img/osx_40.png" style="width:24px; height:24px;" alt="windows_logo" ng-if="issue.metadata.os === 'Mac'"/>
+                    </td>
+                    <td>{{issue.report_date | checkDateTime}}</td>
+                </tr>
+                </tbody>
+                <tbody ng-if="tabSelected === 'resolved'">
+                <tr ng-repeat="issue in listIssue" ng-if="issue.status === 'Resolved'">
+                    <td>
+                        <a class="helpdesk-link" href="/helpdesk/issue_details/{{issue._id}}" target="_blank" >{{issue.name}}</a>
+                    </td>
+                    <td>
+                        <img src="//static.moneylover.me/img/android_40.png" style="width:24px; height:24px;" alt="android_logo" ng-if="issue.metadata.os === 'Android'"/>
+                        <img src="//static.moneylover.me/img/apple_40.png" style="width:24px; height:24px;" alt="apple_logo" ng-if="issue.metadata.os === 'iOS'"/>
+                        <img src="//static.moneylover.me/img/wp_40.png" style="width:24px; height:24px;" alt="windows_logo" ng-if="issue.metadata.os === 'Windows Phone'"/>
+                        <img src="//static.moneylover.me/img/windows_40.png" style="width:24px; height:24px;" alt="windows_logo" ng-if="issue.metadata.os === 'Windows'"/>
+                        <img src="//static.moneylover.me/img/osx_40.png" style="width:24px; height:24px;" alt="windows_logo" ng-if="issue.metadata.os === 'Mac'"/>
+                    </td>
+                    <td>{{issue.report_date | checkDateTime}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal-footer footer-more-issues-mobile">
+    <button class="btn btn-default" ng-click="cancel()">Close</button>
+</div>

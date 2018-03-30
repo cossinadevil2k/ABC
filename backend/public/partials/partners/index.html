@@ -1,0 +1,48 @@
+<div class="module">
+    <div class="module-content">
+        <button class="btn btn-success" ng-click="addPartner()">
+            <i class="icon-plus"></i>
+            Create
+        </button>
+    </div>
+</div>
+
+<div class="module no-padding">
+    <div class="module-header">
+        <h4>Partner List</h4>
+    </div>
+
+    <div class="module-content">
+        <loading ng-if="isLoading"></loading>
+        <table class="table table-striped">
+            <thead>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Country</th>
+            <th>Update At</th>
+            <th class="text-right">Action</th>
+            </thead>
+            <tbody>
+            <tr class="animate-repeat" ng-repeat="(key, p) in partnerList">
+                <td>{{p.name}}</td>
+                <td>{{p.email}}</td>
+                <td>{{p.country}}</td>
+                <td>{{p.updateAt | checkDateTime}}</td>
+                <td class="text-right">
+                    <button class="btn btn-xs btn-success" tooltip="edit" ng-click="openPartnerDetail(p)"><i class="icon-pencil"></i> Detail/Edit</button>
+                    <button class="btn btn-xs btn-danger" tooltip="delete" ng-click="deletePartner(p)"><i class="icon-trash"></i></button>
+                </td>
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading"><i class="icon-fast-backward"></i></a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading"><i class="icon-fast-forward"></i></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+<polymer-element name="signup-success-dialog">
+    <template>
+        <style type="text/css">
+            :host * {
+                margin: 0;
+                padding: 0;
+            }
+
+            :host paper-dialog {
+                width: 400px;
+                height:auto;
+            }
+
+            :host core-header-panel {
+                min-height: 150px;
+            }
+
+            :host #userInfoDialog {
+                font-size: 16px;
+            }
+
+            :host /deep/ #container #main{
+                             overflow: hidden;
+                         }
+
+            :host .email-name {
+                padding-left: 24px;
+                margin-top: 10px;
+            }
+
+            :host .email-name span {
+                float: left;
+                margin-top: 8px;
+            }
+
+            :host .email-name p {
+                margin-left: 72px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 75%;
+            }
+
+            :host paper-button {
+                float: right;
+                color: red;
+            }
+
+            :host .signout {
+                background: none;
+            }
+
+            :host paper-button.colored {
+                background: none;
+                fill: #000;
+            }
+
+        </style>
+
+        <paper-dialog heading="" backdrop="true" id="signupSuccessDialog">
+            <core-header-panel mode="seamed">
+                <div class="core-header dialog-header">
+                    <paper-button icon="close" class="close" dismissive></paper-button>
+                    <div class="detail text-title">Congratulation</div>
+                </div>
+                <div class="content">
+                    <div class="email-name">
+                        <span class="text-caption">Your account was created. Now you can login to Money Lover and create your first wallet and transactions</span>
+                    </div>
+                </div>
+            </core-header-panel>
+            <paper-button affirmative class="colored r500" label="OK" on-click="{{gotoLogin}}" autofocus></paper-button>
+        </paper-dialog>
+    </template>
+    <script>
+        Polymer('signup-success-dialog', {
+            showDialog: function(){
+                this.$.signupSuccessDialog.toggle();
+            },
+
+            gotoLogin: function(){
+                history.pushState(null, "title", '/login');
+                history.go(0);
+            }
+        });
+    </script>
+
+</polymer-element>

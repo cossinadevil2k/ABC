@@ -1,0 +1,30 @@
+<div class="modal-header">
+    Select product
+</div>
+<div class="modal-body">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-lg-2">Type</label>
+            <div class="col-lg-10">
+                <select class="form-control" ng-model="productType" ng-change="getProduct(productType)">
+                    <option value="icon">Icon</option>
+                    <option value="credit">Credit</option>
+                    <option value="premium">Premium</option>
+                    <option value="subscription">Subscription</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">Product</label>
+            <div class="col-lg-10">
+                <select class="form-control" ng-model="productId">
+                    <option ng-repeat="product in productList" value="{{product.product_id}}">{{product.product_id}}</option>
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary" ng-click="showProductChart(productId)">Select</button>
+</div>

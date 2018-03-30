@@ -1,0 +1,13 @@
+<div ng-repeat="transactionItem in transactionData.transactions">
+	<div class="transaction-list-data">
+		<h4 class="module-subtitle">
+			<span ng-init="dateDisplay=(transactionItem.displayDate | MLDateFormatter)" ng-mouseenter="dateDisplay.displayDate=dateDisplay.basicDate" ng-mouseleave="dateDisplay.displayDate=dateDisplay.viewDate">{{ dateDisplay.displayDate }}</span>
+		</h4>
+		<span class="amount" ng-class="transactionItem.amount | checkNegativeAmount">{{transactionItem.amount}}</span>
+		<ul class="transaction-list">
+			<li ng-repeat="transaction in transactionItem.data">
+				<div ng-include="'/statics/transaction/list-item.html'"></div>
+			</li>
+		</ul>
+	</div>
+</div>

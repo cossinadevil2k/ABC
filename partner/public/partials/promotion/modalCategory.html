@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+
+    <h4 class="modal-title title">
+        Categories
+    </h4>
+
+</div>
+
+<div class="modal-body" style="padding: 0">
+
+    <div class="col-md-12 col-xs-12 formCategory" style="padding-left: 15px; padding-right: 15px; margin-top: 20px;">
+        <div class="input-group" style="width: 100%">
+            <input type="text" class="form-control" id='newCategory' ng-model="newCategory" placeholder="Add new category. It should has max 20 characters" enter-press='addCate(newCategory)' autofocus>
+            <span class="input-group-btn" ng-show="newCategory && newCategory.length >= 3">
+              <button type="button" class="btn btn-add-cate btn-success" ng-if="newCategory && newCategory.length >= 3 && newCategory.length <= 20" ng-click="addCate(newCategory)"><i class="icon-plus"></i></button>
+            </span>
+        </div>
+    </div>
+
+    <div class="listCate">
+        <div class="col-md-6 col-xs-12 formCategory" ng-repeat="category in categories">
+            <div class="input-group" style="width: 100%">
+    			<div class='textCategoryPromote'>{{category.name}}</div>
+    			<span class="input-group-btn">
+    				<button type="button" class="btn btn-danger" tooltip='Delete' ng-click='removeCategory(category)'><i class="icon-remove"></i></button>
+    			</span>
+    		</div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn" ng-click="cancel()"><i class="icon-remove-sign"></i> Close</button>
+</div>

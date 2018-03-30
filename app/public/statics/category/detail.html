@@ -1,0 +1,46 @@
+<form name="frmCategory" ng-submit="submitCategory()">
+	<div class="input-avatar">
+		<div class="input-avatar-preview">
+			<img ng-src="{{ categoryInfo.icon | generateIconLink }}" />
+			<span></span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="inputCategoryName" class="control-label">{{ 'create_category_hint_name_review' | translate }}</label>
+		<input id="inputCategoryName" type="text" class="form-control" ng-model="categoryInfo.name" ng-disabled="categoryInfo.metadata | lockCategory" value="{{ categoryInfo.name | categoryParseName:categoryInfo.metadata }}">
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">{{'create_category_parent_category' | translate}}</label>
+		<input type="text" class="form-control" ng-model="categoryInfo.parent.name" ng-disabled="categoryInfo.metadata | lockCategory" ng-click="selectParentCategory()">
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">{{ 'create_category_type_review' | translate }}: </label>
+		<div class="radio-inline">
+			<label class="control-label">
+				<input type="radio" ng-model="categoryInfo.type" value="1" name="type" ng-disabled="categoryInfo.metadata | lockCategory">{{ 'income' | translate }}
+			</label>
+		</div>
+		<div class="radio-inline">
+			<label class="control-label">
+				<input type="radio" ng-model="categoryInfo.type" value="2" name="type" ng-disabled="categoryInfo.metadata | lockCategory">{{ 'expense' | translate }}
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">{{'create_category_select_account_title' | translate}}</label>
+		<input type="text" class="form-control" disabled value="{{ wallet.name }}">
+	</div>
+
+	<input type="hidden" ng-model="categoryInfo.icon">
+	<input type="hidden" ng-model="categoryInfo._id">
+
+	<div class="form-group">
+		<input type="submit" class="btn btn-primary" value="Save">
+		<a type="reset" class="btn btn-default" ng-click="detailDefault()">Cancel</a>
+		<a class="btn btn-default" ng-click="newCategory()">{{ 'create_category_title' | translate }}</a>
+	</div>
+</form>

@@ -1,0 +1,68 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()">&times;</button>
+	<h4 class="modal-title title">Message</h4>
+</div>
+<div class="modal-body">
+	<span style="color: #ff0000">{{error}}</span>
+	<form class="form-horizontal" action="#">
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Action</label>
+			<div class="col-lg-10" style="padding-top: 5px;">
+				<select ng-model="msgInfo.action" class="form-control" required>
+					<option value="">-- Choose action --</option>
+					<option ng-repeat="(key, value) in optionAction" ng-selected="msgInfo.action==value.data" value="{{value.data}}">{{value.name}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group" ng-if="msgInfo.action == 13">
+			<label class="col-lg-2 control-label">Sponsor</label>
+			<div class="col-lg-10" style="padding-top: 5px;">
+				<select class="form-control" ng-model="msgInfo.selectedSponsor">
+					<option value="">-- Select sponsor --</option>
+					<option ng-repeat="(key, value) in sponsorList" value="{{value}}">{{value.name}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label" for="input1">Title</label>
+			<div class="col-lg-10">
+				<input type="text" placeholder="Enter title here..." id="input1" class="form-control" ng-model="msgInfo.title" ng-disabled="msgInfo.action == 13">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label" for="input2">Content</label>
+			<div class="col-lg-10">
+				<textarea id="input2" rows="3" class="form-control" ng-model="msgInfo.content" ng-disabled="msgInfo.action == 13">
+				</textarea>
+			</div>
+		</div>
+		<div class="form-group" ng-if="msgInfo.action|filterAction">
+			<label class="col-lg-2 control-label" for="input4">Link</label>
+			<div class="col-lg-10">
+				<input type="text" id="input4" class="form-control" ng-model="msgInfo.link" ng-disabled="msgInfo.action == 13" require>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label" for="input1">Campaign</label>
+			<div class="col-lg-10">
+				<input type="text" class="form-control" ng-model="msgInfo.campaign">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label" for="input1">Group</label>
+			<div class="col-lg-10">
+				<input type="text" class="form-control" ng-model="msgInfo.group">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label" for="input2">Option</label>
+			<div class="col-lg-10">
+				<div ng-include="'/partials/messages/option.html'" />
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+	<button type="button" class="btn btn-deepsea" ng-click="save()">Save</button>
+</div>

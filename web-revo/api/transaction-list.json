@@ -1,0 +1,301 @@
+{
+	"error": 0,
+	"msg": "get_transaction_success",
+	"data": {
+		"daterange": {
+			"startDate": "2014-09-01",
+			"endDate": "2014-09-01"
+		},
+		"transactions": [
+			{
+				"_id": "bba6ab5a0fdb45c196b34adf036a395c",
+				"note": "cho con đi học mẫu giáo",
+				"account": {
+					"_id": "b03ab96b0bd04039ba14ff83e12697b5",
+					"currency_id": 1,
+					"name": "test wallet 2508"
+				},
+				"category": {
+					"_id": "782309c22ad249338485f5e91a643a66",
+					"name": "Education",
+					"type": 2,
+					"icon": "ic_category_education"
+				},
+				"amount": 20000,
+				"displayDate": "2014-09-01T00:00:00.000Z",
+				"campaign": [
+					{
+						"tokenDevice": "F87qhAtmH0V7Yy67rA0YeZt/hxYaEoyeQonFjioIcS4=",
+						"lastEditBy": "5390c321dd870efb58009464",
+						"_id": "26fcd7ec71b64ab5921823f7b5475bb9",
+						"name": "event test 003",
+						"icon": "icon_2",
+						"type": 6,
+						"account": "b03ab96b0bd04039ba14ff83e12697b5",
+						"start_amount": 0,
+						"goal_amount": 0,
+						"owner": "5390c321dd870efb58009464",
+						"__v": 0,
+						"createdAt": "2014-09-01T08:27:32.681Z",
+						"updateAt": "2014-09-01T08:27:32.682Z",
+						"isDelete": false,
+						"status": false
+					}
+				],
+				"with": []
+			},
+			{
+				"_id": "4289e68198d84747a132d4c5117c49b2",
+				"account": {
+					"_id": "b03ab96b0bd04039ba14ff83e12697b5",
+					"currency_id": 1,
+					"name": "test wallet 2508"
+				},
+				"amount": 100000,
+				"category": {
+					"_id": "3be10bd09aa8414fbc6c2ee2a6719512",
+					"name": "Shopping",
+					"type": 2,
+					"icon": "ic_category_shopping"
+				},
+				"displayDate": "2014-09-01T00:00:00.000Z",
+				"note": "đầu tư nhẹ nhàng bộ karaoke",
+				"campaign": [
+					{
+						"tokenDevice": "F87qhAtmH0V7Yy67rA0YeZt/hxYaEoyeQonFjioIcS4=",
+						"lastEditBy": "5390c321dd870efb58009464",
+						"_id": "df896936f8f240bfa16c9580df27770a",
+						"name": "event test 001",
+						"icon": "icon_115",
+						"type": 6,
+						"account": "b03ab96b0bd04039ba14ff83e12697b5",
+						"start_amount": 0,
+						"goal_amount": 0,
+						"owner": "5390c321dd870efb58009464",
+						"__v": 0,
+						"createdAt": "2014-09-01T07:38:48.983Z",
+						"updateAt": "2014-09-01T07:38:48.984Z",
+						"isDelete": false,
+						"status": false
+					}
+				],
+				"with": [
+					"B1.Cương"
+				]
+			},
+			{
+				"_id": "5d7625b922684abfb555029366cf7f5f",
+				"note": "tán gái",
+				"account": {
+					"_id": "b03ab96b0bd04039ba14ff83e12697b5",
+					"currency_id": 1,
+					"name": "test wallet 2508"
+				},
+				"category": {
+					"_id": "f13944193bed4fc6b1d6926759bb4b58",
+					"name": "Friend & Lover",
+					"type": 2,
+					"icon": "ic_category_friendnlover"
+				},
+				"amount": 2000,
+				"displayDate": "2014-08-28T00:00:00.000Z",
+				"campaign": [],
+				"with": []
+			},
+			{
+				"_id": "580660f4b4e84735999e161287ea0e02",
+				"note": "vay tiền mua xe",
+				"account": {
+					"_id": "b03ab96b0bd04039ba14ff83e12697b5",
+					"currency_id": 1,
+					"name": "test wallet 2508"
+				},
+				"category": {
+					"_id": "dca0b4be504849d1bc207c92ae8dddfc",
+					"name": "Debt",
+					"type": 1,
+					"icon": "ic_category_debt"
+				},
+				"amount": 10000,
+				"displayDate": "2014-08-28T00:00:00.000Z",
+				"campaign": [],
+				"with": [
+					"Sơ cua"
+				]
+			},
+			{
+				"_id": "10732a8aa2344b9d91dbfb9e54cb65ab",
+				"note": "cho vay lãi với lãi suất thấp",
+				"account": {
+					"_id": "b03ab96b0bd04039ba14ff83e12697b5",
+					"currency_id": 1,
+					"name": "test wallet 2508"
+				},
+				"category": {
+					"_id": "5f92e07640524861819adb65060eca6c",
+					"name": "Loan",
+					"type": 2,
+					"icon": "ic_category_loan"
+				},
+				"amount": 20000,
+				"displayDate": "2014-08-28T00:00:00.000Z",
+				"campaign": [],
+				"with": [
+					"Sơ cua"
+				]
+			},
+			{
+				"_id": "a4cc1eb8ac904330b59d50ee76c9898d",
+				"account": {
+					"_id": "b03ab96b0bd04039ba14ff83e12697b5",
+					"currency_id": 1,
+					"name": "test wallet 2508"
+				},
+				"amount": 5151616,
+				"category": {
+					"_id": "4dbb9be1db8d4a0f913b28fc9a0f9967",
+					"name": "Award",
+					"type": 1,
+					"icon": "ic_category_award"
+				},
+				"displayDate": "2014-08-25T07:02:40.505Z",
+				"note": "nghiem tuc nao",
+				"campaign": [],
+				"with": []
+			},
+			{
+				"_id": "b21c3044b768474d91cfbaf114340793",
+				"account": {
+					"_id": "b03ab96b0bd04039ba14ff83e12697b5",
+					"currency_id": 1,
+					"name": "test wallet 2508"
+				},
+				"amount": 5151616,
+				"category": {
+					"_id": "4dbb9be1db8d4a0f913b28fc9a0f9967",
+					"name": "Award",
+					"type": 1,
+					"icon": "ic_category_award"
+				},
+				"displayDate": "2014-08-25T07:02:40.505Z",
+				"note": "this is a note",
+				"campaign": [],
+				"with": []
+			},
+			{
+				"_id": "89f3c16c4adb496689cf0b7a0b17d3e0",
+				"category": {
+					"_id": "30e597d5aa8b4239bbef2331d13fff70",
+					"name": "Give",
+					"type": 1,
+					"icon": "ic_category_give"
+				},
+				"amount": 100,
+				"note": "asdfakjsdfnajkdsf",
+				"displayDate": "2014-08-25T06:57:18.717Z",
+				"account": {
+					"_id": "b03ab96b0bd04039ba14ff83e12697b5",
+					"currency_id": 1,
+					"name": "test wallet 2508"
+				},
+				"campaign": [],
+				"with": []
+			},
+			{
+				"_id": "8bc2441396a345a8af93a6d09a0284ef",
+				"category": {
+					"_id": "4dbb9be1db8d4a0f913b28fc9a0f9967",
+					"name": "Award",
+					"type": 1,
+					"icon": "ic_category_award"
+				},
+				"amount": 50,
+				"note": "vbbbbb   srfgsdfg",
+				"displayDate": "2014-08-25T06:57:18.717Z",
+				"account": {
+					"_id": "b03ab96b0bd04039ba14ff83e12697b5",
+					"currency_id": 1,
+					"name": "test wallet 2508"
+				},
+				"campaign": [],
+				"with": []
+			},
+			{
+				"_id": "fac0358830224e1ab6d5c9a28f6f7ca4",
+				"category": {
+					"_id": "30c35bea1c8d470d9417105bd9a1f714",
+					"name": "Salary",
+					"type": 1,
+					"icon": "ic_category_salary"
+				},
+				"amount": 100,
+				"note": "fucking bugs",
+				"displayDate": "2014-08-25T06:56:06.934Z",
+				"account": {
+					"_id": "b03ab96b0bd04039ba14ff83e12697b5",
+					"currency_id": 1,
+					"name": "test wallet 2508"
+				},
+				"campaign": [],
+				"with": []
+			},
+			{
+				"category": {
+					"_id": "782309c22ad249338485f5e91a643a66",
+					"name": "Education",
+					"type": 2,
+					"icon": "ic_category_education"
+				},
+				"amount": 500,
+				"note": "nexus tablet",
+				"displayDate": "2014-08-25T03:58:21.235Z",
+				"account": {
+					"_id": "b03ab96b0bd04039ba14ff83e12697b5",
+					"currency_id": 1,
+					"name": "test wallet 2508"
+				},
+				"_id": "53fab471f9399dc225000003",
+				"campaign": [],
+				"with": []
+			},
+			{
+				"category": {
+					"_id": "782309c22ad249338485f5e91a643a66",
+					"name": "Education",
+					"type": 2,
+					"icon": "ic_category_education"
+				},
+				"amount": 500,
+				"note": "nexus tablet asfdasfasf",
+				"displayDate": "2014-08-25T03:58:21.235Z",
+				"account": {
+					"_id": "b03ab96b0bd04039ba14ff83e12697b5",
+					"currency_id": 1,
+					"name": "test wallet 2508"
+				},
+				"_id": "53facecf4569b3502d000002",
+				"campaign": [],
+				"with": []
+			},
+			{
+				"category": {
+					"_id": "ab4071187e1e4331996e37a349e20030",
+					"name": "Food & Drink",
+					"type": 2,
+					"icon": "ic_category_foodndrink"
+				},
+				"amount": 100,
+				"note": "Fucking Startbucks",
+				"displayDate": "2014-08-25T02:32:10.743Z",
+				"account": {
+					"_id": "b03ab96b0bd04039ba14ff83e12697b5",
+					"currency_id": 1,
+					"name": "test wallet 2508"
+				},
+				"_id": "53faa05e45d21d216b000005",
+				"campaign": [],
+				"with": []
+			}
+		]
+	}
+}

@@ -1,0 +1,33 @@
+<div class="text-center" ng-if="isLoading">
+    <img src="/images/loading-pacman.gif" /><br />
+    Loading
+</div>
+<div ng-init="getStats()">
+    <h3>Help Desk All Time Stats</h3>
+    <div>
+        <ul>
+            <li>Amount: {{stats.total[0].amount}}</li>
+            <li>Solved: {{stats.total[0].solved}}</li>
+        </ul>
+    </div>
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Month</th>
+                    <th>Issue</th>
+                    <th>Solved</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="record in stats.monthly">
+                    <td>{{record.year}}</td>
+                    <td>{{record.month + 1}}</td>
+                    <td>{{record.amount}}</td>
+                    <td>{{record.solved}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

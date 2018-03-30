@@ -1,0 +1,32 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()">&times;</button>
+	<h2 class="modal-title title">{{mode}} details</h2>
+	<h4>Total: {{totalRc}}, Deleted: {{isDel}}</h4>
+	<h4>Page: {{bigPageNo}}/{{totalBigPage}}</h4>
+	<div class="modal-footer">
+		<div colspan="7" class="text-center">
+			<div class="btn-group">
+				<a class="btn btn-default" ng-click="nextBigPage('prev')">Prev 200</a>
+				<a class="btn btn-default" ng-click="modalNextPage('first')">First</a>
+				<a class="btn btn-default" ng-click="modalNextPage(-1)" ng-disabled="modalFirstPage"><i class="icon-fast-backward"></i></a>
+				<button type="number" class="btn btn-default" >{{modalPageNo + 1}}</button>
+				<a class="btn btn-default" ng-click="modalNextPage(+1)" ng-disabled="modalLastPage"><i class="icon-fast-forward"></i></a>
+				<a class="btn btn-default" ng-click="modalNextPage('last')">Last</a>
+				<a class="btn btn-default" ng-click="nextBigPage('next')">Next 200</a>
+			</div>
+		</div>
+	</div>
+    <div ng-if="mode === 'Campaign'"">
+    	<p ng-if="info.isPublic">Widget: <a target="_blank" href="https://widget.moneylover.me?event={{info._id}}{{(env === 'dev')?'&mode=dev':''}}">
+    		https://widget.moneylover.me?event={{info._id}}{{(env === 'dev')?'&mode=dev':''}}
+    	</a></p>
+    	<button class="btn btn-info" ng-click="togglePublic(info)" tooltip="Make {{info.isPublic ? 'private' : 'public'}}">
+    		<i ng-class="{'icon-lock': info.isPublic, 'icon-unlock': !info.isPublic}"></i>
+    	</button>
+    </div>
+</div>
+<div class="modal-body">
+	<loading ng-if="isLoading"></loading>
+	<pre ng-if="!info">No result</pre>
+	<pre ng-if="info" pretty-json="info"></pre>
+</div>

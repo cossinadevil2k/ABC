@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ML">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title ng-bind="MLTitle">Money Lover</title>
+		<meta name="description" content="{{ MLDescription | limitTo:500 }}">
+		<meta name="author" content="{{ MLAuthor }}">
+		<meta name="keyword" content="{{ MLKeyword }}">
+		<meta name="apple-itunes-app" content="app-id=486312413">
+
+		<link rel="shortcut icon" href="<%= urlStatic %>img/favicon.png">
+
+		<link href="<%= urlStatic %>lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="<%= urlStatic %>lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+		<link href="<%= urlStatic %>css/app.css" rel="stylesheet">
+
+		<!--[if lt IE 9]>
+		<script src="/lib/bootstrap/js/ie8-responsive-file-warning.js"></script>
+		<![endif]-->
+		<!--[if lt IE 9]>
+		<script src="/lib/bootstrap/js/html5shiv.js"></script>
+		<script src="/lib/bootstrap/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body ng-class="{'lock-screen': lockScreen}">
+		<div class="fade-animate" ng-if="!userLogin" ng-include="'/partials/users/login-register.html'"></div>
+		<div id="wrapper" class="ml-fade" ng-class="{in: userLogin}">
+			<% include nav %>
+			<div id="content-wrapper">
+				<% include header %>
+				<section class="main-content padding">
+					<div class="fade-animate" ng-view></div>
+				</section>
+			</div>
+		</div>
+
+		<script src="<%= urlStatic %>lib/jquery/jquery-1.10.2.min.js"></script>
+		<script src="<%= urlStatic %>lib/jquery/jquery.cookie.js"></script>
+		<script src="<%= urlStatic %>lib/bootstrap/js/bootstrap.min.js"></script>
+		<script src="<%= urlStatic %>lib/angular/angular.min.js"></script>
+		<script src="<%= urlStatic %>lib/angular/angular-route.min.js"></script>
+		<script src="<%= urlStatic %>lib/angular/angular-animate.min.js"></script>
+		<script src="<%= urlStatic %>lib/angular/angular-sanitize.min.js"></script>
+		<script src="<%= urlStatic %>lib/angular/angular-local-storage.min.js"></script>
+		<script src="<%= urlStatic %>lib/angular/ui-bootstrap-tpls-0.10.0.min.js"></script>
+		<script src="<%= urlStatic %>lib/angular/angular-translate.min.js"></script>
+		<script src="<%= urlStatic %>lib/moneylover/moneylover.js"></script>
+		<script src="<%= urlStatic %>lib/moneylover/language.js"></script>
+		<script src="<%= urlStatic %>lib/moneylover/utils.js"></script>
+		<script src="<%= urlStatic %>lib/moneylover/datetimeUtils2.js"></script>
+		<script src="<%= urlStatic %>lib/js/accounting.min.js"></script>
+		<script src="<%= urlStatic %>lib/js/numeral.min.js"></script>
+		<script src="<%= urlStatic %>lib/js/moment.min.js"></script>
+		<script src="<%= urlStatic %>lib/js/sparklines.min.js"></script>
+		<script src="<%= urlStatic %>lib/js/knob.js"></script>
+		<script src="<%= urlStatic %>lib/js/fullcalendar.min.js"></script>
+		<script src="<%= urlStatic %>lib/js/underscore-min.js"></script>
+		<script src="<%= urlStatic %>js/script.js"></script>
+		<script src="<%= urlStatic %>js/app.js"></script>
+		<script src="<%= urlStatic %>js/services.js"></script>
+		<script src="<%= urlStatic %>js/controllers.js"></script>
+		<script src="<%= urlStatic %>js/filters.js"></script>
+		<script src="<%= urlStatic %>js/directives.js"></script>
+		<script>
+		(function() {
+			var _fbq = window._fbq || (window._fbq = []);
+			if (!_fbq.loaded) {
+				var fbds = document.createElement('script');
+				fbds.async = true;
+				fbds.src = '//connect.facebook.net/en_US/fbds.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(fbds, s);
+				_fbq.loaded = true;
+			}
+			_fbq.push(['addPixelId', "518931264882008"]);
+		})();
+		window._fbq = window._fbq || [];
+		window._fbq.push(["track", "PixelInitialized", {}]);
+		</script>
+		<noscript>
+			<img height="1" width="1" border="0" alt="" style="display:none" src="https://www.facebook.com/tr?id=518931264882008&amp;ev=NoScript" />
+		</noscript>
+	</body>
+</html>

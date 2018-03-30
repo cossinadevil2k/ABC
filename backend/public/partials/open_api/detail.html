@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">Details about <strong>{{itemDetailName}}</strong>
+    </h4>
+</div>
+<div class="modal-body form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Name</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="partnerDetail.partnerName" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Email</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="partnerDetail.email" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Reason</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="partnerDetail.reason" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Estimated</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="partnerDetail.scale" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Status</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="status" readonly>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="cancel()">
+        <i class="icon-remove"></i> Close
+    </button>
+</div>

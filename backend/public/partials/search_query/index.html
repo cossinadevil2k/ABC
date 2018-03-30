@@ -1,0 +1,96 @@
+<div class="module no-padding">
+    <div class="module-header">
+        <div class="row">
+            <div class="function-left" style="">
+                <h4>Search query list</h4>
+            </div>
+            <div class="function-right">
+                <a class="btn" href="/search-query/details">
+                    <i class="icon-plus"></i> Add</a>
+                <!-- <a class="btn" href="javascript:void(0)" ng-click="regenerateAll()"><i class="icon-refresh"></i> Regenerate All</a> -->
+            </div>
+        </div>
+    </div>
+    <div class="module-body">
+        <loading ng-if="isLoading"></loading>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th></th>
+                    <th>Type</th>
+                    <th>Count</th>
+                    <th>Created date</th>
+                    <th>Last update</th>
+                    <th class="text-right"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(key, query) in queryList">
+                    <td>{{query.name}}</td>
+                    <td>
+                        <button class="btn btn-twitter" type="button" ng-click="createAutomationQuick(query)">Create Automation Quickly</button>
+                    </td>
+                    <td>{{query.type}}</td>
+                    <td>{{query.pushCount | number}}</td>
+                    <td>{{query.createdDate | checkDateTime}}</td>
+                    <td>{{query.updatedDate | checkDateTime}}</td>
+                    <td class="text-right">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Menu
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu menuActionProcess">
+                                <li>
+                                    <a href="/search-query/details?id={{query._id}}">
+                                        <i class="icon-comment-alt" style="color: green"></i> Detail
+                                    </a>
+                                </li>
+                                <li ng-if="query.type === 'user'">
+                                    <a href="#" ng-click="exportToCsv(query)">
+                                        <i class="icon-upload-alt" style="color: green"></i> Export CSV
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" ng-click="regen(query)">
+                                        <i class="icon-refresh" style="color: green"></i> Regen
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" ng-click="removeQuery(query)">
+                                        <i class="icon-trash" style="color: green"></i> Remove
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr class="breakPage">
+                    <td colspan="12" class="text-center">
+                        <div class="btn-group">
+                            <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading">
+                                <i class="icon-fast-backward"></i>
+                            </a>
+                            <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                            <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading">
+                                <i class="icon-fast-forward"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/ng-template" id="alert.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Notice</h4>
+    </div>
+    <div class="modal-body">
+        <p>{{message}}</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" ng-click="cancel()">Close</button>
+    </div>
+</script>

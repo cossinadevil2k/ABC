@@ -1,0 +1,10 @@
+<div class="module">
+    <div class="module-header">
+        <h4>User: {{info.user.email}} | {{info.createdAt | checkDateTime}}</h4>
+    </div>
+    <div class="module-content">
+        <pre>
+            <span ng-repeat="(key, value) in info"><p><strong>{{key}}:</strong> {{value|checkDateTime}}</p></span>
+        </pre>
+    </div>
+</div>

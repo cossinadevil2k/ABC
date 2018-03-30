@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title><%= transaction.category.name %></title>
+		<meta name="description" content="<% if(transaction.note){ %><%= transaction.note %><%} else {%>A simple way to manage your finances on mobile <% } %>">
+		<meta name="author" content="ZooStudio">
+		<meta name="keyword" content="money lover,finance app,mobile app, expense manager">
+
+		<link rel="shortcut icon" href="<%= urlStatic %>img/favicon.png">
+
+		<link href="<%= urlStatic %>libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<!-- <link href="<%= urlStatic %>lib/font-awesome/css/font-awesome.css" rel="stylesheet"> -->
+		<link href="<%= urlStatic %>libs/moneylover/css/app.css?v=1402979680" rel="stylesheet">
+
+		<!--[if lt IE 9]>
+		<script src="<%= urlStatic %>lib/bootstrap/js/ie8-responsive-file-warning.js"></script>
+		<![endif]-->
+		<!--[if lt IE 9]>
+		<script src="<%= urlStatic %>lib/bootstrap/js/html5shiv.js"></script>
+		<script src="<%= urlStatic %>lib/bootstrap/js/respond.min.js"></script>
+		<![endif]-->
+		<!-- META FOR IOS & HANDHELD -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="apple-mobile-web-app-capable" content="YES" />
+		<meta name="apple-itunes-app" content="app-id=486312413">
+		<!-- //META FOR IOS & HANDHELD -->
+	</head>

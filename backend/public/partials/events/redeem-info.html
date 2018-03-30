@@ -1,0 +1,42 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()">&times;</button>
+	<h3 class="modal-title title">{{eventInfo.name}}</b></h3>
+	<h4>Total Email: {{totalEmail}}</h4>
+	<h4>Registed Email: {{registedEmail}}</h4>
+	<button class="btn btn-success" tooltip="Xuất danh sách ra file Excel" ng-click="exportEmailList()">Export</button>
+</div>
+<div class="modal-body">
+	<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Email</th>
+			<th>Name</th>
+			<th>Registed</th>
+			<th>IP</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="animate-repeat" ng-repeat="email in redeemEmailList">
+			<td>{{email.userEmail}}</td>
+			<td>{{email.userName}}</td>
+			<td class="text-center">
+				<a class="btn btn-xs" ng-class="{'btn-danger': !email.status, 'btn-success': email.status}">
+					<i ng-class="{'icon-check': email.status, 'icon-check-empty': !email.status}"></i>
+				</a>
+			</td>
+			<td>{{email.ipAddress}}</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<div class="modal-footer">
+	<div class="breakPage">
+		<div colspan="7" class="text-center">
+			<div class="btn-group">
+				<a class="btn btn-default" ng-click="switchPage('prev')" ng-disabled="isFirstPage"><i class="icon-fast-backward"></i></a>
+				<button class="btn btn-default">Page {{pageNo}} of {{totalPage}}</button>
+				<a class="btn btn-default" ng-click="switchPage('next')" ng-disabled="isLastPage"><i class="icon-fast-forward"></i></a>
+			</div>
+		</div>
+	</div>
+</div>

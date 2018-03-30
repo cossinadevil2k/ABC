@@ -1,0 +1,121 @@
+<div class="modal-header">
+    <h4>Product Info</h4>
+</div>
+<div class="modal-body">
+    <form class="form form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-lg-2">Id</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="productInfo.product_id" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">Alias id</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="productInfo.alias" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">Name</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="productInfo.name" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">Type</label>
+            <div class="col-lg-10">
+                <select ng-model="productInfo.metadata.type" class="form-control" ng-disabled="mode==='edit' && productInfo.metadata.type">
+                    <option value="">Select subscription type</option>
+                    <option value="premium">Premium</option>
+                    <option value="semi_premium">Semi Premium</option>
+                    <option value="linked_wallet">Linked Wallet</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">Time Unit</label>
+            <div class="col-lg-10">
+                <select class="form-control" ng-model="productInfo.expire_unit" required>
+                    <option value="">Select</option>
+                    <option value="days">Days</option>
+                    <option value="months">Months</option>
+                    <option value="years">Years</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">Time Value</label>
+            <div class="col-lg-10">
+                <input type="number" class="form-control" ng-model="productInfo.expire_value" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">Has trial</label>
+            <div class="col-lg-5">
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="productInfo.has_trial" ng-value="false">
+                        No
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="productInfo.has_trial" ng-value="true">
+                        Yes
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">Price VN</label>
+            <div class="col-lg-10">
+                <input type="number" class="form-control" ng-model="productInfo.price_vn" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">Price Global</label>
+            <div class="col-lg-10">
+                <input type="number" step="any" class="form-control" ng-model="productInfo.price_gl" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">Discount(%)</label>
+            <div class="col-lg-10">
+                <input type="number" step="any" class="form-control" ng-model="productInfo.metadata.discount" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">Public?</label>
+            <div class="col-lg-5">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="type-public" ng-model="productInfo.isPublic" ng-value="false">
+                        No
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="type-public" ng-model="productInfo.isPublic" ng-value="true">
+                        Yes
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-2">Platform</label>
+            <div class="col-lg-5">
+                <input type="checkbox" ng-model="productInfo.android" ng-value="true"> Android<br>
+                <input type="checkbox" ng-model="productInfo.ios" ng-value="true"> Ios<br>
+                <input type="checkbox" ng-model="productInfo.windows" ng-value="true"> Windows<br>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" ng-click="close()">Close</button>
+            <button class="btn btn-success" ng-click="saveItem()">Save</button>
+        </div>
+    </form>
+</div>

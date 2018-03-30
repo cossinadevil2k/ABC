@@ -1,0 +1,268 @@
+{
+    "name": "Fast Foods",
+    "product_id": "icon_fastfood",
+    "icons": {
+        "ff_bananas": [
+            "bananas",
+            "banana",
+            "fruit",
+            "hoa quả",
+            "trái cây",
+            "chuối"
+        ],
+        "ff_bread2": [
+            "bread",
+            "breakfast",
+            "lunch",
+            "bánh mì",
+            "bánh mì đen"
+        ],
+        "ff_caffe": [
+            "cafe",
+            "coffee",
+            "cà phê",
+            "đồ uống",
+            "drink",
+            "drinking",
+            "breakfast",
+            "tea",
+            "trà sữa",
+            "milktea",
+            "relax",
+            "thư giãn",
+            "nghỉ",
+            "nghỉ giải lao",
+            "fresh",
+            "refresh",
+            "tỉnh táo",
+            "hot coffee"
+        ],
+        "ff_cake": [
+            "cake",
+            "gato",
+            "bánh",
+            "sweet",
+            "sweetie",
+            "ngọt",
+            "bánh ngọt"
+        ],
+        "ff_cheese": [
+            "cheese",
+            "pho mát",
+            "bơ",
+            "bake"
+        ],
+        "ff_chocolate": [
+            "chocolate",
+            "sweet",
+            "sweetie",
+            "đồ ngọt",
+            "ngọt",
+            "valentine",
+            "tình nhân",
+            "socola"
+        ],
+        "ff_coke": [
+            "coke",
+            "coca",
+            "drink",
+            "drinking",
+            "đồ uống",
+            "soft drink"
+        ],
+        "ff_dimsum": [
+            "dimsum",
+            "bữa tối",
+            "ăn tối",
+            "dinner",
+            "lunch",
+            "chinese",
+            "hongkong",
+            "traditional food",
+            "asian food"
+        ],
+        "ff_egg": [
+            "egg",
+            "trứng",
+            "cooking",
+            "dinner",
+            "lunch",
+            "breakfast",
+            "chicken"
+        ],
+        "ff_fries": [
+            "fries",
+            "khoai tây chiên",
+            "khoai tây",
+            "มันฝรั่ง",
+            "patata",
+            "kentang",
+            "khoai",
+            "chip",
+            "potato"
+        ],
+        "ff_fruits": [
+            "noodle",
+            "mì",
+            "mì xào",
+            "dinner",
+            "lunch"
+        ],
+        "ff_hamburger": [
+            "hamburger",
+            "bread",
+            "breakfast"
+        ],
+        "ff_hot_coffee": [
+            "cafe",
+            "coffee",
+            "cà phê",
+            "đồ uống",
+            "drink",
+            "drinking",
+            "breakfast",
+            "tea",
+            "trà sữa",
+            "milktea",
+            "relax",
+            "thư giãn",
+            "nghỉ",
+            "nghỉ giải lao",
+            "fresh",
+            "refresh",
+            "tỉnh táo",
+            "hot coffee"
+        ],
+        "ff_hotdog": [
+            "hot dog",
+            "bread",
+            "bánh mì",
+            "taco",
+            "lunch",
+            "breakfast"
+        ],
+        "ff_iceblended": [
+            "iceblend",
+            "smoothie",
+            "coffee",
+            "cafe",
+            "trà",
+            "trà sữa",
+            "drink",
+            "drinkking",
+            "sweet"
+        ],
+        "ff_lollipop": [
+            "candy",
+            "lollipop",
+            "sweet",
+            "sugar",
+            "ngọt",
+            "đồ ngọt",
+            "kẹo",
+            "bánh",
+            "bánh kẹo",
+            "cake",
+            "cupcake"
+        ],
+        "ff_muffin": [
+            "muffin",
+            "cupcake",
+            "cake",
+            "sweet",
+            "sweetie",
+            "happy",
+            "bánh",
+            "bánh ngọt",
+            "bake",
+            "time to bake",
+            "baking",
+            "nấu",
+            "làm bánh"
+        ],
+        "ff_pho": [
+            "phở",
+            "vietnamese food",
+            "traditional food",
+            "asian food",
+            "noodle",
+            "breakfast",
+            "lunch",
+            "dinner",
+            "bún",
+            "bánh canh",
+            "hủ tíu"
+        ],
+        "ff_pizza": [
+            "pizza",
+            "lunch",
+            "traditional food",
+            "bữa trưa"
+        ],
+        "ff_porridge": [
+            "porridge",
+            "cháo",
+            "lẩu",
+            "súp",
+            "soup",
+            "traditional food",
+            "asian food",
+            "canh",
+            "vietnamese food"
+        ],
+        "ff_rice": [
+            "rice",
+            "traditional food",
+            "vietnamese food",
+            "asian food",
+            "lunch",
+            "dinner",
+            "cơm"
+        ],
+        "ff_slicedbread": [
+            "slicebread",
+            "picnic",
+            "bread",
+            "bánh mì",
+            "bánh mì gối"
+        ],
+        "ff_snacks": [
+            "snack",
+            "bim bim",
+            "đồ ăn nhẹ",
+            "picnic"
+        ],
+        "ff_water": [
+            "water",
+            "nước"
+        ],
+        "ff_yogurt": [
+            "yogurt",
+            "sữa chua",
+            "milk",
+            "sữa",
+            "breakfast",
+            "break"
+        ]
+    },
+    "tags": [
+        "fastfood",
+        "food",
+        "delicous",
+        "yummy",
+        "ngon",
+        "thức ăn",
+        "đồ ăn",
+        "đồ ăn nhanh",
+        "meal",
+        "happy",
+        "delicious",
+        "yummy",
+        "beverage",
+        "food and beverage",
+        "eat",
+        "eating",
+        "อาหาร",
+        "makan"
+    ]
+}

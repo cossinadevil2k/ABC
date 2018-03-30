@@ -1,0 +1,81 @@
+<div class="module no-padding">
+    <div class="module-header">
+        <div class="row">
+            <h4 class="function-left">
+                <span>List request</span>
+                <div class="btn-group">
+                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        {{view}}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="" ng-click="viewSelect('Pending')">Pending</a></li>
+                        <li><a href="" ng-click="viewSelect('Accepted')">Accepted</a></li>
+                        <li><a href="" ng-click="viewSelect('Denied')">Denied</a></li>
+                        <li><a href="" ng-click="viewSelect('All')">All</a></li>
+                    </ul>
+                </div>
+            </h4>
+        </div>
+    </div>
+    <div class="module-content">
+        <loading ng-if="isLoading"></loading>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Notification</th>
+                <th>Query</th>
+                <th>Admin</th>
+                <th>Status</th>
+                <th>Schedule</th>
+                <th>Created date</th>
+                <th>Approved by</th>
+                <th class="text-right">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key, request) in listSession">
+                <td>{{request.notification.title}}</td>
+                <td>{{request.searchQuery.name}}</td>
+                <td>{{request.pushBy.username}}</td>
+                <td ng-class="{'text-warning':request.status === 'Pending','text-success':request.status === 'Accepted','text-fail':request.status === 'Denied'}">
+                    {{request.status}}
+                </td>
+                <td>{{request.schedule_time}}</td>
+                <td>{{request.pushDate | checkDateTime}}</td>
+                <td>{{request.approvedBy.username || '--------'}}</td>
+                <td class="text-right">
+                    <button class="btn btn-xs btn-success" ng-click="accept(request)" tooltip="Accept">
+                        <i class="icon-check"></i>
+                    </button>
+                    <button class="btn btn-xs btn-warning" ng-click="deny(request)" tooltip="Deny">
+                        <i class="icon-remove"></i>
+                    </button>
+                    <button class="btn btn-xs btn-grape" ng-click="remove(request)" tooltip="Remove">
+                        <i class="icon-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr ng-if="listSession.length === 0">
+                <td>No request found</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading"><i class="icon-fast-backward"></i></a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading"><i class="icon-fast-forward"></i></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="row col-lg-12">
+    <div class="module module-deepsea">
+        <div class="module-header">
+            <h4>Faq Sections</h4>
+        </div>
+        <div class="module-content table-responsive">
+            <div>
+                <button class="btn btn-default" ng-click="newSection()" ng-disabled="isLoading">Add new <i class="icon-plus"></i></button>
+                <button class="btn btn-facebook" ng-click="getSection()" ng-disabled="isLoading">Reload <i class="icon-refresh"></i></button>
+            </div>
+            <div class="text-center" ng-if="isLoading">
+                <img src="/images/loading-pacman.gif" /><br />
+                Loading
+            </div>
+            <table class="table table-striped" ng-init="getSection()">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Last edit</th>
+                        <th class="text-center">Sort</th>
+                        <th class="text-right">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="(key,section) in sections">
+                        <td>{{key + 1}}</td>
+                        <td>{{section.name}}</td>
+                        <td>{{section.last_edit | checkDateTime}}</td>
+                        <td class="text-center">
+                            <button class="btn btn-xs btn-facebook" ng-click="sortSection('down',key)"><i class="icon-sort-down"></i></button>
+                            <button class="btn btn-xs btn-facebook" ng-click="sortSection('up',key)"><i class="icon-sort-up"></i></button>
+                        </td>
+                        <td class="text-right">
+                            <button class="btn btn-xs btn-success" ng-click="editSection(key)">Edit</button>
+                            <button class="btn btn-xs btn-danger" ng-click="deleteSection(section._id)">Delete</button>
+                        </td>
+                    </tr>
+                    <tr class="breakPage">
+                        <td colspan="12" class="text-center">
+                            <div class="btn-group">
+                                <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="true"><i class="icon-fast-backward"></i></a>
+                                <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                                <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="true"><i class="icon-fast-forward"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

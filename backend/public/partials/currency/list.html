@@ -1,0 +1,45 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th class="text-center">Symbol</th>
+			<th class="text-center">Short</th>
+			<th class="text-center">Type</th>
+			<th class="text-center">Round</th>
+			<th class="text-center">decimal mark</th>
+			<th class="text-center">group separator</th>
+			<th class="text-right">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="animate-repeat" ng-repeat="(key, currency) in listCurrency | filter:searchKeyword track by $index">
+			<td>{{ currency.i }}</td>
+			<td>{{ currency.n }}</td>
+			<td class="text-center">{{ currency.s }}</td>
+			<td class="text-center">{{ currency.c }}</td>
+			<td class="text-center">
+				<span ng-if="!currency.t">Left</span>
+				<span ng-if="currency.t">Right</span>
+			</td>
+            <td class="text-center">{{ currency.r || "NULL"}}</td>
+            <td class="text-center">
+                <span ng-if="!currency.dm">NULL</span>
+                <span ng-if="currency.dm==='.'">DOT</span>
+                <span ng-if="currency.dm===','">COMMA</span>
+            </td>
+            <td class="text-center">
+                <span ng-if="!currency.gs">NULL</span>
+                <span ng-if="currency.gs==='.'">DOT</span>
+                <span ng-if="currency.gs===','">COMMA</span>
+                <span ng-if="currency.gs===' '">SPACE</span>
+            </td>
+			<td class="text-right">
+				<button class="btn btn-xs btn-success" ng-click="edit(currency)"><i class="icon-pencil"></i></button>
+				<button class="btn btn-xs btn-danger" ng-click="delete(currency)" >
+					<i class="icon-trash"></i>
+				</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

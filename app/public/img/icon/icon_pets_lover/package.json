@@ -1,0 +1,164 @@
+{
+  "name": "Pets Lover",
+  "product_id": "icon_pets_lover",
+  "icons": {
+    "pets_01": [
+      "cuộn len",
+      "wool rolls",
+      "ม้วนขนสัตว์",
+      "wol gulungan",
+      "rotoli di lana"
+    ],
+    "pets_02": [
+      "vòng cổ",
+      "chuông cổ",
+      "collari pet",
+      "necklace",
+      "ปกสัตว์เลี้ยง",
+      "pet kerah",
+      "dog collar"
+    ],
+    "pets_03": [
+      "xương",
+      "puppy bone",
+      "puppy vinyl bone"
+    ],
+    "pets_04": [
+      "nhà ở cho chó",
+      "dog kennel",
+      "kennel anjing",
+      "บ้านสุนัข",
+      "canile"
+    ],
+    "pets_05": [
+      "khay thức ăn",
+      "dog bowl",
+      "ciotola del cane",
+      "mangkuk anjing",
+      "ชามข้าวสุนัข"
+    ],
+    "pets_06": [
+      "đệm nằm cho mèo",
+      "cat bed",
+      "เตียงแมว",
+      "gatto letto",
+      "tidur kucing"
+    ],
+    "pets_07": [
+      "sữa cho mèo",
+      "cat milk",
+      "il latte gatto",
+      "นมแมว",
+      "susu kucing"
+    ],
+    "pets_08": [
+      "bóng cao su",
+      "latex ball",
+      "bola lateks",
+      "palla in lattice",
+      "ลูกยางข้น"
+    ],
+    "pets_09": [
+      "cat scratching",
+      "รอยขีดข่วนแมว",
+      "graffio di gatto"
+    ],
+    "pets_10": [
+      "dog nail clipper",
+      "kìm cắt móng",
+      "สุนัขกรรไกรตัดเล็บ",
+      "cane tagliaunghie",
+      "gunting kuku anjing"
+    ],
+    "pets_11": [
+      "dog brushes and comb",
+      "lược chải lông chó",
+      "sikat anjing",
+      "spazzole cane",
+      "แปรงสุนัข"
+    ],
+    "pets_12": [
+      "thức ăn cho chó",
+      "dog food",
+      "dry dog food",
+      "อาหารสุนัข",
+      "cibo per cani",
+      "makanan anjing"
+    ],
+    "pets_13": [
+      "nhà ở cho mèo",
+      "lồng mèo",
+      "cat flap",
+      "carrier",
+      "kennels",
+      "pintu kucing",
+      "gattaiola",
+      "พนังแมว"
+    ],
+    "pets_14": [
+      "sữa tắm",
+      "dog shampoo",
+      "แชมพูสุนัข",
+      "shampoo per cani",
+      "shampoo anjing"
+    ],
+    "pets_15": [
+      "chó",
+      "anjing",
+      "cane",
+      "hund",
+      "หมา",
+      "pes",
+      "perro",
+      "犬",
+      "собака"
+    ],
+    "pets_16": [
+      "mèo",
+      "cat",
+      "Кот",
+      "ネコ",
+      "แมว",
+      "kucing"
+    ],
+    "pets_17": [
+      "sữa tắm",
+      "cat shampoo",
+      "แชมพูแมว",
+      "kucing shampoo",
+      "shampoo gatto"
+    ],
+    "pets_18": [
+      "cat litter",
+      "cát nằm cho mèo",
+      "lettiera per gatti",
+      "kotoran kucing",
+      "ครอกแมว"
+    ],
+    "pets_19": [
+      "thức ăn cho chó",
+      "dog food",
+      "wet dog food",
+      "อาหารสุนัข",
+      "cibo per cani",
+      "makanan anjing"
+    ],
+    "pets_20": [
+      "lược chải lông mèo",
+      "cat grooming",
+      "cat brushes and comb",
+      "กรูมมิ่งแมว"
+    ]
+  },
+  "tags": [
+    "cat",
+    "dog",
+    "สัตว์เลี้ยง",
+    "thú nuôi",
+    "membelai",
+    "animale domestico",
+    "puppy",
+    "pet care",
+    "toy for cat"
+  ]
+}

@@ -1,0 +1,267 @@
+/*   ________________________________
+ &&  create at 29/1/2016 by lightsbee
+ */
+
+/*GENERAL*/
+.middleContent {
+    background-color: white;
+    text-align: left;
+    min-height: calc(100vh - 105px - 110px);
+}
+/*--------------------*/
+
+/*INTRODUCE*/
+.introduce {
+    font-size: 35px;
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 70px;
+    margin-bottom: 100px;
+    font-weight: 300;
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+}
+.introduce div {
+    font-size: 14px;
+    font-weight: normal;
+    font-style: italic;
+    color: #95A2A8
+}
+.introduce div:first-child {
+    padding-top: 7px
+}
+/*--------------------*/
+
+/*FORM ISSUE*/
+.formForUser {
+    background-color: #f0f2f4;
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 7px;
+    margin-top: 100px;
+    padding: 40px;
+}
+.formInput {
+    width: 100%;
+    /*text-align: left;*/
+}
+textarea {
+    resize: vertical;
+}
+#input-description {
+    min-height: 150px;
+    font-weight: normal;
+    font-size: 16px;
+}
+#input-title {
+    height: 47px;
+    font-weight: bold;
+}
+#input-email {
+    font-weight: normal;
+    font-size: 16px
+}
+#input-title, #input-description {
+    border: 1px solid #DFEBED;
+    width: 100%;
+    padding: 7px 15px;
+    border-radius: 3px
+}
+#input-title:active, #input-description:active,
+#input-title:focus, #input-description:focus {
+    border-color: #2DB54A
+}
+.titleForm {
+    font-weight: bold;
+    margin-bottom: 7px;
+    font-size: 16px;
+    color: #6a7989
+}
+.input-empty {
+    border: 1px solid #E57B5C !important
+}
+/*-------------*/
+
+.whiteBlank {
+    background-color: white;
+    height: 100px;
+    width: 100%
+}
+
+/*--------------*/
+
+/*INPUT*/
+#input-title {
+    /*height: 55px;*/
+    /*width: 80%*/
+}
+.requiredInput {
+    float: right;
+    font-weight: normal;
+    color: #BB2253;
+    font-size: 15px
+}
+.hidden {
+    visibility: hidden;
+    opacity: 0
+}
+.dropdown-err{
+    border: 2px solid #BB2253
+}
+/*--------------*/
+
+/*BUTTON*/
+.formButton {
+    height: 40px
+}
+#sendIssue {
+    float: right;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+/*--------------*/
+
+/*MODAL*/
+.modalFooterRequire {
+    text-align: center;
+    border-top: none
+}
+.modalFooterRequire button {
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 15px;
+}
+.modalBodyRequire i, .modalBodyLogin .fa-sign-in {
+    font-size: 100px;
+}
+.modalBodyRequire i {
+    color: #F8D386
+}
+/*.modalBodyLogin .fa-sign-in {
+    color: #b17179
+}*/
+.modalBodyLogin {
+    background-color: #3A4750;
+}
+.modalBodyRequire, .modalBodyLogin  {
+    text-align: center;
+    padding: 15px 0 0 0;
+}
+.titleModal {
+    font-size: 35px;
+    margin: 13px 30px 10px 30px;
+    color: white
+}
+.overForm > form > p {
+    font-weight: 300;
+    color: #575757;
+    font-size: 15px;
+    opacity: 0.6;
+    padding-bottom: 15px
+}
+.modal-dialog-small {
+    width: 500px
+}
+.modal-dialog {
+    font-family: 'Open Sans', sans-serif;
+}
+.modalBodyLogin .textError {
+    color: #bb2253;
+    font-size: 10px;
+    position: absolute;
+    right: 9px;
+    top: 11px;
+    cursor: default;
+}
+/*--------------*/
+
+#moreInfo {
+    margin-left: 15px
+}
+#moreInfo label {
+    color: #6A7989
+}
+
+
+.errorMessage, .successMessage {
+    border: 1px solid;
+    height: 38px;
+    margin: auto 15px;
+    background: white;
+    border-radius: 3px;
+    width: 95%;
+    display: inline-flex;
+    opacity: 1;
+    overflow: visible;
+
+}
+.zero {
+    height: 0;
+    overflow: hidden;
+    border: none
+}
+.hero {
+    height: 38px;
+    overflow: visible;
+    -webkit-transition: all .3s ease .15s;
+    -moz-transition: all .3s ease .15s;
+    -o-transition: all .3s ease .15s;
+    -ms-transition: all .3s ease .15s;
+    transition: all .3s ease .15s;
+}
+.errorMessage {
+    border-color: #e57b5c;
+}
+.successMessage {
+    border-color: #2DB54A;
+}
+.successMessage .iconMessage, .errorMessage .iconMessage {
+    height: 36px;
+    width: 40px
+}
+.successMessage .iconMessage {
+    background-color: #2DB54A;
+}
+.errorMessage .iconMessage {
+    background-color: #e57b5c;
+}
+.iconMessage i {
+    float: left;
+    font-size: 19px;
+    color: white;
+}
+.iconMessage {
+    padding: 10px
+}
+
+#characters, #area-characters {
+    float: right;
+    font-size: 14px;
+    font-weight: 300;
+    padding-right: 7px;
+    padding-top: 7px;
+}
+.alertMaxChars {
+    color: #e57b5c
+}
+#urEmail, #urPass {
+    border: 2px solid #dfebed;
+}
+
+#viewTitleIssue tr {
+    cursor: pointer;
+}
+
+
+#btnLogin {
+    margin-bottom: 3px;
+    background-color: #25A55F;
+    border: none
+}
+#btnLogin:hover {
+    background-color: #2abb6c;
+}
+.btn-cancel {
+    font-size: 15px;
+    opacity: 0.55
+}

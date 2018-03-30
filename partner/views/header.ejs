@@ -1,0 +1,26 @@
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title ng-bind="MLTitle">Money Lover Partner</title>
+<meta name="description" content="{{ MLDescription | limitTo:500 }}">
+<meta name="author" content="{{ MLAuthor }}">
+<meta name="keyword" content="{{ MLKeyword }}">
+
+<link rel="manifest" href="<%= urlPartner %>manifest.json">
+<link rel="shortcut icon" href="<%= urlPartner %>favicon<%= (env == 'production')? '':'_dev' %>.png">
+
+<link href="<%= urlPartner %>libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<%= urlPartner %>libs/font-awesome/css/font-awesome.css" rel="stylesheet">
+<link href="<%= urlPartner %>dist/css/app.css" rel="stylesheet">
+<link href="<%= urlPartner %>dist/css/devices.min.css" rel="stylesheet">
+<link href="<%= urlPartner %>libs/js/ng-prettyjson.min.css" rel="stylesheet" type="text/css">
+<link href="<%= urlPartner %>css/flag-icon.css" rel="stylesheet">
+<link href="<%= urlPartner %>css/colorpicker.min.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+<script src="/libs/bootstrap/js/ie8-responsive-file-warning.js"></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="/libs/bootstrap/js/html5shiv.js"></script>
+<script src="/libs/bootstrap/js/respond.min.js"></script>
+<![endif]-->

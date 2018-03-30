@@ -1,0 +1,169 @@
+{
+  "name": "Healthcare",
+  "product_id": "icon_healthcare",
+  "icons": {
+    "healthcare_01": [
+      "pharmacy",
+      "pill",
+      "capsule",
+      "thuốc",
+      "viên thuốc",
+      "thuốc con nhộng"
+    ],
+    "healthcare_02": [
+      "needle",
+      "kim tiêm",
+      "kim",
+      "tiêm"
+    ],
+    "healthcare_03": [
+      "thermometer",
+      "nhiệt kế",
+      "đo nhiệt độ",
+      "sốt",
+      "ill",
+      "sick"
+    ],
+    "healthcare_04": [
+      "Cardiovascular stethoscope",
+      "ống nghe tim mạch",
+      "doctor",
+      "bác sĩ",
+      "y tế",
+      "khám bệnh",
+      "hospital"
+    ],
+    "healthcare_05": [
+      "ambulance",
+      "xe cứu thương",
+      "cứu thương",
+      "khấn cấp",
+      "hospital",
+      "đi bệnh viện"
+    ],
+    "healthcare_06": [
+      "teeth",
+      "tooth",
+      "răng",
+      "nha sĩ",
+      "dentist"
+    ],
+    "healthcare_07": [
+      "hearth",
+      "tim mạch",
+      "emergency",
+      "surgery",
+      "phẫu thuật"
+    ],
+    "healthcare_08": [
+      "hospital",
+      "bệnh viện",
+      "nằm viện",
+      "cấp cứu",
+      "emergency",
+      "hồi phục",
+      "bệnh nhân",
+      "patient"
+    ],
+    "healthcare_09": [
+      "hospital",
+      "bệnh viện",
+      "nằm viện",
+      "cấp cứu",
+      "emergency",
+      "hồi phục",
+      "bệnh nhân",
+      "patient"
+    ],
+    "healthcare_10": [
+      "urgo",
+      "băng cá nhân",
+      "băng tay",
+      "blood"
+    ],
+    "healthcare_11": [
+      "Rehabilitation",
+      "medical canes",
+      "gậy chống",
+      "gậy"
+    ],
+    "healthcare_12": [
+      "doctor",
+      "bác sĩ",
+      "bác sĩ phẫu thuật"
+    ],
+    "healthcare_13": [
+      "nursery",
+      "y tá",
+      "hộ lý",
+      "người hỗ trợ"
+    ],
+    "healthcare_14": [
+      "lung",
+      "lá phổi",
+      "phổi",
+      "respire",
+      "hô hấp"
+    ],
+    "healthcare_15": [
+      "eye drops",
+      "thuốc nhỏ mắt",
+      "mắt",
+      "nhỏ mắt"
+    ],
+    "healthcare_16": [
+      "hospital",
+      "bệnh viện",
+      "nằm viện",
+      "cấp cứu",
+      "emergency",
+      "hồi phục",
+      "bệnh nhân",
+      "patient"
+    ],
+    "healthcare_17": [
+      "eye",
+      "mắt",
+      "khám mắt",
+      "medical eye"
+    ],
+    "healthcare_18": [
+      "wheel chair",
+      "xe lăn",
+      "bệnh nhân",
+      "patient"
+    ],
+    "healthcare_19": [
+      "crutches",
+      "nạng",
+      "nạng chống"
+    ],
+    "healthcare_20": [
+      "kidney",
+      "thận"
+    ]
+  },
+  "tags": [
+    "Healthcare",
+    "health",
+    "care",
+    "take care",
+    "energy",
+    "strong",
+    "strength",
+    "hospital",
+    "well-being",
+    "sức khỏe",
+    "kesehatan",
+    "salute",
+    "salud",
+    "saúde",
+    "สุขภาพ",
+    "здоровье",
+    "khám",
+    "khám sức khỏe",
+    "khám bệnh",
+    "treatment",
+    "medical"
+  ]
+}

@@ -1,0 +1,162 @@
+{
+    "name": "Sports",
+    "product_id": "icon_ml_sports",
+    "icons": {
+        "sport_pack_24": [
+            "hammer throw",
+            "ném tạ"
+        ],
+        "sport_pack_23": [
+            "gymnastics",
+            "swing",
+            "đu dây"
+        ],
+        "sport_pack_22": [
+            "weight",
+            "health"
+        ],
+        "sport_pack_21": [
+            "golf"
+        ],
+        "sport_pack_20": [
+            "volleyball",
+            "bóng chuyền",
+            "ball"
+        ],
+        "sport_pack_19": [
+            "baseball",
+            "bóng chày"
+        ],
+        "sport_pack_18": [
+            "football",
+            "soccer",
+            "bóng đá",
+            "ball",
+            "bóng"
+        ],
+        "sport_pack_17": [
+            "chess",
+            "chess table",
+            "cờ vua",
+            "cờ vây",
+            "cờ",
+            "fighting",
+            "war",
+            "war and peace"
+        ],
+        "sport_pack_16": [
+            "bowling"
+        ],
+        "sport_pack_15": [
+            "run",
+            "running",
+            "walk",
+            "shoe",
+            "shoes",
+            ""
+        ],
+        "sport_pack_14": [
+            "basketball",
+            "bóng rổ",
+            "ball",
+            "bóng"
+        ],
+        "sport_pack_13": [
+            "swim",
+            "swimming",
+            "bơi lội",
+            "bơi"
+        ],
+        "sport_pack_12": [
+            "bi a",
+            "pool"
+        ],
+        "sport_pack_11": [
+            "badminton",
+            "cầu lông"
+        ],
+        "sport_pack_10": [
+            "tennis",
+            "tennis ball",
+            "ball",
+            "quần vợt",
+            "bóng",
+            "soft ball"
+        ],
+        "sport_pack_09": [
+            "karate",
+            "kung fu",
+            "protect",
+            "self protect",
+            "võ",
+            "bảo vệ",
+            "học võ"
+        ],
+        "sport_pack_08": [
+            "clock",
+            "alarm",
+            "timer",
+            "time",
+            "reminder",
+            "remember",
+            "đồng hồ",
+            "bấm giờ",
+            "đồng hồ bấm giờ"
+        ],
+        "sport_pack_07": [
+            "weighlifting",
+            "cử tạ",
+            "fearness",
+            "failure"
+        ],
+        "sport_pack_06": [
+            "golf",
+            "golf ball",
+            "ball",
+            "bóng"
+        ],
+        "sport_pack_05": [
+            "hand gripper",
+            "máy tập tay",
+            "tập tay"
+        ],
+        "sport_pack_04": [
+            "dart",
+            "target",
+            "goal",
+            "phi tiêu"
+        ],
+        "sport_pack_03": [
+            "ping pong",
+            "bóng bàn",
+            "bóng",
+            "ball"
+        ],
+        "sport_pack_02": [
+            "baseball",
+            "bóng chày",
+            "ball",
+            "bóng"
+        ],
+        "sport_pack_01": [
+            "boxing",
+            "đấm bốc"
+        ]
+    },
+    "tags": [
+        "Thể thao",
+        "thể dục",
+        "gym",
+        "thể hình",
+        "tập thể thao",
+        "sức khỏe",
+        "luyện tập",
+        "tập",
+        "sport",
+        "relax",
+        "nghỉ ngơi",
+        "nghỉ giải lao",
+        "olympic",
+        "thế vận hội"
+    ]
+}

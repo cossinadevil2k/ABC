@@ -1,0 +1,78 @@
+<div class="module no-padding">
+    <div class="module-header">
+        <button class="btn btn-success" ng-click="create()">
+            <i class="icon icon-plus"></i> Create</button>
+    </div>
+    <div class="module-content">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">Public</th>
+                    <th class="text-center">Top Download</th>                    
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Alias</th>
+                    <th>Type</th>
+                    <th>Price GL</th>
+                    <th>Price VN</th>
+                    <th>Metadata</th>
+                    <th class="text-right">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(key, product) in listProduct">
+                    <td class="text-center">
+                        <a class="btn btn-xs" href="#" ng-click="changePublic(product)" ng-class="{'btn-danger': !product.isPublic, 'btn-success': product.isPublic}">
+                            <i ng-class="{'icon-check': product.isPublic, 'icon-unchecked': !product.isPublic}"></i>
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-xs" href="#" ng-click="changeTopDownload(product)" ng-class="{'btn-danger': !product.isTopDownload, 'btn-success': product.isTopDownload}">
+                            <i ng-class="{'icon-check': product.isTopDownload, 'icon-unchecked': !product.isTopDownload}"></i>
+                        </a>
+                    </td>
+                    <td>{{product.product_id}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.alias || '-----'}}</td>
+                    <td>{{product.type | itemType}}</td>
+                    <td>{{product.price_gl}}</td>
+                    <td>{{product.price_vn}}</td>
+                    <td>{{product.metadata|| '-----'}}</td>
+                    <td class="text-right">
+                        <button class="btn btn-xs btn-info" ng-click="edit(product)" placeholder="Edit">
+                            <i class="icon-pencil"></i>
+                        </button>
+                        <button class="btn btn-xs btn-grape" ng-click="delete(product)" placeholder="Delete">
+                            <i class="icon-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr ng-show="noResult">
+                    <td>No result found</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="breakPage">
+                    <td colspan="12" class="text-center">
+                        <div class="btn-group">
+                            <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading">
+                                <i class="icon-fast-backward"></i>
+                            </a>
+                            <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                            <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading">
+                                <i class="icon-fast-forward"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,418 @@
+<div class="col-md-8 col-md-offset-2">
+    <div class="formLoanInfo">
+        <div class="module-content content-loans-backend">
+            <form name='contentLoans' style="padding: 0">
+                <div class="headLoan">
+                    <h4 style="position: absolute"><small>INFOMATIONS</small></h4>
+                    <button type="button" class='btn btn-orange' ng-click='editMode()' style="margin-right: 10px;" ng-show='enableEdit'>
+                        <i class="icon-edit-sign"></i>
+                        <small>ENABLE EDIT</small>
+                    </button>
+                </div>
+
+                <div class="form-group row" style="margin: 0px;">
+                    <ul class="nav nav-tabs">
+
+                      <li><a href="#" ng-class="{'active': tabSelected=='general'}" ng-click="selectTab('general')">General</a></li>
+
+                      <li><a href="#" ng-class="{'active': tabSelected=='personal'}" ng-click="selectTab('personal')">Personal</a></li>
+
+                      <li><a href="#" ng-class="{'active': tabSelected=='car'}" ng-click="selectTab('car')">Car</a></li>
+
+                      <li><a href="#" ng-class="{'active': tabSelected=='house'}" ng-click="selectTab('house')">House</a></li>
+                    </ul>
+
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="tab-content" style="padding: 30px;">
+                            <div ng-if="tabSelected == 'general'">
+                                <div class="group row">
+                                    <div class="titleSameForm">
+                                        GENERAL
+                                    </div>
+                                    <div class="titleFormLoan">
+                                        <small>MIN SALARY REQUIREMENT</small>
+                                        <span class="errorLoanInput" ng-show="contentLoans.minSalaryRequirement.$error.number">
+                                            Not valid number!
+                                        </span>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type='number' class="form-control" ng-model="loan.minSalaryRequirement" ng-disabled='haveValue' name='minSalaryRequirement' placeholder="eg: 5 000 000">
+                                        <span class="input-group-addon addon-behind-fix">VND/month</span>
+                                    </div>
+                                </div>
+
+                                <div class="group row">
+                                    <div class="titleFormLoan">
+                                        <small>AGE REQUIREMENT</small>
+                                        <span class="errorLoanInput" ng-show="contentLoans.ageRequirementOne.$error.number || contentLoans.ageRequirementTwo.$error.number">
+                                            Not valid number!
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6" style="padding-left: 0;">
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.ageRequirement.min" min='0' max='200' placeholder="from" ng-disabled='haveValue' name='ageRequirementOne'>
+                                            <span class="input-group-addon addon-behind-fix">years old</span>
+                                        </div>
+                                        <i class="icon-long-arrow-right iconArrowLoan"></i>
+                                    </div>
+                                    <div class="col-md-6" style="padding-right: 0;">
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.ageRequirement.max" min='0' max='200' placeholder="to" ng-disabled='haveValue' name='ageRequirementTwo'>
+                                            <span class="input-group-addon addon-behind-fix">years old</span>
+                                        </div>
+                                    </div>
+                                </div><!-- /form-group-->
+
+                            </div>
+                            <div id="personal" ng-if="tabSelected == 'personal'">
+                                <div class="group row">
+
+                                    <div class="titleSameForm">
+                                        PERSONAL
+                                    </div>
+                                    <div class="col-md-6" style="padding-left: 0">
+                                        <div class="titleFormLoan">
+                                            <small>INTEREST RATE</small>
+                                            <span class="errorLoanInput" ng-show="contentLoans.interestRateP.$error.number">
+                                                Not valid number!
+                                            </span>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.personal.interestRate" required ng-disabled='haveValue' name='interestRateP' placeholder="eg: 7.8">
+                                            <span class="input-group-addon addon-behind-fix">per annum (%)</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6"  style="padding-right: 0">
+                                        <div class="titleFormLoan">
+                                            <small>ADJUSTABLE RATE</small>
+                                            <span class="errorLoanInput" ng-show="contentLoans.adjustableRateP.$error.number">
+                                                Not valid number!
+                                            </span>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.personal.adjustableRate" required ng-disabled='haveValue' name='adjustableRateP' placeholder="eg: 4.3">
+                                            <span class="input-group-addon addon-behind-fix">per annum (%)</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="group row">
+                                    <div class="titleFormLoan">
+                                        <small>PRIVILEDGE</small>
+                                        <span class="errorLoanInput" ng-show="contentLoans.priviledgeRate.$error.number || contentLoans.numberMonthP.$error.number">
+                                            Not valid number!
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6" style="padding-left: 0;">
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.personal.priviledge.interestRate" placeholder="rate" ng-disabled='haveValue' name='priviledgeRate'>
+                                            <span class="input-group-addon addon-behind-fix">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style="padding-right: 0;">
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.personal.priviledge.numberMonth" ng-disabled='haveValue' name='numberMonthP' placeholder="some months">
+                                            <span class="input-group-addon addon-behind-fix">months</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="group row">
+                                    <div class="titleFormLoan">
+                                        <small>LOAN TENURE</small>
+                                        <span class="errorLoanInput" ng-show="contentLoans.loanTenurePOne.$error.number || contentLoans.loanTenurePTwo.$error.number">
+                                            Not valid number!
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6" style="padding-left: 0;">
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.personal.loanTenure.min" placeholder="min" ng-disabled='haveValue' name='loanTenurePOne'>
+                                            <span class="input-group-addon addon-behind-fix">months</span>
+                                        </div>
+                                        <i class="icon-long-arrow-right iconArrowLoan"></i>
+                                    </div>
+                                    <div class="col-md-6" style="padding-right: 0;">
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.personal.loanTenure.max" placeholder="max" ng-disabled='haveValue' name='loanTenurePTwo'>
+                                            <span class="input-group-addon addon-behind-fix">months</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="group row">
+                                    <div class="col-md-6" style="padding-left: 0">
+                                        <div class="titleFormLoan">
+                                            <small>MAXIMUM LENDING RATE / PLAN</small>
+                                            <span class="errorLoanInput" ng-show="contentLoans.maximumLendingRate.$error.number">
+                                                Not valid number!
+                                            </span>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.personal.maximumLendingRate" required ng-disabled='haveValue' placeholder="eg: 75%" name='maximumLendingRate'>
+                                            <span class="input-group-addon addon-behind-fix">%</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6" style="padding-right: 0">
+                                        <div class="titleFormLoan">
+                                            <small>GRACE PERIOD</small>
+                                            <span class="errorLoanInput" ng-show="contentLoans.gracePeriodP.$error.number">
+                                                Not valid number!
+                                            </span>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.personal.gracePeriod" required ng-disabled='haveValue' name='gracePeriodP'>
+                                            <span class="input-group-addon addon-behind-fix">months</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="car" ng-if="tabSelected == 'car'">
+                                <div class="group row">
+                                    <div class="titleSameForm">
+                                        CAR
+                                    </div>
+                                    <div class="col-md-6" style="padding-left: 0">
+                                        <div class="titleFormLoan">
+                                            <small>INTEREST RATE</small>
+                                            <span class="errorLoanInput" ng-show="contentLoans.interestRateC.$error.number">
+                                                Not valid number!
+                                            </span>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.car.interestRate" required ng-disabled='haveValue' name='interestRateC' placeholder="eg: 7.8">
+                                            <span class="input-group-addon addon-behind-fix">per annum (%)</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6" style="padding-right: 0">
+                                        <div class="titleFormLoan">
+                                            <small>ADJUSTABLE RATE</small>
+                                            <span class="errorLoanInput" ng-show="contentLoans.adjustableRateC.$error.number">
+                                                Not valid number!
+                                            </span>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.car.adjustableRate" required ng-disabled='haveValue' name='adjustableRateC' placeholder="eg: 4.3">
+                                            <span class="input-group-addon addon-behind-fix">per annum (%)</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="group row">
+                                    <div class="titleFormLoan">
+                                        <small>PRIVILEDGE</small>
+                                        <span class="errorLoanInput" ng-show="contentLoans.priviledgeRateC.$error.number || contentLoans.numberMonthC.$error.number">
+                                            Not valid number!
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6" style="padding-left: 0;">
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.car.priviledge.interestRate" placeholder="rate" ng-disabled='haveValue' name='priviledgeRateC'>
+                                            <span class="input-group-addon addon-behind-fix">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style="padding-right: 0;">
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.car.priviledge.numberMonth" ng-disabled='haveValue' name='numberMonthC' placeholder="some months">
+                                            <span class="input-group-addon addon-behind-fix">months</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="group row">
+                                    <div class="titleFormLoan">
+                                        <small>LOAN TENURE</small>
+                                        <span class="errorLoanInput" ng-show="contentLoans.loanTenureCOne.$error.number || contentLoans.loanTenureCTwo.$error.number">
+                                            Not valid number!
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6" style="padding-left: 0;">
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.car.loanTenure.min" placeholder="min" ng-disabled='haveValue' name='loanTenureCOne'>
+                                            <span class="input-group-addon addon-behind-fix">months</span>
+                                        </div>
+                                        <i class="icon-long-arrow-right iconArrowLoan"></i>
+                                    </div>
+                                    <div class="col-md-6" style="padding-right: 0;">
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.car.loanTenure.max" placeholder="max" ng-disabled='haveValue' name='loanTenureCTwo'>
+                                            <span class="input-group-addon addon-behind-fix">months</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="group row">
+                                    <div class="col-md-6" style="padding-left: 0">
+                                        <div class="titleFormLoan">
+                                            <small>MAXIMUM LENDING RATE / PLAN</small>
+                                            <span class="errorLoanInput" ng-show="contentLoans.maximumLendingRateC.$error.number">
+                                                Not valid number!
+                                            </span>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.car.maximumLendingRate" required ng-disabled='haveValue' placeholder="eg: 75%" name='maximumLendingRateC'>
+                                            <span class="input-group-addon addon-behind-fix">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style="padding-right: 0">
+                                        <div class="titleFormLoan">
+                                            <small>GRACE PERIOD</small>
+                                            <span class="errorLoanInput" ng-show="contentLoans.gracePeriodC.$error.number">
+                                                Not valid number!
+                                            </span>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.car.gracePeriod" required ng-disabled='haveValue' name='gracePeriodC'>
+                                            <span class="input-group-addon addon-behind-fix">months</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="house" ng-if="tabSelected == 'house'">
+                                <div class="group row">
+                                    <div class="titleSameForm">
+                                        HOUSE
+                                    </div>
+                                    <div class="col-md-6" style="padding-left: 0">
+                                        <div class="titleFormLoan">
+                                            <small>INTEREST RATE</small>
+                                            <span class="errorLoanInput" ng-show="contentLoans.interestRateH.$error.number">
+                                                Not valid number!
+                                            </span>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.house.interestRate" required ng-disabled='haveValue' name='interestRateH' placeholder="eg: 7.8">
+                                            <span class="input-group-addon addon-behind-fix">per annum (%)</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6" style="padding-right: 0">
+                                        <div class="titleFormLoan">
+                                            <small>ADJUSTABLE RATE</small>
+                                            <span class="errorLoanInput" ng-show="contentLoans.adjustableRateH.$error.number">
+                                                Not valid number!
+                                            </span>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.house.adjustableRate" required ng-disabled='haveValue' name='adjustableRateH' placeholder="eg: 4.3">
+                                            <span class="input-group-addon addon-behind-fix">per annum (%)</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="group row">
+                                    <div class="titleFormLoan">
+                                        <small>PRIVILEDGE</small>
+                                        <span class="errorLoanInput" ng-show="contentLoans.priviledgeRateH.$error.number || contentLoans.numberMonthH.$error.number">
+                                            Not valid number!
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6" style="padding-left: 0;">
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.house.priviledge.interestRate" placeholder="rate" ng-disabled='haveValue' name='priviledgeRateH'>
+                                            <span class="input-group-addon addon-behind-fix">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style="padding-right: 0;">
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.house.priviledge.numberMonth" ng-disabled='haveValue' name='numberMonthH' placeholder="some months">
+                                            <span class="input-group-addon addon-behind-fix">months</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="group row">
+                                    <div class="titleFormLoan">
+                                        <small>LOAN TENURE</small>
+                                        <span class="errorLoanInput" ng-show="contentLoans.loanTenureHOne.$error.number || contentLoans.loanTenureHTwo.$error.number">
+                                            Not valid number!
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6" style="padding-left: 0;">
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.house.loanTenure.min" placeholder="min" ng-disabled='haveValue' name='loanTenureHOne'>
+                                            <span class="input-group-addon addon-behind-fix">months</span>
+                                        </div>
+                                        <i class="icon-long-arrow-right iconArrowLoan"></i>
+                                    </div>
+                                    <div class="col-md-6" style="padding-right: 0;">
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.house.loanTenure.max" placeholder="max" ng-disabled='haveValue' name='loanTenureHTwo'>
+                                            <span class="input-group-addon addon-behind-fix">months</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="group row">
+                                    <div class="col-md-6" style="padding-left: 0">
+                                        <div class="titleFormLoan">
+                                            <small>MAXIMUM LENDING RATE / PLAN</small>
+                                            <span class="errorLoanInput" ng-show="contentLoans.maximumLendingRateH.$error.number">
+                                                Not valid number!
+                                            </span>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.house.maximumLendingRate" required ng-disabled='haveValue' placeholder="eg: 75%" name='maximumLendingRateH'>
+                                            <span class="input-group-addon addon-behind-fix">%</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6" style="padding-right: 0">
+                                        <div class="titleFormLoan">
+                                            <small>GRACE PERIOD</small>
+                                            <span class="errorLoanInput" ng-show="contentLoans.gracePeriodH.$error.number">
+                                                Not valid number!
+                                            </span>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type='number' class="form-control" ng-model="loan.house.gracePeriod" required ng-disabled='haveValue' name='gracePeriodH'>
+                                            <span class="input-group-addon addon-behind-fix">months</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /form-group-->
+
+
+                <div class="row form-button-loan">
+                    <div class="col-md-11">
+                        <div class="input-group" style="float: right">
+                            <button type="button" name="button" class="btn btn-success" ng-show='createInfo' ng-click='create(loan)'><i class="icon-ok-sign"></i> Save</button>
+
+                            <button type="button" name="button" class="btn btn-success" ng-show='editInfo' ng-click='save(loan)'><i class="icon-ok-sign"></i> Update</button>
+
+                            <!-- <button type="button" name="button" class="btn btn-success"  ng-click='delete()'><i class="icon-ok-sign"></i> delete</button> -->
+                        </div>
+                    </div>
+                </div><!-- /form-group-->
+
+            </form> <!-- /contentLoans-->
+
+        </div> <!-- /content-loans-backend-->
+
+        <div class="titleBank">
+            <div class="col-md-6 titleBank-first">
+                <div><small>BANK</small></div>
+                <div style="font-size: 17px; font-weight: bold;">{{loan.bankId.name | uppercase}}</div>
+            </div>
+            <div class="col-md-6 titleBank-second" style="text-align: right;">
+                <div><small>LAST SAVE</small></div>
+                <div style="font-size: 16px; font-weight: lighter;">{{loan.editedAt | date:'dd/MM/yyyy HH:mm'}}</div>
+            </div>
+        </div> <!-- /titleBank-->
+
+    </div> <!-- /formLoanInfo-->
+
+</div> <!-- /div-col-6-->

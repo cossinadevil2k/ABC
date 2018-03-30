@@ -1,0 +1,15 @@
+<div id="account-mini-list" ng-controller="ctrlWallet">
+	<div class="container" ng-init="miniWallet()">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="content">
+						<h1>{{ titlePageSelectAccount | translate }}</h1>
+						<div class="animate-fade" ng-if="showMiniList" ng-include="'/partials/wallet/list.html'"></div>
+						<div class="animate-fade" ng-if="createWallet" ng-include="'/partials/wallet/detail.html'"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

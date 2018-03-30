@@ -1,0 +1,31 @@
+<div class="alert alert-dismissable" ng-if="(alert_info || alert_warning)" ng-class="{'alert-info': alert_info, 'alert-warning': alert_warning}">
+	<button aria-hidden="true" data-dismiss="alert" class="close" type="button"><i class="icon-remove-sign"></i></button>
+	<ml-msg ml-bind-content="alertMsg"></ml-msg>
+</div>
+<form name="frmCreateAccount" role="form" class="form-horizontal" ng-submit="submitAddWallet()">
+	<div class="form-group">
+		<div class="input-group">
+			<span class="input-group-addon"><i class="icon-user"></i>
+			</span>
+			<input type="text" placeholder="{{ 'add_account_name_title' | translate }}" class="form-control" ng-model="walletInfo.name" ng-disabled="formStatus.disabedName">
+		</div>
+	</div>
+	<div class="form-group ml-locked">
+		<div class="input-group">
+			<span class="input-group-addon"><i class="icon-usd"></i>
+			</span>
+			<input type="text" placeholder="{{ currencyStatus }}" class="form-control" ng-model="walletInfo.currency.n" ng-click="selectCurrency()" readonly>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="checkbox">
+			<label>
+				<input type="checkbox" ng-model="walletInfo.default" ng-init="walletInfo.default=true">{{ 'add_account_set_default' | translate }}
+			</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<input class="btn btn-primary" type="submit" value="{{ 'save' | translate }}">
+		<input class="btn btn-default" type="reset" value="{{ 'cancel' | translate }}">
+	</div>
+</form>

@@ -1,0 +1,38 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title title">Device list</h4>
+</div>
+<div class="modal-body">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th class="text-center">Platform</th>
+                <th>Is dev?</th>
+                <th class="text-right">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="animate-repeat" ng-repeat="(key, device) in listDevices">
+                <td>{{device.name}}</td>
+                <td class="text-center">
+                    <img src="/images/android_96.png" class="icon-user-platform" alt="android_logo" ng-if="device.platform===1"/>
+                    <img src="/images/ios_96.png" class="icon-user-platform" alt="android_logo" ng-if="device.platform===2"/>
+                    <img src="/images/winphone_96.png" class="icon-user-platform" alt="android_logo" ng-if="device.platform===3 && device.appId===4"/>
+                    <img src="/images/osx_96.png" class="icon-user-platform" alt="android_logo" ng-if="device.platform===6"/>
+                    <img src="/images/windows_96.png" class="icon-user-platform" alt="android_logo" ng-if="device.platform===3 && device.appId===5"/>
+                    <img src="/images/web_96.png" class="icon-user-platform" alt="web_logo" ng-if="device.platform===7"/>
+                </td>
+                <td>
+                    <a class="btn btn-xs" href="#" ng-click="changeDevMode(device)" ng-class="{'btn-danger': !device.isDev, 'btn-success': device.isDev}">
+                        <i ng-class="{'icon-check': device.isDev, 'icon-unchecked': !device.isDev}"></i>
+                    </a>
+                </td>
+                <td class="text-right">
+                    <button class="btn btn-xs btn-facebook" clip-copy="copyToken(device)" clip-click="getTokenClicked()">Get token</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-header"></div>

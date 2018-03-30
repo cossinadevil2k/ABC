@@ -1,0 +1,35 @@
+
+
+<polymer-element name="sign-up-service">
+    <template>
+        <style>
+            :host {
+                display: none;
+            }
+        </style>
+
+        <core-ajax id="userSignUp"
+           method="POST"
+           url="/register"
+           params='{{params}}'
+           on-core-response="{{signUpResult}}"
+           handleAs="json">
+        </core-ajax>
+    </template>
+
+    <script>
+        Polymer('sign-up-service',{
+            signUpResult: function(){
+                var data = this.$.userSignUp.response;
+                this.callback(data);
+            },
+            signup: function(userInfo, callback){
+                this.callback = callback;
+                if(userInfo) {
+                    this.params = JSON.stringify(userInfo);
+                    this.$['userSignUp'].go();
+                } else this.callback({error:10, msg:"reg_user_info_empty"});
+            }
+        });
+    </script>
+</polymer-element>

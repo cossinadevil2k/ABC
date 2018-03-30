@@ -1,0 +1,38 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Sender</th>
+			<th>BankName</th>
+			<th>Pattern</th>
+			<th class="text-right">Bank Index</th>
+			<th class="text-right">Trans Index</th>
+			<th class="text-right">Note</th>
+			<th class="text-right">Format</th>
+			<th class="text-right">Type</th>
+			<th class="text-right">Category</th>
+            <th class="text-right">Nation</th>
+			<th class="text-right">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="animate-repeat" ng-repeat="bank in listBank | filter:searchKeyword track by $index">
+			<td>{{ bank.s }}</td>
+			<td>{{ bank.b }}</td>
+			<td>{{ bank.p }}</td>
+			<td class="text-right">{{ bank.bi }}</td>
+			<td class="text-right">{{ bank.ti }}</td>
+			<td class="text-right">{{ bank.ni }}</td>
+			<td class="text-right">{{ bank.fm }}</td>
+			<td class="text-right" ng-if="bank.t==2">Visa</td>
+			<td class="text-right" ng-if="bank.t==1">ATM</td>
+            <td class="text-right">{{bank.ca}}</td>
+            <td class="text-right">{{bank.nai}}</td>
+			<td class="text-right">
+				<button class="btn btn-xs btn-success" ng-click="edit(bank)"><i class="icon-pencil"></i></button>
+				<button class="btn btn-xs btn-danger" ng-click="delete(bank)">
+					<i class="icon-trash"></i>
+				</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

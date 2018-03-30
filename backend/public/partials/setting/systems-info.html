@@ -1,0 +1,172 @@
+<div class="row">
+
+   <div class="col-md-4">
+      <div class="module no-padding">
+         <div class="module-header">
+            <h4>
+               SERVER
+               <i ng-click="refreshServer()" class="icon-refresh icon-large refeshInfo" ng-class="{'refreshInfo': rotationServer}" style="float:right"></i>
+            </h4>
+         </div>
+         <div class="module-content">
+            <loading ng-if='isLoading'></loading>
+            <table ng-if='!isLoading' class="table table-striped">
+              <tbody>
+                <tr>
+                   <td class="bold"> Total Memory </td>
+                   <td>{{serverinfo.memoryUsage.totalMemory | dataUnit}}</td>
+                </tr>
+                <tr>
+                   <td class="bold"> Free Memory </td>
+                   <td>{{serverinfo.memoryUsage.freeMemory | dataUnit}}</td>
+                </tr>
+                <tr>
+                   <td class="bold"> Up Time </td>
+                   <td>{{serverinfo.uptime | secondsToTimeString}}</td>
+                </tr>
+              </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+
+   <div class="col-md-4">
+      <div class="module no-padding">
+         <div class="module-header">
+            <h4>
+               DATABASE
+               <i ng-click='refreshInfo()' class="icon-refresh icon-large refeshInfo" ng-class="{'refreshInfo': rotationData}" style="float:right"></i>
+            </h4>
+         </div>
+         <div class="module-content">
+            <loading ng-if='isLoading'></loading>
+            <table ng-if='!isLoading' class="table table-striped">
+              <tbody>
+                <tr>
+                   <td class="bold"> Data Size </td>
+                   <td>{{info.dataSize | dataUnit}}</td>
+                </tr>
+                <tr>
+                   <td class="bold"> Index Size </td>
+                   <td>{{info.indexSize | dataUnit}}</td>
+                </tr>
+                <tr>
+                   <td class="bold"> Storage Size </td>
+                   <td>{{info.storageSize | dataUnit}}</td>
+                </tr>
+                <tr>
+                   <td class="bold"> Indexes </td>
+                   <td>{{info.indexes | number : fractionSize}}</td>
+                </tr>
+                <tr>
+                   <td class="bold"> Objects </td>
+                   <td>{{info.objects | number : fractionSize}}</td>
+                </tr>
+              </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+
+   <div class="col-md-4">
+      <div class="module no-padding">
+         <div class="module-header">
+            <h4>
+               REDIS
+               <i ng-click="refreshRedis()" class="icon-refresh icon-large refeshInfo" ng-class="{'refreshInfo': rotationRedis}" style="float:right"></i>
+            </h4>
+         </div>
+         <div class="module-content">
+            <loading ng-if='isLoading'></loading>
+            <table ng-if='!isLoading' class="table table-striped">
+              <tbody>
+                <tr>
+                   <td class="bold">Version</td>
+                   <td>{{infoRedis.redisVersion}}</td>
+                </tr>
+                <tr>
+                   <td class="bold">Uptime</td>
+                   <td>{{infoRedis.uptime*1000 | millSecondsToTimeString}}</td>
+                </tr>
+                <tr>
+                   <td class="bold">Used memory</td>
+                   <td>{{infoRedis.memoryHuman}}</td>
+                </tr>
+                <tr>
+                   <td class="bold">Last save time</td>
+                   <td>{{infoRedis.rdbLastSave*1000 | date : 'MMM d, y H:mm' : 7}}</td>
+                </tr>
+                <tr>
+                   <td class="bold">Keys</td>
+                   <td>{{infoRedis.dbKeys | number : fractionSize}}</td>
+                </tr>
+                <tr>
+                   <td class="bold">Expires</td>
+                   <td>{{infoRedis.dbExpires | number : fractionSize}}</td>
+                </tr>
+              </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+
+
+   <div class="col-md-12">
+      <div class="module no-padding">
+         <div class="module-header">
+            <h4>
+               PROCESSES
+               <i ng-click='refreshProcess()' class="icon-refresh icon-large refeshInfo" ng-class="{'refreshInfo': rotationProc}" style="float:right"></i>
+            </h4>
+         </div>
+         <div class="module-content">
+            <table class="table table-hover">
+               <thead>
+                  <tr>
+                     <th class="hidden-sm hidden-md hidden-lg"></th>
+                     <th>App</th>
+                     <th class="hidden-xs">id</th>
+                     <th class="hidden-xs">Pid</th>
+                     <th class="hidden-xs">status</th>
+                     <th class="hidden-xs">restart</th>
+                     <th>uptime</th>
+                     <th>cpu</th>
+                     <th>memory</th>
+                     <th class="text-right"></th>
+                  </tr>
+               </thead>
+               <tbody ng-repeat="(key, value) in process">
+                  <tr>
+                    <td class="hidden-sm hidden-md hidden-lg">
+                      <i class="icon-circle" ng-class="{'stoppedColor': process[key].pm2_env.status ==='stopped', 'onlineColor':process[key].pm2_env.status ==='online'}"></i>
+                    </td>
+                    <td>{{process[key].name}}</td>
+                    <td class="hidden-xs">{{process[key].pm_id}}</td>
+                    <td class="hidden-xs">{{process[key].pid}}</td>
+                    <td ng-class="{'stoppedColor': process[key].pm2_env.status ==='stopped'}" class="statusProcess hidden-xs">{{process[key].pm2_env.status}}</td>
+                    <td class="hidden-xs">{{process[key].pm2_env.restart_time}}</td>
+                    <td class="hidden-xs">{{presentDate - process[key].pm2_env.pm_uptime | millSecondsToTimeString}}</td>
+                    <td class="hidden-sm hidden-md hidden-lg">{{presentDate - process[key].pm2_env.pm_uptime | millSecondsToTimeStringMobile}}</td>
+                    <td ng-class="{'warningCpuColor': process[key].monit.cpu > 40}">{{process[key].monit.cpu}}%</td>
+                    <td>{{process[key].monit.memory | dataUnit}}</td>
+                    <td class="right">
+                      <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle hidden-xs" type="button" data-toggle="dropdown">Menu
+                          <span class="caret"></span>
+                        </button>
+                        <button class="btn btn-primary dropdown-toggle hidden-sm hidden-md hidden-lg" type="button" data-toggle="dropdown">
+                          <i class="icon-ellipsis-vertical"></i>
+                        </button>
+                        <ul class="dropdown-menu menuActionProcess dropdown-menu-fix">
+                          <li><a href="#" ng-click='restartProcess(process[key])'><i class="icon-retweet" style="color: green"></i> Restart</a></li>
+                          <li><a href="#" ng-click='stopProcess(process[key])'><i class="icon-off" style="color: red"></i> Stop</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</div>

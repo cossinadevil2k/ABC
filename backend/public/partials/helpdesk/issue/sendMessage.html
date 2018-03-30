@@ -1,0 +1,52 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 ng-if="helpdeskIssuePage" class="modal-title title">Messenger</h4>
+    <h4 ng-if="userDetailPage" class="modal-title title">Send to <span style="color: #71869b; font-weight: bold">{{userInfo.email}}</span></h4>
+</div>
+<div class="modal-body">
+    <form name="directMessage">
+        <div ng-show="helpdeskIssuePage">
+            <label class="labelMessenger">Type of input list users</label>
+            <span ng-show='(directMessage.userList.$dirty || checkRequired) && directMessage.userList.$error.required' class="errSendMessage"><i class="icon-warning-sign"></i> You want to send mess for whom?</span>
+            <span ng-show='checkTrueEmail' class="errSendMessage"><i class="icon-warning-sign"></i> Emails invalid!</span>
+            <br />
+            <span>
+                <input type="radio" ng-model="inputUserType" value="manual"> Manual
+                <input type="radio" ng-model=inputUserType value="csv"> Import CSV file
+            </span>
+            <input ng-show="inputUserType === 'manual'" class="form-control" id="listUser" name="userList" ng-model="listUserEmail" style="margin-bottom: 30px;" placeholder="Separate emails by comma (,)">
+            <input ng-show="inputUserType === 'csv'" type="file" accept="application/csv" class="form-control" id="csv_file" >
+        </div>
+
+        <label class="labelMessenger">Schedule</label>
+        <input type="checkbox" class="form-control" ng-model="isScheduled">
+
+        <div ng-show="isScheduled">
+            <label class="labelMessenger">Select time</label>
+            <div class="form-group">
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="schedule.date"/>
+                </div>
+                <div class="col-lg-4">
+                    <input type="time" class="form-control" placeholder="hh:mm" ng-model="schedule.time">
+                </div>
+            </div>
+        </div>
+
+        <label for="titleMessage" class="labelMessenger">Title</label>
+        <span ng-show="(directMessage.messageTitle.$dirty || checkRequired) && directMessage.messageTitle.$error.required" class="errSendMessage"><i class="icon-warning-sign"></i> You should enter message title</span>
+        <div class="input-group" style="margin-bottom: 30px;">
+            <input id="titleMessage" class="form-control" name="messageTitle" ng-model="title" placeholder="Max 50 characters" required maxlength="50" ng-trim="false">
+            <span class="input-group-addon" style="font-size: 12px">{{50 - title.length}} left</span>
+        </div>
+
+        <label for="userMessage" class="labelMessenger">Message</label>
+        <span ng-show="(directMessage.messageContent.$dirty || checkRequired) && directMessage.messageContent.$error.required" class="errSendMessage"><i class="icon-warning-sign"></i> Message must has content. Right? </span>
+        <textarea id="userMessage" name="messageContent" rows="8" cols="40" class="form-control" placeholder="Your message here...." ng-model="message" style="resize: vertical;" required></textarea>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="cancel(message, title, listUserEmail)"><i class="icon-remove-sign"></i> Close</button>
+    <button class="btn btn-success" ng-click="send(message, title)"><i class="icon-share"></i> Send</button>
+</div>

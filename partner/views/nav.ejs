@@ -1,0 +1,48 @@
+<!-- Sidebar -->
+<aside id="sidebar-wrapper" ng-controller="navigation">
+	<ul class="sidebar-icon">
+		<li class="sidebar-header" id="backend_logo">
+			<!--<img class="logo" src="<%= urlPartner %>images/logo.png" alt="Logo" />-->
+			<img class="partner-logo" ng-src="<%= session.partnerIcon || 'provider_default.png' %>" />
+			<br />
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:1)}">
+			<a ng-click="tab(1)"><i class="icon-dashboard icon-large" tooltip="Dashboard"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:2)}">
+			<a ng-click="tab(2)"><i class="icon-user icon-large" tooltip="People"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:3)}">
+			<a ng-click="tab(3)"><i class="icon-gift icon-large" tooltip="Events"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:5)}">
+			<a ng-click="tab(5)"><i class="icon-magnet icon-large" tooltip="Bank Items"></i></a>
+		</li>
+		<li ng-class="{'active': (tabSelect|selectMenu:4)}">
+			<a ng-click="tab(4)"><i class="icon-gear icon-large" tooltip="Settings"></i></a>
+		</li>
+	</ul>
+	<div class="tab-content">
+		<ul class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:1)}">
+			<li class="navigation-header">DASHBOARD</li>
+			<li><a href="/">Overview</a></li>
+		</ul>
+		<ul class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:2)}">
+			<li class="navigation-header">PEOPLE</li>
+			<li><a href="/users">Users</a></li>
+		</ul>
+		<ul class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:3)}">
+			<li class="navigation-header">EVENTS</li>
+			<li><a href="/promotion">Promotions</a></li>
+		</ul>
+		<ul class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:5)}">
+			<li class="navigation-header">BANK ITEMS</li>
+			<li><a href="/loan">Loans</a></li>
+		</ul>
+		<ul class="sidebar-group tab-pane" ng-class="{'active': (tabSelect|selectMenu:4)}">
+			<li class="navigation-header">SETTINGS</li>
+			<li><a href="/linked-wallet-actions">Linked Wallet Actions</a></li>
+		</ul>
+	</div>
+</aside>
+<!-- /Sidebar -->

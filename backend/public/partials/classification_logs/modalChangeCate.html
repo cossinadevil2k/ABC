@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">Change Destination Category</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-4">
+            <label>Original</label>
+            <input type="text" class="form-control" disabled ng-model="old_category">
+        </div>
+        <div class="col-md-4">
+            <label>Current</label>
+            <input type="text" class="form-control" disabled ng-model="current_category">
+        </div>
+        <div class="col-md-4">
+            <label>To</label>
+            <select class="form-control" ng-model="new_category">
+                <option ng-repeat="metadata in select_list">{{metadata}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="cancel()" ng-disabled="isLoading"><i class="icon-remove-sign"></i> Cancel</button>
+        <button type="button" class="btn btn-success" ng-click="save()" ng-disabled="isLoading"><i class="icon-ok-sign"></i> Change</button>
+    </div>
+</div>

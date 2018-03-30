@@ -1,0 +1,28 @@
+<div class="module">
+    <div class="module-header">
+        <h4>Service ranking</h4>
+    </div>
+    <div class="module-content">
+        <loading ng-if="loadingTopService"></loading>
+        <table class="table table-striped table-responsive">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th></th>
+                <th>Provider</th>
+                <th>Amount of wallet</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key, record) in serviceRanking">
+                <td>{{key + 1}}</td>
+                <td class="ml-thumbnail">
+                    <img class="ml-thumbnail" src="{{(record.service.icon)? record.service.icon :'/images/provider_default.png'}}" alt="logo"/>
+                </td>
+                <td>{{record.service.name}}</td>
+                <td>{{record.amount | number}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

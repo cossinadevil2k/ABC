@@ -1,0 +1,45 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">Details about <strong>{{CampDetail.name}}</strong></h4>
+</div>
+<div class="modal-body form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Name</label>
+        <div class="col-lg-10">
+            <input type="text"class="form-control" ng-model="CampDetail.name" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Owner</label>
+        <div class="col-lg-10">
+            <input type="text"class="form-control" ng-model="CampDetail.owner.username" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-2 control-label">CreateAt</label>
+        <div class="col-lg-10">
+            <input type="text"class="form-control" ng-model="CampDetail.createdAt" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-2 control-label">UpdateAt</label>
+        <div class="col-lg-10">
+            <input type="text"class="form-control" ng-model="CampDetail.updateAt" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Type</label>
+        <div class="col-lg-10">
+            <input type="text"class="form-control" ng-model="CampDetail.type" readonly>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="cancel()">
+        <i class="icon-remove"></i>Close
+    </button>
+</div>

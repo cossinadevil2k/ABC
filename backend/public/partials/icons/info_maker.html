@@ -1,0 +1,52 @@
+<div class="module">
+    <div class="module-header">
+        <h4>Icon Pack Info</h4>
+    </div>
+    <div class="module-content">
+        <div class="row">
+            <loading ng-if="isLoading"></loading>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Name: </label>
+                    <div class="col-lg-10">
+                        <input type="text" ng-model="icon_pack_info.name" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Id: </label>
+                    <div class="col-lg-10">
+                        <input type="text" ng-model="icon_pack_info.id" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">CSV file: </label>
+                    <div class="col-lg-10">
+                        <input type="file" accept="text/csv" id="csv_input" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-primary" ng-click="generate(icon_pack_info)">Generate</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--<div class="module">-->
+    <!--<div class="module-header">-->
+        <!--<div class="row">-->
+            <!--<h4>Result</h4>-->
+        <!--</div>-->
+        <!--<div class="row" ng-if="output">-->
+            <!--<button class="btn btn-success" ng-click="save(output)">-->
+                <!--<i class="icon-save"> Save To File</i>-->
+            <!--</button>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="module-content">-->
+        <!--<loading ng-if="isLoading"></loading>-->
+        <!--<pre ng-if="output" pretty-json="output"></pre>-->
+    <!--</div>-->
+<!--</div>-->

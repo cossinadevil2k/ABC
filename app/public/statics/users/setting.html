@@ -1,0 +1,57 @@
+<div class="row" ng-init="userSettings">
+	<div class="col-lg-6">
+		<div class="module ml-settings">
+			<div class="module-header">
+				<h4>{{ 'settings_group_display' | translate }}</h4>
+			</div>
+			<div class="module-content">
+				<h4 class="module-subtitle">
+					<span>{{ 'settings_amount_text_display_title' | translate }}</span>
+				</h4>
+				<ul class="list-tasks">
+					<li>
+						{{ 'pref_amount_text_decimal_separator_title' | translate }}
+					</li>
+					<li>
+						{{ 'pref_amount_text_shorten_title' | translate }}
+					</li>
+					<li>
+						{{ 'pref_amount_text_show_currency_title' | translate }}
+					</li>
+					<li>
+						{{ 'pref_amount_text_shorten_title' | translate }}
+					</li>
+				</ul>
+				<h4 class="module-subtitle">
+					<span>{{ 'settings_select_date_format' | translate}}</span>
+				</h4>
+				<ul class="list-tasks">
+					<li>
+						{{ todaySetting | date:'dd-MM-yyyy' }}
+					</li>
+					<li>
+						{{ todaySetting | date:'MM-dd-yyyy' }}
+					</li>
+					<li>
+						{{ todaySetting | date:'yyyy-MM-dd' }}
+					</li>
+				</ul>
+				<h4 class="module-subtitle">
+					<span>{{ 'settings_set_first_day_month' | translate}}</span>
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-6">
+		<div class="module">
+			<div class="module-header">
+				<h4>{{ 'web_language' | translate }}</h4>
+			</div>
+			<div class="module-content">
+				<!-- <h4 class="module-subtitle">
+					<span>{{ 'web_language' | translate }}</span>
+				</h4> -->
+			</div>
+		</div>
+	</div>
+</div>

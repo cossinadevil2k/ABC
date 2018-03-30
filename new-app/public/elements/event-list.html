@@ -1,0 +1,96 @@
+  <polymer-element name="event-list" attributes="currentEvent">
+  <template>
+    <style>
+      * {
+          margin: 0;
+          padding: 0;
+        }
+      :host {
+        display: block;
+        position: relative;
+      }
+
+      :host item-event {
+        width: 100%;
+        display: relative;
+        border-left: 5px solid transparent;
+        height: 64px;
+      }
+      
+      :host item-event:hover {
+        background: #f2f2f2;
+      }
+
+      :host item-event.selected {
+        border-left: 5px solid #2baf2b;
+      }
+
+      :host #add-event {
+        background: url("../images/ic_add_wallet.png") no-repeat scroll 25px transparent;
+        width: 100%;
+        border-top: 1px solid rgba(0,0,0,0.12);
+        padding:8px;
+        display: block;
+        text-transform: uppercase; 
+        position: relative;
+        line-height: 45px;
+        text-align: left;
+      }
+
+      :host .mini {
+        width: 230px !important;
+        padding: 8px 0;
+      }
+
+      :host .item-event {
+        width: 280px;
+      }
+      
+      :host .mini item-event /deep/ .card-header .info  span {
+         top: 0; 
+        position: relative;
+      }
+
+      :host #add-event span{
+          margin-left: 96px;
+      }
+
+    </style>
+    <event-service id="service" eventList="{{eventList}}"></event-service>
+
+    <div layout vertical center class="item-event mini">
+      <template repeat="{{event in eventList}}">
+        <item-event event="{{event}}" on-click="{{eventClick}}" class="{{{selected: checkSelected(event)} | tokenList}}"></item-event>
+      </template>
+    </div>
+  </template>
+  <script>
+   Polymer('event-list', {
+    getEventByWallet: function(wallet, callback){
+      this.$.service.getByWallet(wallet, function(data){
+        callback(data);
+      });
+    },
+
+    eventClick: function(e, detail, sender){
+      var event = sender.templateInstance.model.event;
+      this.currentEvent= [event];
+    },
+
+    noEventClick: function(){
+      this.currentEvent = null;
+    },
+
+    checkSelected: function(event){
+      if(!this.currentEvent) return false;
+
+      for (var i = this.currentEvent.length - 1; i >= 0; i--) {
+        var selectEvent = this.currentEvent[i]
+        if(selectEvent._id === event._id) return true;
+        else return false;
+      };
+    },
+  });
+ </script>
+
+</polymer-element>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Loans</title>
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="/css/style.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="/css/iconfont.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="/css/animated.css" media="screen" charset="utf-8">
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+
+        <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+        <script type="text/javascript" src="http://rawgit.com/BobKnothe/autoNumeric/master/autoNumeric.js"></script>
+        <script type="text/javascript" src='/js/action.js'></script>
+
+    </head>
+
+    <body>
+        <div class="wrapper-loan">
+            <a href="/" class="homeBack" data-toggle="tooltip" title="Home"><span class="icon icon-back"></span></a>
+
+            <figure class="intro">
+                <img src="/images/make-more-money.png" alt="" />
+                <span class="overlay">
+                    <svg version="1.1" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 500 250" enable-background="new 0 0 500 250" xml:space="preserve" PreserveAspectRatio="none">
+                        <path fill="#e9e9e9" d="M250,246.5c-97.85,0-186.344-40.044-250-104.633V250h500V141.867C436.344,206.456,347.85,246.5,250,246.5z"
+                    	/>
+                    </svg>
+              </span>
+            </figure>
+
+            <div class="formLoan">
+                <div class="form-select-plan animated pulse">
+                    <div class="lineHorizoltal"></div>
+                    <span class="firstSentence">Lựa chọn mục đích cho khoản vay</span>
+                    <div class="group-f">
+                        <input id="personal" type="checkbox" name='plan' class="radio" value="personal">
+                        <label for="personal">Chi tiêu cá nhân</label>
+
+                        <input id="car" type="checkbox" name='plan' class="radio" value="car">
+                        <label for="car">Mua xe</label>
+
+                        <input id="house" type="checkbox" name='plan' class="radio" value="house">
+                        <label for="house">Mua nhà</label>
+                    </div>
+                    <div class="lineHorizoltal-f"></div>
+                    <span class="firstSentence">Rồi chọn</span>
+                </div><!-- /form-select-plan-->
+
+                <div class="form-input-money hidden">
+                    <div class="lineHorizoltal"></div>
+                    <span class="firstSentence">Bạn muốn <span class="backFormOne">mua xe</span> có giá trị</span>
+                    <div class="group">
+                        <input type="text" id='money--input' class='inputMaterial' autofocus required data-v-min='0' data-v-max='100000000000'>
+                        <span class="highlight"></span>
+                        <span class="unit">VND</span>
+                    </div>
+                    <div class="lineHorizoltal-f"></div>
+                    <span class="firstSentence">tiếp theo</span>
+                </div><!-- /form-input-money-->
+
+                <div class="form-input-time hidden">
+                    <div class="lineHorizoltal-second"></div>
+                    <span class="firstSentence">Bạn sẽ vay <span class="userWantMoney"></span> trong bao lâu?</span>
+                    <div class="group">
+                        <input type="text" id='time--input' class='inputMaterial' autofocus required data-v-min='0' data-v-max='600'>
+                        <span class="unit">tháng</span>
+                        <span class="highlight"></span>
+                    </div>
+                    <div class="lineHorizoltal-f"></div>
+                    <span class="firstSentence">nhấn tìm kiếm</span>
+                </div><!-- /form-input-time-->
+
+                <div id="compareActions" class="compareActions">
+                    <button id='findingBanks' class="gray-button">
+                        Tiếp <span class='icon icon-next'></span>
+                    </button>
+                </div><!-- /compareActions-->
+            </div>
+
+        </div><!-- /wrapper-loan-->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-39420218-15', 'auto');
+          ga('send', 'pageview');
+        </script>
+    </body>
+</html>

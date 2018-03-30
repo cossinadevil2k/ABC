@@ -1,0 +1,92 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">Update Automation</h4>
+</div>
+<div class="modal-body form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Type</label>
+        <div class="col-lg-10">
+            <select class="form-control" name="type" id="type" ng-model="autoEdit.type">
+                <option value="1" ng-selected="autoEdit.type == 1">Email</option>
+                <option value="2" ng-selected="autoEdit.type == 2">Push Notification</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Mode</label>
+        <div class="col-lg-10">
+            <select class="form-control" name="mode" id="mode" ng-model="autoEdit.mode">
+                <option value="daily" ng-selected="autoEdit.mode == 'daily'">Daily</option>
+                <option value="monthly" ng-selected="autoEdit.mode == 'monthly'">Monthly</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Set Time</label>
+        <div class="col-lg-10">
+            <!--<input type="time" class="form-control" placeholder="hh:mm" ng-model="autoEdit.metadata.hourRun" tooltip="Thời gian chạy tự động">-->
+            <select ng-model="autoEdit.metadata.hourRun" class="form-control">
+                <option ng-repeat="item in time" value="{{item}}" ng-selected="autoEdit.metadata.hourRun == item">{{item}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" ng-show="autoEdit.type == 2">
+        <label class="col-lg-2 control-label">Template</label>
+        <div class="col-lg-10">
+            <select name="push_notification" id="push_notification" ng-model="autoEdit.push" class="form-control">
+                <option ng-repeat="option in push_notification track by $index" value="{{option}}" ng-selected="option.title == autoEdit.push.title">{{option.title}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Search Query</label>
+        <div class="col-lg-10">
+            <select name="search_query" id="search_query" ng-model="autoEdit.searchQuery" class="form-control">
+                <option ng-repeat="option in search_queries track by $index" value="{{option._id}}" ng-selected="option.name == autoEdit.searchQuery.name">{{option.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" ng-show="autoEdit.type == 1">
+        <label class="col-lg-2 control-label">Template</label>
+        <div class="col-lg-10">
+            <select name="template" id="template" ng-model="autoEdit.metadata.template" class="form-control">
+                <option ng-repeat="option in templates" ng-selected="option.name == autoEdit.metadata.template.name" value={{option}}>{{option.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Name:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="name" ng-model="autoEdit.name" autofocus>
+        </div>
+    </div>
+    <div class="form-group" ng-show="autoEdit.type == 1">
+        <label class="col-lg-2 control-label">Subject:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="subject" ng-model="autoEdit.metadata.subject">
+        </div>
+    </div>
+    <div class="form-group" ng-show="autoEdit.type == 1">
+        <label class="col-lg-2 control-label">From Name:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="fromName" ng-model="autoEdit.metadata.fromName">
+        </div>
+    </div>
+    <div class="form-group" ng-show="autoEdit.type == 1">
+        <label class="col-lg-2 control-label">From Email:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="fromEmail" ng-model="autoEdit.metadata.fromEmail">
+        </div>
+    </div>
+    <div class="form-group" ng-show="autoEdit.type == 1">
+        <label class="col-lg-2 control-label">Reply To:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="replyTo" ng-model="autoEdit.metadata.replyTo">
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" ng-click="update(autoEdit)">
+        <i class="icon-save"></i> Save
+    </button>
+</div>

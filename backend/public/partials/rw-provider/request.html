@@ -1,0 +1,47 @@
+<div class="module no-padding">
+    <div class="module-header"></div>
+    <div class="module-content table-responsive">
+        <table class="table table-responsive">
+            <thead>
+            <tr>
+                <th>Email</th>
+                <th class="text-center">Accepted Limit</th>
+                <th>Request Date</th>
+                <th class="text-center">Accepted</th>
+                <th class="text-right">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="request in listRequest">
+                <td>{{request.user.email}}</td>
+                <td class="text-center">{{request.limit}}</td>
+                <td>{{request.requested_date | checkDateTime}}</td>
+                <!--<td class="text-center">-->
+                    <!--<button class="btn btn-xs" ng-class="{'btn-danger': !request.accepted, 'btn-success': request.accepted}" ng-click="accept(request)">-->
+                        <!--<i ng-class="{'icon-unchecked': !request.accepted, 'icon-check': request.accepted}"></i>-->
+                    <!--</button>-->
+                <!--</td>-->
+                <td class="text-right">
+                    <!--<button class="btn btn-xs btn-facebook" tooltip="Reject"><i class="icon-remove"></i></button>-->
+                    <button class="btn btn-xs btn-danger" ng-click="deleteRequest(request)"><i class="icon-trash"></i></button>
+                </td>
+            </tr>
+            <tr ng-show="listRequest.length === 0">
+                <td>No result found</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage || isLoading"><i class="icon-fast-backward"></i></a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage || isLoading"><i class="icon-fast-forward"></i></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

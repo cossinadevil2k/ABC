@@ -1,0 +1,88 @@
+<form class="form-horizontal" action="#" name='formPromote'>
+
+        <div class="form-group">
+            <label class="col-lg-1 control-label" for='category'>Category</label>
+            <div class="btn-group col-lg-2">
+                <select id='category' ng-model="promoteInfo.category" ng-options='category as category.name for category in categories track by category._id'>
+                </select>
+            </div>
+
+            <label class="col-lg-2 control-label" for='category'>Exprired Date</label>
+            <div class="btn-group col-lg-3">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="promoteInfo.expiredDate" placeholder="Make it empty if this's message"/>
+            </div>
+
+
+            <!-- <label class="col-lg-2 control-label" style="white-space: nowrap;">Header Image</label>
+            <div class="col-lg-7 input-group" style="padding:0 15px;">
+                <input type="type" placeholder="If it's empty, header has been set default color" id="headImage" class="form-control" ng-model="promoteInfo.headImage">
+                <input type="file" nv-file-select uploader="{FileUploader}"/>
+                <span type='file' class="input-group-addon uploadHeaderImagePromote"><i class="icon-upload-alt"></i> upload</span>
+            </div> -->
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-1 control-label">Title</label>
+            <div class="col-lg-11 input-group" style="padding:0 15px;">
+                <input type="text" placeholder="Should has max 80 characters" id="title" class="form-control" ng-model="promoteInfo.title" required maxlength="80" ng-trim="false" name='title'>
+                <span class="input-group-addon" style="font-size: 12px">{{(80 - promoteInfo.title.length)}} left</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-1 control-label">Short Description</label>
+            <div class="col-lg-11 input-group" style="padding:0 15px;">
+                <input type="text" placeholder="Should has max 60 characters" id="shortDescription" class="form-control" ng-model="promoteInfo.shortDescription" required maxlength="60" ng-trim="false" name='shortDescription'>
+                <span class="input-group-addon" style="font-size: 12px">{{(60 - promoteInfo.shortDescription.length)}} left</span>
+            </div>
+        </div>
+
+    	<div class="form-group">
+    		<label class="col-lg-1 control-label" for="content">Content</label>
+    		<div class="col-lg-11">
+    			<textarea id="content" rows="3" class="form-control" ckeditor="editorOptions" ng-model="promoteInfo.content" required name='content' ng-trim='true'></textarea>
+    		</div>
+    	</div>
+
+    	<div class="form-group">
+    		<label class="col-lg-1 control-label"></label>
+    		<div class="col-lg-11">
+    			<div class="checkboxFive">
+                    <input type="checkbox" ng-model="checkPreview" ng-true-value="1" ng-false-value="0" ng-init="checkPreview=0" id="previewPromote">
+    				<label for='previewPromote'>Preview</label>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="form-group" ng-show="checkPreview">
+    		<label class="col-lg-1 control-label"></label>
+    		<div class="col-lg-11">
+    			<ml-preview-promote content="promoteInfo"></ml-preview-promote>
+    		</div>
+    	</div>
+    	<div class="form-group">
+    		<div class="col-lg-11 col-lg-offset-1" style="text-align: right;">
+
+                <span class="alertPromote" ng-show="(formPromote.title.$dirty || alertTitlePromote) && formPromote.title.$error.required"><i class="icon-warning-sign"></i> Please enter title!</span>
+                <span class="alertPromote" ng-show="(formPromote.content.$dirty || alertContentPromote) && formPromote.content.$error.required"><i class="icon-warning-sign"></i> Missing content!</span>
+
+    			<button type="button" class="btn btn-default" ng-click="returnList()"><i class="icon-remove-sign"></i> Cancel</button>
+
+    			<button type="button" class="btn btn-success" ng-click="save(promoteInfo)" ng-show='!createButton'><i class="icon-ok-sign"></i> Save</button>
+
+                <div class="btn-group" ng-show='createButton'>
+    		        <button class="btn btn-success" type="button" ng-show='isPublic' ng-click='create(promoteInfo)'>
+                        <i class="icon-ok-sign"></i> Post
+                    </button>
+    		        <button class="btn btn-success" type="button" ng-show='!isPublic' ng-click='draft(promoteInfo)'>
+                        <i class="icon-file-text"></i> Save as draft
+                    </button>
+    		        <button data-toggle="dropdown" class="btn btn-success dropdown-toggle" type="button"><span class="caret"></span></button>
+    		        <ul role="menu" class="dropdown-menu">
+    		            <li ng-click='isPublic = true'><a>Post</a></li>
+    		            <li ng-click='isPublic = false'><a>Save as draft</a></li>
+    		        </ul>
+    		    </div>
+    		</div>
+    	</div>
+
+</form>

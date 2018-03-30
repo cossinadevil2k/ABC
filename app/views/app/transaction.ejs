@@ -1,0 +1,94 @@
+<% include header %>
+<body>
+	<header class="navbar navbar-bright navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button data-target=".navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+					<i class="icon-ellipsis-vertical"></i>
+				</button>
+				<a class="navbar-brand logo-app" href="/">MoneyLover</a>
+			</div>
+			<nav role="navigation" class="collapse navbar-collapse">
+				<ul class="nav navbar-right navbar-nav hidden-xs">
+					<li class="dropdown">
+						<a data-toggle="dropdown" class="dropdown-toggle" href="/login">Login</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-offset-3 col-md-6">
+				<div class="money-card radius-2 money-shadow">
+					<form class="form-horizontal form-money" role="form">
+						<div class="main-info-top">
+							<div class="form-group inp-cate">
+								<div class="col-md-2 control-label">
+									<div class="img-category">
+										<img src="<%= parseIcon(transaction.category.icon) %>.png" />
+									</div>
+								</div>
+								<div class="col-md-10">
+									<div class="form-control inp-fake inp-money text-color-p text-color-p-h"><%= transaction.category.name %></div>
+								</div>
+							</div>
+							<div class="form-group inp-amount">
+								<label class="col-md-2 control-label"> </label>
+								<div class="col-md-10">
+									<input type="text" placeholder="0" class="form-control inp-money text-color-p text-color-p-h" value="<%= amount %>">
+								</div>
+							</div>
+							<div class="form-group inp-note">
+								<label class="col-md-2 control-label"> </label>
+								<div class="col-md-10">
+									<input type="text" placeholder="Note" class="form-control inp-money text-color-p text-color-p-h"  value="<%= transaction.note %>">
+								</div>
+							</div>
+							<!-- <div class="form-group inp-with">
+								<label class="col-md-2 control-label"> </label>
+								<div class="col-md-10">
+									<input type="text" placeholder="With" class="form-control inp-money text-color-p text-color-p-h">
+								</div>
+							</div> -->
+						</div>
+						<div class="main-info-bottom">
+							<div class="form-group">
+								<div class="  col-md-6">
+									<div class="ml-date-view">
+										<div class="ml-date-header caption">
+											<p class="text-color-s">Thứ 4</p>
+										</div>
+										<div class="ml-date-body">
+											<h1>06</h1>
+										</div>
+										<div class="ml-date-footer caption">
+											<p class="text-color-s">Tháng tư 2014</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="more-info">
+										<div class="inp-wallet">
+											<p class="caption">Wallet</p>
+											<div class="value text-color-p"><%= transaction.account %></div>
+										</div>
+										<div class="inp-event">
+											<p class="caption">Event</p>
+											<div class="value disabled text-color-p"><%= transaction.campaign %></div>
+										</div>
+										<div class="agrow"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="money-card-action">
+					<div class="btn btn-default btn-money radius-2 btn-right btn-green shadow">Share</div>
+					<div class="clear-fix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+<% include footer %>

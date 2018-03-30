@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>All Issue You Sent</title>
+
+        <meta name="keywords" content="money manager, money management, expense tracker, expense manager, budget, budgeting app, budget planner, save money, saving planner, personal finance, money management app, money manager app, budget app, best money management app, personal finance management, home budget, family budget, bill reminder, bills reminder, bill manager, bills manager, payment reminder"/>
+        <meta name="description" content="Money Lover helps more than 2.500.000 peole keep track of expenses and budgets to reach their saving goals. It's simplest way to manage personal finances."/>
+        <meta property="og:title" content="Money Lover: Money Manager, Budget & Saving Planner"/>
+        <meta property="og:url" content="https://helpdesk.moneylover.me/"/>
+        <meta property="og:image" content="https://moneylover.me/source/ml-cover.png"/>
+        <meta property="og:description" content="Personal finance with no stress, live the life you want"/>
+        <meta property="og:type" content="website"/>
+
+        <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+        <script type="text/javascript" src='js/bootstrap.min.js'></script>
+        <script type="text/javascript" src='js/general.js'></script>
+        <script type="text/javascript" src='js/forAllIssuePage.js'></script>
+
+        <link rel="stylesheet" href="css/style.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="css/allIssuePage.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="css/animation.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,700italic,700,900,900italic&subset=latin,vietnamese" type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" charset="utf-8">
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+
+    </head>
+
+    <body>
+        <div class="wrapper">
+
+            <div class="bars">
+                <ul>
+                    <li class="cor-1"></li>
+                    <li class="cor-2"></li>
+                    <li class="cor-3"></li>
+                    <li class="cor-4"></li>
+                    <li class="cor-5"></li>
+                </ul>
+            </div>
+
+            <div class="menu-top">
+                <div class="logo">
+                    <a href="/">
+                        <img src="/images/logo.png" alt="logo" style="width: 50px; height: 50px"/>
+                        <span id='money-letter'>
+                            Money<span id='lover-letter'> Lover</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="group-btn">
+                    <a href="/" type="button" class='btn hvr-shutter-out-vertical' name="button">FAQ</a>
+
+                    <a href="/all-issue" type="button" class='btn hvr-shutter-out-vertical' name="button">All Issues</a>
+
+                    <!-- <a type='button', class='btn btn-s', href='/send-issue'>
+                        <i class="fa fa-paper-plane"></i>
+                        Send Message
+                    </a> -->
+                </div>
+                <div class="account dropdown">
+                    <span style="text-transform: none; font-weight: lighter; font-size: 13px;">Hello </span>
+                    <img src="/images/avatar.png" alt="avatar" class="dropdown-toggle" data-toggle="dropdown" role="button"/>
+                    <ul class="dropdown-menu" role="menu" style="min-width: 120px;">
+                        <li class="dropdown-header emailLogin"></li>
+                        <li><a id='logout'>Logout</a></li>
+                    </ul>
+                </div>
+            </div><!-- /menu-top -->
+
+            <div class="allContentUnderMenu">
+
+                <div class="row allIssuePage">
+                    <div class="col-md-10 col-md-offset-1 makeNewIssue">
+
+                        <div>
+                            <a href="/send-issue" type="button" name="button" class="btn btn-primary" style="float: right; height: 40px; padding-top: 9px;"><i class="fa fa-plus-circle"></i> New Issue</a>
+                        </div>
+                    </div>
+                    <div class="col-md-10 col-md-offset-1" style="margin-bottom: 60px">
+
+                        <span class="hidden emptyIssue" style="font-weight: lighter; font-size: 23px">You have no issue, if you have one <a href="/send-issue" style="color: #2DB55D;">click here</a>.</span>
+
+                        <div id="pattern" class="pattern">
+                        	<ul class="list img-list"></ul>
+                        </div> <!--/show list issue-->
+
+                    </div><!-- /end table issue-->
+                </div>
+
+                <div class="footer">
+                    <div class="social">
+                        <a href="https://moneylover.me" class='web hvr-underline-from-center' target="_blank">
+                            <i class="fa fa-home" style="font-size: 20px;"></i>
+                        </a>
+                        <a href="https://www.facebook.com/moneylover.me/?fref=ts" class='facebook hvr-underline-from-center' target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="https://www.twitter.com/moneyloverapp" class='twitter hvr-underline-from-center' target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="https://plus.google.com/+MoneyloverMe" class='google hvr-underline-from-center' target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div><!-- /social-->
+
+                    <!-- <div class="more-info"></div> -->
+                    <div class="bot-footer">
+                        <p><a href="https://moneylover.me/" style="color: #2DB54A">MoneyLover</a> © <span id='year'></span>. All Rights Reseverd</p>
+                    </div>
+
+                </div> <!-- /footer -->
+            </div> <!-- /allContentUnderMenu -->
+        </div> <!-- /wrapper -->
+
+        <!-- Modal Show Content Issue-->
+        <div id="getContentIssueModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                        <h5 class="titleIssueModal modal-title">
+                            <i class="fa fa-arrow-circle-left" data-dismiss="modal" data-toggle="tooltip" title="Back"></i>
+                            <span></span>
+                            <br />
+                            <small class="lastMessage" style="padding-left: 41px;"></small>
+                        </h5>
+                    </div>
+                    <div class="modal-body table-responsive modal-body-show-content">
+                        <div class="errLoadContent hidden">
+                            <i>Can not load content issue.</i>
+                        </div>
+                        <div class="bubbleContent"></div>
+                    </div>
+                    <div class="modal-footer modal-footer-view-content">
+                        <div class="formSend">
+                            <div class="inputSendIssue">
+                                <textarea placeholder="Write a message..." id='messageContent'></textarea>
+                            </div>
+                            <!-- <button type="button" class="btn btn-cancel" data-dismiss="modal"><i class="fa fa-ban"></i> Cancel</button> -->
+                            <label style="margin-right: 10px; color: grey;">Press enter to send <input type="checkbox" value="" id='checkboxEnterSend'></label>
+                            <button id='sendNewMessage' type="button" class="btn btn-success" disabled>Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

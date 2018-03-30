@@ -1,0 +1,220 @@
+{
+  "name": "Hand Tool",
+  "product_id": "icon_hand_tool",
+  "icons": {
+    "hand_tool_01": [
+      "ax",
+      "axe",
+      "rìu",
+      "cái rìu"
+    ],
+    "hand_tool_02": [
+      "saw",
+      "cưa",
+      "cái cưa"
+    ],
+    "hand_tool_03": [
+      "hammer",
+      "búa",
+      "cái búa"
+    ],
+    "hand_tool_04": [
+      "screwdriver",
+      "tuốc nơ vit",
+      "tua nơ vít",
+      "vít",
+      "ốc",
+      "ốc vít",
+      "con ốc",
+      "cái vít"
+    ],
+    "hand_tool_05": [
+      "trident",
+      "đinh ba",
+      "dĩa",
+      "cái đinh ba",
+      "cái dĩa"
+    ],
+    "hand_tool_06": [
+      "shovel",
+      "xẻng",
+      "cái xẻng",
+      "bay",
+      "làm vườn"
+    ],
+    "hand_tool_07": [
+      "con dọi"
+    ],
+    "hand_tool_08": [
+      "shovel",
+      "xẻng",
+      "cái xẻng",
+      "cái bay",
+      "bay",
+      "làm vườn"
+    ],
+    "hand_tool_09": [
+      "plier",
+      "cái kìm",
+      "kìm",
+      "vít",
+      "ốc",
+      "ốc vít",
+      "con ốc",
+      "cái vít"
+    ],
+    "hand_tool_10": [
+      "plier",
+      "cái kìm",
+      "kìm",
+      "vít",
+      "ốc",
+      "ốc vít",
+      "con ốc",
+      "cái vít"
+    ],
+    "hand_tool_11": [
+      "cờ lê",
+      "cái cờ lê",
+      "vặn ốc",
+      "vặn vít",
+      "vặn",
+      "vít",
+      "ốc",
+      "ốc vít",
+      "con ốc",
+      "cái vít"
+    ],
+    "hand_tool_12": [
+      "plier",
+      "cái kìm",
+      "kìm",
+      "vít",
+      "ốc",
+      "ốc vít",
+      "con ốc",
+      "cái vít"
+    ],
+    "hand_tool_13": [
+      "screw",
+      "vít",
+      "ốc",
+      "ốc vít",
+      "con ốc",
+      "cái vít"
+    ],
+    "hand_tool_14": [
+      "screw",
+      "vít",
+      "ốc",
+      "ốc vít",
+      "con ốc",
+      "cái vít"
+    ],
+    "hand_tool_15": [
+      "paint brush",
+      "brush",
+      "chổi",
+      "chổi sơn",
+      "paint",
+      "sơn",
+      "decor",
+      "decoration",
+      "house decor",
+      "home decor",
+      "house decoration",
+      "sửa nhà",
+      "sơn nhà",
+      "trang trí nhà",
+      "nhà cửa",
+      "house"
+    ],
+    "hand_tool_16": [
+      "ruler",
+      "measure",
+      "thước",
+      "tape measure",
+      "thước dây",
+      "thước cuộn",
+      "cái thước"
+    ],
+    "hand_tool_17": [
+      "clamp",
+      "clamp tool",
+      "cái kẹp",
+      "kẹp",
+      "kẹp gỗ",
+      "wood clamp"
+    ],
+    "hand_tool_19": [
+      "drill",
+      "driller",
+      "máy khoan",
+      "khoan",
+      "khoan tường",
+      "house decoration",
+      "house decor"
+    ],
+    "hand_tool_20": [
+      "scraper",
+      "scraper tool",
+      "razor  blade",
+      "cạo",
+      "cái cạo"
+    ],
+    "hand_tool_21": [
+      "gear",
+      "bánh răng",
+      "răng cưa",
+      "bánh răng cưa"
+    ],
+    "hand_tool_23": [
+      "ruler",
+      "measure",
+      "thước",
+      "tape measure",
+      "thước dây",
+      "thước cuộn",
+      "cái thước",
+      "thước đo độ"
+    ],
+    "hand_tool_24": [
+      "stapler",
+      "dập ghim",
+      "cái dập ghim",
+      "ghim",
+      "office"
+    ],
+    "hand_tool_26": [
+      "paper knife",
+      "knife",
+      "dao trổ",
+      "dao rọc giấy",
+      "office"
+    ],
+    "hand_tool_30": [
+      "tape",
+      "scotch",
+      "băng dính",
+      "dính"
+    ]
+  },
+  "tags": [
+    "hand tool",
+    "tool",
+    "fix",
+    "maintenance",
+    "repair",
+    "sửa chữa",
+    "sửa",
+    "dụng cụ",
+    "dụng cụ cầm tay",
+    "đồ cơ khí",
+    "cơ khí",
+    "build",
+    "builder",
+    "xây dựng",
+    "xây",
+    "thợ xây"
+  ]
+}

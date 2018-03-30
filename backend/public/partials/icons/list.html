@@ -1,0 +1,54 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th class="text-left">Hide</th>
+			<th class="text-left">Thumbnail</th>
+			<th class="text-left">Name</th>
+			<th class="text-left">Owner</th>
+			<th class="text-left">Price VND/USD/Credit</th>
+			<th class="text-center">Free</th>
+			<th class="text-center">New</th>
+			<th class="text-center">Feature</th>
+			<th class="text-center">Top Download</th>
+			<th class="text-right">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="animate-repeat" ng-repeat="icon in listIcon | filter:searchKeyword track by $index">
+			<td class="text-center">
+				<a class="btn btn-xs" href="#" ng-click="changeStatus(icon, 5)" ng-class="{'btn-danger': !icon.isHide, 'btn-success':icon.isHide}">
+					<i ng-class="{'icon-check': icon.isHide, 'icon-unchecked':!icon.isHide}"></i>
+				</a>
+			</td>
+			<td class="text-left ml-thumbnail"><img class="ml-thumbnail img-thumbnail" ng-src="{{ icon.thumb }}"></td>
+			<td class="text-left">{{ icon.name }}</td>
+			<td class="text-left">{{ icon.owner }}</td>
+			<td class="text-left">VND: {{ icon.price_vn || 0 }}<br />USD: {{icon.price_gl || 0}}<br/>Credit: {{icon.price_credit || 0}}</td>
+			<td class="text-center">
+				<a class="btn btn-xs" href="#" ng-click="changeStatus(icon, 1)" ng-class="{'btn-danger': !icon.isFree, 'btn-success': icon.isFree}">
+					<i ng-class="{'icon-check': icon.isFree, 'icon-unchecked': !icon.isFree}"></i>
+				</a>
+			</td>
+			<td class="text-center">
+				<a class="btn btn-xs" href="#" ng-click="changeStatus(icon, 2)" ng-class="{'btn-danger': !icon.isNew, 'btn-success': icon.isNew}">
+					<i ng-class="{'icon-check': icon.isNew, 'icon-unchecked': !icon.isNew}"></i>
+				</a>
+			</td>
+			<td class="text-center">
+				<a class="btn btn-xs" href="#" ng-click="changeStatus(icon, 3)" ng-class="{'btn-danger': !icon.isFeature, 'btn-success':icon.isFeature}">
+                    <i ng-class="{'icon-check': icon.isFeature, 'icon-unchecked':!icon.isFeature}"></i>
+                </a>
+			</td>
+			<td class="text-center">
+				<a class="btn btn-xs" href="#" ng-click="changeStatus(icon, 4)" ng-class="{'btn-danger': !icon.isTopDownload, 'btn-success':icon.isTopDownload}">
+                    <i ng-class="{'icon-check': icon.isTopDownload, 'icon-unchecked':!icon.isTopDownload}"></i>
+                </a>
+			</td>
+			<td class="text-right">
+				<button class="btn btn-xs btn-facebook" ng-click="publicTurn('Private', icon)" tooltip="Ngưng phát hành icon này">Private</button>
+				<button class="btn btn-xs btn-success" ng-click="edit(icon)"><i class="icon-pencil"></i></button>
+				<button class="btn btn-xs btn-danger" ng-click="delete(icon,'Release')"><i class="icon-trash"></i></button>
+			</td>
+		</tr>
+	</tbody>
+</table>

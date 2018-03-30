@@ -1,0 +1,24 @@
+<div class="modal-header">
+    <h4>Change category</h4>
+</div>
+<div class="modal-body">
+    <loading ng-if="isLoading"></loading>
+    <div class="form form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-lg-3">Select category:</label>
+            <div class="col-lg-9">
+                <select class="form-control" ng-model="new_category">
+                    <option ng-repeat="category in categories" ng-if="category.type == old_category.type" value="{{category}}">
+                        {{category.name + " (" + category.metadata +")"}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-success" ng-click="change()">
+        <i class="icon-check"></i> Change
+    </button>
+</div>

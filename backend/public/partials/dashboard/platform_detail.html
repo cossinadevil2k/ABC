@@ -1,0 +1,46 @@
+<div class="module">
+    <div class="module-header">
+
+    </div>
+    <div class="module-content">
+        <h4 class="module-subtitle">
+            Daily ({{dailyStart.format('DD/MM')}} - {{dailyEnd.format('DD/MM')}})
+        </h4>
+        <loading ng-if="loadingDeviceDailyChart"></loading>
+        <div class="chart" id="dailyPlatform"></div>
+
+        <h4 class="module-subtitle">
+            Monthly platform ({{monthlyStart.format('DD/MM')}} - {{monthlyEnd.format('DD/MM')}})
+        </h4>
+        <loading ng-if="loadingDeviceDailyChart"></loading>
+        <div class="chart" id="monthlyPlatform"></div>
+        
+        <h4 class="module-subtitle">
+            Mobile users use desktop ({{dailyStart.format('DD/MM')}} - {{dailyEnd.format('DD/MM')}})
+        </h4>
+        <h4>Total: {{totalDesktopHasMobile | number}}</h4>
+        <loading ng-if="loadingMobileDesktop"></loading>
+        <div class="chart" id="mobile-desktop"></div>
+
+        <h4 class="module-subtitle">
+            Total desktop users ({{dailyStart.format('DD/MM')}} - {{dailyEnd.format('DD/MM')}})
+        </h4>
+        <h4>Total: {{totalDesktop | number}}</h4>
+        <loading ng-if="loadingDesktop"></loading>
+        <div class="chart" id="desktop-total"></div>
+
+        <h4 class="module-subtitle">
+            Total web users ({{dailyStart.format('DD/MM')}} - {{dailyEnd.format('DD/MM')}})
+        </h4>
+        <h4>Total: {{totalWeb | number}}</h4>
+        <loading ng-if="loadingWeb"></loading>
+        <div class="chart" id="web-total"></div>
+
+        <h4 class="module-subtitle">
+            Mobile user use web ({{dailyStart.format('DD/MM')}} - {{dailyEnd.format('DD/MM')}})
+        </h4>
+        <h4>Total: {{totalWebHasMobile | number}}</h4>
+        <loading ng-if="loadingMobileWeb"></loading>
+        <div class="chart" id="mobile-web"></div>
+    </div>
+</div>

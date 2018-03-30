@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="module no-padding">
+            <div class="module-header">
+                <h4 class="listHeader">
+                    <span>List Partner</span>
+                </h4>
+                <div class="dropdown right">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li ng-click="filter('-1')"><a href="javascript:void(0)">All</a></li>
+                        <li ng-click="filter('0')"><a href="javascript:void(0)">Pending</a></li>
+                        <li ng-click="filter('1')"><a href="javascript:void(0)">Accepted</a></li>
+                        <!--<li ng-click="filter('2')"><a href="javascript:void(0)">Denied</a></li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="module-content table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="hidden-xs hidden-sm ">Name</th>
+                            <th class="hidden-xs hidden-sm ">Email</th>
+                            <th class="hidden-xs hidden-sm ">Reason</th>
+                            <th class="hidden-xs hidden-sm ">Estimated</th>
+                            <th class="hidden-xs hidden-sm ">API Key</th>
+                            <th class="hidden-xs hidden-sm ">Secret</th>
+                            <th class="hidden-xs hidden-sm ">Status</th>
+                            <th class="hidden-xs hidden-sm ">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="partner in partners track by $index">
+                            <td>
+                                <p>{{$index + 1}}</p>
+                            </td>
+                            <td class="">
+                                <p>{{partner.partnerName}}</p>
+                            </td>
+                            <td class="">
+                                <p><a>{{partner.email}}</a></p>
+                            </td>
+                            <td class="">
+                                <p>{{partner.reason.length > 100 ? partner.reason.substring(0,100) + '.........' : partner.reason}}</p>
+                            </td>
+                            <td class="">
+                                <p>{{partner.scale}}</p>
+                            </td>
+                            <td class="">
+                                <p><span class="label label-warning" ng-if="partner.keys.production.api">Production</span>&nbsp &nbsp {{partner.keys.production.api}}</p>
+                                <p><span class="label label-info" ng-if="partner.keys.sandbox.api">Sandbox</span>&nbsp &nbsp &nbsp {{partner.keys.sandbox.api}}</p>
+                            </td>
+                            <td class="">
+                                <p ng-if="partner.showSecret">{{partner.keys.production.secret}}</p>
+                                <p ng-if="partner.showSecret">{{partner.keys.sandbox.secret}}</p>
+                                <p ng-if="!partner.showSecret && partner.keys.production.secret">****************</p>
+                                <p ng-if="!partner.showSecret && partner.keys.sandbox.secret">****************</p>
+                            </td>
+                            <td class="">
+                                <p style="color : black" ng-if="partner.status == 0">PENDING</p>
+                                <p style="color: green" ng-if="partner.status == 1">ACCPETED</p>
+                                <p style="color: red" ng-if="partner.status == 2">DENIED</p>
+                            </td>
+                            <td class="">
+                                <button class="btn btn-xs btn-orange" tooltip="Detail" ng-click="detail(partner)"><i class="icon-reorder"></i></button>
+                                <button class="btn btn-xs btn-info" ng-if="!partner.showSecret" ng-click="showSecret(partner)" tooltip="Show secret"><i class="icon-eye-open"></i></button>
+                                <button class="btn btn-xs btn-orange" ng-if="partner.showSecret" ng-click="hideSecret(partner)" tooltip="Hide secret"><i class="icon-eye-close"></i></button>
+                                <!--<button class="btn btn-xs btn-primary" ng-click="view = 'production'" tooltip="Show production key"><i class="icon-eye-close"></i></button>-->
+
+                                <button class="btn btn-xs btn-success" ng-if="partner.status != 1" tooltip="Approve" ng-click="accept(partner,true)"><i class="icon-ok"></i></button>
+                                <button class="btn btn-xs btn-grape" ng-if="partner.status != 2" tooltip="Denied" ng-click="accept(partner,false)"><i class="icon-lock"></i></button>
+                            </td>
+                        </tr>
+                        <tr class="breakPage">
+                            <td colspan="12" class="text-center">
+                                <div class="btn-group">
+                                    <a class="btn btn-default" ng-click="nextPage(-1)" ng-hide="noContent == true" ng-disabled="isFirstPage || noContent"><i class="icon-fast-backward"></i></a>
+                                    <button class="btn btn-default disabled" ng-hide="noContent == true" onclick="return false">Page {{page}}</button>
+                                    <a class="btn btn-default" ng-click="nextPage(+1)" ng-hide="noContent == true" ng-disabled="isLastPage || noContent"><i class="icon-fast-forward"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div ng-if="noContent == true" style="text-align: center;">
+                    <h1>No Content</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

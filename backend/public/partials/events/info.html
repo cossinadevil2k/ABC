@@ -1,0 +1,97 @@
+<form class="form-horizontal" ng-submit="save()">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="cancel()">&times;</button>
+		<h4 class="modal-title title">Event information</h4>
+	</div>
+	<div class="modal-body">
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Name</label>
+			<div class="col-lg-10">
+				<input type="text" placeholder="Enter name here..." class="form-control" ng-model="eventInfo.name" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label" >Description</label>
+			<div class="col-lg-10">
+				<textarea rows="3" class="form-control" ng-model="eventInfo.description" required></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label" >Thumbnail</label>
+			<div class="col-lg-10">
+				<input type="text" class="form-control" ng-model="eventInfo.link_icon">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label" >Link</label>
+			<div class="col-lg-10">
+				<input type="text" class="form-control" ng-model="eventInfo.link">
+			</div>
+		</div>
+		<!--<div class="form-group">-->
+			<!--<label class="col-lg-2 control-label" >Twitter</label>-->
+			<!--<div class="col-lg-10">-->
+				<!--<textarea rows="3" class="form-control" ng-model="eventInfo.twitter"></textarea>-->
+			<!--</div>-->
+		<!--</div>-->
+		<div class="form-group" ng-if="!eventInfo._id">
+			<label class="control-label col-lg-2">Type of product</label>
+			<div class="col-lg-10">
+				<select ng-model="selectedProductType" class="form-control" ng-change="getProduct()">
+					<option ng-repeat="type in productType" value="{{type}}">{{type}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-lg-2">Product</label>
+			<div class="col-lg-10">
+				<select ng-model="eventInfo.product" ng-if="!eventInfo._id" class="form-control">
+					<option value="">Select product</option>
+					<option ng-repeat="product in productList[selectedProductType]" value="{{product.product_id}}">{{product.name}}</option>
+				</select>
+				<input type="text" class="form-control" ng-model="eventInfo.product" ng-if="eventInfo._id" disabled>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">One Code Only</label>
+			<div class="col-lg-10">
+				<a class="btn btn-xs" href="#" ng-click="eventInfo.type=!eventInfo.type" ng-class="{'btn-danger': !eventInfo.type, 'btn-success': eventInfo.type}">
+					<i ng-class="{'icon-check': eventInfo.type, 'icon-unchecked': !eventInfo.type}"></i>
+				</a>
+			</div>
+		</div>
+		<div class="form-group" ng-if="eventInfo.type">
+			<label class="col-lg-2 control-label" >Code</label>
+			<div class="col-lg-10">
+				<input type="text" placeholder="Enter code..." class="form-control" ng-model="eventInfo.code" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Amount</label>
+			<div class="col-lg-10">
+				Unlimited <a class="btn btn-xs" href="#" ng-click="eventInfo.isUnlimited=!eventInfo.isUnlimited" ng-class="{'btn-danger': !eventInfo.isUnlimited, 'btn-success': eventInfo.isUnlimited}">
+					<i ng-class="{'icon-check': eventInfo.isUnlimited, 'icon-unchecked': !eventInfo.isUnlimited}"></i>
+				</a>
+				<input ng-if="!eventInfo.isUnlimited" type="number" step="1" class="form-control" placeholder="The number of Code" ng-model="eventInfo.codeRemain" required/>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<label style="text-align: left;" class="control-label col-lg-6">Start date</label>
+				<label style="text-align: left;" class="control-label col-lg-6">End date</label>
+			</div>
+			<div class="row">
+				<div class="col-lg-6">
+					<input type="text" class="form-control" datepicker-popup="dd-MM-yyyy" ng-model="eventInfo.eventAt" min="minDate" placeholder="DD-MM-YYYY" />
+				</div>
+				<div class="col-lg-6">
+					<input type="text" class="form-control" datepicker-popup="dd-MM-yyyy" ng-model="eventInfo.endEventAt" min="minDate" placeholder="DD-MM-YYYY" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+		<input type="submit" class="btn btn-primary" value="Save" />
+	</div>
+</form>

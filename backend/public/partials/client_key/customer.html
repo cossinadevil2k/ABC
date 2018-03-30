@@ -1,0 +1,30 @@
+<loading ng-if="isLoading"></loading>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Public key</th>
+        <th>Secret</th>
+        <th class="text-center">Activated</th>
+        <th class="text-right">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="(key, client) in listCK">
+        <td>{{client.clientName}}</td>
+        <td>{{client.client}}</td>
+        <td>{{ (client.showSecret)? client.secret : '********************' }}</td>
+        <td class="text-center">
+            <a class="btn btn-xs" href="#" ng-click="changeDisabledStatus(client)" ng-class="{'btn-danger': client.isDisabled, 'btn-success': !client.isDisabled}">
+                <i ng-class="{'icon-check': !client.isDisabled, 'icon-unchecked': client.isDisabled}"></i>
+            </a>
+        </td>
+        <td class="text-right">
+            <button class="btn btn-xs btn-info" ng-if="!client.showSecret" ng-click="showSecret(client)" tooltip="Show secret"><i class="icon-eye-open"></i></button>
+            <button class="btn btn-xs btn-orange" ng-if="client.showSecret" ng-click="hideSecret(client)" tooltip="Hide secret"><i class="icon-eye-close"></i></button>
+            <button class="btn btn-xs btn-facebook" tooltip="Regenerate secret" ng-click="regenSecret(client, key)"><i class="icon-refresh"></i></button>
+            <button class="btn btn-xs btn-twitter" tooltip="Edit info" ng-click="editInfo(client)"><i class="icon-edit"></i></button>
+        </td>
+    </tr>
+    </tbody>
+</table>

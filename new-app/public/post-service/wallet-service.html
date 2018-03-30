@@ -1,0 +1,51 @@
+
+
+<polymer-element name="wallet-service">
+    <template>
+        <style>
+            :host {
+                display: none;
+            }
+        </style>
+
+        <core-ajax id="service"
+                   url={{url}}
+                   method="POST"
+                   handleAs="json"
+                   params='{{params}}'
+                   on-core-response="{{postLoaded}}">
+        </core-ajax>
+    </template>
+
+    <script>
+        Polymer('wallet-service', {
+            postLoaded: function(event, response){
+                var status  = response.xhr.status;
+                if(status){
+                    if(status===200) {
+                        var data = response.response;
+                        if(data.error===0) this.callback(data);
+                        else if (data.error===401) this.fire('sessionExpired');
+                    }
+                }
+            },
+
+            addWallet: function(wallet, callback){
+                this.callback = callback;
+                if(wallet) {
+                    this.url = "/api/account/add";
+                    this.params = {"name": wallet.name, "icon":wallet.icon, "currency_id":wallet.currency_id};
+                    this.$['service'].go();
+                } else this.callback({"error": 10, "msg":"account_info_empty"});
+            },
+
+            editWallet: function(wallet, callback){
+
+            },
+
+            deleteWallet: function(wallet, callback){
+
+            }
+        });
+    </script>
+</polymer-element>

@@ -1,0 +1,17 @@
+.sub-heading-text {
+	font-size: 20px !important;
+}
+
+.quote-text {
+	color: #ffffff;
+	font-size: 15px;
+	line-height: 25px;
+}
+
+.ja_testimonial .testimonial {
+	padding: 0;
+}
+
+.ja_testimonial .container {
+	padding: 20px 0;
+}

@@ -1,0 +1,39 @@
+<div class="module">
+    <div class="module-header">
+        <h4>Edit Auto-reply Messages</h4>
+    </div>
+    <div class="module-content">
+        <div style="width: 500px; margin: auto">
+            <div class="form-horizontal">
+                <p class="text-fail col-lg-offset-3 col-lg-9" ng-if="errorMessage" ng-bind="errorMessage"></p>
+                <p class="text-success col-lg-offset-3 col-lg-9" ng-if="successMessage" ng-bind="successMessage"></p>
+                <div class="form-group">
+                    <div class="col-lg-offset-3 col-lg-9">
+                        <p>
+                            <i>***Các tin nhắn này sẽ là nội dung tự động trả lời Helpdesk Issue mới đăng vào các ngày Chủ nhật</i>
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-3">Tiếng Việt:</label>
+                    <div class="col-lg-9">
+                        <textarea class="form-control" rows="3" ng-model="autoMessages.VI"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-3">English:</label>
+                    <div class="col-lg-9">
+                        <textarea class="form-control" rows="3" ng-model="autoMessages.EN"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-3 col-lg-9 text-right">
+                        <button class="btn btn-success" ng-click="saveAutoMessages(autoMessages)">
+                            <i class="icon icon-save"></i> Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+{
+    "status": "1",
+    "version": "4",
+    "versionShow": "1.0.3",
+    "url": "itms-apps://itunes.apple.com/us/app/money-lover-alpha/id635616430?mt=8",
+    "changelog": [
+        {
+            "en": "• new features: \n - New design for menu. \n - New functions: debts manager, savings manager, events manager, monthly report. \n - Support add, edit category. \n • Bug fixes: \n - tag persons when add new transaction. \n - chart for budget plan.",
+            "vi": "• Những điểm mới: \n - Giao diện mới cho menu. \n - Chức năng mới: quản lí vay nợ, quản lý tiết kiệm, quản lý sự kiện, báo cáo hàng tháng. \n - Hỗ trợ thêm sửa xóa Thể loại. \n • Sửa lỗi: \n - thêm người khi tạo giao dịch mới. \n - biểu đồ cho kế hoạch ngân quỹ. \n - một vài lỗi nhỏ khác."        }
+    ]
+}

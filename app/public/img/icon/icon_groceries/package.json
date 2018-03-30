@@ -1,0 +1,323 @@
+{
+  "name": "Groceries",
+  "product_id": "icon_groceries",
+  "icons": {
+    "Groceries_01": [
+      "bag",
+      "shopping bag",
+      "grocery bag",
+      "túi siêu thị",
+      "túi đi siêu thị",
+      "giỏ",
+      "làn đi chợ",
+      "làn"
+    ],
+    "Groceries_02": [
+      "tissue",
+      "tissue box",
+      "giấy",
+      "hộp giấy",
+      "giấy ăn",
+      "khăn giấy",
+      "giấy thấm",
+      "facial tissue"
+    ],
+    "Groceries_03": [
+      "fruit juice",
+      "juice",
+      "nước quả",
+      "nước hoa quả",
+      "nước ép",
+      "fruit"
+    ],
+    "Groceries_04": [
+      "spice",
+      "gia vị",
+      "salt",
+      "sugar",
+      "đường",
+      "spices",
+      "hương liệu",
+      "flavoring"
+    ],
+    "Groceries_05": [
+      "canned food",
+      "đồ hộp",
+      "thức ăn đóng hộp",
+      "đồ ăn sẵn",
+      "thức ăn sẵn",
+      "lazy"
+    ],
+    "Groceries_06": [
+      "fish",
+      "ocean fish",
+      "fishes",
+      "tuna",
+      "cá",
+      "cá ngừ",
+      "cá thu",
+      "đồ biển",
+      "seafood"
+    ],
+    "Groceries_07": [
+      "meat",
+      "thịt",
+      "thịt lợn",
+      "pork",
+      "bacon",
+      "thịt hun khói",
+      "yummy"
+    ],
+    "Groceries_08": [
+      "fish sauce",
+      "sauce",
+      "nước mắm",
+      "mắm",
+      "xì dầu"
+    ],
+    "Groceries_09": [
+      "tomato",
+      "ketchup",
+      "nước sốt",
+      "cà chua",
+      "sốt cà chua",
+      "tomato sauce",
+      "Mayonnaise"
+    ],
+    "Groceries_10": [
+      "egg",
+      "trứng",
+      "hộp trứng",
+      "uovo"
+    ],
+    "Groceries_11": [
+      "chicken",
+      "lunch",
+      "meal",
+      "dinner",
+      "gà"
+    ],
+    "Groceries_12": [
+      "trolley",
+      "supermarket basket",
+      "xe đẩy siêu thị",
+      "xe siêu thị"
+    ],
+    "Groceries_13": [
+      "Croissant",
+      "bánh sừng bò",
+      "sừng bò Pháp",
+      "sweet",
+      "sweetie",
+      "đồ ngọt",
+      "cake",
+      "breakfast"
+    ],
+    "Groceries_14": [
+      "cookie",
+      "bánh quy",
+      "sweet",
+      "sweetie",
+      "đồ ngọt",
+      "cake",
+      "breakfast"
+    ],
+    "Groceries_15": [
+      "noodle",
+      "mì tôm",
+      "phở",
+      "mì gói",
+      "mì ăn liền",
+      "sinh viên",
+      "cuối tháng"
+    ],
+    "Groceries_16": [
+      "vegetable",
+      "vegetale",
+      "rau củ",
+      "rau củ quả",
+      "củ quả",
+      "rau",
+      "ผัก",
+      "sayuran",
+      "pea",
+      "bean"
+    ],
+    "Groceries_17": [
+      "bill",
+      "hóa đơn"
+    ],
+    "Groceries_18": [
+      "jam",
+      "fruit jam",
+      "strawberry jam",
+      ""
+    ],
+    "Groceries_19": [
+      "donut",
+      "sweet",
+      "sweetie",
+      "đồ ngọt",
+      "cake",
+      "breakfast"
+    ],
+    "Groceries_20": [
+      "bread",
+      "French bread",
+      "bánh mì",
+      "bánh mì dài",
+      "Vietnamese bread",
+      "sweet",
+      "sweetie",
+      "đồ ngọt",
+      "cake",
+      "breakfast"
+    ],
+    "Groceries_21": [
+      "vegetable",
+      "vegetale",
+      "rau củ",
+      "rau củ quả",
+      "củ quả",
+      "rau",
+      "ผัก",
+      "sayuran",
+      "eggplant",
+      "cà tím",
+      "cà",
+      "quả cà"
+    ],
+    "Groceries_22": [
+      "vegetable",
+      "vegetale",
+      "rau củ",
+      "rau củ quả",
+      "củ quả",
+      "rau",
+      "ผัก",
+      "sayuran",
+      "chili",
+      "pepper",
+      "ớt",
+      "ớt chuông",
+      "ớt đỏ"
+    ],
+    "Groceries_23": [
+      "vegetable",
+      "vegetale",
+      "rau củ",
+      "rau củ quả",
+      "củ quả",
+      "rau",
+      "ผัก",
+      "sayuran",
+      "Cauliflower",
+      "súp lơ"
+    ],
+    "Groceries_24": [
+      "vegetable",
+      "vegetale",
+      "rau củ",
+      "rau củ quả",
+      "củ quả",
+      "rau",
+      "ผัก",
+      "sayuran",
+      "onion",
+      "hành",
+      "hành tây",
+      "củ hành"
+    ],
+    "Groceries_25": [
+      "vegetable",
+      "vegetale",
+      "rau củ",
+      "rau củ quả",
+      "củ quả",
+      "rau",
+      "ผัก",
+      "sayuran",
+      "mario",
+      "mushroom",
+      "cây nấm",
+      "nấm"
+    ],
+    "Groceries_26": [
+      "vegetable",
+      "vegetale",
+      "rau củ",
+      "rau củ quả",
+      "củ quả",
+      "rau",
+      "ผัก",
+      "sayuran",
+      "bắp cải",
+      "cải bắp",
+      "cabbage"
+    ],
+    "Groceries_27": [
+      "vegetable",
+      "vegetale",
+      "rau củ",
+      "rau củ quả",
+      "củ quả",
+      "rau",
+      "ผัก",
+      "sayuran",
+      "radish",
+      "củ cải",
+      "củ cải đường"
+    ],
+    "Groceries_28": [
+      "vegetable",
+      "vegetale",
+      "rau củ",
+      "rau củ quả",
+      "củ quả",
+      "rau",
+      "ผัก",
+      "sayuran",
+      "bí đỏ",
+      "bí ngô",
+      "halloween",
+      "pumkin"
+    ],
+    "Groceries_29": [
+      "vegetable",
+      "vegetale",
+      "rau củ",
+      "rau củ quả",
+      "củ quả",
+      "rau",
+      "ผัก",
+      "sayuran",
+      "corn",
+      "ngô",
+      "bí ngô"
+    ],
+    "Groceries_30": [
+      "vegetable",
+      "vegetale",
+      "rau củ",
+      "rau củ quả",
+      "củ quả",
+      "rau",
+      "ผัก",
+      "sayuran",
+      "cherry"
+    ]
+  },
+  "tags": [
+    "groceries",
+    "grocery",
+    "supermarket",
+    "market",
+    "super market",
+    "đi chợ",
+    "siêu thị",
+    "ร้านขายของชำ",
+    "shopping",
+    "shop",
+    "drogheria"
+  ]
+}

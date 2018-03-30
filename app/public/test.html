@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title>Demo SDK</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div id="result">
+    <input id="wallet-name" value="Tên ví" placeholder="Nhập tên ví">
+    <button onclick="loginNow()">Login</button>
+</div>
+
+<script type="text/javascript">
+    var resultId = document.getElementById('result');
+
+    window.ML_AsyncInit = function () {
+        ML.init({
+            app_id: 'NJxHe5yhg',
+            end_point: 'https://connect.moneylover.me/debug.json',
+            app_name: 'Demo shop 2',
+            currency: 'USD'
+        });
+    };
+
+    (function (d, s, id) {
+        if (d.getElementById(id)) {
+            return;
+        }
+        var mljs = d.createElement(s);
+        mljs.id = id;
+        mljs.async = true;
+        mljs.defer = true;
+        var useSSL = 'https:' == d.location.protocol;
+        mljs.src = (useSSL ? 'https:' : 'http:') + '//connect.moneylover.me/js/sdk.js';
+        //mljs.src = './sdk.js';
+        var node = d.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(mljs, node);
+    })(document, 'script', 'moneylover-sdk');
+
+    function loginNow() {
+        var walletName = document.getElementById('wallet-name').value;
+
+        ML.login(function (result) {
+            var resultElm = document.createElement('div');
+            resultElm.innerHTML = JSON.stringify(result);
+
+            resultId.appendChild(resultElm);
+        }, {app_name: walletName});
+    }
+
+</script>
+</body>
+</html>

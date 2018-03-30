@@ -1,0 +1,34 @@
+<polymer-element name="currency-service" attributes="currencyList">
+  <template>
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+    <core-ajax id="ajax"
+      url="/lib/moneylover/currency.json"
+      on-core-response="{{postsLoaded}}"
+      handleAs="json">
+    </core-ajax>
+
+    <core-localstorage name="currency-list" value="{{currencyList}}"></core-localstorage>
+  </template>
+  <script>
+  Polymer('currency-service', {
+    created: function() {
+    },
+
+    domReady: function(){
+      if(!this.currencyList|| this.currencyList.length === 0){
+        this.$.ajax.go();
+      }
+    },
+
+    postsLoaded: function() {
+      console.log('currencyList postsLoaded');
+      this.currencyList = this.$.ajax.response.data;
+      currencyList = this.currencyList;
+    }
+  });
+  </script>
+</polymer-element>

@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="module no-padding">
+            <div class="module-header">
+                <h4 class="listHeader">
+                    <button class="btn left btn-grape btn-back" ng-click="create()">Create</button>
+                    <div class="input-group btn-back">
+                        <select class="form-control" name="type" id="type" ng-model="filter.campaign" ng-change="filterItem(filter)">
+                            <option ng-selected="true">Filter Campaign</option>
+                            <option ng-repeat="item in campaigns" value="{{item._id}}">{{item.name}}</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <select class="form-control" name="type" id="type" ng-model="filter.group" ng-change="filterItem(filter)">
+                            <option ng-selected="true">Filter Group</option>
+                            <option ng-repeat="item in groups" value="{{item._id}}">{{item.name}}</option>
+                        </select>
+                    </div>
+                    <div class="input-group quick-search-box" style="right:105px;">
+                        <input type="text" autofocus class="form-control" id="txtKeyword" ng-model="keyword" placeholder="Type name need search..."
+                            ng-keydown="searchKey($event, keyword,filter)">
+                        <div class="input-group-btn">
+                            <select class="form-control" name="type" id="type" ng-model="filter.type" ng-init="filter.type = '3'">
+                                <option value="1">Campaign</option>
+                                <option value="2">Group</option>
+                                <option value="3" ng-selected="true">Automation</option>
+                            </select>
+                            <button type="button" class="btn btn-twitter" ng-click="search(keyword,filter)">
+                                <i class="icon-search"></i> SEARCH</button>
+                        </div>
+                    </div>
+                </h4>
+                <h4 class="hidden-xs hidden-sm col-lg-12">
+
+                </h4>
+                <h4 class="suggestions-list">
+                    <ul ng-repeat="item in suggests">
+                        <li ng-click="choose(item.name)">{{item.name}}</li>
+                    </ul>
+                </h4>
+            </div>
+        </div>
+        <div class="module no-padding" ng-init="view = 'campaign'">
+            <div class="module-header no-padding">
+                <ul class="nav nav-tabs">
+                    <li ng-class="{active: view === 'campaign'}">
+                        <a href="" ng-click="view = 'campaign'">Campaign</a>
+                    </li>
+                    <li ng-class="{active: view === 'group'}">
+                        <a href="" ng-click="view = 'group'">Group</a>
+                    </li>
+                    <li ng-class="{active: view === 'automation_unit'}">
+                        <a href="" ng-click="view = 'automation_unit'">Automation Unit</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="module-content">
+                <div ng-if="view === 'campaign'" ng-include="'/partials/email_push_automation/campaign_view.html'"></div>
+                <div ng-if="view === 'group'" ng-include="'/partials/email_push_automation/group_view.html'"></div>
+                <div ng-if="view === 'automation_unit'" ng-include="'/partials/email_push_automation/automation_unit_view.html'"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>

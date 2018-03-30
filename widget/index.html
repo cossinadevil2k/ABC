@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html id="ng-app" ng-app="ml" ontouchstart="" ng-controller="MLWidget" ng-cloak>
+	<head>
+		<meta charset="utf-8">
+		<title>{{userInfo.name || 'Money Lover Widget'}}</title>
+		<meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Money Lover Web-based" />
+		<meta property="og:url" content="https://web.moneylover.me" />
+		<meta property="og:image" content="https://web.moneylover.me/images/thumbnail.png" />
+		<meta property="og:description" content="Money Lover is a great yet simple manager for tracking your personal finance from your mobile device." />
+		<script type="text/javascript" src="assets/js/modernizr.min.js" async></script>
+
+		<link href="favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+		<link href='//fonts.googleapis.com/css?family=Roboto:500,400,300,700&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="assets/css/normalize.css">
+
+		<script type="text/javascript" src="assets/js/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.2.0/socket.io.js"></script>
+		<script type="text/javascript" src="assets/js/async.js"></script>
+		<script type="text/javascript" src="assets/js/accounting.min.js"></script>
+		<script type="text/javascript" src="assets/js/moment.js"></script>
+		<script type="text/javascript" src="assets/js/ZeroClipboard.js"></script>
+		<script type="text/javascript" src="assets/js/mb-scrollbar.min.js"></script>
+		<script type="text/javascript" src="assets/js/custom.js?v=1"></script>
+
+		<link rel="stylesheet" href="assets/css/custom.css?v=1">
+	</head>
+	<body>
+		<div>
+			<nav class="bg-primary fixed-top shadow padding-wrap clearfix">
+				<div class="pull-left clearfix">
+					<div class="icon icon-code inline-block"><img class="img-base" ng-src="{{userInfo.icon | getIconLinkFilter}}" err-src="assets/img/ic_category_foodndrink.png"></div>
+					<div class="inline-block padding-left-small">
+						<div id="wallet-name" class="text-white-trans">{{userInfo.name || 'Unknown Wallet/Event'}}</div>
+						<div id="total-amount"><strong>{{walletBalance | amountDisplayFilter:userInfo.currency:(walletBalance | checkNegativeNumber)}}</strong></div>
+					</div>
+				</div>
+				<div class="fixed-top-right more-options" ng-click="createEmbedCode()">
+					<ul class="dropdown bg-white padding-top-bottom-small radius-small shadow-2">
+						<li class="padding-wrap change-bg-gray"><a href="#">Options 1</a></li>
+						<li class="padding-wrap change-bg-gray"><a href="#">Options 2</a></li>
+					</ul>
+				</div>
+			</nav>
+			<div id="smallState" class="container fixed-center text-center" ng-show="currentWidth < 300">
+				<img src="assets/img/ic_error.png" alt="">
+				<p class="padding-wrap text-normal">Your iframe is so small</p>
+			</div>
+			<div id="loadingState" class="container fixed-center text-center" ng-show="pageLoading && (currentWidth > 300)">
+				<img src="assets/img/ic_loading.gif" alt="">
+				<p class="padding-wrap text-normal">Loading data</p>
+			</div>
+			<div id="emptyState" class="container fixed-center text-center" ng-show="(transactionLists.length === 0 ) && !pageLoading && (currentWidth > 300)">
+				<img src="assets/img/ic_error.png" alt="">
+				<p class="padding-wrap text-normal">
+					<span ng-if="!userInfo">
+						Wallet/Event not found. <br />
+						Please tell us your Wallet Id or Event Id. <br />
+					</span>
+					<span ng-if="userInfo">Transaction not found</span>
+				</p>
+			</div>
+
+			<div id="share" class="modal container radius-small fixed-center bg-white padding-modal shadow-3" ng-show="turnOn">
+				<h2 class="title">Share</h2>
+				<div class="form-group">
+					<label> Embed into website: </label>
+					<input class="form-control" ng-value="embedCode" disabled/>
+					<button id="copyClipboardWebsite" class="btn btn-line btn-copy" data-clipboard-target="embedWebsite"><img src="https://placeholdit.imgix.net/~text?txtsize=5&txt=24%C3%9724&w=24&h=24&txtpad=1"></button>
+				</div>
+
+				<div class="form-inline margin-top-small">
+					<span>Size: Width <input class="form-control margin-right-small margin-left-small" ng-model="embedWidth" ng-init="embedWidth = 260"/> Height <input id="embedWebsite" class="form-control margin-left-small"  ng-model="embedHeight" ng-init="embedHeight = 260"/></span>
+				</div>
+
+				<hr class="margin-wrap">
+
+				<div class="align-right margin-top-extra">
+					<a class="text-income btn-close" ng-click="turnOn = false">Close</a>
+				</div>
+			</div>
+
+			<div id="work-space" class="content container" ng-hide="(transactionLists.length === 0) && (minWidth < 300) || turnOn">
+				<div class="card radius-small bg-white shadow padding-wrap margin-wrap" ng-repeat="group in transactionLists">
+					<ul class="table-view clearfix" ng-model="displayDate">
+						<li class="table-view-cell padding-top-bottom-small border-bottom clearfix">
+								<span class="date-time pull-left">
+									<span class="date text-extra pull-left">{{group.displayDate | dateTimeFilter:"DD"}}</span>
+									<span class="pull-left padding-left-small">
+										<span class="day block text-small">{{group.displayDate | dateTimeFilter:"dddd"}}</span>
+										<span class="month-year text-small text-dark-trans">{{group.displayDate | dateTimeFilter:"MMM. YYYY"}}</span>
+									</span>
+								</span>
+							<strong class="amount text-large pull-right bigAmount" ng-class="(group.totalAmount | checkNegativeNumber) === 1 ? 'text-income' : 'text-expense'">
+								{{group.totalAmount | amountDisplayFilter:group.currency:(group.totalAmount | checkNegativeNumber)}}
+							</strong>
+						</li>
+						<li class="detail table-view-cell padding-wrap margin-wrap-minus change-bg-gray clearfix" ng-repeat="tran in group.trans">
+							<span class="pull-left">
+								<span class="inline-block align-top">
+									<img class="img-base" ng-src="{{tran.category.icon | getIconLinkFilter}}" err-src="assets/img/ic_category_foodndrink.png">
+								</span>
+								<span class="pull-right">
+									<span class="amount block smallAmount" ng-class="tran.category.type == 1 ? 'text-income' : 'text-expense'">{{tran.amount | amountDisplayFilter:tran.currency:tran.category.type}}</span>
+									<!-- <span class="note-amount block text-dark-trans">0</span> -->
+								</span>
+								<span class="inline-block padding-left-large">
+									<span class="name block">{{tran.category.name}}</span>
+									<span class="note text-small text-dark-trans block make-text-fit">{{tran | noteDisplayFiler }}</span>
+								</span>
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<footer class="bar-footer fixed-bottom padding-wrap bg-gray border-top align-center">
+				<span class="pull-left">Last update: {{currentTime}}</span>
+				<span class="pull-right text-small">Powered by <img src="assets/img/img_logo_footer.png" class="align-middle" alt="logo footer" width="12px"> <a class="underline" href="//moneylover.me">Money Lover</a></span>
+
+				<!-- <a href="#" class="btn pull-right">Get</a> -->
+			</footer>
+		</div>
+	</body>
+</html>

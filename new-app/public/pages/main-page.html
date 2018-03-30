@@ -1,0 +1,652 @@
+<polymer-element name="main-page" attributes="walletId" on-keydown="{{keyPressHandler}}">
+    <template>
+        <style type="text/css">
+            :host .top {
+                height: 30px;
+                font-size: 12px;
+            }
+            :host * {
+                margin: 0;
+                padding: 0;
+            }
+
+            :host .top paper-button {
+                background: transparent;
+            }
+
+            :host .user-email {
+                background: url('../images/ic_ab_account.png') no-repeat scroll 10px center transparent;
+                float: left;
+                position: relative;
+                height: 24px;
+                padding: 10px 8px 10px 12px;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+                cursor: pointer;
+            }
+
+            :host .core-header.tallHeader .top a.user-email span {
+                display: block;
+                margin-left: 32px;
+                line-height: 24px;
+                margin-top: 1px;
+                cursor: pointer;
+            }
+
+            :host .core-header .top a.user-email {
+                width: 24px;
+                margin-right: 24px;
+            }
+
+            :host .core-header.tallHeader .top a.user-email {
+                width: 180px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                cursor: pointer;
+                white-space: nowrap;
+            }
+
+            :host .core-header .top a.user-email span {
+                display: none;
+            }
+
+            :host .core-header.tallHeader .header{
+                text-align: center;
+                width: auto;
+                margin: auto;
+                display: block;
+                position: relative;
+                font-size: normal;
+                height: 152px;
+                width: 400px;
+                top: -8px;
+                cursor: pointer;
+            }
+
+            :host .core-header.tallHeader .header #logo-item {
+                width: 72px;
+                height: 72px;
+                margin: 0 auto;
+                display: block;
+                float: none;
+                padding-top: 8px;
+            }
+
+            :host .header #logo-item img {
+                width: 100%;
+            }
+
+            :host .core-header.tallHeader .header .name-item {
+                font-size: 18px;
+                display: inline-block;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+                float: none;
+                color: rgba(255,255,255,0.87);
+                margin-left: 0;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 400px;
+                height: auto;
+            }
+
+            :host .core-header .header .name-item core-menu-button.menu-hide {
+                display: none;
+            }
+
+            :host .core-header.tallHeader  .header .name-item core-menu-button.menu-hide {
+                background: transparent;
+                display: block;
+                float: left;
+                margin-left: 14px;
+            }
+
+            :host .core-header.tallHeader .header core-menu-button,
+            :host .core-header .header core-menu-button {
+                background: url("../images/ic_ab_dropdown.png") no-repeat scroll left center transparent;
+                height: 10px;
+                width: 14px;
+                position: relative;
+                top: 13px;
+                margin-right: 8px;
+                margin-top: 0;
+                cursor: pointer;
+            }
+            .hide{
+                display: none;
+            }
+
+            :host .core-header.tallHeader .header core-menu-button.menu-wallet {
+                display: none;
+            }
+
+            :host .core-header .header core-menu-button {
+                margin-left: 8px;
+                position: relative;
+            }
+
+            :host core-icon-button#button {
+                width: 13px;
+                height: 10px;
+            }
+
+            :host .month {
+                text-align: center;
+                width: 800px;
+                margin: auto;
+                display: block;
+                position: relative;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
+            }
+
+            :host .month,
+            :host transaction-list-timerange {
+                text-align: center;
+                height: 45px;
+                cursor: pointer;
+            }
+
+            :host .icon-plus {
+                float: right;
+                margin-right: 175px;
+                position: relative;
+                top: -34px;
+                display: block;
+                transition: height -0.2s;
+                z-index: 9;
+            }
+
+            :host .main-content {
+                margin: 0 auto 20px;
+                width: 400px;
+            }
+
+            :host paper-fab {
+                color: rgba(0,0,0,0.60);
+                background: #14e715;
+            }
+
+            :host .wallet-list {
+                background-color: white !important;
+                border-radius: 2px;
+                display: block;
+                padding: 8px 0;
+                cursor: pointer;
+            }
+
+            :host .core-header {
+                height: 44px;
+                background-color: #2baf2b;
+                color: white;
+                transition: height 0.2s;
+                padding: 10px 14px;
+                transition: height 0.2s;
+            }
+
+            :host .core-header.tallHeader {
+                height: 220px;
+            }
+
+            :host .core-header .header {
+                display: none;
+            }
+
+            :host .core-header.tallHeader .header {
+                display: block;
+            }
+
+            :host .core-header.tallHeader .month {
+                margin-top: 10px;
+            }
+
+            :host .core-header .month {
+                margin-top: -14px;
+            }
+
+            :host .core-header .header {
+                display: inline-block;
+                font-size: 12px;
+                position: absolute;
+                top: 10px;
+                height: 44px;
+                background: none;
+                width: 200px;
+                cursor: pointer;
+            }
+
+            :host .core-header .header #logo-item {
+                float: left;
+                width: 48px;
+                height: 48px;
+                display: inline-block;
+                margin-top: -3px;
+                cursor: pointer;
+            }
+
+            :host .core-header .header .name-item {
+                font-size: 12px;
+                color: rgba(255,255,255,0.87);
+                font-family: "Roboto" sans-serif;
+                font-weight: 500;
+                float: left;
+                display: block;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                margin-left: 8px;
+                cursor: pointer;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 140px;
+                height: 45px;
+            }
+
+            :host .core-header .header .amount-item {
+                font-size: 14px;
+                line-height: 0px;
+                color: rgb(255,255,255);
+                font-family: "Roboto" sans-serif;
+                margin-top: -2px;
+                font-weight: 500;
+                cursor: pointer;
+            }
+
+            :host .core-header.tallHeader .header .amount-item {
+                font-size: 28px;
+                line-height: 40px;
+                float: none;
+                color: rgba(255,255,255);
+            }
+
+            :host .main {
+                height: 100%;
+            }
+
+            :host core-header-panel {
+                height: 100%;
+            }
+
+            :host #toolbar {
+                display: block;
+                float: right;
+            }
+
+            :host paper-button.calendar {
+                margin-right: -10px;
+                z-index: 99;
+            }
+
+            :host span.car-date {
+                position: relative;
+                top: -18px;
+                left: -18px;
+                cursor: pointer;
+                font-weight: 400;
+                font-size: 11px;
+            }
+
+            :host #kickedDialog {
+                width: 50%;
+                min-width: 430px;
+            }
+
+            :host #kickedDialog p {
+                margin-top: 35px;
+                text-align: center;
+            }
+
+            :host #kickedDialog paper-button {
+                font-weight: bold;
+            }
+
+            :host #kickedDialog paper-button[autofocus] {
+                color: white;
+            }
+            
+            :host #kickedDialog paper-button {
+                color: white;
+            }
+        </style>
+
+        <core-localstorage name="user-data" value="{{user}}"></core-localstorage>
+        <core-localstorage name="email" value="{{email}}"></core-localstorage>
+        <wallet-list-service id="service" walletList="{{walletList}}" include_all_wallet="{{include_all_wallet}}" ></wallet-list-service>
+        <currency-service currencyList={{currencyList}}></currency-service>
+        <device-service id="deviceService"></device-service>
+        <div class="main {{{hide: addFirstWallet} | tokenList}}" >
+            <core-header-panel mode="waterfall-tall" tallClass="tallHeader">
+                <div class="core-header">
+                    <div class="top">
+                        <a class="user-email" on-click="{{showUserInfo}}">
+                            <span>{{user.email}}</span>
+                            <paper-ripple fit> </paper-ripple>
+                        </a>
+                        <user-info-dialog id="userInfoDialog" user="{{user}}"></user-info-dialog>
+                        <div id="toolbar">
+                            <core-tooltip label="Jump to Today"><paper-button iconSrc="../images/ic_ab_calendar_empty.png" class="calendar" on-click="{{jumpToToday}}"></paper-button></core-tooltip><span class="car-date">{{thisDate}}</span>
+                        </div>
+                    </div>
+
+                    <div class="header" on-click="{{walletChangeAction}}">
+                        <div id="logo-item">
+                            <template if="{{wallet.iconGroup}}">
+                                <icon-group iconGroup="{{wallet.iconGroup}}"></icon-group>
+                            </template>
+                            <template if="{{!wallet.iconGroup}}">
+                                <img src="{{wallet.icon | iconUrlFilter}}" on-error="{{imgError}}"/>
+                            </template>
+                        </div>
+                        <div class="name-item">
+                            <span>{{wallet.name}}</span>
+                            <core-menu-button id="walletPicker" class="menu-wallet-tall">
+                                <wallet-list id="walletList" add_wallet="true" current_walletId="{{walletId}}" wallet="{{wallet}}" class="wallet-list" walletList="{{walletListIncludeAll}}"></wallet-list>
+
+                            </core-menu-button>
+                            <p class="amount-item"><span>&nbsp;</span></p>
+                        </div>
+                        <paper-ripple fit> </paper-ripple>
+                    </div>
+
+                    <div class="month">
+                        <transaction-list-timerange id="timeRange" currentTime="{{currentTime}}"></transaction-list-timerange>
+                    </div>
+                    <div class="icon-plus"><core-tooltip label="Add Transaction"><paper-fab icon="add" on-click="{{addTransaction}}">
+
+                    </paper-fab></core-tooltip></div>
+                </div>
+                <div class="main-content">
+                    <div horizontal layout>
+                        <transaction-list id="transactionList" wallet="{{wallet}}" currencyList="{{currencyList}}" displayMode="date" currentTime="{{currentTime}}" walletList="{{walletList}}"></transaction-list>
+                    </div>
+                </div>
+
+                <paper-toast id="toast" text="{{toastMessage}}"></paper-toast>
+                <wallet-detail-dialog id="walletDetailDialog"></wallet-detail-dialog>
+                <transaction-detail-dialog id="transactionDetailDialog" walletList="{{walletList}}"></transaction-detail-dialog>
+                <paper-dialog id="kickedDialog" heading="" transition="paper-dialog-transition-center" backdrop="true" autoCloseDisabled="true">
+                    <p>YOU ARE DISCONNECTED</p>
+                    <paper-button label="OK" on-click="{{goLogOut}}" class="colored r500" affirmative autofocus></paper-button>
+                </paper-dialog>
+            </core-header-panel>
+        </div>
+    </template>
+
+    <script type="text/javascript">
+        var currencyList = null;
+        var disconnectDialogOpened = false;
+        
+        function checkDeviceLogin(polymer){
+            var userId = polymer.user._id;
+            polymer.$['deviceService'].checkLogin(userId, function(data){
+                if(data.s){
+                    if(!data.d) {
+                        if(!disconnectDialogOpened) {
+                            var dialog = polymer.$['kickedDialog'];
+                            dialog.toggle();
+                            disconnectDialogOpened = true;
+                        }
+                    }
+                }
+            });
+        }
+
+        function listenSocket(polymer){
+            var socket = io('https://socket.moneylover.me/');
+            socket.on('/web-notification/' + polymer.user._id, function(message){
+                var data = JSON.parse(message);
+                if(data.dataMessage){
+                    if(data.dataMessage.f == 600 && (data.dataMessage.a && (data.dataMessage.a == polymer.walletId || polymer.walletId == 'all'))) {
+                        polymer.$['transactionList'].updateTransaction();
+                    }
+                    if(data.dataMessage.ac == 7){
+                        if(!disconnectDialogOpened) {
+                            var dialog = polymer.$['kickedDialog'];
+                            dialog.toggle();
+                            disconnectDialogOpened = true;
+                        }
+                    }
+                }
+            });
+        }
+
+        function checkWalletId(walletId, listWallet){
+            var result = false;
+            if (walletId == 'all') return true;
+            else {
+                listWallet.forEach(function (wallet) {
+                    if(walletId == wallet._id) result = true;
+                });
+
+                return result;
+            }
+        }
+
+        Polymer('main-page',{
+            created: function(){
+                this.thisDate = moment(new Date()).format('DD');
+            },
+
+            iconUrlFilter: function (imgName) {
+                return (urlRoot + '/img/icon/' + imgName + '.png').replace('icon//icon', 'icon');
+            },
+
+            domReady: function(){
+                this.tabIndex = 0;
+                var that = this;
+                
+                checkDeviceLogin(this);
+                listenSocket(this);
+
+                window.addEventListener('add-wallet', function () {
+                    that.$.walletDetailDialog.show();
+                });
+
+                window.addEventListener('wallet-not-found', function () {
+                    history.pushState(null, "title", '/404');
+                    history.go(0);
+                });
+
+                window.addEventListener('showToast', function (e) {
+                    var msg = e.detail.msg;
+                    that.showToast(msg);
+                });
+
+                window.addEventListener('addTransaction', function (e) {
+                    that.fire('showToast', {msg: 'Transaction Added'});
+                    that.reloadTransactionList();
+                });
+
+                window.addEventListener('editTransaction', function (e) {
+                    that.fire('showToast', {msg: 'Transaction Edited'});
+                    that.reloadTransactionList();
+                });
+
+                window.addEventListener('deleteTransaction', function (e) {
+                    that.fire('showToast', {msg: 'Transaction Deleted'});
+                    that.reloadTransactionList();
+                });
+
+                window.addEventListener('addWallet', function (e) {
+                    that.fire('showToast', {msg: 'Wallet Added'});
+                    that.reloadWalletList();
+                    that.addFirstWallet = false;
+                });
+
+                window.addEventListener('deleteWallet', function (e) {
+                    that.fire('showToast', {msg: 'Wallet Deleted'});
+                    that.reloadTransactionList();
+                });
+
+                window.addEventListener('noWallet', function (e) {
+                    that.$.walletDetailDialog.showAddFirstWallet();
+                    that.addFirstWallet = true;
+                });
+
+                window.addEventListener('sessionExpired', function (e) {
+                    that.sessionExpired();
+                });
+            },
+
+            keyPressHandler: function(e){
+                var keyCode = e.keyCode;
+                var timeRange = this.$.timeRange;
+
+                if(keyCode === 37){
+                    // left arrow
+                    timeRange.timeDecr();
+                } else if(keyCode === 39){
+                    //right arrow
+                    timeRange.timeIncr();
+                }
+            },
+
+            walletListChanged: function(oldData, newData){
+                this.walletId = this.walletId || 'all';
+                var ok = checkWalletId(this.walletId, this.walletList);
+                if (!ok) {
+                    history.pushState(null, "title", '/404');
+                    history.go(0);
+                } else {
+                    if (!newData) return;
+                    var list = [];
+                    [].push.apply(list, newData);
+                    var size = list.length;
+
+                    if (size > 0) {
+                        var iconGroup = [];
+                        var multiCurrency = false;
+                        var tempCurrency = 0;
+                        iconGroup.push(list[0].icon);
+
+                        for (var i = list.length - 1; i >= 0; i--) {
+                            var wallet = list[i];
+
+                            if (tempCurrency > 0 && wallet.currency_id != tempCurrency) {
+                                multiCurrency = true;
+                                break;
+                            }
+
+                            if (tempCurrency != wallet.currency_id) {
+                                tempCurrency = wallet.currency_id;
+                            }
+                        }
+
+                        if (size > 1) {
+                            iconGroup.push(list[1].icon);
+                        }
+                        if (size > 2) {
+                            iconGroup.push(list[2].icon);
+                        }
+                        list.unshift({
+                            name: "All Wallet",
+                            _id: 'all',
+                            iconGroup: iconGroup,
+                            multiCurrency: multiCurrency,
+                            currency_id: tempCurrency
+                        });
+                    }
+
+                    this.walletListIncludeAll = list;
+
+                    if (!this.walletId) {
+                        var walletId = 'all';
+
+//            if(newData && size === 1){
+//                walletId = newData[0]._id;
+//            }
+
+                        this.redirectByWalletId(walletId);
+                    }
+
+
+                    if (!this.wallet) {
+//            if(size === 1 && this.walletId == "all") {
+//                this.redirectByWalletId(newData[0]._id);
+//            }else{
+//                this.fire('wallet-not-found');
+//            }
+                    }
+
+                    this.wallet = this.findWalletById(this.walletId);
+                }
+            },
+
+            redirectByWalletId: function(walletId){
+                history.pushState(null, "title", '/wallet/' + walletId);
+                this.walletId = walletId;
+            },
+
+
+            findWalletById: function(id){
+                if(!id) return null;
+                for (var i = this.walletListIncludeAll.length - 1; i >= 0; i--) {
+                    var wallet = this.walletListIncludeAll[i];
+                    if(wallet._id === id) return wallet;
+                }
+
+                return null;
+            },
+
+            sessionExpired: function(){
+                var email = this.user.email;
+                localStorage.clear();
+                this.email = email;
+                history.pushState(null, 'title', '/login');
+                history.go(0);
+            },
+
+            reloadTransactionList: function(){
+                this.$.transactionList.updateTransaction();
+            },
+
+            reloadWalletList: function(){
+                this.$.service.reloadFromServer();
+            },
+
+            showUserInfo: function(){
+                this.$.userInfoDialog.showDialog();
+            },
+
+            walletChanged: function(oldWallet, newWallet){
+                if(window.location.pathname === '/'){
+                    history.pushState(null, "title", '/wallet/all');
+                    history.go(0);
+                    return;
+                }
+                if(newWallet == oldWallet) return;
+
+                if(!this.wallet) {
+                    history.pushState(null, "title", '/404');
+                    history.go(0);
+                    return;
+                } else {
+                    history.pushState(null, "title", '/wallet/'+ this.wallet._id);
+                }
+            },
+
+            jumpToToday: function(){
+                this.currentTime = new Date();
+                this.showToast('Jump to Today');
+            },
+
+            showToast: function(msg){
+                this.toastMessage = msg;
+                this.$.toast.show();
+            },
+
+            addTransaction: function(){
+                this.$.transactionDetailDialog.showAddTransaction(this.wallet);
+            },
+
+            walletChangeAction: function(){
+                this.$.walletPicker.toggle();
+            },
+            
+            goLogOut: function(){
+                this.$.userInfoDialog.signOutAction();
+            }
+        });
+    </script>
+</polymer-element>

@@ -1,0 +1,71 @@
+<div class="module-content table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th class="hidden-xs hidden-sm ">Status</th>
+                <th class="hidden-xs hidden-sm ">Campaign Name</th>
+                <th class="hidden-xs hidden-sm ">Type</th>
+                <th class="hidden-xs hidden-sm ">Actions</th>
+                <th class="hidden-xs hidden-sm ">Created Date</th>
+                <th class="hidden-xs hidden-sm ">Created By</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="campaign in campaigns track by $index">
+                <td>
+                    <p>{{$index + 1}}</p>
+                </td>
+                <td>
+                    <button class="btn btn-xs" ng-click="changeDisabledCampaign(campaign)" tooltip="Enable" ng-class="{'btn-success': campaign.isDisable, 'btn-danger': !campaign.isDisable}">
+                        <i ng-class="{'icon-check': campaign.isDisable, 'icon-unchecked': !campaign.isDisable}"></i>
+                    </button>
+                </td>
+                <td class="">
+                    <p>{{campaign.name}}</p>
+                </td>
+                <td class="">
+                    <p ng-if="campaign.type == 1">Email</p>
+                    <p ng-if="campaign.type == 2">Push Notification</p>
+                </td>
+                <td class="">
+                    <button class="btn btn-xs btn-primary" tooltip="Duplicate" ng-click="duplicateCampaign(campaign)">
+                        <i class="icon-tags"></i>
+                    </button>
+                    <button class="btn btn-xs btn-facebook" tooltip="Details" ng-click="detailCampaign(campaign)">
+                        <i class="icon-reorder"></i>
+                    </button>
+                    <button class="btn btn-xs btn-twitter" tooltip="Edit" ng-click="editCampaign(campaign)">
+                        <i class="icon-edit"></i>
+                    </button>
+                    <button class="btn btn-xs btn-grape" tooltip="Delete" ng-click="deleteCampaign(campaign)">
+                        <i class="icon-trash"></i>
+                    </button>
+                </td>
+                <td class="">
+                    <p ng-if="campaign.createdAt ">{{campaign.createdAt | displayTrueTime}}</p>
+                </td>
+                <td>
+                    <p>{{campaign.owner.username}}</p>
+                </td>
+
+            </tr>
+            <tr class="breakPage">
+                <td colspan="12" class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" ng-click="nextPage(-1)" ng-disabled="isFirstPage">
+                            <i class="icon-fast-backward"></i>
+                        </a>
+                        <button class="btn btn-default disabled" onclick="return false">Page {{page}}</button>
+                        <a class="btn btn-default" ng-click="nextPage(+1)" ng-disabled="isLastPage">
+                            <i class="icon-fast-forward"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div ng-if="noContent == true" style="text-align: center;">
+        <h1>No Content</h1>
+    </div>
+</div>

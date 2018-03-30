@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="module no-padding">
+            <div class="module-header">
+                <h4 class="listHeader">
+                    <span class="">{{countryProvider}} Provider</span>
+                </h4>
+                <button class="btn right btn-grape" ng-click="create()">Create Category</button>
+
+            </div>
+            <div class="module-content table-responsive">
+                <loading ng-if="isLoading"></loading>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Key Name</th>
+                            <th>Category Name</th>
+                            <th>Pick a provider</th>
+                            <th class="text-center hidden-xs">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="category in categories track by $index">
+                            <td>
+                                <p>{{$index + 1}}</p>
+                            </td>
+                            <td>
+                                <p>{{category.key_name}}</p>
+                            </td>
+                            <td>
+                                <p>{{category.category}}</p>
+                            </td>
+                            <td>
+                                <a href="/provider-country-code/provider/{{category.key_name}}/{{category.country}}" target="_self" class="btn btn-xs btn-facebook" tooltip="Pick Provider">Pick</a>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-xs btn-twitter" ng-click="edit(category.key_name)"
+                                    tooltip="Edit Category"><i class="icon-magic"></i></button>
+                                <button class="btn btn-xs btn-grape" tooltip="Delete Category" ng-click="delete(category.category,countryProvider)"><i class="icon-trash"></i></button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <div ng-if="noContent == true" style="text-align: center;">
+                    <h1>No Content</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

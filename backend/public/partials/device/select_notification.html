@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title title">Send notification to device <span ng-if="device.name">{{device.name}}</span></h4>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <label class="control-label col-lg-2">Select notification</label>
+        <div class="col-lg-10">
+            <select class="form-control" ng-model="selectedNotification">
+                <option ng-repeat="notification in notifications" value="{{notification._id}}">
+                    {{notification.title}}
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="cancel()">Close</button>
+    <button class="btn btn-primary" ng-click="send()">Send</button>
+</div>
